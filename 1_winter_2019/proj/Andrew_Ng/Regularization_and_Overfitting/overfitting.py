@@ -14,25 +14,26 @@ theta = np.random.random(7)
 def h(x):
     global theta
     global x_poly
-    x_poly = np.array([x**i for i in range(7)]) 
-    y = theta * x_poly
+    tempx = np.array([x**i for i in range(7)]) 
+    y = sum(theta * tempx)
     return y
 
 
 n = 50000 # iterate over n times
 number = 0
-alpha = 0.01
+alpha = 0.0000000001
 while number < n:
-    h_val = []
-    for i in range(len(x)):
-        h_val.append(h(x[i]))
+    #h_val = []
+    #for i in range(len(x)):
+    #    h_val.append(h(x[i]))
+    h_val=[h(u) for u in x]
     h_minus_y=[]
     for i in range(len(h_val)):
         h_minus_y.append(h_val[i]-y[i])
     temp=np.zeros(7)
 #    temp[0]=theta[0]-alpha*sum(h_minus_y)/len(x)
     for i in range(7):
-        temp[i]=theta[i]-alpha*sum(np.array(h_minus_y) * x_poly[i]) /len(x_poly)
+        temp[i]=theta[i]-alpha*sum(np.array(h_minus_y) * (np.array(x)**i)) /len(x)
     theta=temp
     number+=1
 
