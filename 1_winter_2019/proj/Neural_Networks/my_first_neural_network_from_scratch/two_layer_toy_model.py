@@ -11,7 +11,7 @@ def sigmoid(x):
     return 1/(1+np.exp(-x))
 
 # Let's loop and train our neural network!
-for i in range(10000):
+for i in range(9000):
     z1 = np.dot(x,weights)# z1 is 4 by 1
     a1 = sigmoid(z1)# a1 is also 4 by 1
     error = a1 - y # error is 4 by 1
