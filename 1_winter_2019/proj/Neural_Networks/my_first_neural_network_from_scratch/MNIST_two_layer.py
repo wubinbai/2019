@@ -1,4 +1,5 @@
 import numpy as np
+#np.set_printoptions(threshold=np.nan)
 import pandas as pd
 
 # import data
@@ -20,7 +21,7 @@ yzeros=np.zeros((210,10))
 for i in range(len(yzeros)):
     temp = ya[i]
     yzeros[i][temp]=1
-y=yzeros
+y=yzeros # 210 by 10
 # Setting Random Seed
 np.random.seed(0)
 # Two layer: 3 by one parameters
@@ -31,9 +32,9 @@ def sigmoid(x):
 
 # Let's loop and train our neural network!
 for i in range(9000):
-    z1 = np.dot(x,weights)# z1 is 4 by 1
-    a1 = sigmoid(z1)# a1 is also 4 by 1
-    error = a1 - y # error is 4 by 1
+    z1 = np.dot(x,weights)# z1 is 210 by 10
+    a1 = sigmoid(z1)# a1 is also 210 by 10
+    error = a1 - y # error is 210 by 10
 
     # update
     weights = weights - np.dot(x.T, error * a1 * (1-a1)) # a1 * (1-a1) represents the derivative of a sigmoid function since the derivative of 1/(1+e**(-x)) is "the sigmoid function multiplied by 1 minus the sigmoid function"

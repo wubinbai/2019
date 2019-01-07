@@ -1,5 +1,6 @@
 import numpy as np
-# Assuming:
+import pandas as pd
+# Assuming data
 x = np.array([[0,1,1],[0,0,1],[1,1,1],[1,0,1]])
 y = np.array([[0,0,1,1]]).T
 # Setting Random Seed
