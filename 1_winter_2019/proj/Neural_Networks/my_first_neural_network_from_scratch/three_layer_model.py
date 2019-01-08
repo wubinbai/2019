@@ -14,8 +14,10 @@ weights2 = 2 * np.random.random((4,1))-1
 def sigmoid(x):
     return 1/(1+np.exp(-x))
 
+error2=0
 # Let's loop and train our neural network!
 for i in range(27000):
+    et=error2
     z1 = np.dot(x,weights1)# z1 is 4 by 4
     a1 = sigmoid(z1)# a1 is also 4 by 4
     z2 = np.dot(a1,weights2) # z2 is 4 by 1
