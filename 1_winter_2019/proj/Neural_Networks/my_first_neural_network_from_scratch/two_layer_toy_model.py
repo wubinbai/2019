@@ -20,3 +20,8 @@ for i in range(9000):
     weights = weights - np.dot(x.T, error * a1 * (1-a1)) # a1 * (1-a1) represents the derivative of a sigmoid function since the derivative of 1/(1+e**(-x)) is "the sigmoid function multiplied by 1 minus the sigmoid function"
     
 print('Predicted Result: ', a1)
+print("Let's see how our 2-layer-neural-network works with new input(e.g. x = np.array([[1,0,0]]))")
+x = np.array([[1,0,0]])
+z1 = np.dot(x,weights)# z1 is 4 by 1
+a1 = sigmoid(z1)# a1 is also 4 by 1
+print("predicted result of [1,0,0]: ", a1)
