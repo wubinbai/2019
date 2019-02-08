@@ -38,7 +38,7 @@ for i in range(len(index)):
     plt.grid()
     plt.plot(data.iloc[flag0:flag1],label=legend[i])
     plt.legend()
-    plt.savefig('./'+legend[i]+'.jpg')
+    plt.savefig(legend[i])
     flag0 = flag1 + 1
 
 ax= anomaly.plot.barh()

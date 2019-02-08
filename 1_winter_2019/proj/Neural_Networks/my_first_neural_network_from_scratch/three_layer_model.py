@@ -7,7 +7,7 @@ x = np.array([[0,1,1],[0,0,1],[1,1,1],[1,0,1]])
 y = np.array([[0,0,1,1]]).T
 # Setting Random Seed
 np.random.seed(0)
-# Three layer: 3 by one parameters
+# Three layer: 3 by 4 and 4 by 1 for weights1 and weights2, respectively.
 
 weights1 = 2 * np.random.random((3,4))-1
 weights2 = 2 * np.random.random((4,1))-1
