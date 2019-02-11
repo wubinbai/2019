@@ -37,6 +37,6 @@ for i in range(9000):
     error = a1 - y # error is 210 by 10
 
     # update
-    weights = weights - np.dot(x.T, error * a1 * (1-a1)) # a1 * (1-a1) represents the derivative of a sigmoid function since the derivative of 1/(1+e**(-x)) is "the sigmoid function multiplied by 1 minus the sigmoid function"
+    weights = weights - 0.01 * np.dot(x.T, error * a1 * (1-a1)) # a1 * (1-a1) represents the derivative of a sigmoid function since the derivative of 1/(1+e**(-x)) is "the sigmoid function multiplied by 1 minus the sigmoid function"
     
 print('Predicted Result: ', a1)
