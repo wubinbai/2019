@@ -40,7 +40,8 @@ for i in range(len(err_cum)):
     x2.append(float(err_cum[i][1])**2)
     x3.append(float(err_cum[i][2])**2)
     x4.append(float(err_cum[i][3])**2)
-    
+
+plt.ion()
 plt.subplot(1,4,1)
 plt.plot(range(len(x1)),x1)
 plt.subplot(1,4,2)
