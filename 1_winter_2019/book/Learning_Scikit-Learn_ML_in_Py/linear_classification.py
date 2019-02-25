@@ -40,7 +40,8 @@ xs = np.arange(x_min,x_max,0.5)
 fig,axes = plt.subplots(1,3)
 fig.set_size_inches(10,6)
 for i in [0,1,2]:
-    axes[i].set_aspect('equal')
+    pass
+    """    axes[i].set_aspect('equal')
     axes[i].set_title('Class '+str(i)+' versus the rest')
     axes[i].set_xlabel('Sepal Length')
     axes[i].set_ylabel('Sepal Width')
@@ -50,10 +51,10 @@ for i in [0,1,2]:
     plt.scatter(X_train[:,0],X_train[:,1],c=y_train,cmap=plt.cm.prism)
     ys=(-clf.intercept_[i]-xs*clf.coef_[i,0])/clf.coef_[i,1]
     plt.plot(xs,ys,hold=True)
-
-from sklearn.cross_validation import cross_val_score, KFold
+"""
+from sklearn.model_selection import cross_val_score, KFold
 from sklearn.pipeline import Pipeline
 clf =  Pipeline([('scaler', StandardScaler()),('linear_model', SGDClassifier())])
-cv = KFold(X.shape[0], 5 ,shuffle=True, random_state = 33)
-score = cross_val_score(clf,X,y,cv=cv)
+cv = KFold(X.shape[0],shuffle=True, random_state = 33)
+scores = cross_val_score(clf,X,y,cv=cv)
 print(scores)
