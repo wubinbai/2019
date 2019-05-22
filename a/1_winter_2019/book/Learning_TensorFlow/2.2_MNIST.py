@@ -35,4 +35,4 @@ with tf.Session() as sess:
     ans = sess.run(accuracy, feed_dict = {x:data.test.images, y_true: data.test.labels})
 
 print("Accuracy: {:.4}%".format(ans*100))
-
+tf.logging.set_verbosity(old_v)
