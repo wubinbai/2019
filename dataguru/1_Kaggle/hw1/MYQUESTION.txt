@@ -1,0 +1,173 @@
+1. In the clean_text function in the code nlp_utils.py in Feat directory, what does the following code mean?
+
+        ## replace gb
+        for vol in [16, 32, 64, 128, 500]:
+            l = re.sub("%d gb"%vol, "%dgb"%vol, l)
+            l = re.sub("%d g"%vol, "%dgb"%vol, l)
+            l = re.sub("%dg "%vol, "%dgb "%vol, l)
+        ## replace tb
+        for vol in [2]:        
+            l = re.sub("%d tb"%vol, "%dtb"%vol, l)
+2. My desktop computer, bought in 2015, has problem running tensorflow, while my 2012 ThinkPad has no problem running tensorflow, using same installation approach, why is that? When running/importing tensorflow, the error is:
+
+Using TensorFlow backend.
+2019-06-09 10:13:50.353455: F tensorflow/core/platform/cpu_feature_guard.cc:37] The TensorFlow library was compiled to use SSE4.2 instructions, but these aren't available on your machine.
+Aborted (core dumped)
+
+Any way to fix this??
+
+My desktop computer's cpu information is as follows:
+
+wb@wbhome:~$ lscpu
+Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              4
+On-line CPU(s) list: 0-3
+Thread(s) per core:  1
+Core(s) per socket:  4
+Socket(s):           1
+NUMA node(s):        1
+Vendor ID:           GenuineIntel
+CPU family:          6
+Model:               23
+Model name:          Intel(R) Xeon(R) CPU           E5410  @ 2.33GHz
+Stepping:            10
+CPU MHz:             2327.002
+BogoMIPS:            4654.00
+Virtualization:      VT-x
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            6144K
+NUMA node0 CPU(s):   0-3
+Flags:               fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx lm constant_tsc arch_perfmon pebs bts rep_good nopl cpuid aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm dca sse4_1 xsave lahf_lm pti tpr_shadow vnmi flexpriority dtherm
+
+3. In the code preprocess.py in the /Code/Feat directory, grammatically, how to understand the following?
+4
+## one-hot encode the median_relevance
+for i in range(config.n_classes):
+    dfTrain["median_relevance_%d" % (i+1)] = 0
+    dfTrain["median_relevance_%d" % (i+1)][dfTrain["median_relevance"]==(i+1)] = 1
+
+4. Same directory as above, how to understanda the following, I known lambda expression, but I am confused with the following?
+
+## insert query id
+dfTrain["qid"] = map(lambda q: qid_dict[q], dfTrain["query"])
+dfTest["qid"] = map(lambda q: qid_dict[q], dfTest["query"])
+
+5. In section 2.2.1 of the author's paper, how did the author apply spelling corrections, as listed in table 1? Is this done by human? It looks like the text data is too large for human detection.
+
+Table 1: Spelling Correction
+misspellings
+correction
+refrigirator
+refrigerator
+rechargable batteries
+rechargeable batteries
+adidas fragance
+adidas fragrance
+assassinss creed
+assassins creed
+rachel ray cookware
+rachael ray cookware
+donut shoppe k cups
+donut shop k cups
+extenal hardisk 500 gb external hardisk 500 gb
+
+6. Similar to the above question, what does the synonym replacement and other replacement? I have found a 50-lin .csv file in the Data folder for using synonym replacer, but I don;t how how it came along:
+
+'girls,girl
+girl's,girl
+girls',girl
+girls,girl
+girlz,girl
+boy's,boy
+boys',boy
+boys,boy
+men's,man
+mens',man
+mens,mam
+men,man
+women's,woman
+womens',woman
+womens,woman
+women,woman
+kid's,kid
+kids',kid
+kids,kid
+children's,kid
+childrens',kid
+childrens,kid
+children,kid
+child,kid
+bras,bra
+bicycles,bike
+bicycle,bike
+bikes,bike
+refrigerator,fridge
+refrigirator,fridge
+freezer,fridge
+memories,memory
+fragance,perfume
+fragrance,perfume
+cologne,perfume
+anime,animal
+assassinss,assassin
+assassin's,assassin
+assassins,assassin
+bedspreads,bedspread
+shoppe,shop
+extenal,external
+knives,knife
+kitty's,kitty
+levi's,levi
+squared,square
+rachel,rachael
+rechargable,rechargeable
+batteries,battery
+seiko's,seiko
+ounce,oz
+
+In the nlp_utils.py file, the author metioned that there's a replace dict for synonym replacer, by exploring the training data, but how?
+
+replace_dict = {
+    "nutri system": "nutrisystem",
+    "soda stream": "sodastream",
+    "playstation's": "ps",
+    "playstations": "ps",
+    "playstation": "ps",
+    "(ps 2)": "ps2",
+    "(ps 3)": "ps3",
+    "(ps 4)": "ps4",
+    "ps 2": "ps2",
+    "ps 3": "ps3",
+    "ps 4": "ps4",
+    "coffeemaker": "coffee maker",
+    "k-cups": "k cup",
+    "k-cup": "k cup",
+    "4-ounce": "4 ounce",
+    "8-ounce": "8 ounce",
+    "12-ounce": "12 ounce",
+    "ounce": "oz",
+    "button-down": "button down",
+    "doctor who": "dr who",
+    "2-drawer": "2 drawer",
+    "3-drawer": "3 drawer",
+    "in-drawer": "in drawer",
+    "hardisk": "hard drive",
+    "hard disk": "hard drive",
+    "harley-davidson": "harley davidson",
+    "harleydavidson": "harley davidson",
+    "e-reader": "ereader",
+    "levi strauss": "levi",
+    "levis": "levi",
+    "mac book": "macbook",
+    "micro-usb": "micro usb",
+    "screen protector for samsung": "screen protector samsung",
+    "video games": "videogames",
+    "game pad": "gamepad",
+    "western digital": "wd",
+    "eau de toilette": "perfume",
+}
+
+

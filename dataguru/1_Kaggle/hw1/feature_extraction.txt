@@ -1,0 +1,20 @@
+A. preprocessing:
+   spelling corrections, synonym replacement, stemming, etc
+B. feature extraction
+1. count of n-gram for each question
+2. count of ratio of unique n-gram
+3. count and ratio of a's n-gram in b's n-gram
+4. TF-IDF features: term frequency-inverse document frequency for each question
+5. character length of question 1 and question 2
+df["q1length"] = df["question1"].str.len()
+df["q2length"] = df["question2"].str.len()
+6. number of words in question 1 and question 2
+
+df['q1_n_words'] = df['question1'].apply(lambda row: len(row.split(" ")))
+df['q2_n_words'] = df['question2'].apply(lambda row: len(row.split(" ")))
+
+7. number of words that are country names in a question
+8. same country or not when referring to money
+9. number of synonyms between two questions
+10. same capitalized words between two questions.
+ 
