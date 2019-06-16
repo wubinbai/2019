@@ -1,0 +1,5 @@
+# What is XGBoost
+# XGBoost is an optimized distributed gradient boosting library designed to be highly efficient, flexible and portable. It implements M.L. algos. under the Gradient Boosting framework. XGBoost provides a parallel tree boosting, (AKA GDBT, GBM) that solve many data science problesm in a fast and accurate way. The same code runs on major distributed environment (Hadoop, SGE, MPI) and can solve problems beyond billions of examples.
+( From XGBoost Documentation)
+
+
