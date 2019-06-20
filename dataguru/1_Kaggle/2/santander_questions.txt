@@ -1,0 +1,48 @@
+1. Simply implement the santander code in https://www.kaggle.com/baiwubin/detailed-cleaning-visualization-python/edit 
+for several lines, I got an error. This is the original code from the author, how to deal with this???
+
+import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+%pylab inline
+pylab.rcParams['figure.figsize'] = (10, 6)
+
+# Result is Populating the interactive namespace from numpy and matplotlib
+
+
+limit_rows   = 7000000
+df           = pd.read_csv("../input/train_ver2.csv",dtype={"sexo":str,
+                                                    "ind_nuevo":str,
+                                                    "ult_fec_cli_1t":str,
+                                                    "indext":str}, nrows=limit_rows)
+unique_ids   = pd.Series(df["ncodpers"].unique())
+limit_people = 1.2e4
+unique_id    = unique_ids.sample(n=limit_people)
+df           = df[df.ncodpers.isin(unique_id)]
+df.describe()
+
+# Error is: /opt/conda/lib/python3.6/site-packages/IPython/core/interactiveshell.py:2785: DtypeWarning: Columns (5,8,11,15) have mixed types. Specify dtype option on import or set low_memory=False.
+  interactivity=interactivity, compiler=compiler, result=result)
+
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-5-968d5ba439d5> in <module>()
+      6 unique_ids   = pd.Series(df["ncodpers"].unique())
+      7 limit_people = 1.2e4
+----> 8 unique_id    = unique_ids.sample(n=limit_people)
+      9 df           = df[df.ncodpers.isin(unique_id)]
+     10 df.describe()
+
+/opt/conda/lib/python3.6/site-packages/pandas/core/generic.py in sample(self, n, frac, replace, weights, random_state, axis)
+   4199                              "provide positive value.")
+   4200 
+-> 4201         locs = rs.choice(axis_length, size=n, replace=replace, p=weights)
+   4202         return self.take(locs, axis=axis, is_copy=False)
+   4203 
+
+mtrand.pyx in mtrand.RandomState.choice()
+
+TypeError: 'float' object cannot be interpreted as an integer
+
+
