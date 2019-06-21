@@ -1,0 +1,184 @@
+feedback for solution 1:
+
+Hi, thanks for the explanation. I have converted the docx into txt and read through it, now I have a better understanding of what the code does now. But I'm still a bit confused about Question 1 and Question 7. Specifically:
+
+Question 1: 
+In the code, the author is writing:
+            l = re.sub("%d gb"%vol, "%dgb"%vol, l)
+I have  read a lot about the re Regular Expression's usage, such as re.search, re.match, re.findall, etc. But how to understand this line of code. I assume l is a string format. Could we make an example here of using this line, what does             l = re.sub("%d gb"%vol, "%dgb"%vol, l)
+ this line mean??????? specifically, the "%d gb"%vol mean? what does "%gdb"%vol mean, without any space between d and gb.
+
+不好意思，上次说错了一点，%d 不是正则表达式的用法，而是python格式化字符串的用法。Python中内置的%操作符可用于格式化字符串操作，控制字符串的呈现格式，%d表示匹配十进制整数。"%d gb"%vol 这个语句就是%d是一个占位符，表示用后面vol的数值值来填充这个位置，如果vol的值是10，那这个字符最终的值就是 10 gb。所以对比前后的字符串，就可以知道是去除数字和gb之间的空格。
+ 
+格式化字符串可以参考https://www.cnblogs.com/vamei/archive/2013/03/12/2954938.html
+现在python用得更多的是.format方法，可以参考
+https://www.runoob.com/python/att-string-format.html
+
+
+
+
+Question 7:
+Where may I get the source code of the AI Speaker, like "XiaoDuYinXiang" in python???
+目前百度并没有公开语音唤醒的源代码，但提供了API，可以自行设置唤醒词
+http://ai.baidu.com/tech/speech/wake
+另外，其他的语音唤醒项目的开源代码可以参考
+https://github.com/bjoernkarmann/project_alias
+https://github.com/mycroftai/mycroft-precise
+
+
+New Questions for Santander Kaggle Competition: Is that we cannot implement detailed-clearning-visualization-python.ipynb in a normal computer hardware configuration, as mentioned in the video in week 02 of Kaggle? What's the reason?? It seems that every time I run the ipynb for this, my laptop uses up all the CPU and memory and gradually freezes.
+
+On the other hand, I have converted the ipynb into .py format and run it with ipython3 -i file.py, the error is as follows, could you teach me how would I debug this kind of error????? Thanks!!! And it looks like the laptop could easily become freezing.
+
+ ipython3 -i detailed-cleaning-visualization-python.py 
+Python 3.6.8 (default, Jan 14 2019, 11:02:34) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 5.5.0 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+/usr/lib/python3/dist-packages/IPython/core/shellapp.py:330: DtypeWarning: Columns (5,8,11,15) have mixed types. Specify dtype option on import or set low_memory=False.
+  raise_exceptions=True)
+--------------------------------------
+MemoryErrorTraceback (most recent call last)
+/home/bai/Kaggle_Data/santander/code/detailed-cleaning-visualization-python.py in <module>()
+     33                                                     "ind_nuevo":str,
+     34                                                     "ult_fec_cli_1t":str,
+---> 35                                                     "indext":str}, nrows=limit_rows)
+     36 unique_ids   = pd.Series(df["ncodpers"].unique())
+     37 limit_people = 1.2e4
+
+/home/bai/.local/lib/python3.6/site-packages/pandas/io/parsers.py in parser_f(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, tupleize_cols, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision)
+    700                     skip_blank_lines=skip_blank_lines)
+    701 
+--> 702         return _read(filepath_or_buffer, kwds)
+    703 
+    704     parser_f.__name__ = name
+
+/home/bai/.local/lib/python3.6/site-packages/pandas/io/parsers.py in _read(filepath_or_buffer, kwds)
+    433 
+    434     try:
+--> 435         data = parser.read(nrows)
+    436     finally:
+    437         parser.close()
+
+/home/bai/.local/lib/python3.6/site-packages/pandas/io/parsers.py in read(self, nrows)
+   1152             new_rows = len(index)
+   1153 
+-> 1154         df = DataFrame(col_dict, columns=columns, index=index)
+   1155 
+   1156         self._currow += new_rows
+
+/home/bai/.local/lib/python3.6/site-packages/pandas/core/frame.py in __init__(self, data, index, columns, dtype, copy)
+    390                                  dtype=dtype, copy=copy)
+    391         elif isinstance(data, dict):
+--> 392             mgr = init_dict(data, index, columns, dtype=dtype)
+    393         elif isinstance(data, ma.MaskedArray):
+    394             import numpy.ma.mrecords as mrecords
+
+/home/bai/.local/lib/python3.6/site-packages/pandas/core/internals/construction.py in init_dict(data, index, columns, dtype)
+    210         arrays = [data[k] for k in keys]
+    211 
+--> 212     return arrays_to_mgr(arrays, data_names, index, columns, dtype=dtype)
+    213 
+    214 
+
+/home/bai/.local/lib/python3.6/site-packages/pandas/core/internals/construction.py in arrays_to_mgr(arrays, arr_names, index, columns, dtype)
+     59     axes = [ensure_index(columns), index]
+     60 
+---> 61     return create_block_manager_from_arrays(arrays, arr_names, axes)
+     62 
+     63 
+
+/home/bai/.local/lib/python3.6/site-packages/pandas/core/internals/managers.py in create_block_manager_from_arrays(arrays, names, axes)
+   1664 
+   1665     try:
+-> 1666         blocks = form_blocks(arrays, names, axes)
+   1667         mgr = BlockManager(blocks, axes)
+   1668         mgr._consolidate_inplace()
+
+/home/bai/.local/lib/python3.6/site-packages/pandas/core/internals/managers.py in form_blocks(arrays, names, axes)
+   1732 
+   1733     if len(items_dict['IntBlock']):
+-> 1734         int_blocks = _multi_blockify(items_dict['IntBlock'])
+   1735         blocks.extend(int_blocks)
+   1736 
+
+/home/bai/.local/lib/python3.6/site-packages/pandas/core/internals/managers.py in _multi_blockify(tuples, dtype)
+   1817     for dtype, tup_block in grouper:
+   1818 
+-> 1819         values, placement = _stack_arrays(list(tup_block), dtype)
+   1820 
+   1821         block = make_block(values, placement=placement)
+
+/home/bai/.local/lib/python3.6/site-packages/pandas/core/internals/managers.py in _stack_arrays(tuples, dtype)
+   1859     shape = (len(arrays),) + _shape_compat(first)
+   1860 
+-> 1861     stacked = np.empty(shape, dtype=dtype)
+   1862     for i, arr in enumerate(arrays):
+   1863         stacked[i] = _asarray_compat(arr)
+
+MemoryError: 
+
+In [1]: 
+
+看最后的报错是内存溢出导致的错误。
+出错的代码是数据读入，应该是数据太多导致读入内存不足。
+建议把limit_rows   = 7000000 这数值改小一点，读入更少的数据
+
+######################### 
+	1. In the clean_text function in the code nlp_utils.py in Feat directory, what does the following code mean?
+
+        ## replace gb
+        for vol in [16, 32, 64, 128, 500]:
+            l = re.sub("%d gb"%vol, "%dgb"%vol, l)
+            l = re.sub("%d g"%vol, "%dgb"%vol, l)
+            l = re.sub("%dg "%vol, "%dgb "%vol, l)
+        ## replace tb
+        for vol in [2]:        
+            l = re.sub("%d tb"%vol, "%dtb"%vol, l)
+
+re模块是正则表达式模型
+re.sub的函数原型为：re.sub(pattern, repl, string, count) 其中第二个函数是替换后的字符串
+%d 是正则表达式中的数字通配符，表示匹配后面的%vol
+其实这几句语句的作用非常简单，就是把数字+gb 中间的空格去除；后面是把数字和tb中间的空格去除
+
+2. My desktop computer, bought in 2015, has problem running tensorflow, while my 2012 ThinkPad has no problem running tensorflow, using same installation approach, why is that? When running/importing tensorflow, the error is:
+
+Using TensorFlow backend.
+2019-06-09 10:13:50.353455: F tensorflow/core/platform/cpu_feature_guard.cc:37] The TensorFlow library was compiled to use SSE4.2 instructions, but these aren't available on your machine.
+Aborted (core dumped)
+
+Any way to fix this??
+如果你电脑是比较旧的，建议安装1.6以下的tensorflow，或者直接从tensorflow的源码编译tensorflow，新版有一些CPU加速的设置旧的CPU无法使用会报错。
+源码编译参考tensorflow官网
+https://www.tensorflow.org/install/source
+
+
+3. In the code preprocess.py in the /Code/Feat directory, grammatically, how to understand the following?
+4
+## one-hot encode the median_relevance
+for i in range(config.n_classes):
+    dfTrain["median_relevance_%d" % (i+1)] = 0
+dfTrain["median_relevance_%d" % (i+1)][dfTrain["median_relevance"]==(i+1)] = 1
+
+这个是做了onehot编码
+将median_relevance 的各个类别转换为median_relevanc_1, median_relevanc_2,… 的变量，并且令median_relevanc =1 时 median_relevanc_1值为1，变量值为0；median_relevanc =2 时 median_relevanc_2值为1，变量值为0；…
+
+4. Same directory as above, how to understanda the following, I known lambda expression, but I am confused with the following?
+
+## insert query id
+dfTrain["qid"] = map(lambda q: qid_dict[q], dfTrain["query"])
+dfTest["qid"] = map(lambda q: qid_dict[q], dfTest["query"])
+
+map() 会根据提供的函数对指定序列做映射。map(function, iterable, ...)
+所以这两句的作用就是根据dfTrain["query"]的值，转换为qid_dict 的对应值，得到qid
+
+5. In section 2.2.1 of the author's paper, how did the author apply spelling corrections, as listed in table 1? Is this done by human? It looks like the text data is too large for human detection.
+这个我猜测是人工做的，在数据处理过程中你会发现各种各样的报错，再加以人工修正。在做项目的时候这个会经常碰见。
+
+问题6类似
+
+7、目前的智能音箱，像小度，天猫精灵，或者像手机语音助手，siri之类的，在待机状态下都有一个语音唤醒程序，当接收到指定的语音命令就会唤醒程序，然后通过语音识别来识别命令
