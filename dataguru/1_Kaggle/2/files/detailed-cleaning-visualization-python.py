@@ -21,8 +21,8 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-get_ipython().magic('pylab inline')
-pylab.rcParams['figure.figsize'] = (10, 6)
+#$get_ipython().magic('pylab inline')
+#pylab.rcParams['figure.figsize'] = (10, 6)
 
 
 # In[2]:
