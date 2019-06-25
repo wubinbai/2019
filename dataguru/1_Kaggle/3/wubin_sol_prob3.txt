@@ -1,0 +1,17 @@
+After exploring
+
+events.csv, I found:
+  Among all events(around 3 million), there are around 1/50 of this number of unique device_id, which is around 60 thousand unique device_id.
+  After this, I can gather all information for each single device:
+
+# First, let's find how many devices in total.
+events = pd.read_csv("events.csv")
+device_id_unique=pd.Series(events.device_id.unique())
+m = device_id_unique.shape[0] # m is 60865, so 60865 unique device_id
+
+empty_set = []
+for n in range(m):
+    empty_set.append(events.loc[events.device_id==device_id_unique[n]])
+
+# but the above 4 lines may run several minutes; to keep quick, change m = 100, then run, it should take within seconds.
+
