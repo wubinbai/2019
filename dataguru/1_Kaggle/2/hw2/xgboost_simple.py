@@ -18,7 +18,13 @@ train.yearsmarried=train.yearsmarried.astype(int)
 target = 'affairs'
 y=train[target]
 X = train.drop(target,axis=1)
-xgbc.fit(X,y)
+X = X.drop(train.columns[0],axis=1)
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X,y)
+
+xgbc.fit(X_train,y_train)
+print('Score on test set: ', xgbc.score(X_test,y_test))
 
 
 
