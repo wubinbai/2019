@@ -1,0 +1,5 @@
+image_csv = pd.read_csv("img_pixels.csv")
+image_arr = np.array(image_csv.columns)
+arr_float = np.array(image_arr,dtype=float)
+arr_int = np.array(arr_float,dtype=int)
+plt.imshow(np.reshape(arr_int,(16,24),),'gray')
