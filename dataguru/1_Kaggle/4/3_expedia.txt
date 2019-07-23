@@ -1,0 +1,5 @@
+Sorry, really don't know how to tackle the kaggle problem in a short amount of time. Here's a brief answer:
+
+1. Split train data into train and validation
+2. Extract two kinds of features as the author did: features based on the summary data, such as the historical booking type, historical information, etc; features combines the summary data and the observation data.
+3. Feed them into first and second learner.

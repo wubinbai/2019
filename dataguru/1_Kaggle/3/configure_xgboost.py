@@ -2,6 +2,7 @@
 
 from sklearn.model_selection import GridSearchCV
 import pandas as pd
+
 df_train = pd.read_csv('./Affairs.csv', index_col=0)
 df_train.head()
 
@@ -22,12 +23,17 @@ import xgboost as xgb
 xgb_val = xgb.DMatrix(val_X,label=val_y)
 xgb_train = xgb.DMatrix(X, label=y)
 
-param = {'max_depth':5, 'eta':0.02, 'silent':0, 'objective':'binary:logistic',
-'eval_metric':'logloss', 'lambda':3, 'colsample_bytree':0.9 }
-
+#param = {'max_depth':5, 'eta':0.02, 'silent':0, 'objective':'binary:logistic',
+#'eval_metric':'logloss', 'lambda':3, 'colsample_bytree':0.9 }
 num_round = 100
 watchlist = [(xgb_train, 'train'),(xgb_val, 'val')]
-model = xgb.train(param, xgb_train, num_round, watchlist)
 
+param_grid = {'max_depth':[5], 'eta':[0.001,0.003,0.009,0.01,0.03,0.09,0.1,0.3,0.9,1,3,9], 'silent': 0, 'objective':['binary:logistic'], 'eval_metric':['logloss'], 'lambda':[3], 'colsample_bytree':[0.9] }
+#grid = GridSearchCV(xgb,param_grid,cv=10,scoring='accuracy',return_train_score=False)
+# I don't know how to make the following work
 
+#model = grid.fit(xgb_train,watchlist)
+#model = xgb.train(param, xgb_train, num_round, watchlist)
+model_ori = xgb.train(param_grid,xgb_train,num_round,watchlist)
 
+# I really don't know how to make the above working, any method to KNOW this?

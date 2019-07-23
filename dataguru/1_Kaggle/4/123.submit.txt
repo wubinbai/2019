@@ -1,0 +1,116 @@
+# -*- coding: utf-8 -*-
+
+from sklearn.model_selection import GridSearchCV
+import pandas as pd
+
+df_train = pd.read_csv('./Affairs.csv', index_col=0)
+df_train.head()
+
+df_train['affairs'] = (df_train['affairs']>0).astype(float)
+df_train['gender'] = (df_train['gender']=='male').astype(float)
+df_train['children'] = (df_train['children']=='yes').astype(float)
+
+df_train.head()
+
+from sklearn.model_selection import train_test_split
+train_xy,val = train_test_split(df_train, test_size = 0.3,random_state=1)
+y = train_xy.affairs
+X = train_xy.drop(['affairs'],axis=1)
+val_y = val.affairs
+val_X = val.drop(['affairs'],axis=1)
+
+import xgboost as xgb
+xgb_val = xgb.DMatrix(val_X,label=val_y)
+xgb_train = xgb.DMatrix(X, label=y)
+
+#param = {'max_depth':5, 'eta':0.02, 'silent':0, 'objective':'binary:logistic',
+#'eval_metric':'logloss', 'lambda':3, 'colsample_bytree':0.9 }
+num_round = 100
+watchlist = [(xgb_train, 'train'),(xgb_val, 'val')]
+
+param_grid = {'max_depth':[5], 'eta':[0.001,0.003,0.009,0.01,0.03,0.09,0.1,0.3,0.9,1,3,9], 'silent': 0, 'objective':['binary:logistic'], 'eval_metric':['logloss'], 'lambda':[3], 'colsample_bytree':[0.9] }
+#grid = GridSearchCV(xgb,param_grid,cv=10,scoring='accuracy',return_train_score=False)
+# I don't know how to make the following work
+
+#model = grid.fit(xgb_train,watchlist)
+#model = xgb.train(param, xgb_train, num_round, watchlist)
+model_ori = xgb.train(param_grid,xgb_train,num_round,watchlist)
+
+# I really don't know how to make the above working, any method to KNOW this?
+summary:
+
+OVERVIEW:
+
+1. INTRO
+2. EXPL. ANA
+3. PROB. DEF.
+4. STRATEGY
+5. CANDIDATE SELECTION 1
+6. FEATURE ENGINEERING
+	Feature Engineering Strategy
+	Location
+	Time
+	Accuracy
+	Z-scores
+	Most important features
+7. CANDIDATE SELECTION 2
+8. FIRST LEVEL LEARNERS
+9. SECOND LEVEL LEARNERS
+10. CONCLUSIONS
+
+1 INTRODUCTION
+	a GOAL:
+		predict 3 places(ranked) a person likely to check in to
+	b ABOUT DATASET:
+		artificial data: >100,000 people on 10 km by 10 km.
+		training data: ~ 29 million: location, accuracy, timestamp, and check in location
+		test data: ~8.6 million:     location, accuracy, timestamp.
+		train and test data are split based on time; no concept of person: all obs. are events.
+	c SCORE:
+		MAP@3 criterion: 1 + 1/2 + 1/3 + 0 score resectively for 3 places, mean average for total score.
+
+2 EXP. ANA:
+	for train data:
+		more variation in location x than in y: could be related to the streets of the simulated world; for different places, the difference in variation in x and y is different; no obvious spatial x-y pattern.
+	time is in minutes: could be converted to hours and days of the week. For train data 546 days, for test data 153 days. Although no spatial pattern was found with respect to the time patterns, ther are however two clear drops in the number of check ins during the train period.
+	accuracy is the most difficult part to interpret: may be corralated with the variation in x and y.
+
+3 PROB DEF:
+	main difficulty of the problem:
+		extended number of classes(places) Why? Because with 8.6 * 10**5 test records, there are about 10**12 places-observation combinations
+	Major strategies in the forun: calculate a separate classifier for many x-y rectangular grids; the author's approach: single binary classification model to avoid end up with many high variance models.
+
+4. STRATEGY
+	A high level strategy diagram is given.
+ 	split raw train chronologically, into train(219) and val.(73), with test (287). These three raw data groups are first sample down into batches that are as large as possible.(approx. 30000 on 48GB workstation)
+
+5. CANDIDATE SELECTION
+	reduce the number of classes from >100k  to 100 by considering the nearest neighbors of the observations.
+
+6. FEATURE ENGINEERING
+	Feature Engineering Strategy:
+
+	2 types of features:
+	1st: calculated using only the summary data, such as the number of historical check ins
+	2nd: combines summary data of the place candidates with the observation data, such as the historical density of a place candidate, one year prior to the observation.
+	All features are rescaled if needed to result in similar interpretations for the train and test features
+
+	Location
+	Time
+		The second largest share of the features set belongs to time features
+	Accuracy
+		Understanding the accuracy is the result of generating many plots.
+	Z-scores
+	Most important features
+
+
+7. CANDIDATE SELECTION
+8. FIRST LEVEL LEARNERS
+9. SECOND LEVEL LEARNERS
+10. CONCLUSIONS
+
+Sorry, really don't know how to tackle the kaggle problem in a short amount of time. Here's a brief answer:
+
+1. Split train data into train and validation
+2. Extract two kinds of features as the author did: features based on the summary data, such as the historical booking type, historical information, etc; features combines the summary data and the observation data.
+3. Feed them into first and second learner.

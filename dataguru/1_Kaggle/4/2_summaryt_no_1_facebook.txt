@@ -1,0 +1,72 @@
+summary:
+
+OVERVIEW:
+
+1. INTRO
+2. EXPL. ANA
+3. PROB. DEF.
+4. STRATEGY
+5. CANDIDATE SELECTION 1
+6. FEATURE ENGINEERING
+	Feature Engineering Strategy
+	Location
+	Time
+	Accuracy
+	Z-scores
+	Most important features
+7. CANDIDATE SELECTION 2
+8. FIRST LEVEL LEARNERS
+9. SECOND LEVEL LEARNERS
+10. CONCLUSIONS
+
+1 INTRODUCTION
+	a GOAL:
+		predict 3 places(ranked) a person likely to check in to
+	b ABOUT DATASET:
+		artificial data: >100,000 people on 10 km by 10 km.
+		training data: ~ 29 million: location, accuracy, timestamp, and check in location
+		test data: ~8.6 million:     location, accuracy, timestamp.
+		train and test data are split based on time; no concept of person: all obs. are events.
+	c SCORE:
+		MAP@3 criterion: 1 + 1/2 + 1/3 + 0 score resectively for 3 places, mean average for total score.
+
+2 EXP. ANA:
+	for train data:
+		more variation in location x than in y: could be related to the streets of the simulated world; for different places, the difference in variation in x and y is different; no obvious spatial x-y pattern.
+	time is in minutes: could be converted to hours and days of the week. For train data 546 days, for test data 153 days. Although no spatial pattern was found with respect to the time patterns, ther are however two clear drops in the number of check ins during the train period.
+	accuracy is the most difficult part to interpret: may be corralated with the variation in x and y.
+
+3 PROB DEF:
+	main difficulty of the problem:
+		extended number of classes(places) Why? Because with 8.6 * 10**5 test records, there are about 10**12 places-observation combinations
+	Major strategies in the forun: calculate a separate classifier for many x-y rectangular grids; the author's approach: single binary classification model to avoid end up with many high variance models.
+
+4. STRATEGY
+	A high level strategy diagram is given.
+ 	split raw train chronologically, into train(219) and val.(73), with test (287). These three raw data groups are first sample down into batches that are as large as possible.(approx. 30000 on 48GB workstation)
+
+5. CANDIDATE SELECTION
+	reduce the number of classes from >100k  to 100 by considering the nearest neighbors of the observations.
+
+6. FEATURE ENGINEERING
+	Feature Engineering Strategy:
+
+	2 types of features:
+	1st: calculated using only the summary data, such as the number of historical check ins
+	2nd: combines summary data of the place candidates with the observation data, such as the historical density of a place candidate, one year prior to the observation.
+	All features are rescaled if needed to result in similar interpretations for the train and test features
+
+	Location
+	Time
+		The second largest share of the features set belongs to time features
+	Accuracy
+		Understanding the accuracy is the result of generating many plots.
+	Z-scores
+	Most important features
+
+
+7. CANDIDATE SELECTION
+8. FIRST LEVEL LEARNERS
+9. SECOND LEVEL LEARNERS
+10. CONCLUSIONS
+
