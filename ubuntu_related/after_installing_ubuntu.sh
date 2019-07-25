@@ -11,7 +11,13 @@ sudo apt-get update
 
 sudo apt-get install vim
 
+# And also install git before pulling
 
+sudo apt-get install git
+
+# You may wanna pull git remot repository:
+
+git clone https://github.com/wubinbai/2019.git
 
 
 
