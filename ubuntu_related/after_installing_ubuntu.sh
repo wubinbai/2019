@@ -4,12 +4,20 @@
 
 # Then setup font manually. Open a terminal,  go to the preference and text, set the font size to around 42-46.
 
+# You may want to alias sd as shutdown now to fasten your shutdown using two letters:
+
+echo "# customized aliases by wubin" >> .bashrc
+echo "alias"" ""sd=\"shutdown now\"" >> .bashrc
+
+
+
 # Then use sudo apt-get update for updating the apt-get
 sudo apt-get update
 
 # Then you can install vim
 
 sudo apt-get install vim
+
 
 # And also install git before pulling
 
@@ -44,5 +52,4 @@ sudo apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 
 
 # After your install is complete, verify it by opening Anaconda Navigator, a program that is included with Anaconda: Open a terminal window and type anaconda-navigator. If Navigator opens, you have successfully installed Anaconda. If not, check that you completed each step above, then see our Help page.
 
-
-
+# After installing anaconda, you have already installed a lot of related packages, like jupyter notebook!!!
