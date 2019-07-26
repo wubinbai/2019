@@ -55,3 +55,9 @@ sudo apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 
 # After your install is complete, verify it by opening Anaconda Navigator, a program that is included with Anaconda: Open a terminal window and type anaconda-navigator. If Navigator opens, you have successfully installed Anaconda. If not, check that you completed each step above, then see our Help page.
 
 # After installing anaconda, you have already installed a lot of related packages, like jupyter notebook!!!
+
+# You have now installed ipython, and you may wanna configure it, since you have cloned the repository, you can simply copy the file in the repository into the directory where the ipython import packages. The following line does this.
+
+cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_default/startup/
+
+
