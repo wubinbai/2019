@@ -1,0 +1,104 @@
+1. apply: for each SERIES in A DATAFRAME
+2. applymap: for each element in A DATAFRAME
+3. map: for each element in A SERIES
+
+
+
+1.apply()
+
+当想让方程作用在一维的向量上时，可以使用apply来完成，如下所示
+
+In [116]: frame = DataFrame(np.random.randn(4, 3), columns=list('bde'), index=['Utah', 'Ohio', 'Texas', 'Oregon'])
+
+In [117]: frame
+Out[117]: 
+               b         d         e
+Utah   -0.029638  1.081563  1.280300
+Ohio    0.647747  0.831136 -1.549481
+Texas   0.513416 -0.884417  0.195343
+Oregon -0.485454 -0.477388 -0.309548
+
+In [118]: f = lambda x: x.max() - x.min()
+
+In [119]: frame.apply(f)
+Out[119]: 
+b    1.133201
+d    1.965980
+e    2.829781
+dtype: float64
+
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    10
+    11
+    12
+    13
+    14
+    15
+    16
+    17
+    18
+
+但是因为大多数的列表统计方程 (比如 sum 和 mean)是DataFrame的函数，所以apply很多时候不是必须的
+2.applymap()
+
+如果想让方程作用于DataFrame中的每一个元素，可以使用applymap().用法如下所示
+
+In [120]: format = lambda x: '%.2f' % x
+
+In [121]: frame.applymap(format)
+Out[121]: 
+            b      d      e
+Utah    -0.03   1.08   1.28
+Ohio     0.65   0.83  -1.55
+Texas    0.51  -0.88   0.20
+Oregon  -0.49  -0.48  -0.31
+
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+
+3.map()
+
+map()只要是作用将函数作用于一个Series的每一个元素，用法如下所示
+
+In [122]: frame['e'].map(format)
+Out[122]: 
+Utah       1.28
+Ohio      -1.55
+Texas      0.20
+Oregon    -0.31
+Name: e, dtype: object
+
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+
+总的来说就是apply()是一种让函数作用于列或者行操作，applymap()是一种让函数作用于DataFrame每一个元素的操作，而map是一种让函数作用于Series每一个元素的操作
+
+--------------------- 
+
+作者：小强的呼呼呼 
+
+来源：CSDN 
+
+原文：https://blog.csdn.net/u010814042/article/details/76401133 
+
+版权声明：本文为博主原创文章，转载请附上博文链接！

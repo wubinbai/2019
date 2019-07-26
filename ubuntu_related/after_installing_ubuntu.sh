@@ -1,5 +1,9 @@
 #! /bin/bash
 
+# For ubuntu information: show ubuntu version command:
+
+lsb_release -a
+
 # The very first step of running this file is to GET this file...... So you may need to just copy this file or clone the whole repository with git clone. Steps are the following:
 
 # Use sudo apt-get update for updating the apt-get
@@ -34,8 +38,11 @@ cd
 echo "# customized aliases by wubin" >> .bashrc
 echo "alias"" ""sd=\"shutdown now\"" >> .bashrc
 echo "alias"" ""ipy=\"ipython3\"" >> .bashrc
-
-
+echo "alias"" ""v=\"vim\"" >> .bashrc
+echo "alias"" ""gis=\"git status\"" >> .bashrc
+echo "alias"" ""gicm=\"git commit -m\"" >> .bashrc
+echo "alias"" ""gips=\"git push\"" >> .bashrc
+echo "alias"" ""gipl=\"git pull\"" >> .bashrc
 
 
 # Then you can install vim
@@ -75,3 +82,18 @@ sudo apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 
 cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_default/startup/
 
 
+# Install VLC Player for playing mp4
+
+sudo add-apt-repository ppa:videolan/master-daily
+sudo apt update
+
+# To install:
+
+sudo apt install vlc qtwayland5
+
+#In order to use the streaming and transcode features in VLC for Ubuntu 18.04, enter the following command to install the libavcodec-extra packages.
+
+sudo apt install libavcodec-extra
+
+# set up drivers for GPU:
+# GO TO https://www.nvidia.com/Download/index.aspx?lang=en-us to download the shell script for drivers. Around 100 MB. Then execute the script.
