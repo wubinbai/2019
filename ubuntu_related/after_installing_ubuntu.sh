@@ -8,6 +8,8 @@
 
 echo "# customized aliases by wubin" >> .bashrc
 echo "alias"" ""sd=\"shutdown now\"" >> .bashrc
+echo "alias"" ""ipy=\"ipython3\"" >> .bashrc
+
 
 
 
