@@ -1,5 +1,7 @@
 #! /bin/bash
 
+# To use this file, you may wanna UNCOMMENT some of the command for the first use.
+
 # For ubuntu information: show ubuntu version command:
 
 lsb_release -a
@@ -43,6 +45,7 @@ echo "alias"" ""gis=\"git status\"" >> .bashrc
 echo "alias"" ""gicm=\"git commit -m\"" >> .bashrc
 echo "alias"" ""gips=\"git push\"" >> .bashrc
 echo "alias"" ""gipl=\"git pull\"" >> .bashrc
+echo "alias"" ""gia=\"git add\"" >> .bashrc
 
 
 # Then you can install vim
@@ -50,12 +53,13 @@ echo "alias"" ""gipl=\"git pull\"" >> .bashrc
 sudo apt-get install vim
 
 
+# Please uncomment the following lines to install anaconda.
 
 # Then, to install anaconda. The fastest way to download is using Thunderstorm on Windows Platform, which takes about 3 - 5 mins.
 
-# Prerequisites for installing, which takes about 20 seconds:
+# Prerequisites for installing anaconda, which takes about 20 seconds:
 
-sudo apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+# sudo apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
 
 # Then, go to the anaconda.sh you have downloaded, and run the ./xxx.sh
 
@@ -82,18 +86,26 @@ sudo apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 
 cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_default/startup/
 
 
+# Uncomment the following lines to install VLC Player.
+
 # Install VLC Player for playing mp4
 
-sudo add-apt-repository ppa:videolan/master-daily
-sudo apt update
+# sudo add-apt-repository ppa:videolan/master-daily
+# sudo apt update
 
 # To install:
 
-sudo apt install vlc qtwayland5
+# sudo apt install vlc qtwayland5
 
 #In order to use the streaming and transcode features in VLC for Ubuntu 18.04, enter the following command to install the libavcodec-extra packages.
 
-sudo apt install libavcodec-extra
+# sudo apt install libavcodec-extra
 
 # set up drivers for GPU:
 # GO TO https://www.nvidia.com/Download/index.aspx?lang=en-us to download the shell script for drivers. Around 100 MB. Then execute the script.
+
+# If installation is failed due to current installed graphics driver, you may want to remove the current driver. For instructions, go do the directory in the current directory here, following the .txt file.
+
+# Now, the VLC plaer and the graphics driver have been installed, you could use VLC player to play the mp4 file. In case there's no sound, it may due to the setup in linux. Change the output in the linux sound settings to HDMI rather than S/FPDI if you are using HDMI.
+
+# To set the VLC as the default player, simpler search for "default"
