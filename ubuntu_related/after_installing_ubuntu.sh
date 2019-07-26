@@ -1,5 +1,27 @@
 #! /bin/bash
 
+# The very first step of running this file is to GET this file...... So you may need to just copy this file or clone the whole repository with git clone. Steps are the following:
+
+# Use sudo apt-get update for updating the apt-get
+sudo apt-get update
+
+# Install git before cloning
+
+sudo apt-get install git
+
+# Change directory to the home directory
+
+cd
+
+# Clone git remot repository:
+
+git clone https://github.com/wubinbai/2019.git
+
+
+# 
+
+
+
 # First you may wanna follow the instructions on the welcome page. Options are to set up the livepatch: U.s.e.R. : wubinbai e.m.a.i.1: wubinbai@yahoo.com p.s.w: b**00****
 
 # Then setup font manually. Open a terminal,  go to the preference and text, set the font size to around 42-46.
@@ -16,21 +38,10 @@ echo "alias"" ""ipy=\"ipython3\"" >> .bashrc
 
 
 
-# Then use sudo apt-get update for updating the apt-get
-sudo apt-get update
-
 # Then you can install vim
 
 sudo apt-get install vim
 
-
-# And also install git before pulling
-
-sudo apt-get install git
-
-# You may wanna pull git remot repository:
-
-git clone https://github.com/wubinbai/2019.git
 
 
 # Then, to install anaconda. The fastest way to download is using Thunderstorm on Windows Platform, which takes about 3 - 5 mins.
