@@ -1,0 +1,46 @@
+Step 1: Cleanup all nvidia package
+
+At this step we will remove all nvidia related packages.
+
+sudo apt-get remove nvidia* && sudo apt autoremove
+
+If you get the following error it means that you never had an nvidia package installed and is ok:
+
+no matches found: nvidia*
+
+Now install some required dependencies:
+
+sudo apt-get install dkms build-essential linux-headers-generic
+
+Step 2: Black list nouveau driver
+
+now block and disable nouveau kernel driver:
+
+sudo vim /etc/modprobe.d/blacklist.conf
+
+And append the follow lines to the blacklist.conf:
+
+blacklist nouveau
+blacklist lbm-nouveau
+options nouveau modeset=0
+alias nouveau off
+alias lbm-nouveau off
+
+Step 3: Update initramfs
+
+Disable the Kernel nouveau by typing the following commands:
+
+echo options nouveau modeset=0 | sudo tee -a /etc/modprobe.d/nouveau-kms.conf build the new kernel by:
+
+Finally update and reboot:
+
+sudo update-initramfs -u
+reboot
+
+
+
+
+
+nginx
+
+
