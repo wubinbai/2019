@@ -6,6 +6,9 @@
 
 # You may want to alias sd as shutdown now to fasten your shutdown using two letters:
 
+# Go to the ~/ first:
+
+cd
 echo "# customized aliases by wubin" >> .bashrc
 echo "alias"" ""sd=\"shutdown now\"" >> .bashrc
 echo "alias"" ""ipy=\"ipython3\"" >> .bashrc
