@@ -46,7 +46,7 @@ echo "alias"" ""gicm=\"git commit -m\"" >> .bashrc
 echo "alias"" ""gips=\"git push\"" >> .bashrc
 echo "alias"" ""gipl=\"git pull\"" >> .bashrc
 echo "alias"" ""gia=\"git add\"" >> .bashrc
-
+echo "alias"" ""py=\"python3\"" >> .bashrc
 
 # Then you can install vim
 

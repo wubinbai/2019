@@ -1,0 +1,5 @@
+wubin's questions for kaggle05
+
+1 I'm wondering how the slides are made? Specifically, the description and structure explanation of the data, the main content(including the topic on histograms of an image, methods of comparing the histograms, the hash algorithms, disatances, and the winner's solution). I'm curious to know this since if I am given a completely new question, I would like to explore myself...
+
+2 

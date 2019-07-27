@@ -1,0 +1,227 @@
+感知哈希可以用来判断两个图片的相似度，通常可以用来进行图像检索。
+
+感知哈希算法对每一张图片生成一个“指纹”，通过比较两张图片的指纹，来判断他们的相似度，是否属于同一张图片。
+
+常用的有三种：平均哈希（aHash），感知哈希（pHash），差异值哈希（dHash）
+
+算法步骤
+
+他们的步骤都类似：
+
+平均哈希
+
+1.图片缩放，一般为8*8，或者32*32
+
+2.将图片灰度化
+
+3.求平均值，并根据平均值将每一个像素二值化
+
+4.将8*8=64位bit，每8个比特为一个十六进制值，转换成字符串，生成哈希值（指纹）
+
+感知哈希
+
+1.图片缩放 为32*32大小
+
+2.将图片灰度化
+
+3.对图片进行离散余弦变换（DCT），转换的频域
+
+4.取频域左上角8*8大小（图片的能量都集中在低频部分，低频位于左上角）
+
+5.计算平均值，并根据平均值二值化（同平均哈希）
+
+6.生成哈希值
+
+差异值哈希
+
+1.图片缩放为9*8大小
+
+2.将图片灰度化
+
+3.差异值计算（每行相邻像素的差值，这样会生成8*8的差值，前一个像素大于后一个像素则为1，否则为0）
+
+4.生成哈希值
+
+计算距离
+
+生成每一个图片的哈希值后，需要计算哈希值的距离，来判断两张图片的相似度。一般使用汉明距离，也就是逐位计算两张图片的哈希值是否相同。
+
+实现
+
+下面是用python实现的三种哈希：
+
+    import cv2
+    import numpy as np
+    import time
+    #均值哈希算法
+    def aHash(img):
+        #缩放为8*8
+        img=cv2.resize(img,(8,8),interpolation=cv2.INTER_CUBIC)
+        #转换为灰度图
+        gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+        #s为像素和初值为0，hash_str为hash值初值为''
+        s=0
+        hash_str=''
+        #遍历累加求像素和
+        for i in range(8):
+            for j in range(8):
+                s=s+gray[i,j]
+                #求平均灰度
+        avg=s/64
+        #灰度大于平均值为1相反为0生成图片的hash值
+        for i in range(8):
+            for j in range(8):
+                if gray[i,j]>avg:
+                    hash_str=hash_str+'1'
+                else:
+                    hash_str=hash_str+'0'
+        return hash_str
+     
+    #差值感知算法
+    def dHash(img):
+    #缩放8*8
+        img=cv2.resize(img,(9,8),interpolation=cv2.INTER_CUBIC)
+    #转换灰度图
+        gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+        hash_str=''
+    #每行前一个像素大于后一个像素为1，相反为0，生成哈希
+        for i in range(8):
+            for j in range(8):
+                if gray[i,j]>gray[i,j+1]:
+                    hash_str=hash_str+'1'
+                else:
+                    hash_str=hash_str+'0'
+        return hash_str
+     
+    #Hash值对比
+    def cmpHash(hash1,hash2):
+        n=0
+    #hash长度不同则返回-1代表传参出错
+        if len(hash1)!=len(hash2):
+            return -1
+    #遍历判断
+        for i in range(len(hash1)):
+    #不相等则n计数+1，n最终为相似度
+            if hash1[i]!=hash2[i]:
+                n=n+1
+        return 1 - n / 64
+     
+    def pHash(imgfile):
+        img_list=[]
+    #加载并调整图片为32x32灰度图片
+        img=cv2.imread(imgfile, 0)
+        img=cv2.resize(img,(64,64),interpolation=cv2.INTER_CUBIC)
+     
+    #创建二维列表
+        h, w = img.shape[:2]
+        vis0 = np.zeros((h,w), np.float32)
+        vis0[:h,:w] = img #填充数据
+     
+    #二维Dct变换
+        vis1 = cv2.dct(cv2.dct(vis0))
+    #cv.SaveImage('a.jpg',cv.fromarray(vis0)) #保存图片
+        vis1.resize(32,32)
+     
+    #把二维list变成一维list
+        img_list=vis1.flatten()
+     
+     
+    #计算均值
+        avg = sum(img_list)*1./len(img_list)
+        avg_list = ['0' if i>avg else '1' for i in img_list]
+     
+    #得到哈希值
+        return ''.join(['%x' % int(''.join(avg_list[x:x+4]),2) for x in range(0,32*32,4)])
+     
+     
+    def hammingDist(s1, s2):
+    #assert len(s1) == len(s2)
+        return 1 - sum([ch1 != ch2 for ch1, ch2 in zip(s1, s2)])*1. / (32*32/4)
+     
+    if __name__ == '__main__':
+        img1 = cv2.imread("F:\\Humpback Whale\\phash\\4.jpg")
+        img2 = cv2.imread("F:\\Humpback Whale\\phash\\2d6610b9.jpg")
+        time1 = time.time()
+        hash1 = aHash(img1)
+        hash2 = aHash(img2)
+        n = cmpHash(hash1, hash2)
+        print('均值哈希算法相似度：', n, "-----time=", (time.time() - time1))
+        time1 = time.time()
+        hash1 = dHash(img1)
+        hash2 = dHash(img2)
+        n = cmpHash(hash1, hash2)
+        print('差值哈希算法相似度：', n, "-----time=", (time.time() - time1))
+     
+        time1 = time.time()
+        HASH1=pHash("F:\\Humpback Whale\\phash\\4.jpg")
+        HASH2=pHash("F:\\Humpback Whale\\phash\\2d6610b9.jpg")
+        out_score = hammingDist(HASH1,HASH2)
+        print('感知哈希算法相似度：', out_score, "-----time=", (time.time() - time1)) 
+
+并做了一些实验，来比较三种哈希的特点：
+
+1.同一张图片
+
+均值哈希算法相似度： 1.0 -----time= 0.0
+差值哈希算法相似度： 1.0 -----time= 0.0
+感知哈希算法相似度： 1.0 -----time= 0.031249523162841797
+
+2.图片resize成其他大小
+
+
+均值哈希算法相似度： 0.890625 -----time= 0.0
+差值哈希算法相似度： 0.859375 -----time= 0.0
+感知哈希算法相似度： 0.921875 -----time= 0.03124713897705078
+
+3.改变图片亮度
+
+均值哈希算法相似度： 0.984375 -----time= 0.0
+差值哈希算法相似度： 0.9375 -----time= 0.0
+感知哈希算法相似度： 0.95703125 -----time= 0.0312497615814209
+
+4. 改变图片对比度
+
+均值哈希算法相似度： 1.0 -----time= 0.0
+差值哈希算法相似度： 1.0 -----time= 0.0
+感知哈希算法相似度： 0.8828125 -----time= 0.04687380790710449
+
+5.改变图片锐度
+
+均值哈希算法相似度： 0.984375 -----time= 0.0
+差值哈希算法相似度： 0.890625 -----time= 0.0
+感知哈希算法相似度： 0.94921875 -----time= 0.031252145767211914
+
+6.色度增强
+
+均值哈希算法相似度： 1.0 -----time= 0.015625715255737305
+差值哈希算法相似度： 0.984375 -----time= 0.0
+感知哈希算法相似度： 0.99609375 -----time= 0.0312497615814209
+
+7.图片旋转
+
+均值哈希算法相似度： 0.484375 -----time= 0.0
+差值哈希算法相似度： 0.46875 -----time= 0.0
+感知哈希算法相似度： 0.4609375 -----time= 0.031249046325683594
+
+均值哈希算法相似度： 0.375 -----time= 0.0
+差值哈希算法相似度： 0.515625 -----time= 0.0
+感知哈希算法相似度： 0.62890625 -----time= 0.03132271766662598
+
+
+从上面的实验结果可以得出一下结论：
+
+1.均值哈希和差值哈希算法的时间都比感知哈希少，因为感知哈希resize为32*32，并且要进行DCT离散余弦变换，这个计算比较耗时
+
+2.改变图片的亮度，色度，对比度，锐度，均值哈希的效果都是最好的，几乎不受影响，其次是差值哈希，最差是感知哈希
+
+3.但是感知哈希在图片旋转以及resize后，效果比前两者要好
+
+--------------------- 
+
+作者：qq_32799915 
+
+来源：CSDN 
+
+原文：https://blog.csdn.net/qq_32799915/article/details/81000437 
+
+版权声明：本文为博主原创文章，转载请附上博文链接！

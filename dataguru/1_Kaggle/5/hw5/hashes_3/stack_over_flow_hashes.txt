@@ -1,0 +1,58 @@
+https://stackoverflow.com/questions/998662/what-is-image-hashing-used-for
+
+
+
+39
+
+Hashing is a function that applies to an arbitrary data and produces the data of a fixed size (mostly a very small size). There are many different types of hashes, but if we are talking about image hashing, it is used either to:
+
+    find duplicates very fast. Almost any hash function will work. Instead of searching for the whole image, you will look for the hash of the image.
+    finding similar images, which I will explain later
+
+Images that look identical to us, can be very different if you will just compare the raw bytes. This can be due to:
+
+    resizing
+    rotation
+    slightly different color gamma
+    different format
+    some minor noise, watermarks and artifacts
+
+Even if you will find an image that will be different just in one byte, if you will apply a hash function to it, the result can be very different (for hashes like MD5, SHA it most probably will be completely different).
+
+So you need a hash function which will create a similar (or even identical) hash for similar images. One of the generic ones is locality sensitive hashing. But we know what kind of problems can be with images, so we can come up with a more specialized kind of hash.
+
+The most well known algorithms are:
+
+    a-hash. Average hashing is the simplest algorithm which uses only a few transformation. Scale the image, convert to greyscale, calculate the mean and binarize the greyscale based on the mean. Now convert the binary image into the integer. The algorithm is so simple that you can implement it in an hour.
+    p-hash. Perceptual hash uses similar approach but instead of averaging relies on discrete cosine transformation (popular transformation in signal processing).
+    d-hash. Difference hash uses the same approach as a-hash, but instead of using information about average values, it uses gradients (difference between adjacent pixels).
+    w-hash. Very similar to p-hash, but instead of DCT it uses wavelet transformation.
+
+By the way, if you use python, all these hashes are already implemented in this library.
+shareimprove this answer
+
+This library: https://pypi.org/project/ImageHash/
+==============
+
+
+37
+
+While normally hashing a file hashes the individual bits of data of the file, image hashing works on a slightly higher level. The difference is that with image hashing, if two pictures look practically identical but are in a different format, or resolution (or there is minor corruption, perhaps due to compression) they should hash to the same number. Despite the actual bits of their data being totally different, if they look parctically identical to a human, they hash to the the same thing.
+
+One application of this is search. TinEye.com allows you to upload an image and find many of its occurrences on the internet. like google, it has a web crawler that crawls through web pages and looks for images. It then hashes these images and stores the hash and url in a database. When you upload an image, it simply calculates the hash and retrieves all the urls linking to that hash in the database. Sample uses of TinEye include finding higher resolution versions of pictures, or finding someone's public facebook/myspace/etc. profile from their picture (assuming these profiles use the same photo.
+
+Image hashing can also be used with caching or local storage to prevent retransmission of a photo or storage of duplicates, respectively.
+
+There are plenty of other possibilities including image authentication and finding similar frames in a video (as was mentioned by someone else).
+
+
+==============
+
+
+
+hashing in general is a useful way to reduce a huge amount of data to a short(ish) number that can be used to identify that image.
+
+They are sometimes intended just to provide a handy way to identify a file without the intervention of a human, especially in the presence of several parallel authors who can't be relied upon to increment some master counter (JPG001 JPG002) without overlapping.
+
+Sometimes hashes are intended to be unforgeable, so that I can say - if the image hash YOU generate is the same as the one I made when I sent you the image, then you can be sure it's from me (and not adjusted by an evildoer). However, not all hashes can make this guarantee, an every few years a popular such 'cryptographic' hash is shown to have fatal flaws.
+shareimprove this answer
