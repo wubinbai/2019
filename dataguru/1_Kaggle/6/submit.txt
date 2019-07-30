@@ -1,0 +1,5 @@
+Click-Through Prediction
+
+Basically, one can use factorization machine on those parameters such as site_id, site_domain, site_category to a group, and app_id, app_domain, app_category to a group, etc.
+
+Do we have official answer to this question? 

@@ -1,0 +1,10 @@
+【课后作业】第6课书面作业
+
+FM和FFM模型近年来表现突出，分别在由Criteo和Avazu举办的CTR预测竞赛中夺得冠军：
+
+https://www.kaggle.com/c/criteo-display-ad-challenge
+https://www.kaggle.com/c/avazu-ctr-prediction
+
+从中选择其中一个题目，讲讲你的大致思路，并具体说明，如何使用FM或FFM模型
+
+温馨提醒: 作业是敦促您学习的一种方式，有助于巩固和掌握知识，请务必认真对待，请勿敷衍自己，敷衍老师，以免产生学费罚扣！（作业评判、罚扣及补交规则，点此查看） 

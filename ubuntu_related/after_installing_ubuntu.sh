@@ -47,12 +47,18 @@ echo "alias"" ""gips=\"git push\"" >> .bashrc
 echo "alias"" ""gipl=\"git pull\"" >> .bashrc
 echo "alias"" ""gia=\"git add\"" >> .bashrc
 echo "alias"" ""py=\"python3\"" >> .bashrc
+echo "alias"" ""rb=\"reboot\"" >> .bashrc
+echo "alias"" ""cdd=\"cd \/media\/wb\/TOSHIBA\\ EXT\/2\/d\/dataguru\"" >> .bashrc
+
+echo "alias"" ""cdd2=\"cd /media/wb/TOSHIBA\ EXT/2/d/dataguru/ \"" >> .bashrc
 
 # Then you can install vim
 
 sudo apt-get install vim
 
+# Install unrar
 
+sudo apt install unrar
 # Please uncomment the following lines to install anaconda.
 
 # Then, to install anaconda. The fastest way to download is using Thunderstorm on Windows Platform, which takes about 3 - 5 mins.
