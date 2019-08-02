@@ -1,0 +1,40 @@
+abstract:
+
+click-through prediction (CRT) is a massive-scale learning problem. The paper present a selection of case study, including improvements in the context of traditional supervised learning based on an FTRL-Proximal online learning algo. Some theoretical challenges have also been addressed.
+
+Intro
+
+This paper presents a series of case study in the field of CRT in the environment deployed by Google. This paper chose to focus on the less studied side by the community, but are well equally important. Topics explored include: memory savings, perf. ana., confidence in predictions, calibration, and feature management. Goal of the paper: to show readers challenges, tricks and insights.
+
+2 Brief System Overview
+
+
+When a user does a search, the result is based on the query and advertiser chosen keywords. Log. Reg. is a natural fit method. Sparsity is the feature
+
+3. Online learning and sparsityu
+
+3.1 Per coodinate learning rates
+
+4 saving memory at massive scale
+
+4.1 probabilistic feature inclusion
+
+4.3 training many similar models
+
+4.2 encoding values with fewer bits
+
+5 deep unmderstanding through visual.
+
+6. confidence estimates
+
+7. calibrating predictions
+
+8 automated feature manag.
+
+9 unsuccessful exp.
+
+
+
+
+
+I have to say that I really don't kow HOW to tackle the problem 2 libfm. I have installed it but but don't know how to use it.
