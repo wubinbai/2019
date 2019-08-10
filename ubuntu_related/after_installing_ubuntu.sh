@@ -46,6 +46,7 @@ echo "alias"" ""gicm=\"git commit -m\"" >> .bashrc
 echo "alias"" ""gips=\"git push\"" >> .bashrc
 echo "alias"" ""gipl=\"git pull\"" >> .bashrc
 echo "alias"" ""gia=\"git add\"" >> .bashrc
+echo "alias"" ""gicl=\"git clone\"" >> .bashrc
 echo "alias"" ""py=\"python3\"" >> .bashrc
 echo "alias"" ""rb=\"reboot\"" >> .bashrc
 echo "alias"" ""cdd=\"cd \/media\/wb\/TOSHIBA\\ EXT\/2\/d\/dataguru\"" >> .bashrc
