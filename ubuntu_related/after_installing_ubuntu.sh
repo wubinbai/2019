@@ -39,7 +39,7 @@ git clone https://github.com/wubinbai/2019.git
 cd
 echo "# customized aliases by wubin" >> .bashrc
 echo "alias"" ""sd=\"shutdown now\"" >> .bashrc
-echo "alias"" ""ipy=\"ipython3\"" >> .bashrc
+echo "alias"" ""ipy=\"ipython3 -i\"" >> .bashrc
 echo "alias"" ""v=\"vim\"" >> .bashrc
 echo "alias"" ""gis=\"git status\"" >> .bashrc
 echo "alias"" ""gicm=\"git commit -m\"" >> .bashrc
