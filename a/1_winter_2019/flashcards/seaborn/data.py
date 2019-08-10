@@ -6,4 +6,4 @@ data = pd.DataFrame({'x':np.arange(1,101),'y':np.random.normal(0,4,100)})
 
 titanic = sns.load_dataset("titanic")
 iris = sns.load_dataset("iris")
-
+li = sns.get_dataset_names()
