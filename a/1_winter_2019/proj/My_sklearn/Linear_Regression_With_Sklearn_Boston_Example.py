@@ -56,4 +56,35 @@ rfr_scores = crvs(rfr,df_x,np.ravel(df_y),scoring="neg_mean_squared_error",cv=10
 rfr_scores = np.sqrt(-rfr_scores)
 display_scores(rfr_scores)
 
+# Use Ridge Regression
+
+from sklearn.linear_model import Ridge as Ri
+ri = Ri()
+# display Ridge scores
+ri_scores = crvs(ri,df_x,df_y,scoring="neg_mean_squared_error",cv=10)
+ri_scores = np.sqrt(-ri_scores)
+print("Ridge Regression: ")
+display_scores(ri_scores)
+
+
+# Use Lasso Regression
+
+from sklearn.linear_model import Lasso as La
+la = La()
+# display Ridge scores
+la_scores = crvs(la,df_x,df_y,scoring="neg_mean_squared_error",cv=10)
+la_scores = np.sqrt(-la_scores)
+print("Lasso Regression: ")
+display_scores(la_scores)
+la.fit(X_train,y_train)
+la_pred = la.predict(X_test)
+
+
+
+
+
+
+
+
+
 

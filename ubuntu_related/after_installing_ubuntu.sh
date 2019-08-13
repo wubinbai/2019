@@ -15,6 +15,9 @@ sudo apt-get update
 
 sudo apt-get install git
 
+#Optional install speedtest
+
+sudo apt install speedtest-cli
 # Change directory to the home directory
 
 cd
