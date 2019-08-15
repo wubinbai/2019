@@ -26,6 +26,12 @@ cd
 
 git clone https://github.com/wubinbai/2019.git
 
+# if you clone it this way, you will have to enter username and passwd everytime you push, to enable credential caching so that you don't need to enter everytime:
+cd ~/2019
+git config credential.helper store
+git push
+
+# then enter your username and passwd just for one-time. You are permanently set for future use.
 
 # 
 
