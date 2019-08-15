@@ -122,3 +122,8 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 # Now, the VLC plaer and the graphics driver have been installed, you could use VLC player to play the mp4 file. In case there's no sound, it may due to the setup in linux. Change the output in the linux sound settings to HDMI rather than S/FPDI if you are using HDMI.
 
 # To set the VLC as the default player, simpler search for "default"
+
+# just some memo..
+
+# to check memory mhz hardware:
+# use dmidecode -t 17
