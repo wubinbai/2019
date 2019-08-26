@@ -16,6 +16,6 @@ init = tf.compat.v1.global_variables_initializer()
 with tf.compat.v1.Session() as sess:
     
     sess.run(init)
-    for i in range(10):
+    for i in range(1000):
         sess.run(train)
     print(sess.run(w))
