@@ -64,7 +64,7 @@ echo "alias"" ""rb=\"reboot\"" >> .bashrc
 echo "alias"" ""cdd=\"cd \/media\/wb\/TOSHIBA\\ EXT\/2\/d\/dataguru\"" >> .bashrc
 
 echo "alias"" ""cdd2=\"cd /media/wb/TOSHIBA\ EXT/2/d/dataguru/ \"" >> .bashrc
-
+echo "alias"" ""na=\"nautilus .\"" >> .bashrc
 # Then you can install vim
 
 sudo apt-get install vim
