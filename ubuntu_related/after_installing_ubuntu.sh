@@ -48,10 +48,15 @@ git push
 cd
 echo "# customized aliases by wubin" >> .bashrc
 echo "alias"" ""sd=\"shutdown now\"" >> .bashrc
+echo "alias"" ""ls4=\"ls -lhtr\"" >> .bashrc
+
 
 echo "alias"" ""les=\"less\"" >> .bashrc
 
 echo "alias"" ""ipy=\"ipython3 -i\"" >> .bashrc
+echo "alias"" ""jn=\"jupyter notebook\"" >> .bashrc
+
+
 echo "alias"" ""v=\"vim\"" >> .bashrc
 echo "alias"" ""gis=\"git status\"" >> .bashrc
 echo "alias"" ""gicm=\"git commit -m\"" >> .bashrc
