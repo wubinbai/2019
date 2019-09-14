@@ -8,3 +8,9 @@ def plot_whole(df):
         print(df)
 
 h = help
+# Better help function he():
+
+def he(): 
+    global ar
+    ar = input('Enter the function name for help:')
+    help(eval(ar))
