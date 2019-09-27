@@ -34,6 +34,7 @@ git clone https://github.com/wubinbai/2019.git
 cd ~/2019
 git config credential.helper store
 git push
+git config --global user.email wubinbai@yahoo.com
 
 # then enter your username and passwd just for one-time. You are permanently set for future use.
 
