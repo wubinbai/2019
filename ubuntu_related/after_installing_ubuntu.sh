@@ -1,5 +1,9 @@
 #! /bin/bash
 
+
+# AFter installing ubuntu, it sleeps after sometime not in use. So disable it: goto 
+# Setting - Power - Blank screen - off
+
 # To use this file, you may wanna UNCOMMENT some of the command for the first use.
 
 # For ubuntu information: show ubuntu version command:
