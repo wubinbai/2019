@@ -133,6 +133,8 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 # set up drivers for GPU:
 # GO TO https://www.nvidia.com/Download/index.aspx?lang=en-us to download the shell script for drivers. Around 100 MB. Then execute the script.
 
+# if unable to find gcc, sudo apt-get install gcc
+
 # If installation is failed due to current installed graphics driver, you may want to remove the current driver. For instructions, go do the directory in the current directory here, following the .txt file.
 
 # Now, the VLC plaer and the graphics driver have been installed, you could use VLC player to play the mp4 file. In case there's no sound, it may due to the setup in linux. Change the output in the linux sound settings to HDMI rather than S/FPDI if you are using HDMI.
