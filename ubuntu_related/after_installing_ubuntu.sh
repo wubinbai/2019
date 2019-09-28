@@ -12,24 +12,35 @@ lsb_release -a
 
 # The very first step of running this file is to GET this file...... So you may need to just copy this file or clone the whole repository with git clone. Steps are the following:
 
-# Use sudo apt-get update for updating the apt-get
-sudo apt-get update
+read -p 'type y or n for sudo apt-get update or not: ' choose
+ans='y'
+if [ $ans == $choose ]
+then
+	echo '====== sudo apt-get update ======'
+	# Use sudo apt-get update for updating the apt-get
+	sudo apt-get update
+	echo '====== finish update ======'
+else
+	echo '====== no update======'
+fi
+
 
 # Install git before cloning
-
+echo '====== install git ======'
 sudo apt-get install git
-
+echo '======finish git ======'
 #Optional install speedtest
-
+echo '======install speedtest======'
 sudo apt install speedtest-cli
+echo '======finish speedtest======'
 # Change directory to the home directory
 
 cd
 
 # Clone git remot repository:
-
+echo '=== clone 2019 ==='
 git clone https://github.com/wubinbai/2019.git
-
+echo '=== finish clone ==='
 # if you clone it this way, you will have to enter username and passwd everytime you push, to enable credential caching so that you don't need to enter everytime:
 cd ~/2019
 git config credential.helper store
