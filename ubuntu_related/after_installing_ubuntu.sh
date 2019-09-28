@@ -21,14 +21,14 @@ then
 	sudo apt-get update
 	echo '====== finish update ======'
 else
-	echo '====== no update======'
+	echo '====== no update ======'
 fi
 
 
 # Install git before cloning
 echo '====== install git ======'
 sudo apt-get install git
-echo '======finish git ======'
+echo '====== finish git ======'
 #Optional install speedtest
 echo '======install speedtest======'
 sudo apt install speedtest-cli
