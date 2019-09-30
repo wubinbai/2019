@@ -156,3 +156,10 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 
 # to check memory mhz hardware:
 # use dmidecode -t 17
+
+# Q & A
+# 1. What if no sound for HDMI?
+# A. try: sudo apt install gnome-shell-extensions
+#         sudo adduser $wb audio
+
+
