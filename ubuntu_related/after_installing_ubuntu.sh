@@ -162,4 +162,6 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 # A. try: sudo apt install gnome-shell-extensions
 #         sudo adduser $wb audio
 
-
+# Appendix
+# My libraries
+# 1. sudp apt install mpg123 # for converting mp3 to wav
