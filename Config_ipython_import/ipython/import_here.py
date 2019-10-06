@@ -14,3 +14,6 @@ def he():
     global ar
     ar = input('Enter the function name for help:')
     help(eval(ar))
+
+from pandas import read_csv as pdrc
+
