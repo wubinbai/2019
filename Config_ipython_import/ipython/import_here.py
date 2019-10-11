@@ -1,4 +1,8 @@
 import numpy as np
+import sys
+#np.set_printoptions(threshold=sys.maxsize)
+np.set_printoptions(threshold=100)
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
