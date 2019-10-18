@@ -37,12 +37,12 @@ else:
 # Let's train_test_split before creating our neural network!
 # UNDERSCORE means: interal train or test.
 # Since actually there's option found in model.fit validation_split -> [0,1] parameter, following may not be necc.
-#from sklearn.model_selection import train_test_split
-#_x_train,_x_test,_y_train,_y_test = train_test_split(x_train,y_train)
+from sklearn.model_selection import train_test_split
+_x_train,_x_test,_y_train,_y_test = train_test_split(x_train,y_train,test_size=0.5)
 
 num_classes = 10
 batch_size = 128
-epochs = 12
+epochs = 20 
 
 model = keras.Sequential()
 model.add(Conv2D(32,kernel_size=(3,3),activation='relu',input_shape=input_shape))
@@ -62,11 +62,42 @@ model.add(Dense(num_classes, activation='softmax'))
 model.compile(loss=keras.losses.categorical_crossentropy,
               optimizer=keras.optimizers.Adadelta(),
               metrics=['accuracy'])
-model.fit(x_train, y_train,
+history = model.fit(_x_train, _y_train,
           batch_size=batch_size,
           epochs=epochs,
           verbose=1,
-          validation_split=0.1)
+          validation_data=(_x_test,_y_test)
+          )
+#          validation_split=0.2)
+
+acc = history.history['acc'] 
+val_acc = history.history['val_acc'] 
+loss = history.history['loss'] 
+val_loss = history.history['val_loss'] 
+
+epochs = range(1, len(acc) + 1)
+
+# "bo" is for "blue dot"
+plt.plot(epochs, loss, 'bo', label='Training loss')
+# b is for "solid blue line"
+plt.plot(epochs, val_loss, 'b', label='Validation loss')
+plt.title('Training and validation loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+plt.show()
+
+plt.figure()
+plt.plot(epochs, acc, 'bo', label='Training acc')
+plt.plot(epochs, val_acc, 'b', label='Validation acc')
+plt.title('Training and validation accuracy')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+
+plt.show()
+
+
 
 result_pred = model.predict_classes(x_test)
 df = pd.DataFrame(result_pred)
