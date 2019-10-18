@@ -1,3 +1,12 @@
+from tensorflow.compat.v1 import ConfigProto
+from tensorflow.compat.v1 import InteractiveSession
+
+config = ConfigProto()
+config.gpu_options.allow_growth = True
+session = InteractiveSession(config=config)
+
+
+
 import time
 import keras
 from keras.layers import Dense,Dropout,Flatten
@@ -37,7 +46,7 @@ else:
 
 num_classes = 10
 batch_size = 128
-epochs = 12
+epochs = 5
 
 model = keras.Sequential()
 model.add(Conv2D(32,kernel_size=(3,3),activation='relu',input_shape=input_shape))
@@ -63,11 +72,11 @@ train_dir = './input'
 
 from keras.preprocessing.image import ImageDataGenerator
 train_datagen = ImageDataGenerator(
-      rotation_range=5,
-      #width_shift_range=0.01,
-      #height_shift_range=0.01,
+      rotation_range=10,
+      width_shift_range=0.1,
+      height_shift_range=0.1,
       #shear_range=0.05,
-      #zoom_range=0.05,
+      zoom_range=0.1,
       #fill_mode='nearest'
       )
 train_generator = train_datagen.flow_from_directory(
@@ -86,8 +95,9 @@ model.fit_generator(train_datagen.flow(x_train, y_train, batch_size=32), steps_p
 result_pred = model.predict_classes(x_test)
 df = pd.DataFrame(result_pred)
 df.index = range(1,28001)
+df.columns=['Label']
+df.to_csv("my_cnn.csv",index_label='ImageId')
 
-df.to_csv("my_cnn.csv")
 
 
 
