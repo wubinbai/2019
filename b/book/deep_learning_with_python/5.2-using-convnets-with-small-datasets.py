@@ -1,3 +1,11 @@
+from tensorflow.compat.v1 import ConfigProto
+from tensorflow.compat.v1 import InteractiveSession
+
+config = ConfigProto()
+config.gpu_options.allow_growth = True
+session = InteractiveSession(config=config)
+
+
 #!/usr/bin/env python
 # coding: utf-8
 
@@ -159,7 +167,7 @@ try:
     os.mkdir(test_dogs_dir)
 except:
     pass
-'''
+
 # Copy first 1000 cat images to train_cats_dir
 fnames = ['cat.{}.jpg'.format(i) for i in range(1000)]
 for fname in fnames:
@@ -201,7 +209,7 @@ for fname in fnames:
     src = os.path.join(original_dataset_dir, fname)
     dst = os.path.join(test_dogs_dir, fname)
     shutil.copyfile(src, dst)
-'''
+
 
 # As a sanity check, let's count how many pictures we have in each training split (train/validation/test):
 
