@@ -49,4 +49,8 @@ predicted=np.concatenate((trainPredict,testPredict),axis=0)
 trainScore = model.evaluate(trainX, trainY, verbose=0)
 
 
-
+index = df.index.values
+plt.plot(index,df)
+plt.plot(index,predicted)
+plt.axvline(df.index[Tp], c="r")
+plt.show() 
