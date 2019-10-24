@@ -28,10 +28,24 @@ def create_new_df(train):
 new_train = create_new_df(train)
 new_test = create_new_df(test)
 
+# using new_train.info() we found that:
+missing_col = ['LotFrontage','MasVnrArea','GarageYrBlt']
+
+# Fill With Missing Value, with mean/median, FOR LINEAR MODEL, like NN
+for i in range(len(missing_col)):
+    if i == 2:
+        temp = new_train[missing_col[i]].median()
+        new_train[missing_col[i]].loc[new_train[missing_col[i]].isnull()] = temp
+    else:
+        temp = new_train[missing_col[i]].mean()
+        new_train[missing_col[i]].loc[new_train[missing_col[i]].isnull()] = temp
+
+
 y_train = new_train.SalePrice
 x_train = new_train.drop('SalePrice',axis=1)
+
 y_test = None
-x_test = new_test
+x_test = new_test.copy()
 
 
 mean = x_train.mean(axis=0)
@@ -42,20 +56,63 @@ std = x_train.std(axis=0)
 x_train /= std
 x_test /= std
 
+from sklearn.model_selection import train_test_split
+train_data, val_data, train_label, val_label = train_test_split(x_train,y_train)
+
+
+
 import keras
 from keras.models import Sequential
 from keras.layers import Dense
-EPOCHS = 100
+EPOCHS = 1000
 
 
 m = Sequential()
-m.add(Dense(32,activation='relu',input_shape = x_train.loc[0].shape))
-m.add(Dense(32,activation='relu'))
+m.add(Dense(64,activation='relu',input_shape = x_train.loc[0].shape))
+m.add(Dense(64,activation='relu'))
 m.add(Dense(1))
 
 m.summary()
 
-m.compile(optimizer=keras.optimizers.RMSprop(lr=0.00000000000000001),loss='mse',metrics=['mae'])
+m.compile(optimizer=keras.optimizers.RMSprop(),loss='mse',metrics=['mae'])
 
 
-history = m.fit(x_train,y_train,epochs=EPOCHS,batch_size=512)
+history = m.fit(train_data,train_label,epochs=EPOCHS,batch_size=128, validation_data=(val_data,val_label))
+
+pred = pd.DataFrame(m.predict(x_test))
+
+df2 = pd.concat([new_test.Id,pred],axis=1)
+df = df2.set_index('Id',drop=True)
+df.columns = ['SalePrice']     
+temp_mean = df.mean(numeric_only=True) 
+df[df.isnull()] = temp_mean.values[0]
+df.to_csv('sub.csv')
+
+
+
+
+mae = history.history['mean_absolute_error']
+val_mae = history.history['val_mean_absolute_error']
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+
+epochs = range(1, len(mae) + 1)
+
+# "bo" is for "blue dot"
+plt.plot(epochs, loss, 'bo', label='Training loss')
+# b is for "solid blue line"
+plt.plot(epochs, val_loss, 'b', label='Validation loss')
+plt.title('Training and validation loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+plt.show()
+
+plt.figure()
+plt.plot(epochs, mae, 'bo', label='Training mae')
+plt.plot(epochs, val_mae, 'b', label='Validation mae')
+plt.title('Training and validation accuracy')
+plt.xlabel('Epochs')
+plt.ylabel('MAE')
+plt.legend()
+plt.show()
