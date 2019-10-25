@@ -42,10 +42,12 @@ for i in range(len(missing_col)):
 
 
 y_train = new_train.SalePrice
-x_train = new_train.drop('SalePrice',axis=1)
+x_train = new_train.drop(['SalePrice','Id'],axis=1)
 
 y_test = None
 x_test = new_test.copy()
+x_test_id = x_test.Id
+x_test = x_test.drop(['Id'],axis=1)
 
 
 mean = x_train.mean(axis=0)
@@ -56,9 +58,12 @@ std = x_train.std(axis=0)
 x_train /= std
 x_test /= std
 
+# let's also try to scale the label, BUT ALSO KEEP IN MIND, AFTER PREDICTION, SCALE IT BACK!
+# but just scale it, say 1e-5 factor
+y_train *= 1e-4
+
 from sklearn.model_selection import train_test_split
 train_data, val_data, train_label, val_label = train_test_split(x_train,y_train)
-
 
 
 import keras
@@ -80,7 +85,8 @@ m.compile(optimizer=keras.optimizers.RMSprop(),loss='mse',metrics=['mae'])
 history = m.fit(train_data,train_label,epochs=EPOCHS,batch_size=128, validation_data=(val_data,val_label))
 
 pred = pd.DataFrame(m.predict(x_test))
-
+# scale pred back, because our input labels had been scaled.
+pred *= 1e4
 df2 = pd.concat([new_test.Id,pred],axis=1)
 df = df2.set_index('Id',drop=True)
 df.columns = ['SalePrice']     
