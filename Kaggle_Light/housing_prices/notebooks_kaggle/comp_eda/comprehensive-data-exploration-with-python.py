@@ -40,7 +40,7 @@ from sklearn.preprocessing import StandardScaler
 from scipy import stats
 import warnings
 warnings.filterwarnings('ignore')
-get_ipython().run_line_magic('matplotlib', 'inline')
+#get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 # In[2]:

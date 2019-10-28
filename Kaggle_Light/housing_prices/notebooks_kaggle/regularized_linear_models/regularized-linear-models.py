@@ -24,7 +24,7 @@ from scipy.stats.stats import pearsonr
 
 
 get_ipython().run_line_magic('config', "InlineBackend.figure_format = 'retina' #set 'png' here when working on notebook")
-get_ipython().run_line_magic('matplotlib', 'inline')
+#get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 # In[2]:
