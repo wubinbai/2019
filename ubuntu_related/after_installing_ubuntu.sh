@@ -161,7 +161,10 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 # 1. What if no sound for HDMI?
 # A. try: sudo apt install gnome-shell-extensions
 #         sudo adduser $wb audio
-
+# 2. Install ReText on Ubuntu Linux for README.md, markdown file
+# A. sudo apt install retext
+# 3. Install grip for README.md
+# A. sudo apt install grip
 # Appendix
 # My libraries
 # 1. sudp apt install mpg123 # for converting mp3 to wav
