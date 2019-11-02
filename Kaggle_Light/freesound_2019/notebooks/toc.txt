@@ -1,0 +1,7 @@
+1. FastAI conv2d
+2. Beginners
+3. PyTorch cnn2d
+4. Keras Prep. Mixup Fat19
+5. Fat19 Creating
+6. Bidirectional LSTM
+7. Audio Repr
