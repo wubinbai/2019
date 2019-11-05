@@ -43,7 +43,13 @@ for i in range(len(missing_col)):
         temp = new_train[missing_col[i]].mean()
         new_train[missing_col[i]].loc[new_train[missing_col[i]].isnull()] = temp
 
+# using new_test.info() we found that:
+missing_col2 = ['LotFrontage','MasVnrArea','BsmtFinSF1','BsmtFinSF2','BsmtUnfSF','TotalBsmtSF','BsmtFullBath','BsmtHalfBath','GarageYrBlt','GarageCars','GarageArea']
+for i in range(len(missing_col2)):
+        temp = new_test[missing_col2[i]].mean()
+        new_test[missing_col2[i]].loc[new_test[missing_col2[i]].isnull()] = temp
 
+#
 y_train = new_train.SalePrice
 x_train = new_train.drop(['SalePrice','Id'],axis=1)
 
