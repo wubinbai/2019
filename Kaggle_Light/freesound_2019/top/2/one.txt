@@ -1,0 +1,18 @@
+1 run.sh
+2 utils.py
+3 pretrain.py
+4 train.py
+5 predict.py
+6 ensemble.py
+----------
+1 run.sh
+
+
+#!/usr/bin/env bash
+
+
+python utils.py
+python pretrain.py
+python train.py
+python predict.py
+python ensemble.py
