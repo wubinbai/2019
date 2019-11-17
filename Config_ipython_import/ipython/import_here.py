@@ -21,3 +21,6 @@ def he():
 
 from pandas import read_csv as pdrc
 
+# for ipython to display all results in the jupyter notebook:
+from IPython.core.interactiveshell import InteractiveShell
+InteractiveShell.ast_node_interactivity = "all"
