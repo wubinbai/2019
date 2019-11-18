@@ -1,0 +1,4 @@
+1 README.md
+2 thinkdsp.py
+3 thinkplot.py
+
