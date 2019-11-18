@@ -168,3 +168,4 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 # Appendix
 # My libraries
 # 1. sudp apt install mpg123 # for converting mp3 to wav
+# 2. sudo snap install docker # for installing docker
