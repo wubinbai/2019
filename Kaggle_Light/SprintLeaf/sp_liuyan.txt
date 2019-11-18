@@ -1,0 +1,799 @@
+
+Kaggle
+Springleaf Marketing Response
+Determine whether to send a direct mail piece to a customer
+
+    $100,000
+    2,226 teams
+    4 years ago
+
+Overview
+Data
+Notebooks
+Discussion
+Leaderboard
+Rules
+Team
+My Submissions
+New Topic
+Solution Sharing
+by SRKin Springleaf Marketing Response 4 years ago
+
+Congratulations Asian Ensemble, .baGGaj. and Merging the Mundane and Magic teams. Congrats to all other top finishers as well. Really interested in knowing the top solutions.
+
+We have tried quite a few algorithms but none of them helped when we tried to blend with GBMs. So finally we just blended three GBMs together in our model. I know from the forum posts that even a single GBM can take us well above 0.8 in the public LB. Eager to know what went (feature engineering and parameters) into such GBM models. Also will be very helpful to know what other algorithms gave a good boost alongside GBM.
+
+Thanks to all in advance for sharing your solutions.!
+
+Happy Kaggling :)
+Options
+Comments (50)Filter/sort 
+Mike Kim
+•4 years ago
+
+Matrix of columns with only two unique values (binary features) -> TSNE 2D projection as two new features helped increase public LB score and local CV.
+Options
+Reply
+Sylvanas2013
+•4 years ago
+
+congratulations to all winners!
+
+here is my solution,quite simple:
+(1) I didn't do any feature engineering except normalized the feature values. Then I trained a GBDT with 12000 trees , step size=0.02, which gave a result of LB 0.8018.
+
+(2) from step 1 i got a feature importance list, then split all the ranked feature set into 5 groups by idx mod 5. Each file would lead a result of ~0.798 in LB, but ensemble these 5 files would lead to 0.8255 in LB. This is very interesting.
+
+(3) randomly choose more feature subsets, and averaging step (1) and step (2), finally i rank 14th in the private board.
+
+But i think every team got an overfitting result, the magic is ensemble different team's results, please check this thread https://www.kaggle.com/c/springleaf-marketing-response/forums/t/17083/sharing-the-submission-files , we could get the first place if we ever merged, that is really surprising。
+Options
+Reply
+Gzs_iceberg
+•4 years ago
+
+I use pandas and numpy in python.
+def getctrfeatures(data, test, y, ctrcols, dctr, num): data["target"] = y dcols = set(test.columns) kf = crossvalidation.StratifiedKFold(y, nfolds=4, shuffle=True, randomstate=11)
+tr = np.zeros((data.shape[0], len(ctrcols))) for kfold, (itr, icv) in enumerate(kf): datatr = data.iloc[itr]
+datate = data.iloc[icv] for t, col in enumerate(ctrcols):
+if col not in dcols:
+continue
+ctrdf = datatr[[col, "target"]].groupby(col).agg(["count", "sum"])
+ctrdict = ctrdf.apply(lambda x: calcctr(x, num), axis=1).todict()
+tr[icv, t] = datate[col].apply(lambda x: ctrdict.get(x, dctr))
+
+     te = np.zeros((test.shape[0], len(ctr_cols)))
+     for t, col in enumerate(ctr_cols):
+         if col not in dcols:
+                 continue
+         ctr_df = data[[col, "target"]].groupby(col).agg(["count", "sum"])
+         ctr_dict = ctr_df.apply(lambda x: calc_ctr(x, num), axis=1).to_dict()
+         te[:, t] = test[col].apply(lambda x: ctr_dict.get(x, dctr))
+     del data["target"]
+     return tr, te
+
+[quote=Bishwarup B;96803]
+[quote=Gzsiceberg;96802] congratulations to all winners! Here's my solution. I list some key points below. (1) category features: use likelihood to encode it, the way how you do is important, it's easily leaky. I use a cross validation to do it. (2) logistic regression: feed it's prediction into xgboost. it's similar to likelihood features. (3) feature engineering: only location and date work. (4) tuning parameters: best paramter I got: maxdepth=18 colsamplebytree=0.3 minchildweight=10 subsample=0.8 numround=9666 eta=0.006
+(5) merging different xgboost's model by using different features and paramters.
+[/quote]
+Icebarg,
+Do you mind sharing your likelihood approach to encode the categorical features. I tried to encode with randomized target rate but every time it resulted in a massive overfit. I would be happy if you share how you cross-validate the optimal encoding here.
+Congrats for finishing in the top 10 ladder.
+[/quote]
+Options
+Reply
+ChrisCC
+•4 years ago
+
+I ended up with 10th on LB and 11th PB. Too bad, one step to the Master title. In fact I failed recently in teaming up with two prize winners, Qingchen for Liberty and Asian Ensemble for this, due to the same reason - too many submissions. Maybe next time I should refrain my curiosity? LOL.
+
+Anyway, it has been a great competition. I enjoyed, frustrated, desperate and thrived by the end of day, just like many of you. The best thing is I had not only a handful effective methods but the understanding why they worked. Thanks to Springleaf, Kaggle and all the restless Kagglers.
+
+Back to the approaches, I first learned a lot from the forum, such as removing irrelevant columns. I did remove a few other columns like VAR_227(duplicated with 228) and so on for a variety reasons.
+
+I also transformed date columns into year, month, year-month, day-of-week and julian dates, both as string and int.
+
+Some of the features interpreted by the forum have been approved to be effective, such as 241 for postal code, 254 for age. I encoded them, along with other categorical features, with mean target which improved my model a lot.
+
+Like other Kagglers, I tried numerous of other methods but none of them worked significantly.
+
+I used XGB primarily too. Firstly used early stopping to find out the optimal number of rounds, then trained 20+ models with different parameters, subset of columns and objective functions, i.e. logistic regression, linear regression, poisson and so on. Finally I chose the best 10 of XGB models, along with 3 best Random Forests, and ensembled them with LR model. In this way I got a model with 0.8033+ in 10-folds CV and 0.806+ in LB ( 0.80022) in PB.
+
+"Features make difference and ensemble makes you win."
+Options
+Reply
+Gino
+•4 years ago
+
+In fact, for us (at first Eric Chen and I), it is fairly easy to get a single GBM models close to .801 (public LB). We could get that with simple xgboost parameter tuning, simple categorical variables encoding and removal of near-zero variance columns. When combined our two xgboost outputs together we got ~0.8023. All of our outputs matched our validation set fairly closely.
+
+So the above was the easy part… Just about everything else we tried failed :-). We tried different algorithms, text processing and many more things. Nothing seemed to work over the above simple stuff.
+
+We then joined with Qingchen and Paul - they also used xgboost but they had some slightly different strategies : different encoding for categorical variables, used different objective functions, etc… I'll let them elaborate if they want.
+
+In the end, we ended up with our 3 or 4 respective models all between 0.8020 and 0.8025. When put together we got 0.80292 on the LB in 31st place. Then we ended up in 24th on the private LB.
+
+We did not have any fancy feature engineering or smart multi-model stacking - simply blended out models together. So I am really curious as to what the top teams found. As I said, every smart things I tried did not really work. Anxiously waiting to see the magic features and strategies.
+
+thanks to my team mates!!
+Options
+Reply
+Darragh
+•4 years ago
+
+I would be interested in folks, cross validation approach – I tried three fold CV using the whole data set but only predicting two folds. Even with this I felt I could not isolate effective features very well.
+@Konrad, how did you perform CV ?
+
+A few features/settings I found helped, roughly in order of effectiveness, to improve on xgboost models,
+• Bagging predictions – for each new set of features, predict three times and take the row wise average.
+• Parameter tuning – very similar to raddar’s settings.
+• Add a row wise count of NA’s and row wise count of outliers (those 999…’s). These two columns added a relatively big bump in score.
+• Get the differences in all dates. Month and day did not help but week seemed to help.
+• Removing the validation set, training on all training data; and predicting with different ntree values. Then test which is the best ntree against the leaderboard, by submitting the same model prediction, but different values of ntree.
+• Create a TDM for the two job columns, and then take an SVD of it to reduce to 10 columns each
+• Find the interactions which added most to target correlation. Ie. Check the correlation of each individual column to the target, then try the combination of both columns (using + - * / ) and see if the resulting interaction column increased the correlation. Filter down to approx 50 new columns giving the highest bump in correlation to target.
+• Did not remove any columns except the constant ones
+• There were three age columns (got the difference in these three); there were two profession columns – add if both are workers, or only one.
+
+There are a lot of things I’m sorry I missed – 2 level modelling, recoding categorical values to response rate (I tried it one and got big overfit, but should have persevered) . And the data leak mentioned in another post, sounds great
+Options
+Reply
+Mike Kim
+•4 years ago
+
+Here's the code that does it. Tried some other TSNE projections too, but not all translated to public LB.
+ afeat1.R (998 B)
+Options
+Reply
+happycube
+•4 years ago
+
+Yeah - for some reason the 'smart' stuff didn't work as well. Brute force seemed to be the order of the day :)
+
+I didn't do any feature engineering really. I used an odd binning technique - sorting each feature of the training set, and then making one out of every 100 (that were unique at least) into the bins. I tossed out the ones that didn't have multiple bins in that case (which helped), and I split one of the job title ones into words. For dates, I had a conversion routine that turned the dates into (year*52)+week.
+
+My xgb runs ran with no evaluation set, which might explain why I went up in the private LB to 19th. I tested with ~15K set aside IIRC, and then applied the same settings to the whole set. I got to .802 (public) with one xgb, and .8028 with the averaging of three pairs (12, 13, and 14 tree depth)
+Options
+Reply
+Gzs_iceberg
+•4 years ago
+
+congratulations to all winners!
+
+Here's my solution. I list some key points below.
+
+(1) category features: use likelihood to encode it, the way how you do is important, it's easily leaky. I use a cross validation to do it.
+
+(2) logistic regression: feed it's prediction into xgboost. it's similar to likelihood features.
+
+(3) feature engineering: only location and date work.
+
+(4) tuning parameters: best paramter I got:
+maxdepth=18 colsamplebytree=0.3 minchildweight=10 subsample=0.8 num_round=9666 eta=0.006
+
+(5) merging different xgboost's model by using different features and paramters.
+Options
+Reply
+clustifier
+•4 years ago
+
+Congrats to the winners!
+
+For me no single model got higher than 0.8 on LB but after stacking them I could reach 0.80466 (public LB) and (private LB 0.79958).
+
+For feature engineering I only removed constant columns and extracted year, month, month-year and day-of-week for the date columns.
+
+My best score come from a two layer model, with XGB, RF and ET in the first layer and NN in the second. An XGB in the second layer got me close to that but lower (0.80316, public LB).
+
+A three layer model didn't help me this time.
+Options
+Reply
+raddar
+•4 years ago
+
+or invest few dollar's in cloud services:)
+Options
+Reply
+raddar
+•4 years ago
+
+[quote=A.M.;96745]
+
+@raddar. Congratulations! Can you please share the parameters of the single xgboost model that resulted in an auc of 0.804 on LB?
+
+[/quote]
+
+list(objective = "binary:logistic",
+eta = 0.0025,
+maxdepth = 15, subsample = 0.7, colsamplebytree = 0.5,
+minchildweight = 4,
+eval_metric = "auc",
+alpha = 1)
+
+15000 rounds
+Options
+Reply
+Derkanat
+•4 years ago
+
+[quote=A.M.;96745]
+@raddar. Congratulations! Can you please share the parameters of the single xgboost model that resulted in an auc of 0.804 on LB?
+[/quote]
+
+By the way, i'm not raddar, but i confirm that it's possible. Without feature engineering. Only assuming text variables are categorical and replacing them with numeric ids.
+
+params = {"objective": "binary:logistic",
+"eta": 0.015,
+"maxdepth": 22, "minchildweight": 3, "silent": 1, "subsample": 0.7, "colsamplebytree": 0.7,
+"seed": 231,
+"evalmetric":"auc"} numrounds = 2125
+
+LB--0.80035
+Options
+Reply
+chenhan zhang
+•4 years ago
+
+Can you tell us what is in the function calcctr(x, num)? [quote=Gzsiceberg;96804]
+
+I use pandas and numpy in python.
+
+ def get_ctr_features(data, test, y, ctr_cols, dctr, num):
+        data["target"] = y
+        dcols = set(test.columns)
+        kf = cross_validation.StratifiedKFold(y, n_folds=4, shuffle=True, random_state=11)
+        tr = np.zeros((data.shape[0], len(ctr_cols)))
+        for kfold, (itr, icv) in enumerate(kf):
+            data_tr = data.iloc[itr]
+            data_te = data.iloc[icv]
+            for t, col in enumerate(ctr_cols):
+                if col not in dcols:
+                    continue
+                ctr_df = data_tr[[col, "target"]].groupby(col).agg(["count", "sum"])
+                ctr_dict = ctr_df.apply(lambda x: calc_ctr(x, num), axis=1).to_dict()
+                tr[icv, t] = data_te[col].apply(lambda x: ctr_dict.get(x, dctr))
+
+        te = np.zeros((test.shape[0], len(ctr_cols)))
+        for t, col in enumerate(ctr_cols):
+            if col not in dcols:
+                    continue
+            ctr_df = data[[col, "target"]].groupby(col).agg(["count", "sum"])
+            ctr_dict = ctr_df.apply(lambda x: calc_ctr(x, num), axis=1).to_dict()
+            te[:, t] = test[col].apply(lambda x: ctr_dict.get(x, dctr))
+        del data["target"]
+        return tr, te
+
+[quote=Bishwarup B;96803]
+
+[quote=Gzs_iceberg;96802]
+
+congratulations to all winners!
+
+Here's my solution. I list some key points below.
+
+(1) category features: use likelihood to encode it, the way how you do is important, it's easily leaky. I use a cross validation to do it.
+
+(2) logistic regression: feed it's prediction into xgboost. it's similar to likelihood features.
+
+(3) feature engineering: only location and date work.
+
+(4) tuning parameters: best paramter I got:
+maxdepth=18 colsamplebytree=0.3 minchildweight=10 subsample=0.8 num_round=9666 eta=0.006
+
+(5) merging different xgboost's model by using different features and paramters.
+
+[/quote]
+
+Icebarg,
+
+Do you mind sharing your likelihood approach to encode the categorical features. I tried to encode with randomized target rate but every time it resulted in a massive overfit. I would be happy if you share how you cross-validate the optimal encoding here.
+
+Congrats for finishing in the top 10 ladder.
+
+[/quote]
+
+[/quote]
+Options
+Reply
+Konrad Banachewicz
+•4 years ago
+
+Congratulations to all winners. Our approach consisted of three things:
+
+    (some) feature engineering, including recoding categorical values to response rates and generating pairwise differences among correlated features
+    generated 60+ xgboost models on different combinations of dataset and parameters, producing a validation set prediction and a test set prediction from each
+    blended the rank-transformed versions using glmnet
+
+Btw, this was yet another contest where we didn't move at all between private and public LB - so i am starting to trust my local cv more and more.
+Options
+Reply
+Gino
+•4 years ago
+
+@ Doubletree
+
+Here an example of XGB params that was getting me 0.7999xxx (well I call that .80) on my 15% hold out set (I tried a few hold out sets and things were pretty consistent). Such params would translate on the LB between roughly 0.8004 and 0.8009 with a single model (trained on full set). There are others param variations that worked too.
+
+          early.stop = 200
+          nrounds = 8800
+          eta = .004,
+          max_depth = 9,
+          subsample = .75,
+          alpha = 4,
+          lambda = 4,
+          colsample_bytree = .75 
+
+Options
+Reply
+Konrad Banachewicz
+•4 years ago
+
+@Darragh: we created 5-fold stratified folds with a fixed seed (createFolds in caret), picked one as a holdout and then used that as the validation set all along. Consistency across models was rather important (to ensure proper input for blending later). For the actual validation score, we just fed the validation set as watchlist into xgboost.
+Options
+Reply
+beluga
+•4 years ago
+
+Congratulations to the winning teams! Hats off to n_m the best in single player mode :)
+
+The dataset in itself was not too interesting for me so I did not spend too much time on feature engineering. I replaced missing values and outliers removed a few correlated features but nothing advanced or impressive. This competition was a good excuse to finally try xgboost and aws ec2. The usual sklearn classifers worked too but xgboost was far the best choice.
+
+I am glad that I moved 40 places up on the private LB you can decide whether it happened by chance or underfitting :).
+Options
+Reply
+Bishwarup B
+•4 years ago
+
+[quote=Loknar;96773]
+
+[quote=raddar;96771]
+
+or invest few dollar's in cloud services:)
+
+[/quote]
+
+few dollars? how much did you spend to train 15k rounds for 1 classifier?
+
+[/quote]
+
+Depends on what cloud computing engine you are using. Check the pricing for EC2 instance. For your purpose of running R, compute optimized units should work best given all the other parameters are same.
+https://aws.amazon.com/ec2/pricing/
+Options
+Reply
+Branden Murray
+•4 years ago
+
+Loknar,
+
+Try increasing "n_estimator" to 2125 as Derkanat said in his post (I'm not too familiar with the python version, but that should be equivalent to "nround" in R). I had a single model over .80 on the public LB that had nrounds=20,000 and eta=0.005. Took over 24 hours to run though.
+Options
+Reply
+Loknar
+•4 years ago
+
+[quote=raddar;96737]
+
+…with some data cleaning and feature engineering - especially exploiting zip codes & date differences
+[/quote]
+
+Can you please share details ? I added days difference between every date columns, added 01.01 offset for every date, converted to weekday, monthday and to month, and it never gave me more than 0.796.
+Options
+Reply
+DoubleTree
+•4 years ago
+
+@Gino
+
+What type of parameters did you tune? I did an early stop grid search for eta and max.depth. And I set the objective to be "binary:logistic" and eval_metric='auc'. However, I was never able to get an AUC higher than 0.8.
+Options
+Reply
+Darragh
+•4 years ago
+
+Congrats Gilberto on moving into #1 Kaggler position.
+Options
+Reply
+NigelEssence
+•4 years ago
+
+I have just started a new discussion where I am outlining my experience with alternatives to boosting and trees. As much as to document successes as well as failures, to help learning.
+Options
+Reply
+Derkanat
+•4 years ago
+
+[quote=raddar;96766]
+15000 rounds
+[/quote]
+Not bad. I have to buy a new PC.
+Options
+Reply
+Thomas SELECK
+•4 years ago
+
+Here is my solution.
+I preprocess the data as follows:
+
+    I created a summary file containing for each feature the variable name, type (integer, string, date, …), min, max, na count, …
+    Then, using the previous file, I deleted duplicated columns.
+    I corrected spelling mistakes in the VAR_0200 feature.
+    I created a new feature called "region_id": I noticed that a city can have multiple zip codes and a zip code can belong to multiple cities, so I grouped all cities that have the same zip code and all zip codes that belong to the same city. This new feature really improved my score on public LB.
+    I replaced NAs and 99* values by -1.
+    I converted dates features to seconds elapsed from the earliest date in the feature.
+    I used one-hot coding for string variables.
+    I noticed that for some numerical variables, there were a lot of differents values after a threshold, so I did a sort of binning to group these values.
+    I normalized my datasets and removed near zero and zero variance features.
+
+For the prediction, I used only one XGBoost model with the following parameters:
+
+    objective = "binary:logistic"
+    eta = 0.0060
+    max_depth = 8
+    subsample = 0.65
+    colsample_bytree = 0.7
+    eval_metric = "auc"
+    nrounds = 6000
+
+I get .79833 on the public LB but only ~.791 on the private LB. I think I have some overfitting in it. Can anyone tell me why? I can post my R code if you want.
+Options
+Reply
+ChrisCC
+•4 years ago
+
+One thing puzzled me was feature VAR_0212, which was identified as ZIP + some sort of id. Given the super hight cardinality I though it could have resulted overfitting badly. But to my surprise, it worked pretty well. Could someone shed some lights on this?
+
+Thanks
+Options
+Reply
+raddar
+•4 years ago
+
+[quote=Loknar;96738]
+
+[quote=raddar;96737]
+
+…with some data cleaning and feature engineering - especially exploiting zip codes & date differences
+[/quote]
+
+Can you please share details ? I added days difference between every date columns, added 01.01 offset for every date, converted to weekday, monthday and to month, and it never gave me more than 0.796.
+
+[/quote]
+
+date differences are quite straightforward - just calculating days between all possible date combinations (120 extra VARS); zip codes - calculating mean target rates for combinations of ZIP codes and several high performing VARS (up to 6 VARS).
+As for data cleaning - used my script I posted in scripts + some additional manual inspection of some features.
+Of course, big improvement came from parameter tuning, which I think got lucky and found pretty good set of parameters early in competition.
+Options
+Reply
+raddar
+•4 years ago
+
+Not talking on behalf on my team, but about my experience before joining the team. My model was a single xgboost model which had 0.80449 public LB - so it really was possible to break .8 with some data cleaning and feature engineering - especially exploiting zip codes & date differences. however the model alone would only have taken #15 place in private LB
+Options
+Reply
+Loknar
+•4 years ago
+
+[quote=ChrisCC;96733]
+I used XGB primarily too. Firstly used early stopping to find out the optimal number of rounds, then trained 20+ models with different parameters, subset of columns and objective functions, i.e. logistic regression, linear regression, poisson and so on. Finally I chose the best 10 of XGB models, along with 3 best Random Forests, and ensembled them with LR model. In this way I got a model with 0.8033+ in 10-folds CV and 0.806+ in LB ( 0.80022) in PB.
+
+"Features make difference and ensemble makes you win."
+[/quote]
+
+I doubt you used XGB without anything else, it never made me higher than 0.796 with ensembles of RF/XGB only, with alot of HP tuning. Could you please share how i could repeat your success of breaking 0.8?
+Options
+Reply
+liulishuo_Ferris
+•4 years ago
+
+[quote=Sylvanas2013;96792]
+
+congratulations to all winners!
+
+here is my solution,quite simple:
+(1) I didn't do any feature engineering except normalized the feature values. Then I trained a GBDT with 12000 trees , step size=0.02, which gave a result of LB 0.8018.
+
+(2) from step 1 i got a feature importance list, then split all the ranked feature set into 5 groups by idx mod 5. Each file would lead a result of ~0.798 in LB, but ensemble these 5 files would lead to 0.8255 in LB. This is very interesting.
+
+(3) randomly choose more feature subsets, and averaging step (1) and step (2), finally i rank 14th in the private board.
+
+But i think every team got an overfitting result, the magic is ensemble different team's results, please check this thread https://www.kaggle.com/c/springleaf-marketing-response/forums/t/17083/sharing-the-submission-files , we could get the first place if we ever merged, that is really surprising。
+
+[/quote]
+
+Amazing!
+
+May I know how did you ensemble the 5 models in step 2? Did you use the average or trained weights? Thanks.
+Options
+Reply
+Youliang Yu
+•4 years ago
+
+[quote=Mike Kim;96729]
+
+Here's the code that does it. Tried some other TSNE projections too, but not all translated to public LB.
+
+[/quote]
+
+Thanks for sharing
+Options
+Reply
+Ronnie O'Sullivan
+•4 years ago
+
+Hi Sylvanas,
+
+Could you explain the details of your step 2? As my understand, you get the feature importance list, for example, there are 5000 features, you split this feature set into 5 groups by idx mod 5. So each group has 1000 features, they you train xgboost model by the same parameters. Then ensemble these 5 result files. Am I right? Thanks very much.
+
+[quote=Sylvanas2013;96792]
+
+congratulations to all winners!
+
+here is my solution,quite simple:
+(1) I didn't do any feature engineering except normalized the feature values. Then I trained a GBDT with 12000 trees , step size=0.02, which gave a result of LB 0.8018.
+
+(2) from step 1 i got a feature importance list, then split all the ranked feature set into 5 groups by idx mod 5. Each file would lead a result of ~0.798 in LB, but ensemble these 5 files would lead to 0.8255 in LB. This is very interesting.
+
+(3) randomly choose more feature subsets, and averaging step (1) and step (2), finally i rank 14th in the private board.
+
+But i think every team got an overfitting result, the magic is ensemble different team's results, please check this thread https://www.kaggle.com/c/springleaf-marketing-response/forums/t/17083/sharing-the-submission-files , we could get the first place if we ever merged, that is really surprising。
+
+[/quote]
+Options
+Reply
+Thodime
+•4 years ago
+
+Congratulations to all Winners and Kagglers………………
+
+@thodime
+Options
+Reply
+beluga
+•4 years ago
+
+[quote=isk4tel;96823]
+
+Will you care to share seeds that were used in your models?
+
+[/quote]
+
+You would had enjoyed this competition :)
+Options
+Reply
+isk4tel
+•4 years ago
+
+What I found in this competition is that xgboost model final result to be very sensitive to the random seed. I.e. same parameters would produce very different results if different seeds were used. Which probably means for the xgboost being a gradient descent algo, that picking a 'bad' initial seed will lead to non-optimal local extremun. My best seed was 1053.
+
+Will you care to share seeds that were used in your models?
+Options
+Reply
+happycube
+•4 years ago
+
+@raddar: What impressed me was that you were on top of the public LB for so long with so few submissions. (edit: oops, i was thinking of clobber there.)
+
+@Gino: What worked for me with dates was taking the month and week - I probably should have added new features, but I didn't do nearly enough of that.
+
+For cloud stuff EC2's m4.2xlarge was quite nice for this. It's spot price is very consistent (~$.055/hr most of the time, a 10c max on us-east-1a wouldn't have gotten bumped at all) and 32GB of RAM made it easy to work with. It took about 10-12 hours, so about 70 cents/run. It made experimenting a lot easier, since it freed up my i7 for other things.
+
+I was hoping someone would figure out a good GPU-based technique, it would have been quite an advantage compute-time-wise. The training dataset in binary form was <1GB so a 3-4GB card would have had no problems.
+Options
+Reply
+Gino
+•4 years ago
+
+@ Sylvanas2013
+Your #2 bullet is quite interesting. Never thought about trying something like this.
+
+@Raddar
+It's really odd because I tried all those dates differences feature and ZIP code encoding but they were dead ends for me. Maybe I had a bug in my code.
+Options
+Reply
+Bishwarup B
+•4 years ago
+
+[quote=Gzs_iceberg;96802]
+
+congratulations to all winners!
+
+Here's my solution. I list some key points below.
+
+(1) category features: use likelihood to encode it, the way how you do is important, it's easily leaky. I use a cross validation to do it.
+
+(2) logistic regression: feed it's prediction into xgboost. it's similar to likelihood features.
+
+(3) feature engineering: only location and date work.
+
+(4) tuning parameters: best paramter I got:
+maxdepth=18 colsamplebytree=0.3 minchildweight=10 subsample=0.8 num_round=9666 eta=0.006
+
+(5) merging different xgboost's model by using different features and paramters.
+
+[/quote]
+
+Icebarg,
+
+Do you mind sharing your likelihood approach to encode the categorical features. I tried to encode with randomized target rate but every time it resulted in a massive overfit. I would be happy if you share how you cross-validate the optimal encoding here.
+
+Congrats for finishing in the top 10 ladder.
+Options
+Reply
+Loknar
+•4 years ago
+
+[quote=raddar;96771]
+
+or invest few dollar's in cloud services:)
+
+[/quote]
+
+few dollars? how much did you spend to train 15k rounds for 1 classifier?
+Options
+Reply
+Loknar
+•4 years ago
+
+[quote=Branden Murray;96767]
+
+Loknar,
+
+Try increasing "n_estimator" to 2125 as Derkanat said in his post (I'm not too familiar with the python version, but that should be equivalent to "nround" in R). I had a single model over .80 on the public LB that had nrounds=20,000 and eta=0.005. Took over 24 hours to run though.
+
+[/quote]
+
+Branden,
+
+it seems you are right, nestimators from sklearn API casts to numboost_round in train, had to check sources to find that out. Will give it a try to check if could do better with just this.
+Options
+Reply
+Loknar
+•4 years ago
+
+[quote=Branden Murray;96767]
+
+Loknar,
+
+Try increasing "n_estimator" to 2125 as Derkanat said in his post (I'm not too familiar with the python version, but that should be equivalent to "nround" in R). I had a single model over .80 on the public LB that had nrounds=20,000 and eta=0.005. Took over 24 hours to run though.
+
+[/quote]
+
+Branden, thank you for your advice. Though i think this parameter is earlystoppingrounds in Python API, and thats not about estimators as i get it.
+I will try to increase estimators though to check your hypothesis and report.
+And btw i did not see anything about estimators in R API and native version, that wondered me as well. Was not checking thouroughly though.
+Options
+Reply
+Loknar
+•4 years ago
+
+[quote=Derkanat;96763]
+
+Do you use entirely of train/test given or only part of them?
+If you use 100% of train and test, i have no idea.
+
+[/quote]
+
+Yes. Shape of X: (145231, 2062)
+Thats for train only. I used test only for submission, not here.
+Options
+Reply
+Derkanat
+•4 years ago
+
+[quote=Loknar;96759]
+What am i doing wrong?
+[/quote]
+
+Do you use entirely of train/test given or only part of them?
+If you use 100% of train and test, i have no idea.
+
+By the way, i would recommend to look at, whether you are using the latest versions of python libraries. For example, the latest version of numpy is 1.10.0
+Options
+Reply
+Loknar
+•4 years ago
+
+[quote=Derkanat;96749]
+By the way, i'm not raddar, but i confirm that it's possible. Without feature engineering. Only assuming text variables are categorical and replacing them with numeric ids.
+
+params = {"objective": "binary:logistic",
+"eta": 0.015,
+"maxdepth": 22, "minchildweight": 3, "silent": 1, "subsample": 0.7, "colsamplebytree": 0.7,
+"seed": 231,
+"evalmetric":"auc"} numrounds = 2125
+
+LB--0.80035
+[/quote]
+
+Just tried with your params and following script (lower part, after pre-processing:
+
+xgb = XGBClassifier(objective = "binary:logistic", learning_rate = 0.015, max_depth = 22, min_child_weight = 3, subsample = 0.7, colsample_bytree = 0.7, seed = 231)
+kf = cross_validation.StratifiedKFold(y, n_folds=3, shuffle=True, random_state=11)
+trscores, cvscores, times = [], [], []
+for itr, icv in kf:
+    t = time()
+    trscore = auc(y[itr], xgb.fit(X[itr], y[itr], eval_metric = 'auc').predict_proba(X[itr])[:,1])
+    cvscore = auc(y[icv], xgb.predict_proba(X[icv])[:,1])
+    trscores.append(trscore); cvscores.append(cvscore); times.append(time()-t)
+print "TRAIN %.4f | TEST %.4f | TIME %.2fm (1-fold)" % (np.mean(trscores), np.mean(cvscores), np.mean(times)/60)
+
+It gives me usual (without blending) 0.77:
+
+Filtering...
+PreProcessing data...
+Loading data...
+Applying filters...
+Constants left: []
+Transforming data...
+Training classifier...
+XGBClassifier(base_score=0.5, colsample_bytree=0.7, gamma=0,
+       learning_rate=0.015, max_delta_step=0, max_depth=22,
+       min_child_weight=3, missing=None, n_estimators=100, nthread=-1,
+       objective='binary:logistic', seed=231, silent=True, subsample=0.7)
+TRAIN 0.9915 | TEST 0.7722 | TIME 7.90m (1-fold)
+
+What am i doing wrong?
+Options
+Reply
+Loknar
+•4 years ago
+
+[quote=ChrisCC;96746]
+
+Forgot to mention, I did calculate differences between date features which worked.
+
+[/quote]
+
+Its wierd that it didn't work for me..
+Options
+Reply
+ChrisCC
+•4 years ago
+
+[quote=raddar;96744]
+
+[quote=Loknar;96738]
+
+[quote=raddar;96737]
+
+…with some data cleaning and feature engineering - especially exploiting zip codes & date differences
+[/quote]
+
+Can you please share details ? I added days difference between every date columns, added 01.01 offset for every date, converted to weekday, monthday and to month, and it never gave me more than 0.796.
+
+[/quote]
+
+date differences are quite straightforward - just calculating days between all possible date combinations (120 extra VARS); zip codes - calculating mean target rates for combinations of ZIP codes and several high performing VARS (up to 6 VARS).
+As for data cleaning - used my script I posted in scripts + some additional manual inspection of some features.
+Of course, big improvement came from parameter tuning, which I think got lucky and found pretty good set of parameters early in competition.
+
+[/quote]
+
+Forgot to mention, I did calculate differences between date features which worked. However the similar calculation for paired numerical features didn't help.
+Options
+Reply
+A.M.
+•4 years ago
+
+@raddar. Congratulations! Can you please share the parameters of the single xgboost model that resulted in an auc of 0.804 on LB?
+Options
+Reply
+apshreyans
+•4 years ago
+
+Congratulations to Winners and thank you all including Kaggle for having us a Open Platform for Great Learning…One Ques…Approximately how much time an algorithm should ideally take to make it feasible for applying it in Real Time Environment.
+Options
+Reply
+Amortized
+•4 years ago
+
+@Mike,
+
+Thanks.
+
+Did you do any feature preprocessing before you ran it through TSNE ?
+Options
+Reply
+© 2019 Kaggle Inc
+Our Team Terms Privacy Contact/Support
+

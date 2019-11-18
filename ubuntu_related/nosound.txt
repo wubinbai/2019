@@ -1,1 +1,10 @@
 https://itsfoss.com/fix-sound-ubuntu-1304-quick-tip/
+
+=== follow the following two websites and it works
+
+1st:
+
+https://help.ubuntu.com/community/SoundTroubleshooting
+
+2nd:
+https://help.ubuntu.com/community/SoundTroubleshootingProcedure
