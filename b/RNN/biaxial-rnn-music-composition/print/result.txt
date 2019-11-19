@@ -1,0 +1,11 @@
+5 data.py
+6 main.py
+4 midi_to_statematrix.py
+
+1 model.py
+2 multi_training.py
+3 out_to_in_op.py
+this : result.txt
+7 visualize.py
+
+
