@@ -173,4 +173,4 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 # My Commands
 # 1. Open chrome? Use see name.html
 # 2. Status bar? Use | pv
-
+# 3. pdf combine? combo? Use pdfunite
