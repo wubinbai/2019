@@ -47,7 +47,10 @@ def f1(df,test):
     for i in index:
         val = test.loc[:,i].mode().values[0]
         test.loc[:,i] = test.loc[:,i].fillna(val)
- 
+    # after drop missing, some test columns have different types compared to train(originally provided by the competition)
+    test.loc[:,'BsmtFullBath'] = test.BsmtFullBath.astype(np.int64)
+    test.loc[:,'GarageArea'] = test.GarageArea.astype(np.int64)
+    test.loc[:,'GarageCars'] = test.GarageCars.astype(np.int64)
     return res, test
                 
 
@@ -129,11 +132,15 @@ def f6(train,test):
     return train,test
 
 def p(train,test):
-    train = pd.get_dummies(train)
-    test = pd.get_dummies(test)
-
     y = train.SalePrice
-    X = train.drop('SalePrice',axis=1)
+    ntrain = train.shape[0]
+    ntest = test.shape[0]
+    combo = pd.concat([train,test]).reset_index(drop=True)
+    combo.drop(['SalePrice'],axis=1,inplace=True)
+    dum_combo = pd.get_dummies(combo)
+    train = dum_combo[:ntrain]
+    test = dum_combo[ntrain:]
+    X = train.copy()
     lr = LinearRegression()
     lr.fit(X,y)
     pred = lr.predict(test)
@@ -168,3 +175,7 @@ pred = p(train,test)
 # expm1 back for pred
 pred = t0(pred)
 
+sub = pd.DataFrame(pred)
+sub.index = range(1461, 2920)
+sub.index.name='id'
+sub.to_csv('sub.csv',header=['SalePrice'])
