@@ -1,0 +1,43 @@
+1 Makefile
+2 Dockerfile
+3 make_folds.py
+4 train_folds.py
+5 predict_folds.py
+6 ensemble_pipeline.sh
+7 kernel_template.py
+8 train_stacking.py
+9 stacking_val_predict.py
+10 stacking_random_search.py
+11 stacking_predict.py
+12 stacking_kernel_template.py
+13 random_search.py
+14 make_fol
+15 build_kernel.py
+====src:
+16 
+    101 after_train_folds.py
+     27 blend_kernel_template.py
+     74 blend_predict.py
+     70 build_kernel.py
+     74 corrections.json
+      0 data
+     43 Dockerfile
+      1 empty.txt
+     57 ensemble_pipeline.sh
+     31 kernel_template.py
+     20 LICENSE
+     21 Makefile
+     27 make_folds.py
+   8745 noisy_corrections.json
+    151 predict_folds.py
+    126 random_search.py
+      0 readme_images
+    188 README.md
+      0 src
+     26 stacking_kernel_template.py
+    124 stacking_predict.py
+    126 stacking_random_search.py
+     99 stacking_val_predict.py
+    146 train_folds.py
+    109 train_stacking.py
+  10386 total
