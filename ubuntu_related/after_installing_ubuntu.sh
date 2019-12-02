@@ -174,3 +174,8 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 # 1. Open chrome? Use see name.html
 # 2. Status bar? Use | pv
 # 3. pdf combine? combo? Use pdfunite
+# 4. linux just list directories:
+#    ls -d */ # star means all, / means directory sign
+#    to list directories and subdirectories:
+#    ls -d */*/
+#    ls -d */*/*/
