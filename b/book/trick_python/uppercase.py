@@ -8,4 +8,4 @@ def uppercase(f):
 def greet():
     return 'hello'
 
-print(greet())
+print(greet)
