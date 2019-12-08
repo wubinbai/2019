@@ -179,3 +179,5 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 #     ps2pdf myfile.ps
 # 5. find files of large size:
 # find . -size +800M
+# 6. how to use grep?
+# grep -r 'keyword' file/path
