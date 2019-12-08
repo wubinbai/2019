@@ -174,3 +174,8 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 # 1. Open chrome? Use see name.html
 # 2. Status bar? Use | pv
 # 3. pdf combine? combo? Use pdfunite
+# 4. vim print? :set printfont=courier:h13
+#     :hardcopy>myfile.ps
+#     ps2pdf myfile.ps
+# 5. find files of large size:
+# find . -size +800M
