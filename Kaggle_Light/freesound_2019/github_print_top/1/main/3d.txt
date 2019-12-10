@@ -1,0 +1,146 @@
+1 Makefile
+2 Dockerfile
+3 make_folds.py
+4 train_folds.py
+5 predict_folds.py
+6 ensemble_pipeline.sh
+7 kernel_template.py
+8 train_stacking.py
+9 stacking_val_predict.py
+10 stacking_random_search.py
+11 stacking_predict.py
+12 stacking_kernel_template.py
+13 random_search.py
+14 make_fol
+15 build_kernel.py
+====src:
+16 
+    101 after_train_folds.py
+     27 blend_kernel_template.py
+     74 blend_predict.py
+     70 build_kernel.py
+     74 corrections.json
+      0 data
+     43 Dockerfile
+      1 empty.txt
+     57 ensemble_pipeline.sh
+     31 kernel_template.py
+     20 LICENSE
+     21 Makefile
+     27 make_folds.py
+   8745 noisy_corrections.json
+    151 predict_folds.py
+    126 random_search.py
+      0 readme_images
+    188 README.md
+      0 src
+     26 stacking_kernel_template.py
+    124 stacking_predict.py
+    126 stacking_random_search.py
+     99 stacking_val_predict.py
+    146 train_folds.py
+    109 train_stacking.py
+  10386 total
+======
+
+1 Makefile
+
+NAME=argus-freesound
+
+.PHONY: all build stop run 
+
+all: stop build run
+
+build:
+	docker build -t $(NAME) .
+
+stop:
+	-docker stop $(NAME)
+	-docker rm $(NAME)
+
+run:
+	nvidia-docker run --rm -it \
+		--net=host \
+		--ipc=host \
+		-v $(shell pwd):/workdir \
+		--name=$(NAME) \
+		$(NAME) \
+		bash
+======
+2 Dockerfile
+2 Dockerfile
+
+FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
+
+RUN apt-get update &&\
+    apt-get -y install build-essential yasm nasm cmake unzip git wget \
+    sysstat libtcmalloc-minimal4 pkgconf autoconf libtool \
+    python3 python3-pip python3-dev python3-setuptools \
+    libsm6 libxext6 libxrender1 &&\
+    ln -s /usr/bin/python3 /usr/bin/python &&\
+    ln -s /usr/bin/pip3 /usr/bin/pip &&\
+    apt-get clean &&\
+    apt-get autoremove &&\
+    rm -rf /var/lib/apt/lists/* &&\
+    rm -rf /var/cache/apt/archives/*
+
+RUN pip3 install --no-cache-dir numpy==1.16.2
+
+# Install PyTorch
+RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.0.1.post2-cp36-cp36m-linux_x86_64.whl &&\
+    pip3 install torchvision==0.2.2 &&\
+    rm -rf ~/.cache/pip
+
+# Install python ML packages
+RUN pip3 install --no-cache-dir \
+    opencv-python==3.4.2.17 \
+    scipy==1.2.1 \
+    matplotlib==3.0.3 \
+    pandas==0.24.1 \
+    jupyter==1.0.0 \
+    scikit-learn==0.20.2 \
+    scikit-image==0.14.2 \
+    librosa==0.6.3 \
+    pytorch-argus==0.0.8
+
+RUN git clone https://github.com/NVIDIA/apex &&\
+    cd apex &&\
+    git checkout 855808f &&\
+    pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" . &&\
+    cd .. && rm -rf apex
+
+ENV PYTHONPATH $PYTHONPATH:/workdir
+ENV TORCH_HOME=/workdir/data/.torch
+
+WORKDIR /workdir
+======
+3 make_folds.py
+import random
+import numpy as np
+import pandas as pd
+
+from sklearn.model_selection import KFold
+
+from src import config
+
+
+if __name__ == '__main__':
+    random_state = 42
+
+    random.seed(random_state)
+    np.random.seed(random_state)
+
+    train_curated_df = pd.read_csv(config.train_curated_csv_path)
+    train_curated_df['fold'] = -1
+    file_paths = train_curated_df.fname.apply(lambda x: config.train_curated_dir / x)
+    train_curated_df['file_path'] = file_paths
+
+    kf = KFold(n_splits=config.n_folds, random_state=random_state, shuffle=True)
+
+    for fold, (_, val_index) in enumerate(kf.split(train_curated_df)):
+        train_curated_df.iloc[val_index, 2] = fold
+
+    train_curated_df.to_csv(config.train_folds_path, index=False)
+    print(f"Train folds saved to '{config.train_folds_path}'")
+======
+4 train_folds.py

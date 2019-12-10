@@ -174,8 +174,18 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 # 1. Open chrome? Use see name.html
 # 2. Status bar? Use | pv
 # 3. pdf combine? combo? Use pdfunite
+<<<<<<< HEAD
 # 4. linux just list directories:
 #    ls -d */ # star means all, / means directory sign
 #    to list directories and subdirectories:
 #    ls -d */*/
 #    ls -d */*/*/
+=======
+# 4. vim print? :set printfont=courier:h13
+#     :hardcopy>myfile.ps
+#     ps2pdf myfile.ps
+# 5. find files of large size:
+# find . -size +800M
+# 6. how to use grep?
+# grep -r 'keyword' file/path
+>>>>>>> af8a2643eabfe589bc56f6883e97ce1160dfcd77

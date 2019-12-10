@@ -1,0 +1,17 @@
+1 Makefile
+2 Dockerfile
+3 make_folds.py
+4 train_folds.py
+5 predict_folds.py
+6 ensemble_pipeline.sh
+7 kernel_template.py
+8 train_stacking.py
+9 stacking_val_predict.py
+10 stacking_random_search.py
+11 stacking_predict.py
+12 stacking_kernel_template.py
+13 random_search.py
+14 make_fol
+15 build_kernel.py
+====src:
+16 
