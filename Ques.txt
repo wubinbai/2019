@@ -1,0 +1,3 @@
+1. how to write nn represents any simple function?
+2. how does ImageDataGenerator in keras.preprocessing.image work? i.e., how does it yield batches indefinitely given data? Further, how to write MY OWN GENERATOR THAT yield batches of data? how does the __getitem__ work?
+
