@@ -6,7 +6,7 @@ test = pd.read_csv('test.csv')
 
 
 na_means_no_or_none_tuple = ('Alley','BsmtQual','BsmtCond','BsmtExposure','BsmtFinType1','BsmtFinType2','FireplaceQu','GarageType','GarageFinish','GarageQual','GarageCond','PoolQC','Fence','MiscFeature')
-repeat_tuple = (('BsmtQual','BsmtCond','BsmtExposure','BsmtFinType1','BsmtFinType2'),('GarageType','GarageFinish','GarageQual','GaregeCond'))
+repeat_tuple = (('BsmtQual','BsmtCond','BsmtExposure','BsmtFinType1','BsmtFinType2'),('GarageType','GarageFinish','GarageQual','GarageCond'))
 
 def f1(train):
     for i in na_means_no_or_none_tuple:
@@ -25,7 +25,35 @@ def f2(train):
     train.loc[:, "Electrical"] = train.loc[:, "Electrical"].fillna('SBrkr')
     return train
 
+g1 = f1
+
+def g2():
+    '''
+    test after g1 we have missing: using
+    hey = test.isna().sum().loc[test.isna().sum().values!=0]     
+    In [44]: hey
+Out[44]:
+MSZoning        4
+Utilities       2
+Exterior1st     1
+Exterior2nd     1
+BsmtFinSF1      1
+BsmtFinSF2      1
+BsmtUnfSF       1
+TotalBsmtSF     1
+BsmtFullBath    2
+BsmtHalfBath    2
+KitchenQual     1
+Functional      2
+GarageCars      1
+GarageArea      1
+SaleType        1
+dtype: int64
+
+    '''
 
 
 train = f1(train)
 train = f2(train)
+test = g1(test)
+test = g2(test)
