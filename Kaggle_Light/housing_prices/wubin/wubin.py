@@ -10,17 +10,18 @@ test = pd.read_csv('../input/test.csv')
 test_b = test.copy()
 
 def f1(df,test):
+    res = df
+    test = test
     '''
     drop missing, from comprehensive E. E. w/t Py
-    '''
-    
-    total = df.isnull().sum().sort_values(ascending=False)
-    percent = (df.isnull().sum()/df.isnull().count()).sort_values(ascending=False)
-    nothing = pd.concat([total,percent],axis=1,keys=['Total','Percent'])
-    missing = nothing[nothing['Total']>1]
-    res = df.drop(missing.index,axis = 1)
-    res.drop(res.loc[res['Electrical'].isnull()].index,inplace=True)
-    test = test.drop(missing.index,axis = 1)
+    Revision: you cannot simply drop those annotated by as None, like No Pool, no Basement, etc.'''
+#    total = df.isnull().sum().sort_values(ascending=False)
+#    percent = (df.isnull().sum()/df.isnull().count()).sort_values(ascending=False)
+#    nothing = pd.concat([total,percent],axis=1,keys=['Total','Percent'])
+#    missing = nothing[nothing['Total']>1]
+#    res = df.drop(missing.index,axis = 1)
+#    res.drop(res.loc[res['Electrical'].isnull()].index,inplace=True)
+#    test = test.drop(missing.index,axis = 1)
         
     # for test missing: extra missing:
     #BsmtFullBath    2
@@ -28,29 +29,29 @@ def f1(df,test):
     #Functional      2
     #MSZoning        4
     #Utilities       2
-    test.loc[:,'BsmtFullBath'] = test.loc[:,'BsmtFullBath'].fillna(0)
-    test.loc[:,'BsmtHalfBath'] = test.loc[:,'BsmtHalfBath'].fillna(0)
-    test.loc[:,'Functional'] = test.loc[:,'Functional'].fillna('Typ')
-    test.loc[:,'MSZoning'] = test.loc[:,'MSZoning'].fillna('RL')
-    test.loc[:,'Utilities'] = test.loc[:,'Utilities'].fillna('AllPub')
+#    test.loc[:,'BsmtFullBath'] = test.loc[:,'BsmtFullBath'].fillna(0)# can improve by guessing 1 or 0 full bath condition on TotalBsmt: test.loc[(test.TotalBsmtSF<1500) & (test.TotalBsmtSF>1000)].BsmtFullBath.value_counts()  
+#    test.loc[:,'BsmtHalfBath'] = test.loc[:,'BsmtHalfBath'].fillna(0)
+#    test.loc[:,'Functional'] = test.loc[:,'Functional'].fillna('Typ')
+#    test.loc[:,'MSZoning'] = test.loc[:,'MSZoning'].fillna('RL')
+#    test.loc[:,'Utilities'] = test.loc[:,'Utilities'].fillna('AllPub')
     # more
-    index = ['BsmtFinSF2',
- 'BsmtFinSF1',
- 'Exterior2nd',
- 'BsmtUnfSF',
- 'TotalBsmtSF',
- 'SaleType',
- 'Exterior1st',
- 'KitchenQual',
- 'GarageArea',
- 'GarageCars']
-    for i in index:
-        val = test.loc[:,i].mode().values[0]
-        test.loc[:,i] = test.loc[:,i].fillna(val)
+#    index = ['BsmtFinSF2',
+# 'BsmtFinSF1',
+# 'Exterior2nd',
+# 'BsmtUnfSF',
+# 'TotalBsmtSF',
+# 'SaleType',
+# 'Exterior1st',
+# 'KitchenQual',
+# 'GarageArea',
+# 'GarageCars']
+#    for i in index:
+#        val = test.loc[:,i].mode().values[0]
+#        test.loc[:,i] = test.loc[:,i].fillna(val)
     # after drop missing, some test columns have different types compared to train(originally provided by the competition)
-    test.loc[:,'BsmtFullBath'] = test.BsmtFullBath.astype(np.int64)
-    test.loc[:,'GarageArea'] = test.GarageArea.astype(np.int64)
-    test.loc[:,'GarageCars'] = test.GarageCars.astype(np.int64)
+#    test.loc[:,'BsmtFullBath'] = test.BsmtFullBath.astype(np.int64)
+#    test.loc[:,'GarageArea'] = test.GarageArea.astype(np.int64)
+#    test.loc[:,'GarageCars'] = test.GarageCars.astype(np.int64)
     return res, test
                 
 
