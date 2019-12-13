@@ -1,3 +1,4 @@
-1. how to write nn represents any simple function?
+1. how to write an nn, using Keras, to represent any simple function?
 2. how does ImageDataGenerator in keras.preprocessing.image work? i.e., how does it yield batches indefinitely given data? Further, how to write MY OWN GENERATOR THAT yield batches of data? how does the __getitem__ work?
+3. about feature engineering: to decide whether a feature is relevant to a target or not, some methods are available: using df.corr(), using df.groupby('key')['key2'].mean() or .median(), etc., visualize relation between feature and target. Are there any other methods? In addition, does there exist a correlation value that represents a threshold in df.corr(), say, +- 0.001 or something? What are some good grouby method and visualization method, specifically in python?
 
