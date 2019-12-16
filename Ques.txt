@@ -1,4 +1,20 @@
 1. how to write an nn, using Keras, to represent any simple function?
+it looks that the following code doesn't work very well:
+
+from keras.layers import *
+from keras import Sequential
+from keras.optimizers import *
+
+x = list(range(100))
+y = [i+5 for i in x]
+
+model = Sequential()
+model.add(Dense(1,activation='relu',input_shape=(1,),use_bias=True))
+
+model.compile(optimizer=rmsprop(lr=0.3),metrics=['mae'],loss='mse')
+history = model.fit(x,y,epochs=100)
+plt.plot(history.history['loss'])
+
 2. how does ImageDataGenerator in keras.preprocessing.image work? i.e., how does it yield batches indefinitely given data? Further, how to write MY OWN GENERATOR THAT yield batches of data? how does the __getitem__ work?
 3. about feature engineering: to decide whether a feature is relevant to a target or not, some methods are available: using df.corr(), using df.groupby('key')['key2'].mean() or .median(), etc., visualize relation between feature and target. Are there any other methods? In addition, does there exist a correlation value that represents a threshold in df.corr(), say, +- 0.001 or something? What are some good grouby method and visualization method, specifically in python?
 4. about feature engineering:: how to systematically know that a specific feature engineering will make the model better? For example, one may have one hundred lines of code, with each line representing a specific computation of feature engineering, e.g. fillna, encoding categorical to ordinal, create a new feature, etc. There may be a lot of lines about feature engineering, so the question is, how to SYSTEMATICALLY know that this line will improve the model's performance?
