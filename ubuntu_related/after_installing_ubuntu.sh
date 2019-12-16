@@ -188,4 +188,5 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 # find . -size +800M
 # 6. how to use grep?
 # grep -r 'keyword' file/path
->>>>>>> af8a2643eabfe589bc56f6883e97ce1160dfcd77
+# 7. to find, actually to locate a file, better use
+# locate filename
