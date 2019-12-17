@@ -1,0 +1,122 @@
+
+How To Create a Remote Shared Git Repository
+
+So Github doesn’t work for you? This article is about setting up a private, remote and shared Git repository for you and your team. I’m using Ubuntu 10.10 and 10.04, as well as Fedora Linux (assuming you replace apt-get with yum), anyhow this should work on all other distros with minor modifications.
+
+I’m not going to tell you what Git is, and I’m not going to teach you how to use it. What I will do is guide you through the steps of setting up a Git repository on your VPS and giving you and your team access to that repository over SSH. You have to be familiar with the Git command-line client, so don’t come back and comment if you can’t get it right using TortoiseGit or whatsoever. So, without further ado.
+Step 1: Preparation & Accounts Setup
+
+This is one step you wouldn’t like to miss when setting up new repositories. You have to figure out a plan of what you want to achieve and do some initial setup on your VPS (let’s call this the Git server) and your local machines.
+
+Let’s keep it simple for this tutorial — we’ve got small development team: John, Andrew and Robert; and we’ve got a project for which we’d like a git repo. So first of all make sure that john, andrew and robert have SSH access to the Git server. Let’s also keep them in a group called developers — this is the group who’s members will have read and write access to the contents of the repository.
+
+$ sudo groupadd developers
+$ sudo useradd -G developers -d /home/john -m -s /bin/bash john
+$ sudo useradd -G developers -d /home/andrew -m -s /bin/bash andrew
+$ sudo useradd -G developers -d /home/robert -m -s /bin/bash robert
+
+This will create the three users and add them to the developers group. Go ahead and set some initial passwords for your team mates:
+
+$ sudo passwd john
+$ sudo passwd andrew
+$ sudo passwd robert
+
+And make sure that they can now login to your VPS over the SSH protocol.
+Connecting to the Git Server Without a Password
+
+The next step is optional, but really helps you save quite some time. I’m talking about SSH auto-logins, these will prevent the Git server from asking John, Andrew and Robert their passwords every time they’d like to push or pull something. I listed below the code for only John, so you should repeat the same for everybody else on the team. Lines that begin with the hash symbol # are either comments or command line output, you don’t have to type them.
+
+So, get on John’s computer and start by browsing to the .ssh directory and creating an RSA keypair. More about RSA keys in Wikipedia.
+
+$ cd ~/.ssh
+$ ssh-keygen -t rsa -C "john@yourcompany.com"
+# Generating public/private rsa key pair.
+# (text omitted)
+# Your public key has been saved in /home/john/.ssh/id_rsa.pub
+
+Great! Now let’s see the contents of the public key, should look something like the following
+
+$ cat id_rsa.pub
+# ssh-rsa AAAAb4kzaC1 (text omitted) 86n3iEEQ78cPVazr john@yourcompany.com
+
+Now what you have to do is copy the contents of the created file to your clipboard, we’ll have to write it to a file on our Git server. Start by logging on to the Git server as john (assuming it’s git.yourcompany.com), proceed to the user’s .ssh directory and paste your public key into a file called authorized_keys (create it if it doesn’t exist). Save the file and close it, check that the contents have been written to the file and finally disconnect from the Git server.
+
+$ ssh john@git.yourcompany.com
+# Password: ...
+$ cd ~/.ssh
+$ vi authorized_keys
+$ cat authorized_keys
+# ssh-rsa AAAAb4kzaC1 (text omitted) 86n3iEEQ78cPVazr john@yourcompany.com
+$ exit
+
+If you’ve done everything right, you should now be able to log on to the Git server from John’s computer without having to input a password:
+
+$ ssh john@git.yourcompany.com
+# Linux git.yourcompany.com 2.6.18-028stab069.5 #1 SMP Tue May 18 17:26:16 MSD 2010 x86_64 GNU/Linux
+
+Repeat this for Andrew and Robert, then proceed to the next step.
+Step 2: Setting Up a Shared Git Repository
+
+This step should be done by somebody who has sudo access to the server or the root user himself. The latter is more dangerous, although saves you from typing sudo every time ;)
+
+So, let’s assume there’s manager user account with sudo access, and the /home/manager home directory. We’ll create our Git repositories there, the manager will own them while the developers will have read and write access. Start by creating a directory called repositories and another one inside called project.git which will host our first project. Initiate a bare repository with the shared flag inside the project.git directory and then change the group of all the files and directories to developers:
+
+$ cd ~
+$ mkdir -p repositories/project.git
+$ cd repositories/project.git
+$ git init --bare --shared=group
+# Initialized empty shared Git repository in repositories/project.git/
+$ ls
+# branches  config  description  HEAD  hooks  info  objects  refs
+
+Being in the project.git directory use sudo to run the chgrp command to change the group of all the files. Use the -R flag to run this recursively:
+
+$ sudo chgrp -R developers .
+$ ls -l
+# drwxrwsr-x 2 manager developers 4096 2011-01-19 13:38 branches
+# -rw-rw-r-- 1 manager developers  126 2011-01-19 13:38 config
+# (text omitted)
+
+Okay, so now all your team mates have read and write access to your repository since they’re all in the developers group. Let’s proceed with setting up symbolic links and cloning the repository to the crew to finally start working.
+Step 3: Accessing the Shared Git Repository
+
+As mentioned earlier, everybody in the developers group has read and write access to the project.git repository, and yes, they can go ahead and clone it from where it is right now, i.e. repositories/project.git in the manager’s home directory. Now to make it more convenient, let’s set up symbolic links for all our developers to point to the repository, and later see how they can easily access it from their local machines.
+
+$ sudo ln -s /home/manager/repositories/project.git/ /home/john/
+$ sudo ln -s /home/manager/repositories/project.git/ /home/andrew/
+$ sudo ln -s /home/manager/repositories/project.git/ /home/robert/
+
+Done, so now John, Andrew and Robert can access the repository without having to move away from their home directories. Now let’s get back to John’s (local) computer and try to clone the project into John’s work directory:
+
+$ mkdir -p ~/work/project/
+$ cd ~/work/project/
+$ git clone john@git.yourcompany.com:project.git .
+# Initialized empty Git repository in ~/work/project/.git/
+
+Let’s go ahead and add a readme file to the list, commit and push it to our server:
+
+$ echo "Hello" > readme.txt
+$ git add readme.txt
+$ git commit -m "Adding a readme file"
+$ git push origin master
+# Commit messages ...
+
+So if you’ve reached this step and successfully pushed your first commit to your remote Git server, you have done everything right, congratulations! You can now go ahead and clone the project for Andrew and Robert, I’m pretty sure they can’t wait to start pushing and pulling ;)
+
+One more tip, suppose your username is john, you’re cloning a git repository from git.yourcompany.com, and your username on git.yourcompany.com is john as well, you can omit typing john@ when cloning, so it’s simply:
+
+$ git clone git.yourcompany.com:project.git .
+
+This can save you some time if you’re working on several projects and have new ones every day. If your usernames don’t match, you have to prefix the server host with your username followed by the @ symbol. This is more of an SSH trick and not really related to Git, but it’s a good practice to work with Git projects over SSH.
+Conclusion
+
+I know there are quite a lot of Git tutorials out there, but what I really wanted to show here is the fact that you can actually save some money. That’s right, save money.
+
+I’ve been working with freelancers and small tech companies all over the world, and yes, everybody simply loves Github. In fact I love it too, but public repositories are not always a solution for some of us. We sometimes work on commercial projects, secret and NDA’yed ones. We sometimes have ideas of our own that we wouldn’t like to share with the rest.
+
+There are private repositories on Github, but they start from $7/mo and you’ll have to get the $12 plan in order to have more than one collaborator, which gives you 10 projects. Yes, hosted is good, you get security and everything, an awesome control panel, issue tracking and much more. But! Sometimes you just don’t care!
+
+Sometimes you’re already running a $30/mo VPS with some hosting company, so why pay more for Git hosting? Right, it may not be too easy running the steps above at first, but once you get used to them, you’ll be init’ing, cloning, pulling and pushing Git repos like crazy ;)
+
+Thanks so much for reading, and of course sharing. Feel free to bug me with questions via the comments section. Cheers!
+Posted on January 19, 2011 by Konstantin Kovshenin. This entry was tagged git, linux, project management. Bookmark the permalink. 
