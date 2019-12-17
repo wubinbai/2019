@@ -23,7 +23,6 @@ class Pizza:
     def prosciutto(cls):
         return cls(['mozzarella','tomatoes','ham'])
     
-    def
 
 pizza = Pizza(['cheese','tomato'])
 print(pizza)
