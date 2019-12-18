@@ -1,0 +1,617 @@
+%!PS-Adobe-3.0
+%%Title: data_leakage.txt
+%%For: wb
+%%Creator: VIM - Vi IMproved 8.0 (2016 Sep 12)
+%%CreationDate: Wed Dec 18 17:50:27 2019
+%%DocumentData: Clean8Bit
+%%Orientation: Portrait
+%%Pages: (atend)
+%%PageOrder: Ascend
+%%BoundingBox: 59 45 559 800
+%%DocumentMedia: A4 595 842 0 () ()
+%%DocumentNeededResources: font Courier
+%%+ font Courier-Bold
+%%+ font Courier-Oblique
+%%+ font Courier-BoldOblique
+%%DocumentSuppliedResources: procset VIM-Prolog 1.4 1
+%%+ encoding VIM-latin1 1.0 0
+%%Requirements: duplex collate
+%%EndComments
+%%BeginDefaults
+%%PageResources: font Courier
+%%+ font Courier-Bold
+%%+ font Courier-Oblique
+%%+ font Courier-BoldOblique
+%%PageMedia: A4
+%%EndDefaults
+%%BeginProlog
+%%BeginResource: procset VIM-Prolog
+%%BeginDocument: /usr/share/vim/vim80/print/prolog.ps
+%!PS-Adobe-3.0 Resource-ProcSet
+%%Title: VIM-Prolog
+%%Version: 1.4 1
+%%EndComments
+% Editing of this file is NOT RECOMMENDED.  You run a very good risk of causing
+% all PostScript printing from VIM failing if you do.  PostScript is not called
+% a write-only language for nothing!
+/packedarray where not{userdict begin/setpacking/pop load def/currentpacking
+false def end}{pop}ifelse/CP currentpacking def true setpacking
+/bd{bind def}bind def/ld{load def}bd/ed{exch def}bd/d/def ld
+/db{dict begin}bd/cde{currentdict end}bd
+/T true d/F false d
+/SO null d/sv{/SO save d}bd/re{SO restore}bd
+/L2 systemdict/languagelevel 2 copy known{get exec}{pop pop 1}ifelse 2 ge d
+/m/moveto ld/s/show ld /ms{m s}bd /g/setgray ld/r/setrgbcolor ld/sp{showpage}bd
+/gs/gsave ld/gr/grestore ld/cp/currentpoint ld
+/ul{gs UW setlinewidth cp UO add 2 copy newpath m 3 1 roll add exch lineto
+stroke gr}bd
+/bg{gs r cp BO add 4 -2 roll rectfill gr}bd
+/sl{90 rotate 0 exch translate}bd
+L2{
+/sspd{mark exch{setpagedevice}stopped cleartomark}bd
+/nc{1 db/NumCopies ed cde sspd}bd
+/sps{3 db/Orientation ed[3 1 roll]/PageSize ed/ImagingBBox null d cde sspd}bd
+/dt{2 db/Tumble ed/Duplex ed cde sspd}bd
+/c{1 db/Collate ed cde sspd}bd
+}{
+/nc{/#copies ed}bd
+/sps{statusdict/setpage get exec}bd
+/dt{statusdict/settumble 2 copy known{get exec}{pop pop pop}ifelse
+statusdict/setduplexmode 2 copy known{get exec}{pop pop pop}ifelse}bd
+/c{pop}bd
+}ifelse
+/ffs{findfont exch scalefont d}bd/sf{setfont}bd
+/ref{1 db findfont dup maxlength dict/NFD ed{exch dup/FID ne{exch NFD 3 1 roll
+put}{pop pop}ifelse}forall/Encoding findresource dup length 256 eq{NFD/Encoding
+3 -1 roll put}{pop}ifelse NFD dup/FontType get 3 ne{/CharStrings}{/CharProcs}
+ifelse 2 copy known{2 copy get dup maxlength dict copy[/questiondown/space]{2
+copy known{2 copy get 2 index/.notdef 3 -1 roll put pop exit}if pop}forall put
+}{pop pop}ifelse dup NFD/FontName 3 -1 roll put NFD definefont pop end}bd
+CP setpacking
+(\004)cvn{}bd
+% vim:ff=unix:
+%%EOF
+%%EndDocument
+%%EndResource
+%%BeginResource: encoding VIM-latin1
+%%BeginDocument: /usr/share/vim/vim80/print/latin1.ps
+%!PS-Adobe-3.0 Resource-Encoding
+%%Title: VIM-latin1
+%%Version: 1.0 0
+%%EndComments
+/VIM-latin1[
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quotesingle
+/parenleft /parenright /asterisk /plus /comma /minus /period /slash
+/zero /one /two /three /four /five /six /seven
+/eight /nine /colon /semicolon /less /equal /greater /question
+/at /A /B /C /D /E /F /G
+/H /I /J /K /L /M /N /O
+/P /Q /R /S /T /U /V /W
+/X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore
+/grave /a /b /c /d /e /f /g
+/h /i /j /k /l /m /n /o
+/p /q /r /s /t /u /v /w
+/x /y /z /braceleft /bar /braceright /asciitilde /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/space /exclamdown /cent /sterling /currency /yen /brokenbar /section
+/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron
+/degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /periodcentered
+/cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown
+/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla
+/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis
+/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply
+/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls
+/agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla
+/egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis
+/eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide
+/oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis]
+/Encoding defineresource pop
+% vim:ff=unix:
+%%EOF
+%%EndDocument
+%%EndResource
+%%EndProlog
+%%BeginSetup
+595 842 0 sps
+1 nc
+T F dt
+T c
+%%IncludeResource: font Courier
+/_F0 /VIM-latin1 /Courier ref
+/F0 13 /_F0 ffs
+%%IncludeResource: font Courier-Bold
+/_F1 /VIM-latin1 /Courier-Bold ref
+/F1 13 /_F1 ffs
+%%IncludeResource: font Courier-Oblique
+/_F2 /VIM-latin1 /Courier-Oblique ref
+/F2 13 /_F2 ffs
+%%IncludeResource: font Courier-BoldOblique
+/_F3 /VIM-latin1 /Courier-BoldOblique ref
+/F3 13 /_F3 ffs
+/UO -1.3 d
+/UW 0.65 d
+/BO -3.25 d
+%%EndSetup
+%%Page: 1 1
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(data_leakage.txt                                          Page 1)59.5 790.15 ms
+F0 sf
+(This tutorial is part of the Learn Machine Learning series. In t)59.5 738.15 ms
+(his step, you will learn what data leakage is and how to prevent)59.5 725.15 ms
+( it.)59.5 712.15 ms
+(What is Data Leakage)59.5 699.15 ms
+(Data leakage is one of the most important issues for a data scie)59.5 673.15 ms
+(ntist to understand. If you don't know how to prevent it, leakag)59.5 660.15 ms
+(e will come up frequently, and it will ruin your models in the m)59.5 647.15 ms
+(ost subtle and dangerous ways. Specifically, leakage causes a mo)59.5 634.15 ms
+(del to look accurate until you start making decisions with the m)59.5 621.15 ms
+(odel, and then the model becomes very inaccurate. This tutorial )59.5 608.15 ms
+(will show you what leakage is and how to avoid it.)59.5 595.15 ms
+(There are two main types of leakage: Leaky Predictors and a Leak)59.5 569.15 ms
+(y Validation Strategies.)59.5 556.15 ms
+(Leaky Predictors)59.5 543.15 ms
+(This occurs when your predictors include data that will not be a)59.5 517.15 ms
+(vailable at the time you make predictions.)59.5 504.15 ms
+(For example, imagine you want to predict who will get sick with )59.5 478.15 ms
+(pneumonia. The top few rows of your raw data might look like thi)59.5 465.15 ms
+(s:)59.5 452.15 ms
+(got_pneumonia   age     weight  male    took_antibiotic_medicine)59.5 439.15 ms
+(        ...)59.5 426.15 ms
+(False   65      100     False   False   ...)59.5 413.15 ms
+(False   72      130     True    False   ...)59.5 400.15 ms
+(True    58      100     False   True    ...)59.5 387.15 ms
+(-)59.5 361.15 ms
+(People take antibiotic medicines after getting pneumonia in orde)59.5 335.15 ms
+(r to recover. So the raw data shows a strong relationship betwee)59.5 322.15 ms
+(n those columns. But took_antibiotic_medicine is frequently chan)59.5 309.15 ms
+(ged after the value for got_pneumonia is determined. This is tar)59.5 296.15 ms
+(get leakage.)59.5 283.15 ms
+(The model would see that anyone who has a value of False for too)59.5 257.15 ms
+(k_antibiotic_medicine didn't have pneumonia. Validation data com)59.5 244.15 ms
+(es from the same source, so the pattern will repeat itself in va)59.5 231.15 ms
+(lidation, and the model will have great validation \(or cross-val)59.5 218.15 ms
+(idation\) scores. But the model will be very inaccurate when subs)59.5 205.15 ms
+(equently deployed in the real world.)59.5 192.15 ms
+(To prevent this type of data leakage, any variable updated \(or c)59.5 166.15 ms
+(reated\) after the target value is realized should be excluded. B)59.5 153.15 ms
+(ecause when we use this model to make new predictions, that data)59.5 140.15 ms
+( won't be available to the model.)59.5 127.15 ms
+(Leaky Data Graphic)59.5 101.15 ms
+(Leaky Validation Strategy)59.5 88.15 ms
+(A much different type of leak occurs when you aren't careful dis)59.5 62.15 ms
+(tinguishing training data from validation data. For example, thi)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 2 2
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(data_leakage.txt                                          Page 2)59.5 790.15 ms
+F0 sf
+(s happens if you run preprocessing \(like fitting the Imputer for)59.5 764.15 ms
+( missing values\) before calling train_test_split. Validation is )59.5 751.15 ms
+(meant to be a measure of how the model does on data it hasn't co)59.5 738.15 ms
+(nsidered before. You can corrupt this process in subtle ways if )59.5 725.15 ms
+(the validation data affects the preprocessing behavoir.. The end)59.5 712.15 ms
+( result? Your model will get very good validation scores, giving)59.5 699.15 ms
+( you great confidence in it, but perform poorly when you deploy )59.5 686.15 ms
+(it to make decisions.)59.5 673.15 ms
+(Preventing Leaky Predictors)59.5 660.15 ms
+(There is no single solution that universally prevents leaky pred)59.5 634.15 ms
+(ictors. It requires knowledge about your data, case-specific ins)59.5 621.15 ms
+(pection and common sense.)59.5 608.15 ms
+(However, leaky predictors frequently have high statistical corre)59.5 582.15 ms
+(lations to the target. So two tactics to keep in mind:)59.5 569.15 ms
+(    To screen for possible leaky predictors, look for columns th)59.5 543.15 ms
+(at are statistically correlated to your target.)59.5 530.15 ms
+(    If you build a model and find it extremely accurate, you lik)59.5 517.15 ms
+(ely have a leakage problem.)59.5 504.15 ms
+(Preventing Leaky Validation Strategies)59.5 478.15 ms
+(If your validation is based on a simple train-test split, exclud)59.5 452.15 ms
+(e the validation data from any type of fitting, including the fi)59.5 439.15 ms
+(tting of preprocessing steps. This is easier if you use scikit-l)59.5 426.15 ms
+(earn Pipelines. When using cross-validation, it's even more crit)59.5 413.15 ms
+(ical that you use pipelines and do your preprocessing inside the)59.5 400.15 ms
+( pipeline.)59.5 387.15 ms
+(Example)59.5 374.15 ms
+(We will use a small dataset about credit card applications, and )59.5 348.15 ms
+(we will build a model predicting which applications were accepte)59.5 335.15 ms
+(d \(stored in a variable called card\). Here is a look at the data)59.5 322.15 ms
+(:)59.5 309.15 ms
+(import pandas as pd)59.5 283.15 ms
+(data = pd.read_csv\('../input/AER_credit_card_data.csv', )59.5 257.15 ms
+(                   true_values = ['yes'],)59.5 244.15 ms
+(                   false_values = ['no']\))59.5 231.15 ms
+(print\(data.head\(\)\))59.5 218.15 ms
+(   card  reports       age  income     share  expenditure  owner)59.5 192.15 ms
+(  selfemp  \\)59.5 179.15 ms
+(0  True        0  37.66667  4.5200  0.033270   124.983300   True)59.5 166.15 ms
+(    False   )59.5 153.15 ms
+(1  True        0  33.25000  2.4200  0.005217     9.854167  False)59.5 140.15 ms
+(    False   )59.5 127.15 ms
+(2  True        0  33.66667  4.5000  0.004156    15.000000   True)59.5 114.15 ms
+(    False   )59.5 101.15 ms
+(3  True        0  30.50000  2.5400  0.065214   137.869200  False)59.5 88.15 ms
+(    False   )59.5 75.15 ms
+(4  True        0  32.16667  9.7867  0.067051   546.503300   True)59.5 62.15 ms
+(    False   )59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 3 3
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(data_leakage.txt                                          Page 3)59.5 790.15 ms
+F0 sf
+(   dependents  months  majorcards  active  )59.5 751.15 ms
+(0           3      54           1      12  )59.5 738.15 ms
+(1           3      34           1      13  )59.5 725.15 ms
+(2           4      58           1       5  )59.5 712.15 ms
+(3           0      25           1       7  )59.5 699.15 ms
+(4           2      64           1       5  )59.5 686.15 ms
+(We can see with data.shape that this is a small dataset \(1312 ro)59.5 660.15 ms
+(ws\), so we should use cross-validation to ensure accurate measur)59.5 647.15 ms
+(es of model quality)59.5 634.15 ms
+(data.shape)59.5 608.15 ms
+(\(1319, 12\))59.5 582.15 ms
+(from sklearn.pipeline import make_pipeline)59.5 556.15 ms
+(from sklearn.ensemble import RandomForestClassifier)59.5 543.15 ms
+(from sklearn.model_selection import cross_val_score)59.5 530.15 ms
+(y = data.card)59.5 504.15 ms
+(X = data.drop\(['card'], axis=1\))59.5 491.15 ms
+(# Since there was no preprocessing, we didn't need a pipeline he)59.5 465.15 ms
+(re. Used anyway as best practice)59.5 452.15 ms
+(modeling_pipeline = make_pipeline\(RandomForestClassifier\(\)\))59.5 439.15 ms
+(cv_scores = cross_val_score\(modeling_pipeline, X, y, scoring='ac)59.5 426.15 ms
+(curacy'\))59.5 413.15 ms
+(print\("Cross-val accuracy: %f" %cv_scores.mean\(\)\))59.5 400.15 ms
+(Cross-val accuracy: 0.979528)59.5 374.15 ms
+(With experience, you'll find that it's very rare to find models )59.5 348.15 ms
+(that are accurate 98% of the time. It happens, but it's rare eno)59.5 335.15 ms
+(ugh that we should inspect the data more closely to see if it is)59.5 322.15 ms
+( target leakage.)59.5 309.15 ms
+(Here is a summary of the data, which you can also find under the)59.5 283.15 ms
+( data tab:)59.5 270.15 ms
+(    card: Dummy variable, 1 if application for credit card accep)59.5 244.15 ms
+(ted, 0 if not)59.5 231.15 ms
+(    reports: Number of major derogatory reports)59.5 218.15 ms
+(    age: Age n years plus twelfths of a year)59.5 205.15 ms
+(    income: Yearly income \(divided by 10,000\))59.5 192.15 ms
+(    share: Ratio of monthly credit card expenditure to yearly in)59.5 179.15 ms
+(come)59.5 166.15 ms
+(    expenditure: Average monthly credit card expenditure)59.5 153.15 ms
+(    owner: 1 if owns their home, 0 if rent)59.5 140.15 ms
+(    selfempl: 1 if self employed, 0 if not.)59.5 127.15 ms
+(    dependents: 1 + number of dependents)59.5 114.15 ms
+(    months: Months living at current address)59.5 101.15 ms
+(    majorcards: Number of major credit cards held)59.5 88.15 ms
+(    active: Number of active credit accounts)59.5 75.15 ms
+(A few variables look suspicious. For example, does expenditure m)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 4 4
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(data_leakage.txt                                          Page 4)59.5 790.15 ms
+F0 sf
+(ean expenditure on this card or on cards used before appying?)59.5 764.15 ms
+(At this point, basic data comparisons can be very helpful:)59.5 738.15 ms
+(expenditures_cardholders = data.expenditure[data.card])59.5 712.15 ms
+(expenditures_noncardholders = data.expenditure[~data.card])59.5 699.15 ms
+(print\('Fraction of those who received a card with no expenditure)59.5 673.15 ms
+(s: %.2f' \\)59.5 660.15 ms
+(      %\(\( expenditures_cardholders == 0\).mean\(\)\)\))59.5 647.15 ms
+(print\('Fraction of those who received a card with no expenditure)59.5 634.15 ms
+(s: %.2f' \\)59.5 621.15 ms
+(      %\(\(expenditures_noncardholders == 0\).mean\(\)\)\))59.5 608.15 ms
+(Fraction of those who received a card with no expenditures: 0.02)59.5 582.15 ms
+(Fraction of those who received a card with no expenditures: 1.00)59.5 569.15 ms
+(Everyone with card == False had no expenditures, while only 2% o)59.5 543.15 ms
+(f those with card == True had no expenditures. It's not surprisi)59.5 530.15 ms
+(ng that our model appeared to have a high accuracy. But this see)59.5 517.15 ms
+(ms a data leak, where expenditures probably means *expenditures )59.5 504.15 ms
+(on the card they applied for.**.)59.5 491.15 ms
+(Since share is partially determined by expenditure, it should be)59.5 465.15 ms
+( excluded too. The variables active, majorcards are a little les)59.5 452.15 ms
+(s clear, but from the description, they sound concerning. In mos)59.5 439.15 ms
+(t situations, it's better to be safe than sorry if you can't tra)59.5 426.15 ms
+(ck down the people who created the data to find out more.)59.5 413.15 ms
+(We would run a model without leakage as follows:)59.5 387.15 ms
+(potential_leaks = ['expenditure', 'share', 'active', 'majorcards)59.5 361.15 ms
+('])59.5 348.15 ms
+(X2 = X.drop\(potential_leaks, axis=1\))59.5 335.15 ms
+(cv_scores = cross_val_score\(modeling_pipeline, X2, y, scoring='a)59.5 322.15 ms
+(ccuracy'\))59.5 309.15 ms
+(print\("Cross-val accuracy: %f" %cv_scores.mean\(\)\))59.5 296.15 ms
+(Cross-val accuracy: 0.806677)59.5 270.15 ms
+(This accuracy is quite a bit lower, which on the one hand is dis)59.5 244.15 ms
+(appointing. However, we can expect it to be right about 80% of t)59.5 231.15 ms
+(he time when used on new applications, whereas the leaky model w)59.5 218.15 ms
+(ould likely do much worse then that \(even in spite of it's highe)59.5 205.15 ms
+(r apparent score in cross-validation.\).)59.5 192.15 ms
+(Conclusion)59.5 179.15 ms
+(Data leakage can be multi-million dollar mistake in many data sc)59.5 153.15 ms
+(ience applications. Careful separation of training and validatio)59.5 140.15 ms
+(n data is a first step, and pipelines can help implement this se)59.5 127.15 ms
+(paration. Leaking predictors are a more frequent issue, and leak)59.5 114.15 ms
+(ing predictors are harder to track down. A combination of cautio)59.5 101.15 ms
+(n, common sense and data exploration can help identify leaking p)59.5 88.15 ms
+(redictors so you remove them from your model.)59.5 75.15 ms
+(Exercise)59.5 62.15 ms
+re sp
+%%PageTrailer
+%%Page: 5 5
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(data_leakage.txt                                          Page 5)59.5 790.15 ms
+F0 sf
+(Review the data in your ongoing project. Are there any predictor)59.5 764.15 ms
+(s that may cause leakage? As a hint, most datasets from Kaggle c)59.5 751.15 ms
+(ompetitions don't have these variables. Once you get past those )59.5 738.15 ms
+(carefully curated datasets, this becomes a common issue.)59.5 725.15 ms
+(Click here to return the main page for Learning Machine Learning)59.5 699.15 ms
+(.)59.5 686.15 ms
+(------)59.5 660.15 ms
+(Leakage)59.5 647.15 ms
+(Introduction)59.5 634.15 ms
+(Leakage is one of the scariest things in machine learning \(parti)59.5 608.15 ms
+(cularly competitions\). Leakage makes your models look good, unti)59.5 595.15 ms
+(l you put them into production and realize that they're actually)59.5 582.15 ms
+( roundly terrible. To quote the Kaggle wiki entry on the subject)59.5 569.15 ms
+(:)59.5 556.15 ms
+(    Data Leakage is the creation of unexpected additional inform)59.5 530.15 ms
+(ation in the training data, allowing a model or machine learning)59.5 517.15 ms
+( algorithm to make unrealistically good predictions.)59.5 504.15 ms
+(    Leakage is a pervasive challenge in applied machine learning)59.5 478.15 ms
+(, causing models to over-represent their generalization error an)59.5 465.15 ms
+(d often rendering them useless in the real world. It can caused )59.5 452.15 ms
+(by human or mechanical error, and can be intentional or unintent)59.5 439.15 ms
+(ional in both cases.)59.5 426.15 ms
+(Leakage is particularly bad because it invalidates or weakens cr)59.5 400.15 ms
+(oss validation scoring. The accuracy of cross validation as a pr)59.5 387.15 ms
+(ediction for how well our model will do in validation or on prod)59.5 374.15 ms
+(uction data is incredibly important; so much so that it's often )59.5 361.15 ms
+(said that "above all, trust your CV". If we undermine that, we u)59.5 348.15 ms
+(ndermine most of the tools and techniques in our toolbox!)59.5 335.15 ms
+(Target leakage)59.5 322.15 ms
+(The most obvious form of leakage is when a variable in a dataset)59.5 296.15 ms
+( is derived from the target variable in some way. For example, i)59.5 283.15 ms
+(f we are predicting annual_gdp, a column with GDP in 2016 dollar)59.5 270.15 ms
+(s, standardized_gdp, would be an example of a leak, because it's)59.5 257.15 ms
+( just the same data transformed a little bit. In order to build )59.5 244.15 ms
+(a real model and not a linear transform, we would need to remove)59.5 231.15 ms
+( this column from our model entirely. Again from the Kaggle wiki)59.5 218.15 ms
+(:)59.5 205.15 ms
+(    One concrete example we've seen occurred in a prostrate canc)59.5 179.15 ms
+(er dataset. Hidden among hundreds of variables in the training d)59.5 166.15 ms
+(ata was a variable named PROSSURG. It turned out this represente)59.5 153.15 ms
+(d whether the patient had received prostate surgery, an incredib)59.5 140.15 ms
+(ly predictive but out-of-scope value.)59.5 127.15 ms
+(    The resulting model was highly predictive of whether the pat)59.5 101.15 ms
+(ient had prostate cancer but was useless for making predictions )59.5 88.15 ms
+(on new patients.)59.5 75.15 ms
+(With some practice working with and inspecting machine learning )59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 6 6
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(data_leakage.txt                                          Page 6)59.5 790.15 ms
+F0 sf
+(features, this kind of "variable leak" is catchable, but it beco)59.5 764.15 ms
+(mes tedious when the feature matrix has enough predictors in it.)59.5 751.15 ms
+( Domain knowledge helps a ton here.)59.5 738.15 ms
+(Out-of-core leakage)59.5 725.15 ms
+(Leakage is the number one problem in machine learning competitio)59.5 699.15 ms
+(ns because it can be weaponized by model-makers in a way that wo)59.5 686.15 ms
+(uld never make sense in a production system. This is "out-of-cor)59.5 673.15 ms
+(e leakage". For an example of what this looks like, see this old)59.5 660.15 ms
+( Kaggle post explaining why one leak caused a competition identi)59.5 647.15 ms
+(fying right whales to be reset. They're very challenging to catc)59.5 634.15 ms
+(h because even experienced competition-runners \(like the Kaggle )59.5 621.15 ms
+(team\) can't match the time and depth competitors can bring to pr)59.5 608.15 ms
+(obing datasets for weaknesses.)59.5 595.15 ms
+(Knowledge leakage)59.5 582.15 ms
+(Which brings us to knowledge leakage, which is what I want to co)59.5 556.15 ms
+(ver in more depth in this notebook. I'll actually just be going )59.5 543.15 ms
+(over the information presented in this fantastic blog post on th)59.5 530.15 ms
+(e subject, so you should probably read that first.)59.5 517.15 ms
+(To guard against overfitting, machine learning relies heavily on)59.5 491.15 ms
+( cross validation and related holdout and parameter search schem)59.5 478.15 ms
+(es. The effectiveness of the technique relies on our building a )59.5 465.15 ms
+(model on a training data, then testing it for fitness on trainin)59.5 452.15 ms
+(g data that it's never seen before.)59.5 439.15 ms
+(This is only an effective technique if we can prevent informatio)59.5 413.15 ms
+(n about our test data from leaking into our training data. In th)59.5 400.15 ms
+(eory this is easy: just don't use observations from the test dat)59.5 387.15 ms
+(a in the training data. However, there are things we can do duri)59.5 374.15 ms
+(ng the pre-processing before we train a model that injects infor)59.5 361.15 ms
+(mation about our test data into the training process! Doing this)59.5 348.15 ms
+( will increase our cross validation accuracy on the data we trai)59.5 335.15 ms
+(n on, but will worsen our accuracy in practice on validation or )59.5 322.15 ms
+(production data.)59.5 309.15 ms
+(Let's demo how this can happen \(NB: we're reimplementing the blo)59.5 283.15 ms
+(g post code here; some things have changed in the library in the)59.5 270.15 ms
+( meanwhile however, so this code is a little different from that)59.5 257.15 ms
+( which originally ran\).)59.5 244.15 ms
+(We'll build a 100×10000)59.5 218.15 ms
+(feature matrix: that is, 100 observations across 10000 synthetic)59.5 192.15 ms
+( features. This is a massively overdetermined feature matrix. Th)59.5 179.15 ms
+(en we'll perform feature selection: we'll measure the correlatio)59.5 166.15 ms
+(n of each of the columns with the target column, and take the to)59.5 153.15 ms
+(p two scorers as our model inputs. We'll train on those, and mea)59.5 140.15 ms
+(sure what our mean squared error \(MSE\) is \(for more on model fit)59.5 127.15 ms
+( metrics click here\).)59.5 114.15 ms
+(import numpy as np)59.5 88.15 ms
+(import pandas as pd)59.5 75.15 ms
+(import scipy.stats as st)59.5 62.15 ms
+re sp
+%%PageTrailer
+%%Page: 7 7
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(data_leakage.txt                                          Page 7)59.5 790.15 ms
+F0 sf
+(np.random.seed\(0\))59.5 764.15 ms
+(df = np.random.randint\(0,10,size=[100,10000]\))59.5 751.15 ms
+(y = np.random.randint\(0,2,size=100\))59.5 738.15 ms
+(df = pd.DataFrame\(df\))59.5 725.15 ms
+(X = df.values)59.5 712.15 ms
+(corr = np.abs\()59.5 686.15 ms
+(    np.array\([st.pearsonr\(X[:, i], y\)[0] for i in range\(X.shape[)59.5 673.15 ms
+(1]\)]\))59.5 660.15 ms
+(\))59.5 647.15 ms
+(corrmax_indices = np.argpartition\(np.abs\(corr\), -2\)[-2:])59.5 634.15 ms
+(X_selected = X[:, corrmax_indices])59.5 608.15 ms
+(from sklearn.linear_model import LogisticRegression)59.5 582.15 ms
+(from sklearn.model_selection import cross_val_score)59.5 569.15 ms
+(clf = LogisticRegression\(\))59.5 543.15 ms
+(clf.fit\(X_selected, y\))59.5 530.15 ms
+(mse = cross_val_score\(clf, X_selected, y, cv=10, scoring='neg_me)59.5 517.15 ms
+(an_squared_error'\))59.5 504.15 ms
+(pd.Series\(mse\).abs\(\).mean\(\))59.5 478.15 ms
+(0.24989898989898984)59.5 452.15 ms
+(Our mean squared error is pretty good, and we trust our CV, so w)59.5 426.15 ms
+(e think this is a result reflective of practical performace. How)59.5 413.15 ms
+(ever, is it really? Can you spot the error?)59.5 400.15 ms
+(It's subtle. The reason we picked a matrix with so many features)59.5 374.15 ms
+( is because it accentuates the error we've made with the procedu)59.5 361.15 ms
+(re here. By measuring the correlation of the columns and taking )59.5 348.15 ms
+(the two highest scorers before doing cross validation, we actual)59.5 335.15 ms
+(ly injected incidental information about which variables are mos)59.5 322.15 ms
+(t highly correlated in both the train and test sets. Hence when )59.5 309.15 ms
+(we run the cross validation, we've "pre-selected" incidental cor)59.5 296.15 ms
+(relation that we know beforehand performs well in the test set.)59.5 283.15 ms
+(We picked a lot of variables to make this effect easily noticabl)59.5 257.15 ms
+(e \(with 10000 variables, some of them are going to end up quite )59.5 244.15 ms
+(correlated with the target\). We can see how strong of an effect )59.5 231.15 ms
+(this creates by doing this same variable selection after a train)59.5 218.15 ms
+(-test split:)59.5 205.15 ms
+(from sklearn.model_selection import train_test_split)59.5 179.15 ms
+(from sklearn.metrics import mean_squared_error)59.5 166.15 ms
+(X_train, X_test, y_train, y_test = train_test_split\(X, y, test_s)59.5 140.15 ms
+(ize=0.4\))59.5 127.15 ms
+(corr = np.abs\()59.5 101.15 ms
+(    np.array\([st.pearsonr\(X_train[:, i], y_train\)[0] for i in ra)59.5 88.15 ms
+(nge\(df.shape[1]\)]\))59.5 75.15 ms
+(\))59.5 62.15 ms
+(corrmax_indices = np.argpartition\(np.abs\(corr\), -2\)[-2:])59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 8 8
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(data_leakage.txt                                          Page 8)59.5 790.15 ms
+F0 sf
+(X_selected = X_train[:, corrmax_indices])59.5 764.15 ms
+(clf = LogisticRegression\(\))59.5 738.15 ms
+(clf.fit\(X_selected, y_train\))59.5 725.15 ms
+(y_hat = clf.predict\(X_test[:, corrmax_indices]\))59.5 712.15 ms
+(mean_squared_error\(y_test, y_hat\))59.5 699.15 ms
+(0.45000000000000001)59.5 673.15 ms
+(It looks like knowledge leaking almost halved our mean squared e)59.5 647.15 ms
+(rror!)59.5 634.15 ms
+(The correct approach to dealing with this problem is to think ha)59.5 608.15 ms
+(rder about how we will structure our pipeline. Best-fit variable)59.5 595.15 ms
+( selection like this should live inside of our cross validation;)59.5 582.15 ms
+( that is, it should only be done after we've already done train-)59.5 569.15 ms
+(test splitting. This will at least give us a more realistic inde)59.5 556.15 ms
+(x on performance:)59.5 543.15 ms
+(from sklearn.metrics import mean_squared_error)59.5 517.15 ms
+(from sklearn.model_selection import StratifiedKFold)59.5 504.15 ms
+(kf = StratifiedKFold\(n_splits=10\))59.5 478.15 ms
+(mse_results = [])59.5 452.15 ms
+(for train_index, test_index in kf.split\(X, y\):)59.5 426.15 ms
+(    X_train, X_test = X[train_index], X[test_index])59.5 413.15 ms
+(    y_train, y_test = y[train_index], y[test_index])59.5 400.15 ms
+(    corr = np.abs\()59.5 374.15 ms
+(        np.array\([st.pearsonr\(X_train[:, i], y_train\)[0] for i i)59.5 361.15 ms
+(n range\(df.shape[1]\)]\))59.5 348.15 ms
+(    \))59.5 335.15 ms
+(    corrmax_indices = np.argpartition\(np.abs\(corr[:-1]\), -2\)[-2:)59.5 322.15 ms
+(])59.5 309.15 ms
+(    X_train_selected = X_train[:, corrmax_indices])59.5 283.15 ms
+(    clf = LogisticRegression\(\))59.5 257.15 ms
+(    clf.fit\(X_train_selected, y_train\))59.5 244.15 ms
+(    mse = mean_squared_error\(clf.predict\(X_test[:, corrmax_indic)59.5 231.15 ms
+(es]\), y_test\))59.5 218.15 ms
+(    mse_results.append\(mse\))59.5 205.15 ms
+(    )59.5 192.15 ms
+(mse = pd.Series\(mse\).mean\(\))59.5 179.15 ms
+(mse)59.5 166.15 ms
+(0.6666666666666666)59.5 140.15 ms
+(Conclusion)59.5 114.15 ms
+(Knowledge leakage is a difficult problem to address completely. )59.5 88.15 ms
+(The one thing I recommend doing to avoid this problem is being c)59.5 75.15 ms
+(onscientious about using pipelines, like the one scikit-learn pr)59.5 62.15 ms
+(ovides, to hande pre-processing and training as one contiguous u)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 9 9
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(data_leakage.txt                                          Page 9)59.5 790.15 ms
+F0 sf
+(nit \(the scikit-learn user guide in fact lists "safety" in this )59.5 764.15 ms
+(regard as one of the three reasons to use pipelining\).)59.5 751.15 ms
+(For small to moderately-sized datasets, I do not think that know)59.5 725.15 ms
+(ledge leakage is a huge problem. Pipelining over feature selecti)59.5 712.15 ms
+(on has its own problems \(it introduces overfitting into cross va)59.5 699.15 ms
+(lidation?\). The amount of error you introduce into your model vi)59.5 686.15 ms
+(a knowledge leaking is relatively small: maybe even a rounding e)59.5 673.15 ms
+(rror on your overall model accuracy.)59.5 660.15 ms
+(However, it becomes a problem when there are lots of variables, )59.5 634.15 ms
+(especially when the feature matrix is overdetermined \(more varia)59.5 621.15 ms
+(bles than observations\). In these cases you do want to be carefu)59.5 608.15 ms
+(l about how you design your pre-processing.)59.5 595.15 ms
+(When in doubt, I recommend running an exercise like the one I de)59.5 569.15 ms
+(monstrated here on your dataset. See how much of a difference kn)59.5 556.15 ms
+(owledge leaking makes for a dataset shaped like yours!)59.5 543.15 ms
+re sp
+%%PageTrailer
+%%Trailer
+%%Pages: 9
+%%EOF
+
