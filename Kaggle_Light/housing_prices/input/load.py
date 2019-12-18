@@ -2,6 +2,7 @@
 import pandas as pd
 from rmse import rmse_cv
 from sklearn.linear_model import Ridge, Lasso
+import xgboost as xgb
 
 train = pd.read_csv('train.csv')
 test = pd.read_csv('test.csv')
@@ -46,3 +47,19 @@ ridge_pred_transformed = np.expm1(ridge_pred)
 ridge_dict = {'id':test_id, 'SalePrice':ridge_pred_transformed}
 ridge_df = pd.DataFrame(ridge_dict)
 ridge_df.to_csv('ridge_sub.csv',index=False)
+
+dtrain = xgb.DMatrix(train_fill, label=y_train)
+dtest = xgb.DMatrix(test_fill)
+params = {"max_depth":2, "eta":0.1}
+xgb_model_df = xgb.cv(params, dtrain, num_boost_round=500, early_stopping_rounds=100)
+xgb_model_df.loc[30:,['test-rmse-mean','train-rmse-mean']].plot()
+
+model_xgb = xgb.XGBRegressor(n_estimators=360, max_depth=2, learning_rate=0.1)
+model_xgb.fit(train_fill,y_train)
+xgb_pred = model_xgb.predict(test_fill)
+xgb_pred_transformed = np.expm1(xgb_pred)
+
+xgb_dict = {'id':test_id, 'SalePrice':xgb_pred_transformed}
+xgb_df = pd.DataFrame(xgb_dict)
+xgb_df.to_csv('xgb_sub.csv',index=False)
+
