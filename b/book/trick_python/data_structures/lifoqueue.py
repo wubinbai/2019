@@ -1,0 +1,10 @@
+from queue import LifoQueue
+s = LifoQueue()
+s.put('1218')
+s.put('1219')
+s.put('1220')
+a = s.get()
+b = s.get()
+c = s.get()
+#d = s.get_nowait()
+# then s.get()
