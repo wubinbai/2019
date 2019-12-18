@@ -1,0 +1,171 @@
+Continuing our discussion with ensemble
+methods, next one up is stacking. Stacking is a very, very popular form of ensembling using
+predictive modeling competitions. And I believe in most competitions,
+there is a form of stacking in the end in order to boost
+your performance as best as you can. Going through the definition of stacking,
+it essentially means making several predictions
+with hold-out data sets. And then collecting or
+stacking these predictions to form a new data set,
+where you can fit a new model on it, on this newly-formed data
+set from predictions. I would like to take you through
+a very simple, I would say naive, example to show you how,
+conceptually, this can work. I mean, we have so far seen that you
+can use previous models' predictions to affect a new model, but
+always in relation with the input data. This is a new concept because we're
+only going to use the predictions of some models in order
+to make a better model. So let's see how these could
+work in a real life scenario. Let's assume we have three kids,
+let's name them LR, SVM, KNN, and
+they argue about a physics question. So each one believes the answer to
+a physics question is different. First one says 13, second 18, third 11, they don't know how to
+solve this disagreement. They do the honorable thing,
+they say let's take an average, which in this case is 14. So you can almost see the kids, there's different models here,
+they take input data. In this case,
+it's the question about physics. They process it based on
+historical information and and they are able to output an estimate,
+a prediction. Have they done it optimally, though? Another way to say this is
+to say there was a teacher, Miss DL, who had seen this discussion,
+and she decided to step up. While she didn't hear the question,
+she does know the students quite well, she knows the strength and
+weaknesses of each one. She knows how well they have done
+historically in physics questions. And from the range of values they have
+provided, she is able to give an estimate. Let's say that in this concept, she knows
+that SVM is really good in physics, and her father works in the department
+of Physics of Excellence. And therefore she should have
+a bigger contribution to this ensemble than every other kid,
+therefore the answer is 17. And this is how a meta model works,
+it doesn't need to know the input data. It just knows how the models
+have done historically, in order to find the best
+way to combine them. And this can work quite well in practice. So, let's go more into
+the methodology of stacking. Wolpert introduced stacking in 1992, as a meta modeling technique
+to combine different models. It consists of several steps. The first step is,
+let's assume we have a train data set, let's divide it into two parts; so
+a training and the validation. Then you take the training part,
+and you train several models. And then you make predictions for
+the second part, let's say the validation data set. Then you collect all these predictions,
+or you stack these predictions. You form a new data set and
+you use this as inputs to a new model. Normally we call this a meta model,
+and the models we run into, we call them base model or base learners. If you're still confused about stacking,
+consider the following animation. So let's assume we have three data sets A,
+B, and C. In this case, A will serve
+the role of the training data set, B will be the validation data set, and C will be the test data sets where we
+want to make the final predictions. They all have similar architectural,
+four features, and one target variable we try to predict. So in this case,
+we can choose an algorithm to train a model based on data set 1, and then we make predictions for
+B and C at the same time. Now we take these predictions, and
+we put them into a new data set. So we create a data set to store the
+predictions for the validation data in B1. And a data set called C1 to save
+predictions for the test data, called C1. Then we're going to repeat the process, now we're going to choose
+another algorithm. Again, we will fit it on A data set. We will make predictions on B and
+C at the same time, and we will save these predictions
+into the newly-formed data sets. And we essentially append them,
+we stack them next to each other, this is where stacking takes its name. And we can continue this even more,
+do it with a third algorithm. Again the same, fit on A,
+predict on B and C, same predictions. What we do then is we take the target
+variable for the B data set, or the validation datadset,
+which we already knew. And we are going to fit a new model on B1
+with the target of the validation data, and then we will make predictions from C1. And this is how we combine
+different models with stacking, to hopefully make better predictions for
+the test or the unobserved data. Let us go through an example,
+a simple example in Python, in order to understand better,
+as in in code, how it would work. It is quite simple, so even people not very experienced with
+Python hopefully can understand this. The main logic is that we will use
+two base learners on some input data, a random forest and a linear regression. And then, we will try to combine
+the results, starting with a meta learner, again, it will be linear regression. Let's assume we again have
+a train data set, and a target variable for
+this data set, and a test data set. Maybe the code seems a bit intimidating,
+but we will go step by step. What we do initially is we take the train
+data set and we split it in two parts. So we create a training and
+a valid data set out of this, and we also split the target variable. So we create ytraining and
+yvalid, and we split this by 50%. We could have chosen something else,
+let's say 50%. Then we specify our base learners,
+so model1 is the random forest in this case, and
+model2 is a linear regression. What we do then is we fit
+the both models using the training data and the training target. And we make predictions for
+the validation data for both models, and at the same time we'll make
+predictions for the test data. Again, for both models,
+we save these as preds1, preds2, and for the test data,
+test_preds1 and test_preds2. Then we are going to
+collect the predictions, we are going to stack the predictions and
+create two new data sets. One for validation,
+where we call it stacked_predictions, which consists of preds1 and preds2. And then for the data set for
+for the test predictions, called stacked_test_predictions, where
+we stack test_preds1 and test_preds2. Then we specify a meta learner, let's call it meta_model,
+which is a linear regression. And we fit this model on the predictions
+made on the validation data and the target for the validation data, which
+was our holdout data set all this time. And then we can generate predictions for the test data by applying this model
+on the stacked_test_predictions. This is how it works. Now, I think this is a good
+time to revisit an old example we used in the first session,
+about simple averaging. If you remember,
+we had a prediction that was doing quite well to predict age when
+the age was less than 50, and another prediction that was doing
+quite well when age was more than 50. And we did something tricky,
+we said if it is less than 50, we'll use the first one, if age is more
+than 50, we will use the other one. The reason this is tricky is
+because normally we use the target information to make this decision. Where in an ideal world, this is what
+you try to predict, you don't know it. We have done it in order to show what
+is the theoretical best we could get, or yeah, the best. So taking the same predictions and applying stacking, this is what the end
+result would actually look like. As you can see,
+it has done pretty similarly. The only area that there is some
+error is around the threshold of 50. And that makes sense, because the model
+doesn't see the target variable, is not able to identify
+this cut of 50 exactly. So it tries to do it only
+based on the input models, and there is some overlap around this area. But you can see that stacking
+is able to identify this, and use it in order to
+make better predictions. There are certain things you need to
+be mindful of when using stacking. One is when you have time-sensitive data,
+as in let's say, time series, you need to formulate your
+stacking so that you respect time. What I mean is, when you create
+your train and validation data, you need to make certain that your train
+is in the past and your validation is in the future, and ideally your
+test data is also in the future. So you need to respect this
+time element in order to make certain your model generalizes well. The other thing you need to look at is,
+obviously, single model performance is important. But the other thing that is
+also very important is model diversity, how different
+a model is to each other. What is the new information each
+model brings into the table? Now, because stacking, and depending
+on the algorithms you will use for stacking, can go quite deep
+into exploring relationships. It will find when a model is good, and when a model is actually bad or
+fairly weak. So you don't need to worry too much
+to make all the models really strong, stacking can actually extract
+the juice from each prediction. Therefore, what you really need to focus
+is, am I making a model that brings some information,
+even though it is generally weak? And this is true, there have been many
+situations where I've made, I've had some quite weak models in my ensemble,
+I mean, compared to the top performance. And nevertheless, they were actually
+adding lots of value in stacking. They were bringing in new information
+that the meta model could leverage. Normally, you introduce
+diversity from two forms, one is by choosing a different algorithm. Which makes sense, certain algorithms capitalize on
+different relationships within the data. For example, a linear model will
+focus on a linear relationship, a non-linear model can capture
+better a non-linear relationships. So predictions may come a bit different. The other thing is you can
+even run the same model, but you try to run it on different
+transformation of input data, either less features or
+completely different transformation. For example, in one data set you may treat categorical
+features as one whole encoding. In another,
+you may just use label in coding, and the result will probably produce
+a model that is very different. Generally, there is no limit to
+how many models you can stack. But you can expect that
+there is a plateauing after certain models have been added. So initially, you will see some
+significant uplift in whatever metric you are testing on every
+time you run the model. But after some point, the incremental
+uplift will be fairly small. Generally, there's no
+way to know this before, exactly what is the number of models
+where we will start plateauing. But generally, this is a affected by how
+many features you have in your data, how much diversity you managed
+to introduce into your models, quite often how many
+rows of data you have. So it is tough to know this beforehand,
+but generally this is
+something to be mindful of. But there is a point where adding more
+models actually does not add that much value. And because the meta model, the meta model will only use predictions of other models. We can assume that the other
+models have done, let's say, a deep work or
+a deep job to scrutinize the data. And therefore the meta model
+doesn't need to be so deep. Normally, you have predictions with
+are correlated with the target. And the only thing it needs to do is
+just to find a way to combine them, and that is normally not so complicated. Therefore, it is quite often that
+the meta model is generally simpler. So if I was to express this
+in a random forest context, it will have lower depth than what was the
+best one you found in your base models. This was the end of the session,
+here we discussed stacking. In the next one, we will discuss a very
+interesting concept about stacking and extending it on multiple levels,
+called stack net. So stay in tune.

@@ -1,0 +1,80 @@
+[MUSIC] Hi everyone, in this video I will
+talk about the application of matrix factorization technique
+in feature extraction. You will see a few application
+of the approach for feature extraction and
+we will be able to apply it. I will show you several examples
+along with practical details. Here's a classic example
+of recommendations. Suppose we have some information about
+user, like age, region, interest and items like gender, year length. Also we know ratings that
+users gave to some items. These ratings can be organized in a user
+item matrix with row corresponding to users, and columns corresponding to items,
+as shown in the picture. In a cell with coordinates i, j,
+the user or agent can be chooser i, give the item j. Assume that our user
+have some features Ui. And jth item have is
+corresponding feature Mj. And scalar product of these
+features produce a rating Rij. Now we can apply matrix factorization
+to learning those features for item and users. Sometimes these features
+can have an interpretation. Like the first feature in item can
+be measured of or something similar. But generally you should consider them
+as some extra features, which we can use to encode user in the same way as we did
+before with labeling coder or coder. Specifically our assumption about
+scale of product is the following. If we present all attributes of user and items as matrixes, the matrix product will
+be very close to the matrix's ratings. In other words,
+which way to find matrix's U and M, such as their product
+gives the matrix R. This way, this approach is called matrix
+factorization or matrix composition. In previous examples, we used both row and
+column related features. But sometimes we don't let
+the features correspond to rows. Let's consider another example. Suppose that we are texts, do you
+remember how we usually classify text? We extract features and each document
+was described by a large sparse reactor. If we do matrix factorization over
+these parse features, we will get the representation for index displayed
+in yellow, and terms displayed in green. Although we can somehow
+use representation for jumps, we are interested only
+in representations for dogs. Now every document is described
+by a small, dense reactor. These are our features, and we can use
+them in a way similar to previous example. This case is often called
+dimension energy reduction. It's quite an efficient way to reduce
+the size of feature metric, and extract real valued features
+from categorical ones. In competitions we often have
+different options for purchasing. For example, using text data,
+you can run back of big rams and so on. Using matrix optimization technique, you are able to extract features
+from all of these matrices. Since the resulting matrices will be
+small, we can easily join them and use togetherness of the features
+in tree-based models. Now I want to make a few comments
+about matrix factorization. Not just that we are not
+constrained to reduce whole matrix, you can apply factorization to a subset
+of a column and leave the other as is. Besides reduction you can
+use pressure boards for getting another presentation
+of the same data. This is especially useful for example since it provides velocity
+of its models and leads to a better. Of course matrix factorization
+is a loss of transformation, in other words we will lose some
+information after the search reduction. Efficiency of this approach heavily
+depends on a particular task and choose a number of latent factors. The number should be considered as
+a hyper parameter and needs to be tuned. It's a good practice to choose
+a number of factors between 5 and 100. Now, let's switch from general idea
+to particular implementations. Several matrix factorization
+methods are implemented in circuit as the most famous SVD and PCA. In addition,
+their use included TruncatedSVD, which can work with sparse matrices. It's very convenient for example,
+in case of text datasets. Also there exists a so called non-negative
+matrix factorization, or NMF. It impose an additional restrictions that
+all hidden factors are non-negative, that is either zero or a positive number. It can be applied only to
+non-negative matrixes. For example matrix where all represented
+occurence of each word in the document. NMF has an interesting property, it transforms data in a way that makes
+data more suitable for decision trees. Take a look at the picture from
+Microsoft Mobile Classification Challenge. It can be seen that NMF transform data
+forms lines parallel to the axis. A few more notes on matrix factorizations. Essentially they are very
+similar to linear models, so we can use the same transformation
+tricks as we use for linear models. So in addition to standard NMF, I advise you to apply
+the factorization to transform data. Here's another plot from the competition. It's clear that these two transformations
+produce different features, and we don't have to choose the best one. Instead, it's beneficial
+to use both of them. I want to note that matrix factorization
+is a trainable transformation, and has its own parameters. So we should be careful, and
+use the same transformation for all parts of your data set. Reading and transforming each
+part individually is wrong, because in that case you will get
+two different transformations. This can lead to an error
+which will be hard to find. The correct method is shown below,
+first we need to the data information on all data and
+only then apply to each individual piece. To sum up, matrix composition is a very
+general approach to dimensional reduction and feature extraction. It can be used to transform
+categorical feature into real ones. And tricks for linear models are also
+suitable for matrix factorizations. Thank you for your attention. [MUSIC] [SOUND]

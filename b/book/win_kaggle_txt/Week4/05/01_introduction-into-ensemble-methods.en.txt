@@ -1,0 +1,62 @@
+Hello everyone, this is Marios
+Michailidis, and this will be the first video in a series that we will be
+discussing on ensemble methods for machine learning. To tell you a bit about me, I work as
+Research Data Scientist for H2Oai. In fact,
+my PhD is about assemble methods, and they used to be ranked
+number one in cargo and ensemble methods have greatly
+helped me to achieve this spot. So you might find the course interesting. So what is ensemble modelling? I think with this term, we refer to
+combining many different machine learning models in order to get
+a more powerful prediction. And later on we will see
+examples that this happens, that we combine different models and
+we do get better predictions. There are various ensemble methods. Here we'll discuss a few, those that
+we encounter quite often, in predictive modelling competitions, and they tend
+to be, in general, quite competitive. We will start with simple averaging
+methods, then we'll go to weighted averaging methods, and we will also
+examine conditional averaging. And then we will move to some more
+typical ones like bagging, or the very, very popular, boosting,
+then stacking and StackNet, which is the result of my research. But as I said,
+these will be a series of videos, and we will initially start
+with the averaging methods. So, in order to help you understand
+a bit more about the averaging methods, let's take an example. Let's say we have a variable called age,
+as in age years, and we try to predict this. We have a model that yields prediction for
+age. Let's assume that
+the relationship between the two, the actual age in our prediction,
+looks like in the graph, as in the graph. So you can see that the model boasts
+quite a higher square of a value of 0.91, but it doesn't do so
+well in the whole range of values. So when age is less than 50,
+the model actually does quite well. But when age is more than 50, you can see that the average
+error is higher. Now let's take another example. Let's assume we have a second model
+that also tries to predict age, but this one looks like that. As you can see, this model does quite
+well when age is higher than 50, but not so well when age is less than 50,
+nevertheless, it scores again 0.91. So we have two models that have
+a similar predictive power, but they look quite different. It's quite obvious that they do
+better in different parts of the distribution of age. So what will happen if we
+were to try to combine this two with a simple averaging method,
+in other words, just say (model 1 + model two) / 2,
+so a simple averaging method. The end result will look
+as in the new graph. So, our square has moved to 0.95,
+which is a considerable improvement versus the 0.91 we had before,
+and as you can see, on average, the points tend to
+be closer with the reality. So the average error is smaller. However, as you can see, the model doesn't
+do better as an individual models for the areas where the models
+were doing really well, nevertheless, it does better on average. This is something we need to understand, that there is potentially a better
+way to combine these models. We could try to take a weighting average. So say, I'm going to take 70% of
+the first model prediction and 30% of the second model prediction. In other words,
+(model 1x0.7 + model 2x0.3), and the end result would
+look as in the graph. So you can see their square is no better
+and that makes sense, because the models have quite similar predictive power and
+it doesn't make sense to rely more in one. And also it is quite clear that
+it looks more with model 1, because it has better predictions
+when age is less than 50, and worse predictions
+when age is more than 50. As a theoretical exercise, what is the
+theoretical best we could get out of this? We know we have a model that scores
+really well when age is less than 50, and another model that scores really
+well when age is more than 50. So ideally, we would like to
+get to something like that. This is how we leverage the two
+models in the best possible way here by using a simple
+conditioning method. So if less than 50 is one I'll just
+use the other, and we will see later on that there are ensemble methods
+that are very good at finding these relationships of two or more predictions
+in respect to the target variable. But, this will be a topic for
+another discussion. Here we discuss simple averaging methods, hopefully you found it useful, and
+stay here for the next session to come. Thank you very much.

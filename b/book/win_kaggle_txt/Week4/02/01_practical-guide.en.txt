@@ -1,0 +1,190 @@
+[SOUND] Hi, to this moment,
+we have already discussed all basics new things which build up to
+a big solution like featured generation, validation, minimalist codings and so on. We went through several
+competitions together and tried our best to unite everything
+we learn into one huge framework. But as with any other set of tools,
+there are a lot of heuristics which people often find only with a trial and
+error approach, spending significant time on learning
+how to use these tools efficiently. So to help you out here, in this video we'll share things we
+learned the hard way, by experience. These things may vary from
+one person to another. So we decided that everyone on class will
+present his own guidelines personally, to stress the possible
+diversity in a broad issues and to make an accent on different moments. Some notes might seem obvious to you,
+some may not. But be sure for even some of them or
+at least no one involve them. Can save you a lot of time. So, let's start. When we want to enter a competition,
+define your goals and try to estimate what you can
+get out of your participation. You may want to learn more
+about an interesting problem. You may want to get acquainted
+with new software tools and packages, or
+you may want to try to hunt for a medal. Each of these goals will influence what
+competition you choose to participate in. If you want to learn more
+about an interesting problem, you may want the competition to have
+a wide discussion on the forums. For example, if you are interested in
+data science, in application to medicine, you can try to predict lung cancer
+in the Data Science Bowl 2017. Or to predict seizures in long
+term human EEG recordings. In the Melbourne University
+Seizure Prediction Competition. If you want to get acquainted
+with new software tools, you may want the competition
+to have required tutorials. For example, if you want to
+learn a neural networks library. You may choose any of competitions with
+images like the nature conservancy features, monitoring competition. Or the planet, understanding
+the Amazon from space competition. And if you want to try to hunt for a medal, you may want to check how
+many submissions do participants have. And if the points that people have
+over one hundred submissions, it can be a clear sign of legible
+problem or difficulties in validation includes an inconsistency of
+validation and leaderboard scores. On the other hand, if there are people
+with few submissions in the top, that usually means there should be
+a non-trivial approach to this competition or it's discovered only by few people. Beside that, you may want to pay
+attention to the size of the top teams. If leaderboard mostly consists of
+teams with only one participant, you'll probably have enough
+chances if you gather a good team. Now, let's move to the next step
+after you chose a competition. As soon as you get familiar with the data, start to write down your ideas about
+what you may want to try later. What things could work here? What approaches you may want to take. After you're done, read forums and
+highlight interesting posts and topics. Remember, you can get a lot of information
+and meet new people on forums. So I strongly encourage you to
+participate in these discussions. After the initial pipeline is ready and you roll down few ideas, you may want
+to start improving your solution. Personally, I like to organize
+these ideas into some structure. So you may want to sort
+ideas into priority order. Most important and
+promising needs to be implemented first. Or you may want to organize
+these ideas into topics. Ideas about feature generation,
+validation, metric optimization. And so on. Now pick up an idea and implement it. Try to derive some insights on the way. Especially, try to understand why
+something does or doesn't work. For example, you have an idea about trying a deep
+gradient boosting decision tree model. To your joy, it works. Now, ask yourself why? Is there some hidden data
+structure we didn't notice before? Maybe you have categorical features
+with a lot of unique values. If this is the case, you as well can make a conclusion that
+mean encodings may work great here. So in some sense,
+the ability to analyze the work and derive conclusions while
+you're trying out your ideas will get you on the right track to
+reveal hidden data patterns and leaks. After we checked out most important ideas, you may want to switch
+to parameter training. I personally like the view,
+everything is a parameter. From the number of features, through
+gradient boosting decision through depth. From the number of layers in
+convolutional neural network, to the coefficient you finally
+submit is multiplied by. To understand what I should tune and change first, I like to sort all
+parameters by these principles. First, importance. Arrange parameters from
+important to not useful at all. Tune in this order. These may depend on data structure,
+on target, on metric, and so on. Second, feasibility. Rate parameters from, it is easy to tune,
+to, tuning this can take forever. Third, understanding. Rate parameters from, I know what
+it's doing, to, I have no idea. Here it is important to understand
+what each parameter will change in the whole pipeline. For example, if you increase
+the number of features significantly, you may want to change ratio of columns
+which is used to find the best split in gradient boosting decision tree. Or, if you change number of layers
+in convolution neural network, you will need more reports to train it,
+and so on. So let's see, these were some
+of my practical guidelines, I hope they will prove useful for
+you as well. Every problem starts with data loading and
+preprocessing. I usually don't pay much attention to
+some sub optimal usage of computational resources but this particular
+case is of crucial importance. Doing things right at the very beginning
+will make your life much simpler and will allow you to save a lot of time and
+computational resources. I usually start with basic data
+preprocessing like labeling, coding, category recovery,
+both enjoying additional data. Then, I dump resulting data into HDF5 or
+MPI format. HDF5 for Panda's dataframes,
+and MPI for non bit arrays. Running experiment often require
+a lot of kernel restarts, which leads to reloading all the data. And loading class CSC files
+may take minutes while loading data from HDF5 or MPI formats
+is performed in a matter of seconds. Another important matter is that by
+default, Panda is known to store data in 64-bit arrays, which is
+unnecessary in most of the situations. Downcasting everything to 32 bits will
+result in two-fold memory saving. Also keep in mind that Panda's support
+out of the box data relink by chunks, via chunks ice parameter
+in recess fee function. So most of the data sets may be
+processed without a lot of memory. When it comes to performance evaluation, I
+am not a big fan of extensive validation. Even for medium-sized datasets
+like 50,000 or 100,000 rows. You can validate your models
+with a simple train test split instead of full cross validation loop. Switch to full CV only
+when it is really needed. For example,
+when you've already hit some limits and can move forward only with
+some marginal improvements. Same logic applies to
+initial model choice. I usually start with LightGBM,
+find some reasonably good parameters, and evaluate performance of my features. I want to emphasize that
+I use early stopping, so I don't need to tune number
+of boosting iterations. And god forbid start ESVMs,
+random forks, or neural networks, you will waste too
+much time just waiting for them to feed. I switch to tuning the models,
+and sampling, and staking, only when I am satisfied
+with feature engineering. In some ways, I describe my approach as,
+fast and dirty, always better. Try focusing on what is really important,
+the data. Do ED, try different features. Google domain-specific knowledge. Your code is secondary. Creating unnecessary classes and personal frame box may only make
+things harder to change and will result in wasting your time, so
+keep things simple and reasonable. Don't track every little change. By the end of competition, I usually
+have only a couple of notebooks for model training and to want notebooks
+specifically for EDA purposes. Finally, if you feel really uncomfortable
+with given computational resources, don't struggle for weeks,
+just rent a larger server. Every competition I start with
+a very simple basic solution that can be even primitive. The main purpose of such solution
+is not to build a good model but to debug full pipeline from very beginning of the data to the very end when we write
+the submit file into decided format. I advise you to start with
+construction of the initial pipeline. Often you can find it in baseline
+solutions provided by organizers or in kernels. I encourage you to read carefully and
+write your own. Also I advise you to follow from simple
+to complex approach in other things. For example, I prefer to start
+with Random Forest rather than Gradient Boosted Decision Trees. At least Random Forest
+works quite fast and requires almost no tuning
+of hybrid parameters. Participation in data science competition
+implies the analysis of data and generation of features and
+manipulations with models. This process is very similar in spirit
+to the development of software and there are many good practices
+that I advise you to follow. I will name just a few of them. First of all, use good variable names. No matter how ingenious you are,
+if your code is written badly, you will surely get confused in it and
+you'll have a problem sooner or later. Second, keep your research reproducible. FIx all random seeds. Write down exactly how
+a feature was generated, and store the code under version
+control system like git. Very often there are situation when you
+need to go back to the model that you built two weeks ago and
+edit to the ensemble width. The last and probably the most
+important thing, reuse your code. It's really important to use the same
+code at training and testing stages. For example, features should be prepared
+and transforming by the same code in order to guarantee that they're
+produced in a consistent manner. Here in such places are very
+difficult to catch, so it's better to be very careful with it. I recommend to move reusable code into
+separate functions or even separate model. In addition, I advise you to read
+scientific articles on the topic of the competition. They can provide you with
+information about machine and correlated things like for example how
+to better optimize a measure, or AUC. Or, provide the main
+knowledge of the problem. This is often very useful for
+future generations. For example, during Microsoft Mobile
+competition, I read article about mobile detection and used ideas from
+them to generate new features. >> I usually start the competition by
+monitoring the forums and kernels. It happens that a competition starts,
+someone finds a bug in the data. And the competition data is
+then completely changed, so I never join a competition
+at its very beginning. I usually start a competition with
+a quick EDA and a simple baseline. I tried to check the data for
+various leakages. For me, the leaks are one of the most
+interesting parts in the competition. I then usually do several submissions
+to check if validation score correlates with publicly the board score. Usually, I try to come up with a list
+of things to try in a competition, and I more or less try to follow it. But sometimes I just try to generate
+as many features as possible, put them in extra boost and
+study what helps and what does not. When tuning parameters,
+I first try to make model overfit to the training set and only then I
+change parameters to constrain the model. I had situations when I could not
+reproduce one of my submissions. I accidentally changed something in
+the code and I could not remember what exactly, so nowadays I'm very
+careful about my code and script. Another problem? Long execution history in notebooks leads
+to lots of defined global variables. And global variables surely lead to bugs. So remember to sometimes
+restart your notebooks. It's okay to have ugly code, unless you
+do not use this to produce a submission. It would be easier for you to get into this code later if
+it has a descriptive variable names. I always use git and
+try to make the code for submissions as transparent as possible. I usually create a separate notebook for every submission so I can always run
+the previous solution and compare. And I treat the submission
+notebooks as script. I restart the kernel and
+always run them from top to bottom. I found a convenient way to validate
+the models that allows to use validation code with minimal changes to retrain
+a model on the whole dataset. In the competition, we are provided
+with training and test CSV files. You see we load them in the first cell. In the second cell, we split
+training set and actual training and validation sets, and
+save those to disk as CSV files with the same structure as given train CSV and
+test CSV. Now, at the top of the notebook,
+with my model, I define variables. Path is to train and test sets. I set them to create a training and validation sets when working with
+the model and validating it. And then it only takes me to switch
+those paths to original train CSV and test CSV to produce a submission. I also use macros. At one point I was really tired of
+typing import numpy as np, every time. So I found that it's possible to define
+a macro which will load everything for me. In my case, it takes only five symbols to type the macro name and this macro
+immediately loads me everything. Very convenient. And finally, I have developed my library
+with frequently used functions, and training code for models. I personally find it useful, as the code,
+it now becomes much shorter, and I do not need to remember how
+to import a particular model. In my case I just specify
+a model with its name, and as an output I get all the information
+about training that I would possibly need. [SOUND] [MUSIC]

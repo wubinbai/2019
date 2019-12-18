@@ -1,0 +1,232 @@
+Hello everyone, this is Marios
+Michailidis, and this will be the first video in a series that we will be
+discussing on ensemble methods for machine learning. To tell you a bit about me, I work as
+Research Data Scientist for H2Oai. In fact,
+my PhD is about assemble methods, and they used to be ranked
+number one in cargo and ensemble methods have greatly
+helped me to achieve this spot. So you might find the course interesting. So what is ensemble modelling? I think with this term, we refer to
+combining many different machine learning models in order to get
+a more powerful prediction. And later on we will see
+examples that this happens, that we combine different models and
+we do get better predictions. There are various ensemble methods. Here we'll discuss a few, those that
+we encounter quite often, in predictive modelling competitions, and they tend
+to be, in general, quite competitive. We will start with simple averaging
+methods, then we'll go to weighted averaging methods, and we will also
+examine conditional averaging. And then we will move to some more
+typical ones like bagging, or the very, very popular, boosting,
+then stacking and StackNet, which is the result of my research. But as I said,
+these will be a series of videos, and we will initially start
+with the averaging methods. So, in order to help you understand
+a bit more about the averaging methods, let's take an example. Let's say we have a variable called age,
+as in age years, and we try to predict this. We have a model that yields prediction for
+age. Let's assume that
+the relationship between the two, the actual age in our prediction,
+looks like in the graph, as in the graph. So you can see that the model boasts
+quite a higher square of a value of 0.91, but it doesn't do so
+well in the whole range of values. So when age is less than 50,
+the model actually does quite well. But when age is more than 50, you can see that the average
+error is higher. Now let's take another example. Let's assume we have a second model
+that also tries to predict age, but this one looks like that. As you can see, this model does quite
+well when age is higher than 50, but not so well when age is less than 50,
+nevertheless, it scores again 0.91. So we have two models that have
+a similar predictive power, but they look quite different. It's quite obvious that they do
+better in different parts of the distribution of age. So what will happen if we
+were to try to combine this two with a simple averaging method,
+in other words, just say (model 1 + model two) / 2,
+so a simple averaging method. The end result will look
+as in the new graph. So, our square has moved to 0.95,
+which is a considerable improvement versus the 0.91 we had before,
+and as you can see, on average, the points tend to
+be closer with the reality. So the average error is smaller. However, as you can see, the model doesn't
+do better as an individual models for the areas where the models
+were doing really well, nevertheless, it does better on average. This is something we need to understand, that there is potentially a better
+way to combine these models. We could try to take a weighting average. So say, I'm going to take 70% of
+the first model prediction and 30% of the second model prediction. In other words,
+(model 1x0.7 + model 2x0.3), and the end result would
+look as in the graph. So you can see their square is no better
+and that makes sense, because the models have quite similar predictive power and
+it doesn't make sense to rely more in one. And also it is quite clear that
+it looks more with model 1, because it has better predictions
+when age is less than 50, and worse predictions
+when age is more than 50. As a theoretical exercise, what is the
+theoretical best we could get out of this? We know we have a model that scores
+really well when age is less than 50, and another model that scores really
+well when age is more than 50. So ideally, we would like to
+get to something like that. This is how we leverage the two
+models in the best possible way here by using a simple
+conditioning method. So if less than 50 is one I'll just
+use the other, and we will see later on that there are ensemble methods
+that are very good at finding these relationships of two or more predictions
+in respect to the target variable. But, this will be a topic for
+another discussion. Here we discuss simple averaging methods, hopefully you found it useful, and
+stay here for the next session to come. Thank you very much.Hello everyone. This is Marios Michailidis and we will continue our discussion in regards to ensemble methods. Previously, we saw some simple averaging methods. This time, we'll discuss about bagging, which is a very popular and efficient form of ensembling. What is bagging? bagging refers to averaging slightly different versions of the same model as a means to improve the predictive power. A common and quite successful application of bagging is the Random Forest. Where you would run many different versions of decision trees in order to get a better prediction. Why should we consider bagging? Generally, in the modeling process, there are two main sources of error. There are errors due to bias often referred to as underfitting, and errors due to variance often referred to as overfitting. In order to better understand this, I'll give you two opposite examples. One with high bias and low variance and vice versa in order to understand the concept better. Let's take an example of high bias and low variance. We have a person who is let's say young, less than 30 years old and we know this person is quite rich and we're trying to find him, this person who'll buy a racing or an expensive car. Our model has high variance, has high bias if it says that this person is young and I think he's not going to buy an expensive car. What the model has done here is that it hasn't explore very deep relationship within the data. It doesn't matter that this person is young if it has a lots of money when it comes to buying a car. It hasn't explored different relationships. In other words, it has been underfitted. However, this is also associated with low variance because this relationship, the fact that a young person generally doesn't buy an expensive car is generally true so we would expect this information to generalize well enough in a foreseen data. Therefore, the variance is low in this example. Now, let's try to see the other way around, an example with high variance and low bias. Let's assume we have a person. His name is John. He lives in a green house, has brown eyes, and we want to see he will buy a car. A model that has gone so deep in order to find these relationships actually has a low bias because it has really explored a lots of information about the training data. However, it is making the mistake that every person that has these characteristics is going to buy a car. Therefore, it generalizes for something that it shouldn't. In other words, it has already exhausted the information in the training data and the results are not significant. So, here, we actually have high variance but low bias. If we were to visualize the relationship between prediction error and model complexity, it would look like that. When we begin the training of the model, we can see that the training error make the error in that training data gets reduced and the same happens in the test data because the predictions are easily generalizable. They are simple. However, after a point, any improvements in the training error are not realized into test data. This is the point where the model starts over exhausting information, creates predictions that are not generalizable. This is where bagging actually comes into play and offers it's utmost value. By making slightly different or let say randomized models, we ensure that the predictions do not read very high variance. They're generally more generalizable. We don't over exhaust the information in the training data. At the same time, we saw before that when you average slightly different models, we are generally able to get better predictions and we can assume that in 10 models, we are still able to find quite significant information about the training data. Therefore, this is why bagging tends to work quite well and personally, I always use bagging. When I say, "I fit a model," I have actually not fit a model I have fit a bagging version of this model so probably that different models. Which parameters are associated with bagging? The first is the seed. We can understand that many algorithms have some randomized procedures so by changing the seed you ensure that they are made slightly differently. At the same time, you can run a model with less rows or you could use bootstrapping. Bootstrapping is different from row sub-sampling in the sense that you create an artificial dataset so you might let's say data row the training data three or four times. You create a random dataset from the training data. A different form of randomness can be imputed with shuffling. There are some algorithms, which are sensitive to the order of the data. By changing the order you ensure that the models become quite different. Another way is to dating a random sample of columns so bid models on different features or different variables of the data. Then you have model-specific parameters. For example, in a linear model, you will try to build 10 different let's say logistic regression with slightly different regularization parameters. Obviously, you could also control the number of models you include in your ensemble or in this case we call them bags. Normally, we put a value more than 10 here but, in principle, the more bags you put, it doesn't hurt you. It makes results better but after some point, performance start plateauing. So there is a cost benefit with time but, in principle, more bags is generally better and optionally, you can also apply parallelism. Bagging models are independent to each other, which means you can build many of them at the same time and make full use of your computation power. Now, we can see an example about bagging but before I do that, just to let you know that a bagging estimators that scikit-learn has in Python are actually quite cool. Therefore, I recommend them. This is a typical 15 lines of code that I use quite often. They seem really simple but they're actually quite efficient. Assuming you have a training at the test dataset and to target variable, what you do is you specify some bagging parameters. What is the model I'm going to use at random forest? How many bags I'm going to run? 10. What will be my seed? One. Then you create an object, an empty object that will save the predictions and then you run a loop for as many bags as you have specified. In this loop, you repeat the same. You change the seed, you feed the model, you make predictions in the test data and you save these predictions and then, you just take an average of these predictions. This is the end of the session. In this session, we discussed bagging as a popular form of ensembling. We saw bagging in association with variants and bias and we also saw in the example about how to use it. Thank you very much. The next session we will describe boosting, which is also very popular so stay in tune and have a good day.Hello, everyone. This is Marios Michailidis. And today, we'll continue our discussion with ensemble methods, and specifically, with a very popular form of ensembling called boosting. What is boosting? Boosting is a form of weighted averaging of models where each model is built sequentially in a way that it takes into account previous model performance. In order to understand this better, remember that before, we discussed about biking, and we saw that we can have it at many different models, which are independent to each other in order to get a better prediction. Boosting does something different. It says, now I tried to make a model, but I take into account how well the previous models have done in order to make a better prediction. So, every model we add sequentially to the ensemble, it takes into account how well the previous models have done in order to make better predictions. There are two main boosting type of algorithms. One is based on weight, and the other is based on residual error, and we will discuss both of them one by one. For weight boosting, it's better to see an example in order to understand it better. Let's say we have a tabular data set, with four features. Let's call them x0, x1, x2, and x3, and we want to use these features to predict a target variable, y. What we are going to do in weight boosting is, we are going to fit a model, and we will generate predictions. Let's call them pred. These predictions have a certain margin of error. We can calculate these absolute error, and when I say absolute error, is absolute of y minus our prediction. You can see there are predictions which are very, very far off, like row number five, but there are others like number six, which the model has actually done quite well. So what we do based on this is we generate, let's say, a new column or a new vector, where we create a weight column, and we say that this weight is 1 plus the absolute error. There are different ways to calculate this weight. Now, I'm just giving you this as an example. You can infer that there are different ways to do this, but the overall principle is very similar. So what you're going to do next is, you're going to fit a new model using the same features and the same target variable, but you're going to also add this weight. What weight says to the model is, I want you to put more significance into a certain role. You can almost interpret weight has the number of times that a certain row appears in my data. So let's say weight was 2, this means that this row appears twice, and therefore, has bigger contribution to the total error. You can keep repeating this process. You can, again, calculate a new error based on this error. You calculate new weights, and this is how you sequentially add models to the ensemble that take into account how well each model has done in certain cases, maximizing the focus from where the previous models have done more wrong. There are certain parameters associated with this type of boosting. One is the learning rate. We can also call it shrinkage or eta. It has different names. Now, if you recall, I explained boosting as a form of weighted averaging. And this is true, because normally what this learning rate. So what we say is, every new model we built, we shouldn't trust it 100%. We should trust it a little bit. This ensures that we don't have one model generally having too much contribution, and completely making something that is not very generalizable. So this ensures that we don't over-trust one model, we trust many models a little bit. It is very good to control over fitting. The second parameter we look at is the number of estimators. This is quite important. And normally, there is an inverse relationship, an opposite relationship, with the learning rate. So the more estimators we add to these type of ensemble, the smaller learning rate we need to put. This is sometimes quite difficult to find the right values, and we do it with the help of cross-validation. So normally, we start with a fixed number of estimators, let's say, 100, and then, we try to find the optimal learning rate for this 100 estimators. Let's say, based on cross-validation performance, we find this to be 0.1. What we can do then is, let's say, we can double the number of estimators, make it 200, and divide the learning rate by 2, so we can put 0.05, and then we take performance. It may be that the relationship is not as linear as I explained, and the best learning rate may be 0.04 or 0.06 after duplicating the estimators, but this is roughly the logic. This is how we work in order to increase estimators, and try to see more estimators give us better performance without losing so much time, every time, trying to find the best learning rate. Another thing we look at is the type of input model. And generally, we can perform boosting with any type of estimator. The only condition is that it needs to accept weight in it's modeling process. So I weigh to say how much we should rely in each role of our data set. And then, we have various boosting types. As I said, I roughly explained to you how we can use the weight as a means to focus on different rows, different cases the model has done wrong, but there are different ways to express this. For example, there are certain boosting algorithm that do not care about the margin of error, they only care if you did the classification correct or not. So there are different variations. One I really like is the AdaBoost, and there is a very good implementation in sklearn, where you can choose any input algorithm. I think it's really good. And another one I really like is, normally, it's only good for logistic regression, and there is a very good implementation in Weka for Java if you want to try. Now, let's move onto the our time of boosting, which has been the most successful. I believe that in any predictive modeling competition that was not image classification or predicting videos. This has been the most dominant type of algorithm that actually has one most in these challenges so this type of boosting has been extremely successful, but what is it? I'll try to give you again a similar example in order to understand the concept. Let's say we have again the same dataset, same features, again when trying to predict a y variable, we fit a model, we make predictions. What we do next, is we'll calculate the error of these predictions but this time, not in absolute terms because we're interested about the direction of the error. What we do next is we take this error and we make it adding new y variable so the error now becomes the new target variable and we use the same features in order to predict this error. It's an interesting concept and if we wanted, let's say to make predictions for Rownum equals one, what we would do is we will take our initial prediction and then we'll add the new prediction, which is based on the error of the first prediction. So initially, we have 0.75 and then we predicted 0.2. In order to make a final prediction, we would say one plus the other equals 0.95. If you recall, the target for this row, it was one. Using two models, we were able to get closer to the actual answer. This form of boosting works really, really well to minimize the error. There are certain parameters again which are associated with this type of boosting. The first is again the learning rate and it works pretty much as I explained it before. What you need to take into account is how this is applied. Let's say we have a learning rate of 0.1. In the previous example, where the prediction was 0.2 for the second model, what you will say is I want to move my prediction towards that direction only 10 percent. If you remember the prediction was 0.2, 10 percent of this is 0.02. This is how much we would move towards the prediction of the error. This is a good way to control over fitting. Again, we ensure we don't over rely in one model. Again, how many estimators you put is quite important. Normally, more is better but you need to offset this with the right learning rate. You need to make certain that every model has the right contribution. If you intent to put many, then you need to make sure that your models have very, very small contribution. Again, you decide these parameters based on cross-validation and the logic is very similar as explained before. Other things that work really well is taking a subset of rows or a subset of columns when you build its model. Actually, there is no reason why we wouldn't use this with the previous algorithm. The way its based, it is more common with this type of boosting, and internally works quite well. For input model, I have seen that this method works really well with this increase but theoretically, you can put anything you want. Again, there are various boosting types. I think the two most common or more successful right now in a predictive modeling context is the gradient based, which is actually what I explained with you how the prediction and you don't move 100 percent with that direction if you apply the learning rate. The other very interesting one, which I've actually find it very efficient especially in classification problems is the dart. Dart, it imposes a drop out mechanism in order to control the contribution of the trees. This is a concept derived from deep learning where you say, "Every time I make a new prediction in my sample, every time I add a new estimate or I'm not relying on all previous estimators but only on a subset of them." Just to give you an example, let's say we have a drop out rate of 20 percent. So far, we have built 10 trees, we want to or 10 models and then we try to see, we try to build a new, an 11th one. What we'll do is we will randomly exclude two trees when we generate a prediction for that 11th tree or that 11th model. By randomly excluding some models, by introducing this kind of randomness, it works as a form of regularization. Therefore, it helps a lot to make a model that generalizes quite well enough for same data. This concept tends to work quite well because this type of boosting algorithm has been so successful. There have been many implementations to try to improve on different parts of these algorithms. One really successful application especially in the comparative predictive modeling world is the Xgboost. It is very scalable and it supports many loss functions. At the same time, is available in all major programming languages for data science. Another good implementation is Lightgbm. As the name connotes, it is lightning fast. Also, it is supported by many programming languages and supports many loss functions. Another interesting case is the Gradient Boosting Machine from H2O. What's really interesting about this implementation is that it can handle categorical variables out of the box and it also comes with a real set of parameters where you can control the modeling process quite thoroughly. Another interesting case, which is also fairly new is the Catboost. What's really good about this is that it comes with the strong initial set of parameters. Therefore, you don't need to spend so much time tuning. As I mentioned before, this can be quite a time consuming process. It can also handle categorical variables out of the box. Ultimately, I really like the Gradient Boosting Machine implementation of Scikit-learn. What I really like about this is that you can put any scikit-learn estimator as a base. This is the end of this video. In the next session, we will discuss docking, which is also very popular, so stay tuned.Continuing our discussion with ensemble
+methods, next one up is stacking. Stacking is a very, very popular form of ensembling using
+predictive modeling competitions. And I believe in most competitions,
+there is a form of stacking in the end in order to boost
+your performance as best as you can. Going through the definition of stacking,
+it essentially means making several predictions
+with hold-out data sets. And then collecting or
+stacking these predictions to form a new data set,
+where you can fit a new model on it, on this newly-formed data
+set from predictions. I would like to take you through
+a very simple, I would say naive, example to show you how,
+conceptually, this can work. I mean, we have so far seen that you
+can use previous models' predictions to affect a new model, but
+always in relation with the input data. This is a new concept because we're
+only going to use the predictions of some models in order
+to make a better model. So let's see how these could
+work in a real life scenario. Let's assume we have three kids,
+let's name them LR, SVM, KNN, and
+they argue about a physics question. So each one believes the answer to
+a physics question is different. First one says 13, second 18, third 11, they don't know how to
+solve this disagreement. They do the honorable thing,
+they say let's take an average, which in this case is 14. So you can almost see the kids, there's different models here,
+they take input data. In this case,
+it's the question about physics. They process it based on
+historical information and and they are able to output an estimate,
+a prediction. Have they done it optimally, though? Another way to say this is
+to say there was a teacher, Miss DL, who had seen this discussion,
+and she decided to step up. While she didn't hear the question,
+she does know the students quite well, she knows the strength and
+weaknesses of each one. She knows how well they have done
+historically in physics questions. And from the range of values they have
+provided, she is able to give an estimate. Let's say that in this concept, she knows
+that SVM is really good in physics, and her father works in the department
+of Physics of Excellence. And therefore she should have
+a bigger contribution to this ensemble than every other kid,
+therefore the answer is 17. And this is how a meta model works,
+it doesn't need to know the input data. It just knows how the models
+have done historically, in order to find the best
+way to combine them. And this can work quite well in practice. So, let's go more into
+the methodology of stacking. Wolpert introduced stacking in 1992, as a meta modeling technique
+to combine different models. It consists of several steps. The first step is,
+let's assume we have a train data set, let's divide it into two parts; so
+a training and the validation. Then you take the training part,
+and you train several models. And then you make predictions for
+the second part, let's say the validation data set. Then you collect all these predictions,
+or you stack these predictions. You form a new data set and
+you use this as inputs to a new model. Normally we call this a meta model,
+and the models we run into, we call them base model or base learners. If you're still confused about stacking,
+consider the following animation. So let's assume we have three data sets A,
+B, and C. In this case, A will serve
+the role of the training data set, B will be the validation data set, and C will be the test data sets where we
+want to make the final predictions. They all have similar architectural,
+four features, and one target variable we try to predict. So in this case,
+we can choose an algorithm to train a model based on data set 1, and then we make predictions for
+B and C at the same time. Now we take these predictions, and
+we put them into a new data set. So we create a data set to store the
+predictions for the validation data in B1. And a data set called C1 to save
+predictions for the test data, called C1. Then we're going to repeat the process, now we're going to choose
+another algorithm. Again, we will fit it on A data set. We will make predictions on B and
+C at the same time, and we will save these predictions
+into the newly-formed data sets. And we essentially append them,
+we stack them next to each other, this is where stacking takes its name. And we can continue this even more,
+do it with a third algorithm. Again the same, fit on A,
+predict on B and C, same predictions. What we do then is we take the target
+variable for the B data set, or the validation datadset,
+which we already knew. And we are going to fit a new model on B1
+with the target of the validation data, and then we will make predictions from C1. And this is how we combine
+different models with stacking, to hopefully make better predictions for
+the test or the unobserved data. Let us go through an example,
+a simple example in Python, in order to understand better,
+as in in code, how it would work. It is quite simple, so even people not very experienced with
+Python hopefully can understand this. The main logic is that we will use
+two base learners on some input data, a random forest and a linear regression. And then, we will try to combine
+the results, starting with a meta learner, again, it will be linear regression. Let's assume we again have
+a train data set, and a target variable for
+this data set, and a test data set. Maybe the code seems a bit intimidating,
+but we will go step by step. What we do initially is we take the train
+data set and we split it in two parts. So we create a training and
+a valid data set out of this, and we also split the target variable. So we create ytraining and
+yvalid, and we split this by 50%. We could have chosen something else,
+let's say 50%. Then we specify our base learners,
+so model1 is the random forest in this case, and
+model2 is a linear regression. What we do then is we fit
+the both models using the training data and the training target. And we make predictions for
+the validation data for both models, and at the same time we'll make
+predictions for the test data. Again, for both models,
+we save these as preds1, preds2, and for the test data,
+test_preds1 and test_preds2. Then we are going to
+collect the predictions, we are going to stack the predictions and
+create two new data sets. One for validation,
+where we call it stacked_predictions, which consists of preds1 and preds2. And then for the data set for
+for the test predictions, called stacked_test_predictions, where
+we stack test_preds1 and test_preds2. Then we specify a meta learner, let's call it meta_model,
+which is a linear regression. And we fit this model on the predictions
+made on the validation data and the target for the validation data, which
+was our holdout data set all this time. And then we can generate predictions for the test data by applying this model
+on the stacked_test_predictions. This is how it works. Now, I think this is a good
+time to revisit an old example we used in the first session,
+about simple averaging. If you remember,
+we had a prediction that was doing quite well to predict age when
+the age was less than 50, and another prediction that was doing
+quite well when age was more than 50. And we did something tricky,
+we said if it is less than 50, we'll use the first one, if age is more
+than 50, we will use the other one. The reason this is tricky is
+because normally we use the target information to make this decision. Where in an ideal world, this is what
+you try to predict, you don't know it. We have done it in order to show what
+is the theoretical best we could get, or yeah, the best. So taking the same predictions and applying stacking, this is what the end
+result would actually look like. As you can see,
+it has done pretty similarly. The only area that there is some
+error is around the threshold of 50. And that makes sense, because the model
+doesn't see the target variable, is not able to identify
+this cut of 50 exactly. So it tries to do it only
+based on the input models, and there is some overlap around this area. But you can see that stacking
+is able to identify this, and use it in order to
+make better predictions. There are certain things you need to
+be mindful of when using stacking. One is when you have time-sensitive data,
+as in let's say, time series, you need to formulate your
+stacking so that you respect time. What I mean is, when you create
+your train and validation data, you need to make certain that your train
+is in the past and your validation is in the future, and ideally your
+test data is also in the future. So you need to respect this
+time element in order to make certain your model generalizes well. The other thing you need to look at is,
+obviously, single model performance is important. But the other thing that is
+also very important is model diversity, how different
+a model is to each other. What is the new information each
+model brings into the table? Now, because stacking, and depending
+on the algorithms you will use for stacking, can go quite deep
+into exploring relationships. It will find when a model is good, and when a model is actually bad or
+fairly weak. So you don't need to worry too much
+to make all the models really strong, stacking can actually extract
+the juice from each prediction. Therefore, what you really need to focus
+is, am I making a model that brings some information,
+even though it is generally weak? And this is true, there have been many
+situations where I've made, I've had some quite weak models in my ensemble,
+I mean, compared to the top performance. And nevertheless, they were actually
+adding lots of value in stacking. They were bringing in new information
+that the meta model could leverage. Normally, you introduce
+diversity from two forms, one is by choosing a different algorithm. Which makes sense, certain algorithms capitalize on
+different relationships within the data. For example, a linear model will
+focus on a linear relationship, a non-linear model can capture
+better a non-linear relationships. So predictions may come a bit different. The other thing is you can
+even run the same model, but you try to run it on different
+transformation of input data, either less features or
+completely different transformation. For example, in one data set you may treat categorical
+features as one whole encoding. In another,
+you may just use label in coding, and the result will probably produce
+a model that is very different. Generally, there is no limit to
+how many models you can stack. But you can expect that
+there is a plateauing after certain models have been added. So initially, you will see some
+significant uplift in whatever metric you are testing on every
+time you run the model. But after some point, the incremental
+uplift will be fairly small. Generally, there's no
+way to know this before, exactly what is the number of models
+where we will start plateauing. But generally, this is a affected by how
+many features you have in your data, how much diversity you managed
+to introduce into your models, quite often how many
+rows of data you have. So it is tough to know this beforehand,
+but generally this is
+something to be mindful of. But there is a point where adding more
+models actually does not add that much value. And because the meta model, the meta model will only use predictions of other models. We can assume that the other
+models have done, let's say, a deep work or
+a deep job to scrutinize the data. And therefore the meta model
+doesn't need to be so deep. Normally, you have predictions with
+are correlated with the target. And the only thing it needs to do is
+just to find a way to combine them, and that is normally not so complicated. Therefore, it is quite often that
+the meta model is generally simpler. So if I was to express this
+in a random forest context, it will have lower depth than what was the
+best one you found in your base models. This was the end of the session,
+here we discussed stacking. In the next one, we will discuss a very
+interesting concept about stacking and extending it on multiple levels,
+called stack net. So stay in tune.We can continue our discussion with StackNet. StackNet is a scalable meta modeling methodology that utilizes stacking to combine multiple models in a neural network architecture of multiple levels. It is scalable because within the same level, we can run all the models in parallel. It utilizes stacking because it makes use of this technique we mentioned before where we split the data, we make predictions so some hold out data, and then we use another model to train on those predictions. And as we will see later on, this resembles a lot in neural network. Now let us continue that naive example we gave before with the students and the teacher, in order to understand what conceptually, in a real world, would need to add another layer. So in that example, we have a teacher that she was trying to combine the answers of different students and she was outputting an estimate of 17 under certain assumptions. We can make this example more interesting by introducing one more meta learner. Let's call him Mr. RF, who's also a physics teacher. Mr. RF believes that LR should have a bigger contribution to the ensemble because he has been doing private lessons with him and he knows he couldn't be that far off. So he's able to see the data from slightly different ways to capitalize on different parts of these predictions and make a different estimate. Whereas, the teachers could work it out and take an average, we could create or we can introduce a higher authority or another layer of modeling here. Let's call it the headmaster, GBM, in order to shop, make better predictions. And GBM doesn't need to know the answers that the students have given. The only thing he needs to know is the input from the teachers. And in this case, he's more keen to trust his physics teacher by outputting a 16.2 prediction. Why would this be of any use to people? I mean, isn't that already complicated? Why would we want to ever try something so complicated? I'm giving you an example of a competition my team used, four layer of stacking, in order to win. And we used two different sources of input data. We generated multiple models. Normally, exit boost and logistic regressions, and then we fed those into a four-layer architecture in order to get the top score. And although we could have escaped without using that fourth layer, we still need it up to level three in order to win. So you can understand the usefulness of deploying deep stacking. Another example is the Homesite competition organized by Homesite insurance where again, we created many different views of the data. So we had different transformations. We generated many models. We fed those models into a three-level architecture. I think we didn't need the third layer again. Probably, we could have escaped with only two levels but again, deep stacking was necessary in order to win. So there is your answer, deep stacking on multiple levels really helps you to win competitions. In the spirit of fairness and openness, there has been some criticism about large ensembles that maybe they don't have commercial value, they are confidentially expensive. I have to add three things on that. The first is, what is considered expensive today may not be expensive tomorrow and we have seen that, for example, with the deep learning, where with the advent of GPUs, they have become 100 times faster and now they have become again very, very popular. The other thing is, you don't need to always build very, very deep ensembles but still, small ensembles would still really help. So knowing how to do them can add value to businesses, again based on different assumptions about how fast they want the decisions, how much is the uplift you can see from stacking, which may vary, sometimes it's more, sometime is less. And generally, how much computing power they have. We can make a case that even stacking on multiple layers can be very useful. And the last point is that these are predictive modeling competitions so it is a bit like the Olympics. It is nice to be able to see the theoretical best you can get because this is how innovation takes over. This is how we move forward. We can express StackNet as a neural network. So normally, in a neural network, we have these architecture of hidden units where they are connected with input with the form of linear regression. So actually, it looks pretty much like a linear regression. So whether you have a set of coefficients and you have a constant value where you call it bias in neaural networks, and this is how your output predictions which one of the hidden units which are then taken, collected, to create the output. The concept of StackNet is actually not that much different. The only thing we want to do is, we don't want to be limited to that linear regression or to that perception. We want to be able to use any machine learning algorithm. Putting that aside, the architecture should be exactly the same, could be fairly similar. So how to train this? In a typical neural network, we use bipropagation. Here in this context, this is not feasible. I mean in the context of trying to make this network work with any input model because not all are differentiable. So this is why we can use stacking. Stacking here is a way to link the output, the prediction, the output of the node, with target variable. This is how the link also is made from the input features with a node. However, if you remember the way that stacking works is you have some train data. And then, you need to divide it into two halves. So, you use the first part called, training, in order to make predictions to the other part called, valid. If we, assuming that adding more layers gives us some uplift, if we wanted to do this again, we would have re-split the valid data into two parts. Let's call it, mini train, and mini valid. And you can see the problem here. I mean, assuming if we have really big data, then this may not really be an issue. But in certain situations where we don't have that much data. Ideally, we would like to do this without having to constantly re-split our data. And therefore minimizing the training data set. So, this is why we use a K-Fold paradigm. Let's assume we have a training data set with four features x0, x1, x2, x3, and the y variable, or target. If we are use k-fold where k = 4, this is a hyper-parameter which is what to put here. We would make four different parts out of these datasets. Here I have put different colors, colors to each one of these parts. What we would do then in order to commence the training, is we will create an empty vector that has the same size as rows, as in the training data, but for now is empty. And then, for each one of the folds, we would start, we will take a subset of the training data. In this case, we will start with red, yellow, and green. We will train a model, and then we will take the blue part, and will make predictions. And we will take these predictions, and we will put them in the corresponding location in the prediction array which was empty. Now, we are going to repeat the same process always using this rotation. So, we are now going to use the blue, the yellow, and the green part, and we will keep to create a model, and we will keep the red part for prediction. Again, we will take these predictions and put it into the corresponding part in the prediction array. And we will repeat again with the yellow, and the green. Something that I need to mention is that the K-Fold doesn't need to be sequential as a date. So, it would have been shuffled. I did it as this way in order to illustrate it better. But once we have finished and we have generated a whole prediction for the whole training data, then we can use the whole training data, in order to fit one last model and make now predictions for the test data. Another way we could have done this is for each one of the four models we were making predictions for the validation data. At the same time, we could have been making predictions for the whole test data. And after four models, we will just take an average at the end. We'll just divide the test predictions by four. But a different way to do it, I have found this way I just explained better with neural networks, and the method where you use the whole training data to generate predictions for test better with tree-based methods. So, once we finish the predictions with the test, you can start again with another model this time. So you will generate an empty prediction, you will stack it next to your previous one. And you will repeat the same process. You will essentially repeat this until you're finished with all models for the same layer. And then, this will become your new training data set and you will generally begin all over again if you have a new layer. This is generally the concept. Though we could say this, in order to extend on many layers, we use this K-Fold paradigm. However, normally, neural networks we have this notion of epochs. We have iterations which help us to re-calibrate the weights between the nodes. Here we don't have this option, the way stacking is. However, we can introduce this ability of revisiting the initial data through connections. So, a typical way to connect the nodes is the one we have already explored where you have it input nodes, each node is directly related with the nodes of the previous layer. Another way to do this is to say, a node is not only affected, connected with the nodes of the directly previous layer, but from all previous nodes from any previous layer. So, in order to illustrate this better, if you remember the example with the headmaster where he was using predictions from the teachers, he could have been using also predictions from the students at the same time. This actually can work quite well. And you can also refit the initial data. Not just the predictions, you can actually put your initial x data set, and append it to your predictions. This can work really well if you haven't made many models. So that way, you get the chance to revisit that initial training data, and try to capture more informations. And because we already have metal-models present, the model tries to focus on where we can explore any new information. So in this kind of situation it works quite well. Also, this is very similar to target encoding or many encoding you've seen before where you use some part of the data, let's say, a code on a categorical column, given some cross-validation, you generate some estimates for the target variable. And then, you insert this into your training data. Okay, you don't stack it, as in you don't create a new column, but essentially you replace one column with hold out predictions of your target variable which is essentially very similar. You have created the logic for the target variable, and you are essentially inserting it into your training data idea.
