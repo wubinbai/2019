@@ -1,4 +1,4 @@
-
+import numpy as np
 from sklearn.model_selection import cross_val_score
 
 def rmse_cv(model, X, y):
