@@ -190,3 +190,6 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 # grep -r 'keyword' file/path
 # 7. to find, actually to locate a file, better use
 # locate filename
+# 8. to reset git add
+# git reset HEAD
+
