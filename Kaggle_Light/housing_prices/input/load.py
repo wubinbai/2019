@@ -55,7 +55,7 @@ xgb_model_df = xgb.cv(params, dtrain, num_boost_round=500, early_stopping_rounds
 xgb_model_df.loc[30:,['test-rmse-mean','train-rmse-mean']].plot()
 
 model_xgb = xgb.XGBRegressor(n_estimators=360, max_depth=2, learning_rate=0.1)
-model_xgb.fit(train_fill,y_train)
+model_xgb.fit(train_fill,y_train_transformed)
 xgb_pred = model_xgb.predict(test_fill)
 xgb_pred_transformed = np.expm1(xgb_pred)
 
