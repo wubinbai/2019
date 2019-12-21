@@ -169,7 +169,8 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 # My libraries
 # 1. sudp apt install mpg123 # for converting mp3 to wav
 # 2. sudo snap install docker # for installing docker
-
+# 3. install pycharm?
+#  conda install -c chen pycharm 
 # My Commands
 # 1. Open chrome? Use see name.html
 # 2. Status bar? Use | pv
