@@ -1,0 +1,120 @@
+[MUSIC] Hi. Often in computations,
+we have data like text and images. If you have only them, we can apply
+approach specific for this type of data. For example, we can use search
+engines in order to find similar text. That was the case in
+the Allen AI Challenge for example. For images, on the other hand,
+we can use conditional neural networks, like in the Data Science Bowl, and
+a whole bunch of other competitions. But if we have text or images as additional data, we usually
+must grasp different features, which can be edited as complementary to our
+main data frame of samples and features. Very simple example of such case we can
+see in the Titanic dataset we have called name, which is more or less like text, and to use it, we first need to derive
+the useful features from it. Another most surest example,
+we can predict whether a pair of online advertisements are duplicates, like
+slighty different copies of each other, and we could have images from these
+advertisements as complimentary data, like the Avito Duplicates Ads Detection
+competition. Or you may be given the task
+of classifying documents, like in the Tradeshift Text
+Classification Challenge. When feature extraction is done, we can
+treat extracted features differently. Sometimes we just want to add new
+features to existing dataframe. Sometimes we even might want to use the
+right features independently, and in end, make stake in with the base solution. We will go through stake in and we will
+learn how to apply it later in the topic about ensembles, but for now, you should
+know that both ways first to acquire, to of course extract features
+from text and images somehow. And this is exactly what we
+will discuss in this video. Let's start with featured
+extraction from text. There are two main ways to do this. First is to apply bag of words,
+and second, use embeddings like word to vector. Now, we'll talk about a bit
+about each of these methods, and in addition, we will go through text
+pre-processings related to them. Let's start with the first approach,
+the simplest one, bag of words. Here we create new column for each unique word from the data, then we
+simply count number of occurences for each word, and place this value
+in the appropriate column. After applying the separation to each row, we will have usual dataframe
+of samples and features. In a scalar,
+this can be done with CountVectorizer. We also can post process calculated
+metrics using some pre-defined methods. To make out why we need post-processing
+let's remember that some models like kNN, like neural regression, and neural
+networks, depend on scaling of features. So the main goal of post-processing here is to make samples more comparable
+on one side, and on the other, boost more important features while
+decreasing the scale of useless ones. One way to achieve the first goal
+of making a sample small comparable is to normalize sum of values in a row. In this way, we will count not
+occurrences but frequencies of words. Thus, texts of different sizes
+will be more comparable. This is the exact purpose of
+term frequency transformation. To achieve the second goal,
+that is to boost more important features, we'll make post process our matrix
+by normalizing data column wise. A good idea is to normalize each feature
+by the inverse fraction of documents, which contain the exact word
+corresponding to this feature. In this case,
+features corresponding to frequent words will be scaled down compared to
+features corresponding to rarer words. We can further improve this idea
+by taking a logarithm of these numberization coefficients. As a result, this will decrease
+the significance of widespread words in the dataset and
+do require feature scaling. This is the purpose of inverse
+document frequency transformation. General frequency, and inverse
+document frequency transformations, are often used together,
+like an sklearn, in TFiDF Vectorizer. Let's apply TFiDF transformation
+to the previous example. First, TF. Nice. Occurences which
+are switched to frequencies, that means some of variance for
+each row is now equal to one. Now, IDF, great. Now data is normalized column wise,
+and you can see, for those of you who are too excited, IDF transformation scaled
+down the appropriate feature. It's worth mentioning that there
+are plenty of other variants of TFiDF which may work better depending
+on the specific data. Another very useful technique is Ngrams. The concept of Ngram is simple, you add
+not only column corresponding to the word, but also columns corresponding
+to inconsequent words. This concept can also be applied
+to sequence of chars, and in cases with low N, we'll have a column
+for each possible combination of N chars. As we can see, for N = 1, number of
+these columns will be equal to 28. Let's calculate number of
+these columns for N = 2. Well, it will be 28 squared. Note that sometimes it can be cheaper
+to have every possible char Ngram as a feature, instead of having a feature for
+each unique word from the dataset. Using char Ngrams also helps our
+model to handle unseen words. For example,
+rare forms of already used words. In a scalared count vectorizor
+has appropriate parameter for using Ngrams, it is called Ngram_range. To change from word Ngrams to char Ngrams,
+you may use parameter named analyzer. Usually, you may want to preprocess text,
+even before applying bag of words, and sometimes, careful text preprocessing
+can help bag of words drastically. Here, we will discuss such methods
+as converting text to lowercase, lemmatization, stemming,
+and the usage of stopwords. Let's consider simple example
+which shows utility of lowercase. What if we applied bag of words
+to the sentence very, very sunny? We will get three columns for each word. So because Very, with capital letter,
+is not the same string as very without it, we will get multiple columns for
+the same word, and again, Sunny with capital letter
+doesn't match sunny without it. So, first preprocessing what we want to
+do is to apply lowercase to our text. Fortunately, configurizer from
+sklearn does this by default. Now, let's move on to lemmatization and
+stemming. These methods refer to more
+advanced preprocessing. Let's look at this example. We have two sentences: I had a car,
+and We have cars. We may want to unify the words car and
+cars, which are basically the same word. The same goes for had and have, and so on. Both stemming and lemmatization may
+be used to fulfill this purpose, but they achieve this in different ways. Stemming usually refers to a heuristic
+process that chops off ending of words and thus unite duration of related words
+like democracy, democratic, and democratization, producing something like,
+democr, for each of these words. Lemmatization, on the hand, usually means
+that you have want to do this carefully using knowledge or vocabulary, and
+morphological analogies of force, returning democracy for
+each of the words below. Let's look at another example that shows
+the difference between stemming and lemmatization by applying
+them to word saw. While stemming will return on
+the letter s, lemmatization will try to return either see or saw,
+dependent on the word's meaning. The last technique for text preprocessing, which we will discuss here,
+is usage of stopwords. Basically, stopwords are words which do
+not contain important information for our model. They are either insignificant
+like articles or prepositions, or so common they do not
+help to solve our task. Most languages have predefined list
+of stopwords which can be found on the Internet or logged from NLTK, which stands for Natural Language
+Toolkit Library for Python. CountVectorizer from sklearn also
+has parameter related to stopwords, which is called max_df. max_df is the threshold
+of words we can see, after we see in which,
+the word will be removed from text corpus. Good, we just have discussed classical
+feature extraction pipeline for text. At the beginning,
+we may want to pre-process our text. To do so, we can apply lowercase,
+stemming, lemmatization, or remove stopwords. After preprocessing, we can use bag
+of words approach to get the matrix where each row represents a text, and
+each column represents a unique word. Also, we can use bag of words approach for
+Ngrams, and in new columns for groups of
+several consecutive words or chars. And in the end, when we postprocess
+these metrics using TFiDF, which often prove to be useful. Well, then now we can add extracted
+features to our basic data frame, or putting the dependent model on
+them to create some tricky features. That's all for now. In the next video, we will continue
+to discuss feature extraction. We'll go through two big points. First, we'll talk about approach for texts, and second, we will discuss
+feature extraction for images. [MUSIC]

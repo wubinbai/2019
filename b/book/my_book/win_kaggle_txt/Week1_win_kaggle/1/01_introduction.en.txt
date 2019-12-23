@@ -1,0 +1,24 @@
+[MUSIC] Hello, and welcome. My name is Dimitri, and I'm happy to see you are interested
+in competitive data science. Data science is all about
+machine learning applications. And in data science, like everywhere else,
+people are looking for the very best solutions to their problems. They're looking for the models that
+have the best predictive capabilities, the models that make as
+few mistakes as possible. And the competition for one becomes
+an essential way to find such solutions. Competing for the prize,
+participants push through the limits, come up with novel ideas. Companies organize data science
+competitions to get top quality models for not so high price. And for data scientists,
+competitions become a truly unique opportunity to learn, well,
+and of course win a prize. This course is a chance for you to catch
+up on the trends in competitive data science and learn what we,
+competition addicts and at the same time, lecturers of this course,
+have already learned while competing. In this course, we will go through
+competition solving process step by step and tell you about exploratory data
+analysis, basic and advanced feature generation and preprocessing,
+various model validation techniques. Data leakages, competition's metric
+optimization, model ensembling, and hyperparameter tuning. We've put together all our experience and
+created this course for you. We've also designed quizzes and programming assignments to let you
+apply your newly acquired skills. Moreover, as a final project, you will
+have an opportunity to compete with other students and
+participate in a special competition, hosted on the world's largest platform for
+data science challenges called Kaggle. Now, let's meet other lecturers and
+get started.

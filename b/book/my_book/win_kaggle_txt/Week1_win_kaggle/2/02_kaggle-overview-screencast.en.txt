@@ -1,0 +1,80 @@
+[MUSIC] Hi, everyone. In this video we'll learn
+how to use Kaggle for participation in data
+science competitions. Let's open kaggle.com. On the Competitions page, we can see
+a list of currently running competitions. Every competition has a page which
+consists of title, short description, price budget, number of participating
+teams, and time before the end. Information involves all
+previously running competitions, we can find if we click to All. Let's select some challenge and
+see how it organized. Here, we see several tabs which we'll
+explore, and let's start with Overview. In the Description section we see
+an introduction provided by organizers. In the Description, there is a short
+story about company and tasks, sometimes with illustration. At the Evaluation page, we see
+the description of the target metric. In this challenge, target metric
+is the Mean Absolute Error between the logarithmic transform predictions and
+ground truth values. This page also contains example of sample
+submission file, which is typical for such kind of competitions. Now let's move to the Prize page. In the Prize,
+page we can find information about prizes. Take notice that in the title we have
+information about the whole money budget, and this page,
+we see how it will be split among winners. I want to highlight that
+in order to get money, you need not only be in top three teams,
+but also beat a Zillow benchmark model. Now let's see, Timeline page, which
+contains all the information about dates. For example,
+when competition starts, ends, when will the Team Merger deadline and
+then what month. All the details about competition,
+we can find in the Rules. So we need to check really the rules. Here we can find that team
+limit is three individual, that we have maximum of five
+submissions per day, that you, for example, should be at least
+18 years old to participate. And that, find it, that external data are not allowed. I strongly suggest you to read the rules
+carefully before joining the competition. And after reading, you should accept it,
+but I already accepted it. Now, let's check this, Data. Here we have data provided by
+the organizers, several files which we can download, and sample submission among
+them, and the description of the data. Here we have description of files,
+description of data fields, and more importantly a description
+of train and test split. This is quite useful information in
+order to set up right validation scheme. If you have any question about data or
+other questions to ask, or insights to share, you can go to the forum,
+which we can find under Discussion tab. Usually it contain a lot of topics or
+threads, like Welcome, questions about validations, questions about train and
+test data, and so on and so on. Every topic have title,
+number of comments, and number of reports. Let's see some of them. Here we have main message,
+a lot of comments, in this particular we
+have only one comments. Each we can up vote or down vote and
+reply to by click the reply button. That was a brief overview on forum and
+now we switch to the Kernels. Usually, I run my code locally,
+but sometimes it would be handy to check an idea quickly or share code
+with other participants or teammates. This is what Kernels are for. You can think of Kernel as a small virtual
+machine in which you write your code, execute it, and share it. Let's take a look at some Kernel,
+for example for this one. This show explanatory data analysis
+on the Zillow competition. It took quite long, contain a lot of
+pictures, and I believe it very useful. Here we can see comments for
+this, different versions. And in order,
+if you want to make a copy and edit it, we need to Fork this Notebook. It doesn't matter how your
+predictions were produced, locally or by Kernel, you should submit
+them through a specialized form. So go back to the competition. Go to submissions. I already submit sample submission,
+you can do the same. Click submit predictions,
+and drag and drop file here. Let's look at my submission. After submission,
+you will see it on the leaderboard. This is my sample submission. Leaderboard contains information
+about all the teams. So here we have team name or just name
+in case of single competition team. Score which we produced,
+number of submissions, time since the last submissions, and
+position data over seven last days. For example, this means that this guy
+drops 19 positions during the last week. That was a brief overview
+of Kaggle interface. Further, I will tell some extra
+information about the platform. So let's move to Overview
+page at the bottom. And here,
+we see information about points and tiers. As mentioned here, the competition will be
+counting towards ranking points an tiers. If you participate,
+it will be beneficial for your rating. Sometimes, especially in educational
+competitions, it's not like that. Information about Kaggle Progression
+System we can find if we click this link, where we can read information about
+tiers like novice, contributor, master, grandmaster. About medals and ranking points. This ranking points, I use for
+global User Ranking. Let's check it. So, we have user ranking page, and we see all the users ranked, and
+with links to their profile. Let's check some profile,
+for example mine. And here we have photo,
+name, some information, geo information, information about
+past competitions, medals, and so on. In addition, I want to say a few words
+about ability to host competition. Kaggle has this ability. Click Host competition, and
+there is special Kaggle in class. At in class, everyone can host
+their own competition for free and invite people to participate. This option is quite often used in
+various educational competitions. So this was a brief overview
+of Kaggle platform. Thank for your attention. [MUSIC]

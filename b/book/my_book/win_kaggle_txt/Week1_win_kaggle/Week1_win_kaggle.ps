@@ -1,0 +1,2385 @@
+%!PS-Adobe-3.0
+%%Title: Week1_win_kaggle.txt
+%%For: wb
+%%Creator: VIM - Vi IMproved 8.0 (2016 Sep 12)
+%%CreationDate: Mon Dec 23 20:29:32 2019
+%%DocumentData: Clean8Bit
+%%Orientation: Portrait
+%%Pages: (atend)
+%%PageOrder: Ascend
+%%BoundingBox: 59 45 559 800
+%%DocumentMedia: A4 595 842 0 () ()
+%%DocumentNeededResources: font Courier
+%%+ font Courier-Bold
+%%+ font Courier-Oblique
+%%+ font Courier-BoldOblique
+%%DocumentSuppliedResources: procset VIM-Prolog 1.4 1
+%%+ encoding VIM-latin1 1.0 0
+%%Requirements: duplex collate
+%%EndComments
+%%BeginDefaults
+%%PageResources: font Courier
+%%+ font Courier-Bold
+%%+ font Courier-Oblique
+%%+ font Courier-BoldOblique
+%%PageMedia: A4
+%%EndDefaults
+%%BeginProlog
+%%BeginResource: procset VIM-Prolog
+%%BeginDocument: /usr/share/vim/vim80/print/prolog.ps
+%!PS-Adobe-3.0 Resource-ProcSet
+%%Title: VIM-Prolog
+%%Version: 1.4 1
+%%EndComments
+% Editing of this file is NOT RECOMMENDED.  You run a very good risk of causing
+% all PostScript printing from VIM failing if you do.  PostScript is not called
+% a write-only language for nothing!
+/packedarray where not{userdict begin/setpacking/pop load def/currentpacking
+false def end}{pop}ifelse/CP currentpacking def true setpacking
+/bd{bind def}bind def/ld{load def}bd/ed{exch def}bd/d/def ld
+/db{dict begin}bd/cde{currentdict end}bd
+/T true d/F false d
+/SO null d/sv{/SO save d}bd/re{SO restore}bd
+/L2 systemdict/languagelevel 2 copy known{get exec}{pop pop 1}ifelse 2 ge d
+/m/moveto ld/s/show ld /ms{m s}bd /g/setgray ld/r/setrgbcolor ld/sp{showpage}bd
+/gs/gsave ld/gr/grestore ld/cp/currentpoint ld
+/ul{gs UW setlinewidth cp UO add 2 copy newpath m 3 1 roll add exch lineto
+stroke gr}bd
+/bg{gs r cp BO add 4 -2 roll rectfill gr}bd
+/sl{90 rotate 0 exch translate}bd
+L2{
+/sspd{mark exch{setpagedevice}stopped cleartomark}bd
+/nc{1 db/NumCopies ed cde sspd}bd
+/sps{3 db/Orientation ed[3 1 roll]/PageSize ed/ImagingBBox null d cde sspd}bd
+/dt{2 db/Tumble ed/Duplex ed cde sspd}bd
+/c{1 db/Collate ed cde sspd}bd
+}{
+/nc{/#copies ed}bd
+/sps{statusdict/setpage get exec}bd
+/dt{statusdict/settumble 2 copy known{get exec}{pop pop pop}ifelse
+statusdict/setduplexmode 2 copy known{get exec}{pop pop pop}ifelse}bd
+/c{pop}bd
+}ifelse
+/ffs{findfont exch scalefont d}bd/sf{setfont}bd
+/ref{1 db findfont dup maxlength dict/NFD ed{exch dup/FID ne{exch NFD 3 1 roll
+put}{pop pop}ifelse}forall/Encoding findresource dup length 256 eq{NFD/Encoding
+3 -1 roll put}{pop}ifelse NFD dup/FontType get 3 ne{/CharStrings}{/CharProcs}
+ifelse 2 copy known{2 copy get dup maxlength dict copy[/questiondown/space]{2
+copy known{2 copy get 2 index/.notdef 3 -1 roll put pop exit}if pop}forall put
+}{pop pop}ifelse dup NFD/FontName 3 -1 roll put NFD definefont pop end}bd
+CP setpacking
+(\004)cvn{}bd
+% vim:ff=unix:
+%%EOF
+%%EndDocument
+%%EndResource
+%%BeginResource: encoding VIM-latin1
+%%BeginDocument: /usr/share/vim/vim80/print/latin1.ps
+%!PS-Adobe-3.0 Resource-Encoding
+%%Title: VIM-latin1
+%%Version: 1.0 0
+%%EndComments
+/VIM-latin1[
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/space /exclam /quotedbl /numbersign /dollar /percent /ampersand /quotesingle
+/parenleft /parenright /asterisk /plus /comma /minus /period /slash
+/zero /one /two /three /four /five /six /seven
+/eight /nine /colon /semicolon /less /equal /greater /question
+/at /A /B /C /D /E /F /G
+/H /I /J /K /L /M /N /O
+/P /Q /R /S /T /U /V /W
+/X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore
+/grave /a /b /c /d /e /f /g
+/h /i /j /k /l /m /n /o
+/p /q /r /s /t /u /v /w
+/x /y /z /braceleft /bar /braceright /asciitilde /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/space /exclamdown /cent /sterling /currency /yen /brokenbar /section
+/dieresis /copyright /ordfeminine /guillemotleft /logicalnot /hyphen /registered /macron
+/degree /plusminus /twosuperior /threesuperior /acute /mu /paragraph /periodcentered
+/cedilla /onesuperior /ordmasculine /guillemotright /onequarter /onehalf /threequarters /questiondown
+/Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla
+/Egrave /Eacute /Ecircumflex /Edieresis /Igrave /Iacute /Icircumflex /Idieresis
+/Eth /Ntilde /Ograve /Oacute /Ocircumflex /Otilde /Odieresis /multiply
+/Oslash /Ugrave /Uacute /Ucircumflex /Udieresis /Yacute /Thorn /germandbls
+/agrave /aacute /acircumflex /atilde /adieresis /aring /ae /ccedilla
+/egrave /eacute /ecircumflex /edieresis /igrave /iacute /icircumflex /idieresis
+/eth /ntilde /ograve /oacute /ocircumflex /otilde /odieresis /divide
+/oslash /ugrave /uacute /ucircumflex /udieresis /yacute /thorn /ydieresis]
+/Encoding defineresource pop
+% vim:ff=unix:
+%%EOF
+%%EndDocument
+%%EndResource
+%%EndProlog
+%%BeginSetup
+595 842 0 sps
+1 nc
+T F dt
+T c
+%%IncludeResource: font Courier
+/_F0 /VIM-latin1 /Courier ref
+/F0 13 /_F0 ffs
+%%IncludeResource: font Courier-Bold
+/_F1 /VIM-latin1 /Courier-Bold ref
+/F1 13 /_F1 ffs
+%%IncludeResource: font Courier-Oblique
+/_F2 /VIM-latin1 /Courier-Oblique ref
+/F2 13 /_F2 ffs
+%%IncludeResource: font Courier-BoldOblique
+/_F3 /VIM-latin1 /Courier-BoldOblique ref
+/F3 13 /_F3 ffs
+/UO -1.3 d
+/UW 0.65 d
+/BO -3.25 d
+%%EndSetup
+%%Page: 1 1
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                      Page 1)59.5 790.15 ms
+F0 sf
+([MUSIC] Hello, and welcome. My name is Dimitri, and I'm happy to)59.5 764.15 ms
+( see you are interested)59.5 751.15 ms
+(in competitive data science. Data science is all about)59.5 738.15 ms
+(machine learning applications. And in data science, like everywh)59.5 725.15 ms
+(ere else,)59.5 712.15 ms
+(people are looking for the very best solutions to their problems)59.5 699.15 ms
+(. They're looking for the models that)59.5 686.15 ms
+(have the best predictive capabilities, the models that make as)59.5 673.15 ms
+(few mistakes as possible. And the competition for one becomes)59.5 660.15 ms
+(an essential way to find such solutions. Competing for the prize)59.5 647.15 ms
+(,)59.5 634.15 ms
+(participants push through the limits, come up with novel ideas. )59.5 621.15 ms
+(Companies organize data science)59.5 608.15 ms
+(competitions to get top quality models for not so high price. An)59.5 595.15 ms
+(d for data scientists,)59.5 582.15 ms
+(competitions become a truly unique opportunity to learn, well,)59.5 569.15 ms
+(and of course win a prize. This course is a chance for you to ca)59.5 556.15 ms
+(tch)59.5 543.15 ms
+(up on the trends in competitive data science and learn what we,)59.5 530.15 ms
+(competition addicts and at the same time, lecturers of this cour)59.5 517.15 ms
+(se,)59.5 504.15 ms
+(have already learned while competing. In this course, we will go)59.5 491.15 ms
+( through)59.5 478.15 ms
+(competition solving process step by step and tell you about expl)59.5 465.15 ms
+(oratory data)59.5 452.15 ms
+(analysis, basic and advanced feature generation and preprocessin)59.5 439.15 ms
+(g,)59.5 426.15 ms
+(various model validation techniques. Data leakages, competition')59.5 413.15 ms
+(s metric)59.5 400.15 ms
+(optimization, model ensembling, and hyperparameter tuning. We've)59.5 387.15 ms
+( put together all our experience and)59.5 374.15 ms
+(created this course for you. We've also designed quizzes and pro)59.5 361.15 ms
+(gramming assignments to let you)59.5 348.15 ms
+(apply your newly acquired skills. Moreover, as a final project, )59.5 335.15 ms
+(you will)59.5 322.15 ms
+(have an opportunity to compete with other students and)59.5 309.15 ms
+(participate in a special competition, hosted on the world's larg)59.5 296.15 ms
+(est platform for)59.5 283.15 ms
+(data science challenges called Kaggle. Now, let's meet other lec)59.5 270.15 ms
+(turers and)59.5 257.15 ms
+(get started.And now, I want to introduce other lecturers of this)59.5 244.15 ms
+( course. Alexander, Dmitry, Mikhail, and Marios. Mikhail is aka )59.5 231.15 ms
+(Cassanova, the person who reached the very top of competitive da)59.5 218.15 ms
+(ta science. I will tell you a couple of thoughts about the origi)59.5 205.15 ms
+(ns of the course. In year 2014, we started our win in data scien)59.5 192.15 ms
+(ce by joining competitions. We've been meeting every week and di)59.5 179.15 ms
+(scussing the past competitions, solutions, ideas and tweaks what)59.5 166.15 ms
+( worked and what did not, this exchange of knowledge and experie)59.5 153.15 ms
+(nce helped us to learn quickly from each other and improve our s)59.5 140.15 ms
+(kills. Initially our community was small, but over time more and)59.5 127.15 ms
+( more people were joining. From the format of groups of discussi)59.5 114.15 ms
+(on. We moved on to the format of well organized meetings. Where )59.5 101.15 ms
+(a speaker makes an overview of his approach and ideas in front o)59.5 88.15 ms
+(f 50 people. These meetings are called machine learning training)59.5 75.15 ms
+(s. Now with the help and support of Yandex and get a hundred of )59.5 62.15 ms
+(participants. Thus we started from zero and learned everything b)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 2 2
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                      Page 2)59.5 790.15 ms
+F0 sf
+(y hard work and collaboration. We had an excellent teacher, Alex)59.5 764.15 ms
+(ander D'yakonov who was top one on Kaggle, he took the course on)59.5 751.15 ms
+( critical data analysis. In Moscow state university and there we)59.5 738.15 ms
+('re grateful to him. At some point we started to share our knowl)59.5 725.15 ms
+(edge with other people and some of us even started to read lectu)59.5 712.15 ms
+(res at the university. So now we have decided to summarize every)59.5 699.15 ms
+(thing and make it available for everyone. Together. We've finish)59.5 686.15 ms
+(ed and procesed in about 20 different competitions only on Kaggl)59.5 673.15 ms
+(e and just as many on other not so famous platforms. All of us h)59.5 660.15 ms
+(ave a tremendous amount of skill and experience in competitive d)59.5 647.15 ms
+(ata science and now we want to share this experience with you. F)59.5 634.15 ms
+(or all of us, competitive data science opened a number of opport)59.5 621.15 ms
+(unities as the competitions we took part were dedicated to a lar)59.5 608.15 ms
+(ge variety of tasks. Mikhail works in e-commerce. Alexander buil)59.5 595.15 ms
+(ds predictive model for taxi services, Dmitri works with financi)59.5 582.15 ms
+(al data, Mario develops machinery learning frameworks and I am a)59.5 569.15 ms
+( deep learning researcher. Competitions, without a doubt, became)59.5 556.15 ms
+( a stepping stone for our careers and believe me, good comparati)59.5 543.15 ms
+(ve record will bring success to you as well. We hope you will fi)59.5 530.15 ms
+(nd something interesting in this course and wish you good luck.H)59.5 517.15 ms
+(ello and welcome to our course. In this video, I want to give yo)59.5 504.15 ms
+(u a sense for what this course is about and I think the best way)59.5 491.15 ms
+( to do that is to talk about our course goals, our course assign)59.5 478.15 ms
+(ments and our course schedule. So, at the broadest level, this c)59.5 465.15 ms
+(ourse is about getting the required knowledge and expertise to s)59.5 452.15 ms
+(uccessfully participate in data science competitions. That's the)59.5 439.15 ms
+( goal. Now, we're going to prepare this in a systematic way. We )59.5 426.15 ms
+(start in week one with a discussion of competitions, what are th)59.5 413.15 ms
+(ey, how they work, how they are different from real-life industr)59.5 400.15 ms
+(ial data analysis. Then, we're moving to recap of main machine l)59.5 387.15 ms
+(earning models. Besides this, we're going to review software and)59.5 374.15 ms
+( hardware requirements and common Python libraries for data anal)59.5 361.15 ms
+(ysis. After this is done, we'll go through various feature types)59.5 348.15 ms
+(, how we preprocess these features and generate new ones. Now, b)59.5 335.15 ms
+(ecause we sometimes need to extract features from text and image)59.5 322.15 ms
+(s, we will elaborate on most popular methods to do it. Finally, )59.5 309.15 ms
+(we will start working on the final project, the competition. But)59.5 296.15 ms
+( then we move on to week two. So, having figured out methods to )59.5 283.15 ms
+(work with data frames and models, we're starting to cover things)59.5 270.15 ms
+( you first do in a competition. And this is, by the way, a great)59.5 257.15 ms
+( opportunity to start working on the final project as we proceed)59.5 244.15 ms
+( through material. So, first in this week, we'll analyze data se)59.5 231.15 ms
+(t in the exploratory data analysis topic or EDA for short. We'll)59.5 218.15 ms
+( discuss ways to build intuition about the data, explore anonymi)59.5 205.15 ms
+(zed features and clean the data set. Our main instrument here wi)59.5 192.15 ms
+(ll be logic and visualizations. Okay, now, after making EDA, we )59.5 179.15 ms
+(switch to validation. And here, we'll spend some time talking ab)59.5 166.15 ms
+(out different validation strategies, identifying how data is spl)59.5 153.15 ms
+(it into train and test and about what problems we may encounter )59.5 140.15 ms
+(during validation and ways to address those problems. We finish )59.5 127.15 ms
+(this week with discussion of data leakage and leaderboard proble)59.5 114.15 ms
+(m. We will define data leakage and understand what are leaks, ho)59.5 101.15 ms
+(w to discover various leaks and how to utilize them. So basicall)59.5 88.15 ms
+(y, this week, we set up the main pipeline for our final project.)59.5 75.15 ms
+( And at this point, you should have intuition about the data, re)59.5 62.15 ms
+(liable validation and data leaks explored. After this pipeline i)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 3 3
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                      Page 3)59.5 790.15 ms
+F0 sf
+(s ready, we'll focus on the improvement of our solution and that)59.5 764.15 ms
+('s already the week three. In that week, we'll analyze various m)59.5 751.15 ms
+(etrics for regression and classification and figure out ways to )59.5 738.15 ms
+(optimize them both while training the model and afterwards. Afte)59.5 725.15 ms
+(r we will check that we are correct in measure and improvements )59.5 712.15 ms
+(of our models, we'll define mean-encodings and work on the encod)59.5 699.15 ms
+(ed features. So here, we start with categorical features, how me)59.5 686.15 ms
+(an-encoded features lead to overfitting and how we balance overf)59.5 673.15 ms
+(itting with regularization. Then, we'll discuss several extensio)59.5 660.15 ms
+(ns to this approach including applying mean-encodings to numeric)59.5 647.15 ms
+( features and time series, and this is the point where we move o)59.5 634.15 ms
+(n to other advanced features in the week four. Basically, this i)59.5 621.15 ms
+(nclude statistics and distance-based features, metrics factoriza)59.5 608.15 ms
+(tions, feature interactions and t-SNE. These features often are )59.5 595.15 ms
+(the key to superior performance in competition, so you should im)59.5 582.15 ms
+(plement and optimize them here for the final project. After this)59.5 569.15 ms
+(, we'll get to hyperparameters optimization. Here, we will revis)59.5 556.15 ms
+(e your knowledge about model tuning in a systematic way and let )59.5 543.15 ms
+(you apply to the competition. Then, we move onto the practical g)59.5 530.15 ms
+(uide where all of us have summarized most important moments abou)59.5 517.15 ms
+(t competitions which became absolutely clear after few years of )59.5 504.15 ms
+(participation. These include both some general advice on how to )59.5 491.15 ms
+(choose and participate in the competition and some technical adv)59.5 478.15 ms
+(ice, how to set up your pipeline, what to do first and so on. Fi)59.5 465.15 ms
+(nally, we'll conclude this week by working on ensembles with Kaz)59.5 452.15 ms
+(Anova, the Kaggle top one. We'll start with simple linear ensemb)59.5 439.15 ms
+(le, then we continue with bagging and boosting, and finally we'l)59.5 426.15 ms
+(l cover stacking and stacked net approach. And here by the end o)59.5 413.15 ms
+(f this week, you should already have all required knowledge to s)59.5 400.15 ms
+(ucceed in a competition. And then finally, we've got the last we)59.5 387.15 ms
+(ek. Here we will work to analyze some of our winning solutions i)59.5 374.15 ms
+(n competitions. But all we are really doing in the last week is )59.5 361.15 ms
+(wrapping up the course, working on and submitting the final proj)59.5 348.15 ms
+(ect. So, this basic structure of this course. Now, we move throu)59.5 335.15 ms
+(gh those sections so that you can practice your skills in the co)59.5 322.15 ms
+(urse assignments and there are three basic types of assignments )59.5 309.15 ms
+(in this class: quizzes, programming assignments and the final pr)59.5 296.15 ms
+(oject. You don't have to do all of these in order to pass the cl)59.5 283.15 ms
+(ass, you only need to complete the required assignments and you )59.5 270.15 ms
+(can see which ones those are by looking on the course website. B)59.5 257.15 ms
+(ut let's go ahead and talk about the assignments. We begin with )59.5 244.15 ms
+(the competition. This is going to be the main assignment for you)59.5 231.15 ms
+(. In fact, we start working on it on the week two. There we do E)59.5 218.15 ms
+(DA, exploratory data analysis, set up main pipeline that you'll )59.5 205.15 ms
+(use for the rest of the course and check the competition for lea)59.5 192.15 ms
+(kages. Then in week three we update our solution by optimizing g)59.5 179.15 ms
+(iven metric and adding mean-encoded features. After that, in the)59.5 166.15 ms
+( week four, we further improve our solution by working on advanc)59.5 153.15 ms
+(ed features, tune your hyperparameters and uniting models in ens)59.5 140.15 ms
+(emble. And in last week, we all are wrapping it up and producing)59.5 127.15 ms
+( solution by Kaggle winning model standards. We ask you to work )59.5 114.15 ms
+(on the project at your local machine or your server because Cour)59.5 101.15 ms
+(sera computational resources are limited, and using them for the)59.5 88.15 ms
+( final project can slow down completing programming assignments )59.5 75.15 ms
+(for the fellow students. And, in fact, this class is mostly abou)59.5 62.15 ms
+(t this program and this competition assignment, but we also have)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 4 4
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                      Page 4)59.5 790.15 ms
+F0 sf
+( quizzes and programming assignments for you. We include these t)59.5 764.15 ms
+(o give you an opportunity to refine your knowledge about specifi)59.5 751.15 ms
+(c parts of this course: how to check data for leakages, how to i)59.5 738.15 ms
+(mplement mean encodings, how to produce an ensemble and so on. Y)59.5 725.15 ms
+(ou can do them at Coursera site directly but you also can downlo)59.5 712.15 ms
+(ad these notebooks and complete them at your local computer or y)59.5 699.15 ms
+(our server. And this basically is an overview of the course goal)59.5 686.15 ms
+(s, course schedule and course assignments. So, let's go ahead an)59.5 673.15 ms
+(d get started.Hi everyone. We are starting course about machine )59.5 660.15 ms
+(learning competitions. In this course, you will learn a lot of t)59.5 647.15 ms
+(ricks and best practices about data science competitions. Before)59.5 634.15 ms
+( we start to learn advanced techniques, we need to understand th)59.5 621.15 ms
+(e basics. In this video, I will explain the main concept of comp)59.5 608.15 ms
+(etitions and you will become familiar with competition mechanics)59.5 595.15 ms
+(. A variety of machinery competition is very high. In some, part)59.5 582.15 ms
+(icipants are asked to process texts. In others, to classify pict)59.5 569.15 ms
+(ure or select the best advertising. Despite the variety, all of )59.5 556.15 ms
+(these competitions are very similar in structure. Usually, they )59.5 543.15 ms
+(consist of the same elements or concepts which we will discuss i)59.5 530.15 ms
+(n this video. Let's start with a data. Data is what the organize)59.5 517.15 ms
+(rs give us as training material. We will use it in order to prod)59.5 504.15 ms
+(uce our solution. Data can be represented in a variety of format)59.5 491.15 ms
+(s. SSV file with several columns , a text file, an archive with )59.5 478.15 ms
+(pictures, a database dump, a disabled code or even all together.)59.5 465.15 ms
+( With the data, usually there is a description. It's useful to r)59.5 452.15 ms
+(ead it in order to understand what we'll work with and which fea)59.5 439.15 ms
+(ture can be extracted. Here is an example from Kaggle. From the )59.5 426.15 ms
+(top, we see several files with data, and below, is their descrip)59.5 413.15 ms
+(tion. Sometimes in addition to data issued by organizers, we can)59.5 400.15 ms
+( use other data. For example, in order to improve image classifi)59.5 387.15 ms
+(cation model, one may use a publicly available data set of image)59.5 374.15 ms
+(s. But this depends on a particular competition and you need to )59.5 361.15 ms
+(check the rules. The next concept is a model. This is exactly wh)59.5 348.15 ms
+(at we will build during the competition. It's better to think ab)59.5 335.15 ms
+(out model not as one specific algorithm, but something that tran)59.5 322.15 ms
+(sforms data into answers. The model should have two main propert)59.5 309.15 ms
+(ies. It should produce best possible prediction and be reproduci)59.5 296.15 ms
+(ble. In fact, it can be very complicated and contain a lot of al)59.5 283.15 ms
+(gorithms, handcrafted features, use a variety of libraries as th)59.5 270.15 ms
+(is model of the winners of the Homesite competition shown on thi)59.5 257.15 ms
+(s slide. It's large and includes many components. But in the cou)59.5 244.15 ms
+(rse, we will learn how to build such models. To compare our mode)59.5 231.15 ms
+(l with the model of other participants, we will send our predict)59.5 218.15 ms
+(ions to the server or in other words, make the submission. Usual)59.5 205.15 ms
+(ly, you're asked about predictions only. Sources or models are n)59.5 192.15 ms
+(ot required. And also there are some exceptions, cool competitio)59.5 179.15 ms
+(ns, where participants submit their code. In this course, we'll )59.5 166.15 ms
+(focus on traditional challenges where a competitor submit only p)59.5 153.15 ms
+(rediction outputs. Often, I can not just provide a so-called sam)59.5 140.15 ms
+(ple submission. An example of how the submission file should loo)59.5 127.15 ms
+(k like, look at the sample submission from the Zillow competitio)59.5 114.15 ms
+(n. In it is the first column. We must specify the ID of the obje)59.5 101.15 ms
+(ct and then specify our prediction for it. This is typical forma)59.5 88.15 ms
+(t that is used in many competitions. Now, we move to the next co)59.5 75.15 ms
+(ncept, evaluation function. When you submit predictions, you nee)59.5 62.15 ms
+(d to know how good is your model. The quality of the model is de)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 5 5
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                      Page 5)59.5 790.15 ms
+F0 sf
+(fined by evaluation function. In essence and simply the function)59.5 764.15 ms
+(, the text prediction and correct answers and returns a score ch)59.5 751.15 ms
+(aracterizes the performance of the solution. The simplest exampl)59.5 738.15 ms
+(e of such a function is the accurate score. This is just a rate )59.5 725.15 ms
+(of correct answers. In general, there are a lot of such function)59.5 712.15 ms
+(s. In our course, we will carefully consider some of them. The d)59.5 699.15 ms
+(escription of the competition always indicates which evaluation )59.5 686.15 ms
+(function is used. I strongly suggest you to pay attention to thi)59.5 673.15 ms
+(s function because it is what we will try to optimize. But often)59.5 660.15 ms
+(, we are not interested in the score itself. We should only care)59.5 647.15 ms
+( about our relative performance in comparison to other competito)59.5 634.15 ms
+(rs. So we move to the last point we are considering, the leaderb)59.5 621.15 ms
+(oard. The leaderboard is the rate which provides you with inform)59.5 608.15 ms
+(ation about performance of all participating teams. Most machine)59.5 595.15 ms
+( learning competition platforms keep your submission history, bu)59.5 582.15 ms
+(t the leaderboard usually shows only your best score and positio)59.5 569.15 ms
+(n. They cannot as that submission score, reveal some information)59.5 556.15 ms
+( about data set. And, in extreme cases, one can obtain ground tr)59.5 543.15 ms
+(uth targets after sending a lot of submissions. In order to hand)59.5 530.15 ms
+(le this, the set is divided into two parts, public and private. )59.5 517.15 ms
+(This split is hidden from users and during the competition, we s)59.5 504.15 ms
+(ee the score calculated only on public subset of the data. The s)59.5 491.15 ms
+(econd part of data set is used for private leaderboard which is )59.5 478.15 ms
+(revealed after the end of the competition. Only this second part)59.5 465.15 ms
+( is used for final rating. Therefore, a standard competition rou)59.5 452.15 ms
+(tine looks like that. You as the competition, you analyze the da)59.5 439.15 ms
+(ta, improve model, prepare submission, send it, see leaderboard )59.5 426.15 ms
+(score. You repeat this action several times. All this time, only)59.5 413.15 ms
+( public leaderboard is available. By the end of the competition,)59.5 400.15 ms
+( you should select submissions which will be used for final scor)59.5 387.15 ms
+(ing. Usually, you are allowed to select two final submissions. C)59.5 374.15 ms
+(hoose wisely. Sometimes public leaderboard scores might be misle)59.5 361.15 ms
+(ading. After the competition deadline, public leaderboard is rev)59.5 348.15 ms
+(ealed, and its used for the final rating and defining the winner)59.5 335.15 ms
+(s. That was a brief overview of competition mechanics. Keep in m)59.5 322.15 ms
+(ind that many concepts can be slightly different in a particular)59.5 309.15 ms
+( competition. All details, for example, where they can join into)59.5 296.15 ms
+( teams or use external data, you will find in the rules. Strongl)59.5 283.15 ms
+(y suggest you to read the rules carefully before joining the com)59.5 270.15 ms
+(petition. Now, I want to say a few words about competition platf)59.5 257.15 ms
+(orms. Although Kaggle is the biggest and most famous one, there )59.5 244.15 ms
+(is a number of smaller platforms or even single-competition site)59.5 231.15 ms
+(s like KDD and VizDooM. Although this list will change over time)59.5 218.15 ms
+(, I believe you will find the competition which is most relevant)59.5 205.15 ms
+( and interesting for you. Finally, I want to tell you about the )59.5 192.15 ms
+(reasons to participate in data science competition. The main rea)59.5 179.15 ms
+(son is that competition is a great opportunity for learning. You)59.5 166.15 ms
+( communicate with other participants, try new approaches and get)59.5 153.15 ms
+( a lot of experience. Second reason is that competition often of)59.5 140.15 ms
+(fer you non-trivial problems and state-of-the-art approaches. It)59.5 127.15 ms
+( allows you to broaden the horizons and look at some everyday ta)59.5 114.15 ms
+(sk from a different point of view. It's also a great way to beco)59.5 101.15 ms
+(me recognizable, get some kind of frame inside data science comm)59.5 88.15 ms
+(unity and receive a nice job offer. The last reason to participa)59.5 75.15 ms
+(te is that you have a chance for winning some money. It shouldn')59.5 62.15 ms
+(t be the main goal, just a pleasant bonus. In this video, we ana)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 6 6
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                      Page 6)59.5 790.15 ms
+F0 sf
+(lyzed the basic concept of the competition, talked about platfor)59.5 764.15 ms
+(ms and reasons for participation. In the next video, we will tal)59.5 751.15 ms
+(k about the difference between real life and competitions.[MUSIC)59.5 738.15 ms
+(] Hi, everyone. In this video we'll learn)59.5 725.15 ms
+(how to use Kaggle for participation in data)59.5 712.15 ms
+(science competitions. Let's open kaggle.com. On the Competitions)59.5 699.15 ms
+( page, we can see)59.5 686.15 ms
+(a list of currently running competitions. Every competition has )59.5 673.15 ms
+(a page which)59.5 660.15 ms
+(consists of title, short description, price budget, number of pa)59.5 647.15 ms
+(rticipating)59.5 634.15 ms
+(teams, and time before the end. Information involves all)59.5 621.15 ms
+(previously running competitions, we can find if we click to All.)59.5 608.15 ms
+( Let's select some challenge and)59.5 595.15 ms
+(see how it organized. Here, we see several tabs which we'll)59.5 582.15 ms
+(explore, and let's start with Overview. In the Description secti)59.5 569.15 ms
+(on we see)59.5 556.15 ms
+(an introduction provided by organizers. In the Description, ther)59.5 543.15 ms
+(e is a short)59.5 530.15 ms
+(story about company and tasks, sometimes with illustration. At t)59.5 517.15 ms
+(he Evaluation page, we see)59.5 504.15 ms
+(the description of the target metric. In this challenge, target )59.5 491.15 ms
+(metric)59.5 478.15 ms
+(is the Mean Absolute Error between the logarithmic transform pre)59.5 465.15 ms
+(dictions and)59.5 452.15 ms
+(ground truth values. This page also contains example of sample)59.5 439.15 ms
+(submission file, which is typical for such kind of competitions.)59.5 426.15 ms
+( Now let's move to the Prize page. In the Prize,)59.5 413.15 ms
+(page we can find information about prizes. Take notice that in t)59.5 400.15 ms
+(he title we have)59.5 387.15 ms
+(information about the whole money budget, and this page,)59.5 374.15 ms
+(we see how it will be split among winners. I want to highlight t)59.5 361.15 ms
+(hat)59.5 348.15 ms
+(in order to get money, you need not only be in top three teams,)59.5 335.15 ms
+(but also beat a Zillow benchmark model. Now let's see, Timeline )59.5 322.15 ms
+(page, which)59.5 309.15 ms
+(contains all the information about dates. For example,)59.5 296.15 ms
+(when competition starts, ends, when will the Team Merger deadlin)59.5 283.15 ms
+(e and)59.5 270.15 ms
+(then what month. All the details about competition,)59.5 257.15 ms
+(we can find in the Rules. So we need to check really the rules. )59.5 244.15 ms
+(Here we can find that team)59.5 231.15 ms
+(limit is three individual, that we have maximum of five)59.5 218.15 ms
+(submissions per day, that you, for example, should be at least)59.5 205.15 ms
+(18 years old to participate. And that, find it, that external da)59.5 192.15 ms
+(ta are not allowed. I strongly suggest you to read the rules)59.5 179.15 ms
+(carefully before joining the competition. And after reading, you)59.5 166.15 ms
+( should accept it,)59.5 153.15 ms
+(but I already accepted it. Now, let's check this, Data. Here we )59.5 140.15 ms
+(have data provided by)59.5 127.15 ms
+(the organizers, several files which we can download, and sample )59.5 114.15 ms
+(submission among)59.5 101.15 ms
+(them, and the description of the data. Here we have description )59.5 88.15 ms
+(of files,)59.5 75.15 ms
+(description of data fields, and more importantly a description)59.5 62.15 ms
+(of train and test split. This is quite useful information in)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 7 7
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                      Page 7)59.5 790.15 ms
+F0 sf
+(order to set up right validation scheme. If you have any questio)59.5 764.15 ms
+(n about data or)59.5 751.15 ms
+(other questions to ask, or insights to share, you can go to the )59.5 738.15 ms
+(forum,)59.5 725.15 ms
+(which we can find under Discussion tab. Usually it contain a lot)59.5 712.15 ms
+( of topics or)59.5 699.15 ms
+(threads, like Welcome, questions about validations, questions ab)59.5 686.15 ms
+(out train and)59.5 673.15 ms
+(test data, and so on and so on. Every topic have title,)59.5 660.15 ms
+(number of comments, and number of reports. Let's see some of the)59.5 647.15 ms
+(m. Here we have main message,)59.5 634.15 ms
+(a lot of comments, in this particular we)59.5 621.15 ms
+(have only one comments. Each we can up vote or down vote and)59.5 608.15 ms
+(reply to by click the reply button. That was a brief overview on)59.5 595.15 ms
+( forum and)59.5 582.15 ms
+(now we switch to the Kernels. Usually, I run my code locally,)59.5 569.15 ms
+(but sometimes it would be handy to check an idea quickly or shar)59.5 556.15 ms
+(e code)59.5 543.15 ms
+(with other participants or teammates. This is what Kernels are f)59.5 530.15 ms
+(or. You can think of Kernel as a small virtual)59.5 517.15 ms
+(machine in which you write your code, execute it, and share it. )59.5 504.15 ms
+(Let's take a look at some Kernel,)59.5 491.15 ms
+(for example for this one. This show explanatory data analysis)59.5 478.15 ms
+(on the Zillow competition. It took quite long, contain a lot of)59.5 465.15 ms
+(pictures, and I believe it very useful. Here we can see comments)59.5 452.15 ms
+( for)59.5 439.15 ms
+(this, different versions. And in order,)59.5 426.15 ms
+(if you want to make a copy and edit it, we need to Fork this Not)59.5 413.15 ms
+(ebook. It doesn't matter how your)59.5 400.15 ms
+(predictions were produced, locally or by Kernel, you should subm)59.5 387.15 ms
+(it)59.5 374.15 ms
+(them through a specialized form. So go back to the competition. )59.5 361.15 ms
+(Go to submissions. I already submit sample submission,)59.5 348.15 ms
+(you can do the same. Click submit predictions,)59.5 335.15 ms
+(and drag and drop file here. Let's look at my submission. After )59.5 322.15 ms
+(submission,)59.5 309.15 ms
+(you will see it on the leaderboard. This is my sample submission)59.5 296.15 ms
+(. Leaderboard contains information)59.5 283.15 ms
+(about all the teams. So here we have team name or just name)59.5 270.15 ms
+(in case of single competition team. Score which we produced,)59.5 257.15 ms
+(number of submissions, time since the last submissions, and)59.5 244.15 ms
+(position data over seven last days. For example, this means that)59.5 231.15 ms
+( this guy)59.5 218.15 ms
+(drops 19 positions during the last week. That was a brief overvi)59.5 205.15 ms
+(ew)59.5 192.15 ms
+(of Kaggle interface. Further, I will tell some extra)59.5 179.15 ms
+(information about the platform. So let's move to Overview)59.5 166.15 ms
+(page at the bottom. And here,)59.5 153.15 ms
+(we see information about points and tiers. As mentioned here, th)59.5 140.15 ms
+(e competition will be)59.5 127.15 ms
+(counting towards ranking points an tiers. If you participate,)59.5 114.15 ms
+(it will be beneficial for your rating. Sometimes, especially in )59.5 101.15 ms
+(educational)59.5 88.15 ms
+(competitions, it's not like that. Information about Kaggle Progr)59.5 75.15 ms
+(ession)59.5 62.15 ms
+(System we can find if we click this link, where we can read info)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 8 8
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                      Page 8)59.5 790.15 ms
+F0 sf
+(rmation about)59.5 764.15 ms
+(tiers like novice, contributor, master, grandmaster. About medal)59.5 751.15 ms
+(s and ranking points. This ranking points, I use for)59.5 738.15 ms
+(global User Ranking. Let's check it. So, we have user ranking pa)59.5 725.15 ms
+(ge, and we see all the users ranked, and)59.5 712.15 ms
+(with links to their profile. Let's check some profile,)59.5 699.15 ms
+(for example mine. And here we have photo,)59.5 686.15 ms
+(name, some information, geo information, information about)59.5 673.15 ms
+(past competitions, medals, and so on. In addition, I want to say)59.5 660.15 ms
+( a few words)59.5 647.15 ms
+(about ability to host competition. Kaggle has this ability. Clic)59.5 634.15 ms
+(k Host competition, and)59.5 621.15 ms
+(there is special Kaggle in class. At in class, everyone can host)59.5 608.15 ms
+(their own competition for free and invite people to participate.)59.5 595.15 ms
+( This option is quite often used in)59.5 582.15 ms
+(various educational competitions. So this was a brief overview)59.5 569.15 ms
+(of Kaggle platform. Thank for your attention. [MUSIC]In this vid)59.5 556.15 ms
+(eo, I want to talk about complexity of real world machine learni)59.5 543.15 ms
+(ng pipelines and how they differ from data science competitions.)59.5 530.15 ms
+( Also, we will discuss the philosophy of the competitions. Real )59.5 517.15 ms
+(world machine learning problems are very complicated. They inclu)59.5 504.15 ms
+(de several stages, each of them is very important and require at)59.5 491.15 ms
+(tention. Let's imagine that we need to build an an anti-spam sys)59.5 478.15 ms
+(tem and consider the basic steps that arise when building such a)59.5 465.15 ms
+( system. First of all, before doing any machine learning stuff, )59.5 452.15 ms
+(you need to understand the problem from a business point of view)59.5 439.15 ms
+(. What do you want to do? For what? How can it help your users? )59.5 426.15 ms
+(Next, you need to formalize the task. What is the definition of )59.5 413.15 ms
+(spam? What exactly is to be predicted? The next step is to colle)59.5 400.15 ms
+(ct data. You should ask yourself, what data can we use? How to m)59.5 387.15 ms
+(ine examples of spam and non-spam? Next, you need to take care o)59.5 374.15 ms
+(f how to clean your data and pre-process it. After that, you nee)59.5 361.15 ms
+(d to move on to building models. To do this, you need to answer )59.5 348.15 ms
+(the questions, which class of model is appropriate for this part)59.5 335.15 ms
+(icular task? How to measure performance? How to select the best )59.5 322.15 ms
+(model? The next steps are to check the effectiveness on the mode)59.5 309.15 ms
+(l in real scenario, to make sure that it works as expected and t)59.5 296.15 ms
+(here was no bias introduced by learning process. Does the model )59.5 283.15 ms
+(actually block spam? How often does it block non-spam emails? If)59.5 270.15 ms
+( everything is fine, then the next step is to deploy the model. )59.5 257.15 ms
+(Or in other words, make it available to users. However, the proc)59.5 244.15 ms
+(ess doesn't end here. Your need to monitor the model performance)59.5 231.15 ms
+( and re-train it on new data. In addition, you need to periodica)59.5 218.15 ms
+(lly revise your understanding of the problem and go for the cycl)59.5 205.15 ms
+(e again and again. In contrast, in competitions we have a much s)59.5 192.15 ms
+(impler situation. All things about formalization and evaluation )59.5 179.15 ms
+(are already done. All data collected and target metrics fixed. T)59.5 166.15 ms
+(herefore your mainly focus on pre-processing the data, picking m)59.5 153.15 ms
+(odels and selecting the best ones. But, sometimes you need to un)59.5 140.15 ms
+(derstand the business problem in order to get insights or genera)59.5 127.15 ms
+(te a new feature. Also sometimes organizers allow the usage of e)59.5 114.15 ms
+(xternal data. In such cases, data collection become a crucial pa)59.5 101.15 ms
+(rt of the solution. I want to show you the difference between re)59.5 88.15 ms
+(al life applications and competitions more thoroughly. This tabl)59.5 75.15 ms
+(e shows that competitions are much simpler than real world machi)59.5 62.15 ms
+(ne learning problems. The hardest part, problem formalization an)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 9 9
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                      Page 9)59.5 790.15 ms
+F0 sf
+(d choice of target metric, is already done. Also questions relat)59.5 764.15 ms
+(ed to deploying out of scope, so participants can focus just on )59.5 751.15 ms
+(modeling part. One may notice that in this table data collection)59.5 738.15 ms
+( and model complexity roles have no and yes in competition colum)59.5 725.15 ms
+(n. The reason for that, that in some competitions you need to ta)59.5 712.15 ms
+(ke care of these things. But usually it's not the case. I want t)59.5 699.15 ms
+(o emphasize that as competitors, the only thing we should take c)59.5 686.15 ms
+(are about is target metrics value. Speed, complexity and memory )59.5 673.15 ms
+(consumption, all this doesn't matter as long as you're able to c)59.5 660.15 ms
+(alculate it and re-produce your own results. Let's highlight key)59.5 647.15 ms
+( points. Real world machine learning pipelines are very complica)59.5 634.15 ms
+(ted and consist of many stages. Competitions, add weight to a lo)59.5 621.15 ms
+(t of things about modeling and data analysis, but in general the)59.5 608.15 ms
+(y don't address the questions of formalization, deployment and t)59.5 595.15 ms
+(esting. Now, I want to say a few words about philosophy on compe)59.5 582.15 ms
+(titions, in order to form a right impression. We'll cover these )59.5 569.15 ms
+(ideas in more details later in the course along with examples. T)59.5 556.15 ms
+(he first thing I want to show you is that, machine learning comp)59.5 543.15 ms
+(etitions are not only about algorithms. An algorithm is just a t)59.5 530.15 ms
+(ool. Anybody can easily use it. You need something more to win. )59.5 517.15 ms
+(Insights about data are usually much more useful than a returned)59.5 504.15 ms
+( ensemble. Some competitions could be solved analytically, witho)59.5 491.15 ms
+(ut any sophisticated machine learning techniques. In this course)59.5 478.15 ms
+(, we will show you the importance of understanding your data, to)59.5 465.15 ms
+(ols to use and features you tried to exploit in order to produce)59.5 452.15 ms
+( the best solution. The next thing I want to say, don't limit yo)59.5 439.15 ms
+(urself. Keep in mind that the only thing you should care about i)59.5 426.15 ms
+(s target metric. It's totally fine to use heuristics or manual d)59.5 413.15 ms
+(ata analysis in order to construct golden feature and improve yo)59.5 400.15 ms
+(ur model. Besides, don't be afraid of using complex solutions, a)59.5 387.15 ms
+(dvance feature engineering or doing the huge gritty calculation )59.5 374.15 ms
+(overnights. Use all the ways you can find in order to improve yo)59.5 361.15 ms
+(ur model. After passing this course, you will able to get the ma)59.5 348.15 ms
+(ximum gain from your data. And now the important aspect is creat)59.5 335.15 ms
+(ivity. You need to know traditional approaches of solid machine )59.5 322.15 ms
+(learning problems but, you shouldn't be bounded by them. It's ok)59.5 309.15 ms
+(ay to modify or hack existing algorithm for your particular task)59.5 296.15 ms
+(. Don't be afraid to read source codes and change them, especial)59.5 283.15 ms
+(ly for deploying stuff. In our course, we'll show you examples o)59.5 270.15 ms
+(f how a little bit of creativity can lead to constructing golden)59.5 257.15 ms
+( features or entire approaches for solving problems. In the end,)59.5 244.15 ms
+( I want to say enjoy competitions. Don't be obsessed with gettin)59.5 231.15 ms
+(g money. Experience and fun you get are much more valuables than)59.5 218.15 ms
+( the price. Also, networking is another great advantage of parti)59.5 205.15 ms
+(cipating in data science competition. I hope you find this cours)59.5 192.15 ms
+(e interesting.Hi, everyone. In this video, I want to do a brief )59.5 179.15 ms
+(overview of basic machine learning approaches and ideas behind t)59.5 166.15 ms
+(hem. There are several famous of machine learning algorithms whi)59.5 153.15 ms
+(ch I want to review. It's a Linear Model, Tree-Based Methods, k-)59.5 140.15 ms
+(Nearest Neighbors, and Neural Nets. For each of this family, I w)59.5 127.15 ms
+(ill give a short intuitive explanation with examples. If you don)59.5 114.15 ms
+('t remember any of these topics, I strongly encourage you to lea)59.5 101.15 ms
+(rn it using links from additional materials. Let's start with Li)59.5 88.15 ms
+(near Models. Imagine that we have two sets of points, gray point)59.5 75.15 ms
+(s belong to one class and green ones to another. It is very intu)59.5 62.15 ms
+(itive to separate them with a line. In this case, it's quite sim)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 10 10
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 10)59.5 790.15 ms
+F0 sf
+(ple to do since we have only two dimensional points. But this ap)59.5 764.15 ms
+(proach can be generalized for a high dimensional space. This is )59.5 751.15 ms
+(the main idea behind Linear Models. They try to separate objects)59.5 738.15 ms
+( with a plane which divides space into two parts. You can rememb)59.5 725.15 ms
+(er several examples from this model class like logistic regressi)59.5 712.15 ms
+(on or SVM. They all are Linear Models with different loss functi)59.5 699.15 ms
+(ons. I want to emphasize that Linear Models are especially good )59.5 686.15 ms
+(for sparse high dimensional data. But you should keep in mind th)59.5 673.15 ms
+(e limitations of Linear Models. Often, point cannot be separated)59.5 660.15 ms
+( by such a simple approach. As an example, you can imagine two s)59.5 647.15 ms
+(ets of points that form rings, one inside the other. Although it)59.5 634.15 ms
+('s pretty obvious how to separate them, Linear Models are not an)59.5 621.15 ms
+( appropriate choice either and will fail in this case. You can f)59.5 608.15 ms
+(ind implementations of Linear Models in almost every machine lea)59.5 595.15 ms
+(rning library. Most known implementation in Scikit-Learn library)59.5 582.15 ms
+(. Another implementation which deserves our attention is Vowpal )59.5 569.15 ms
+(Wabbit, because it is designed to handle really large data sets.)59.5 556.15 ms
+( We're finished with Linear Model here and move on to the next f)59.5 543.15 ms
+(amily, Tree-Based Methods. Tree-Based Methods use decision tree )59.5 530.15 ms
+(as a basic block for building more complicated models. Let's con)59.5 517.15 ms
+(sider an example of how decision tree works. Imagine that we hav)59.5 504.15 ms
+(e two sets of points similar to a linear case. Let's separate on)59.5 491.15 ms
+(e class from the other by a line parallel to the one of the axes)59.5 478.15 ms
+(. We use such restrictions as it significantly reduces the numbe)59.5 465.15 ms
+(r of possible lines and allows us to describe the line in a simp)59.5 452.15 ms
+(le way. After setting the split as shown at that picture, we wil)59.5 439.15 ms
+(l get two sub spaces, upper will have probability of gray=1, and)59.5 426.15 ms
+( lower will have probability of gray=0.2. Upper sub-space doesn')59.5 413.15 ms
+(t require any further splitting. Let's continue splitting for th)59.5 400.15 ms
+(e lower sub-space. Now, we have zero probability on gray for the)59.5 387.15 ms
+( left sub-space and one for the right. This was a brief overview)59.5 374.15 ms
+( of how decision tree works. It uses divide-and-conquer approach)59.5 361.15 ms
+( to recur sub-split spaces into sub-spaces. Intuitively, single )59.5 348.15 ms
+(decision tree can be imagined as dividing space into boxes and a)59.5 335.15 ms
+(pproximating data with a constant inside of these boxes. The way)59.5 322.15 ms
+( of true axis splits and corresponding constants produces severa)59.5 309.15 ms
+(l approaches for building decision trees. Moreover, such trees c)59.5 296.15 ms
+(an be combined together in a lot of ways. All this leads to a wi)59.5 283.15 ms
+(de variety of tree-based algorithms, most famous of them being r)59.5 270.15 ms
+(andom forest and Gradient Boosted Decision Trees. In case if you)59.5 257.15 ms
+( don't know what are that, I strongly encourage you to remember )59.5 244.15 ms
+(these topics using links from additional materials. In general, )59.5 231.15 ms
+(tree-based models are very powerful and can be a good default me)59.5 218.15 ms
+(thod for tabular data. In almost every competitions, winners use)59.5 205.15 ms
+( this approach. But keep in mind that for Tree-Based Methods, it)59.5 192.15 ms
+('s hard to capture linear dependencies since it requires a lot o)59.5 179.15 ms
+(f splits. We can imagine two sets of points which can be separat)59.5 166.15 ms
+(ed with a line. In this case, we need to grow a tree with a lot )59.5 153.15 ms
+(of splits in order to separate points. Even in such case, our tr)59.5 140.15 ms
+(ee could be inaccurate near decision border, as shown on the pic)59.5 127.15 ms
+(ture. Similar to Linear Models, you can find implementations of )59.5 114.15 ms
+(tree-based models in almost every machine learning library. Scik)59.5 101.15 ms
+(it-Learn contains quite good implementation of random forest whi)59.5 88.15 ms
+(ch I personally prefer. All the Scikit-Learn contain implementat)59.5 75.15 ms
+(ion of gradient boost decision trees. I prefer to use libraries )59.5 62.15 ms
+(like XGBoost and LightGBM for their higher speed and accuracy. S)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 11 11
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 11)59.5 790.15 ms
+F0 sf
+(o, here we end the overview of Tree-Based Methods and move on to)59.5 764.15 ms
+( the k-NN. Before I start the explanation, I want to say that k-)59.5 751.15 ms
+(NN is abbreviation for k-Nearest Neighbors. One shouldn't mix it)59.5 738.15 ms
+( up with Neural Networks. So, let's take a look at the familiar )59.5 725.15 ms
+(binary classification problem. Imagine that we need to predict l)59.5 712.15 ms
+(abel for the points shown with question mark at this slide. We a)59.5 699.15 ms
+(ssume that points close to each other are likely to have similar)59.5 686.15 ms
+( labels. So, we need to find the closest point which displayed b)59.5 673.15 ms
+(y arrow and pick its label as an answer. This is how nearest nei)59.5 660.15 ms
+(ghbor's method generally works. It can be easily generalized for)59.5 647.15 ms
+( k-NN, if we will find k-nearest objects and select plus labeled)59.5 634.15 ms
+( by majority vote. The intuition behind k-NN is very simple. Clo)59.5 621.15 ms
+(ser objects will likely to have same labels. In this particular )59.5 608.15 ms
+(example, we use square distance to find the closest object. In g)59.5 595.15 ms
+(eneral case, it can be meaningless to use such a distance functi)59.5 582.15 ms
+(on. For example, square distance over images is unable to captur)59.5 569.15 ms
+(e semantic meaning. Despite simplicity of the approach, features)59.5 556.15 ms
+( based on nearest neighbors are often very informative. We will )59.5 543.15 ms
+(discuss them in more details later in our course. Implementation)59.5 530.15 ms
+(s of k-NN can be found in a lot of machine learning libraries. I)59.5 517.15 ms
+( suggest you to use implementation from Scikit-Learn since it us)59.5 504.15 ms
+(e algorithm matrix to speedup recollections and allows you to us)59.5 491.15 ms
+(e several predefined distance functions. Also, it allows you to )59.5 478.15 ms
+(implement your own distance function. The next big class of mode)59.5 465.15 ms
+(l I want to overview is Neural Networks. Neural Nets is a specia)59.5 452.15 ms
+(l class of machine learning models, which deserve a separate top)59.5 439.15 ms
+(ic. In general, such methods can be seen in this Black-Box which)59.5 426.15 ms
+( produce a smooth separating curve in contrast to decision trees)59.5 413.15 ms
+(. I encourage you to visit TensorFlow playground which is shown )59.5 400.15 ms
+(on the slide, and play with different parameters of the simple f)59.5 387.15 ms
+(eed-forward network in order to get some intuition about how fee)59.5 374.15 ms
+(d-forward Neural Nets works. Some types of Neural Nets are espec)59.5 361.15 ms
+(ially good for images, sounds, text, and sequences. We won't cov)59.5 348.15 ms
+(er details of Neural Nets in this course. Since Neural Nets attr)59.5 335.15 ms
+(acted a lot of attention over the last few years, there are a lo)59.5 322.15 ms
+(t of frameworks to work with them. Packages like TensorFlow, Ker)59.5 309.15 ms
+(as, MXNet, PyTorch, and Lasagne can be used to feed Neural Nets.)59.5 296.15 ms
+( I personally prefer PyTorch since it's provides flexible and us)59.5 283.15 ms
+(er-friendly way to define complex networks. After this brief rec)59.5 270.15 ms
+(ap, I want to say a few words about No Free Lunch Theorem. Basic)59.5 257.15 ms
+(ally, No Free Lunch Theorem states that there is no methods whic)59.5 244.15 ms
+(h outperform all others on all tasks, or in other words, for eve)59.5 231.15 ms
+(ry method, we can construct a task for which this particular met)59.5 218.15 ms
+(hod will not be the best. The reason for that is that every meth)59.5 205.15 ms
+(od relies on some assumptions about data or task. If these assum)59.5 192.15 ms
+(ptions fail, Limited will perform poorly. For us, this means tha)59.5 179.15 ms
+(t we cannot every competition with just a single algorithm. So w)59.5 166.15 ms
+(e need to have a variety of tools based off different assumption)59.5 153.15 ms
+(s. Before the end of this video, I want to show you an example f)59.5 140.15 ms
+(rom Scikit-Learn library, which plots decision surfaces for diff)59.5 127.15 ms
+(erent classifiers. We can see the type of algorithm have a signi)59.5 114.15 ms
+(ficant influence of decision boundaries and consequently on [ina)59.5 101.15 ms
+(udible]. I strongly suggest you to dive deeper into this example)59.5 88.15 ms
+( and make sure that you have intuition why these classifiers pro)59.5 75.15 ms
+(duce such surfaces. In the end, I want to remind you the main po)59.5 62.15 ms
+(ints of this video. First of all, there is no silver bullet algo)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 12 12
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 12)59.5 790.15 ms
+F0 sf
+(rithm which outperforms all the other in all and every task. Nex)59.5 764.15 ms
+(t, is that Linear Model can be imagined as splitting space into )59.5 751.15 ms
+(two sub-spaces separated by a hyper plane. Tree-Based Methods sp)59.5 738.15 ms
+(lit space into boxes and use constant the predictions in every b)59.5 725.15 ms
+(ox. k-NN methods are based on the assumptions that close objects)59.5 712.15 ms
+( are likely to have same labels. So we need to find closest obje)59.5 699.15 ms
+(cts and pick their labels. Also, k-NN approach heavily relies on)59.5 686.15 ms
+( how to measure point closeness. Feed-forward Neural Nets are ha)59.5 673.15 ms
+(rder to interpret but they produce smooth non-linear decision bo)59.5 660.15 ms
+(undary. The most powerful methods are Gradient Boosted Decision )59.5 647.15 ms
+(Trees and Neural Networks. But we shouldn't underestimate Linear)59.5 634.15 ms
+( Models and k-NN because sometimes, they may be better. We will )59.5 621.15 ms
+(show you relevant examples later in our course. Thank you for yo)59.5 608.15 ms
+(ur attention.Hi, everyone. In this video, I want to do an overvi)59.5 595.15 ms
+(ew)59.5 582.15 ms
+(of hardware and software requirements. You will know what is typ)59.5 569.15 ms
+(ical stuff for)59.5 556.15 ms
+(data science competitions. I want to start from)59.5 543.15 ms
+(hardware related things. Participating in competitions, you gene)59.5 530.15 ms
+(rally don't need a lot)59.5 517.15 ms
+(of computation resources. A lot of competitions, except imaged b)59.5 504.15 ms
+(ased,)59.5 491.15 ms
+(have under several gigabytes of data. It's not very huge and can)59.5 478.15 ms
+( be processed on)59.5 465.15 ms
+(a high level laptop with 16 gigabyte ram and four physical cores)59.5 452.15 ms
+(. Quite a good setup is a tower)59.5 439.15 ms
+(PC with 32 gigabyte of ram and six physical cores,)59.5 426.15 ms
+(this is what I personally use. You have a choice of hardware to )59.5 413.15 ms
+(use. I suggest you to pay attention)59.5 400.15 ms
+(to the following things. First is RAM, for this more is better. )59.5 387.15 ms
+(If you can keep your data in memory,)59.5 374.15 ms
+(your life will be much, much easier. Personally, I found 64)59.5 361.15 ms
+(gigabytes is quite enough, but some programmers prefer to have)59.5 348.15 ms
+(128 gigabytes or even more. Next are cores, the more core you ha)59.5 335.15 ms
+(ve)59.5 322.15 ms
+(the more or faster experiments you can do. I find it comfortable)59.5 309.15 ms
+( to)59.5 296.15 ms
+(work with fixed cores, but sometimes even 32 are not enough. Nex)59.5 283.15 ms
+(t thing to pay attention for)59.5 270.15 ms
+(is storage. If you work with large datasets)59.5 257.15 ms
+(that don't fit into the memory, it's crucial to have fast disk t)59.5 244.15 ms
+(o read and)59.5 231.15 ms
+(write chunks of data. SSD is especially important if you train)59.5 218.15 ms
+(narrowness or large number of images. In case you really need)59.5 205.15 ms
+(computational resources. For example, if you are part of team or)59.5 192.15 ms
+( have a computational heavy approach,)59.5 179.15 ms
+(you can rent it on cloud platforms. They offer machines with a l)59.5 166.15 ms
+(ot of RAMs,)59.5 153.15 ms
+(cores, and GPUs. There are several cloud providers, most famous )59.5 140.15 ms
+(are Amazon AWS,)59.5 127.15 ms
+(Microsoft's Azure, and Google Cloud. Each one has its own pricin)59.5 114.15 ms
+(g, so we can choose which one best)59.5 101.15 ms
+(fits your needs and budget. I especially want to draw your)59.5 88.15 ms
+(attention to AWS spot option. Spot instances enable you)59.5 75.15 ms
+(to be able to use instance, which can lower your cost significan)59.5 62.15 ms
+(tly. The higher your price for)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 13 13
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 13)59.5 790.15 ms
+F0 sf
+(spot instance is set by Amazon and fluctuates depending on suppl)59.5 764.15 ms
+(y and)59.5 751.15 ms
+(demand for spot instances. Your spot instance run whenever you)59.5 738.15 ms
+(bid exceeds the current market price. Generally, it's much)59.5 725.15 ms
+(cheaper than other options. But you always have risk that your b)59.5 712.15 ms
+(id)59.5 699.15 ms
+(will get under current market price, and your source will be ter)59.5 686.15 ms
+(minated. Tutorials about how to setup and configure cloud resour)59.5 673.15 ms
+(ces you may)59.5 660.15 ms
+(find in additional materials. Another important thing I)59.5 647.15 ms
+(want to discuss is software. Usually, rules in competitions)59.5 634.15 ms
+(prohibit to use commercial software, since it requires to buy)59.5 621.15 ms
+(a license to reproduce results. Some competitors prefer)59.5 608.15 ms
+(R as basic language. But we will describe Python's tech)59.5 595.15 ms
+(as more common and more general. Python is quite a good language)59.5 582.15 ms
+( for)59.5 569.15 ms
+(fast prototyping. It has a huge amount of high quality and)59.5 556.15 ms
+(open source libraries. And I want to reuse several of them. Let')59.5 543.15 ms
+(s start with NumPy. It's a linear algebra library)59.5 530.15 ms
+(to work with dimensional arrays, which contains useful linear al)59.5 517.15 ms
+(gebra)59.5 504.15 ms
+(routines and random number capabilities. Pandas is a library pro)59.5 491.15 ms
+(viding fast,)59.5 478.15 ms
+(flexible, and expressive way to work with a relational or table )59.5 465.15 ms
+(of data,)59.5 452.15 ms
+(both easily and intuitive. It allows you to process your)59.5 439.15 ms
+(data in a way similar to SQL. Scikit-learn is a library of class)59.5 426.15 ms
+(ic)59.5 413.15 ms
+(machine learning algorithms. It features various classification,)59.5 400.15 ms
+(regression, and clustering algorithms, including support virtual)59.5 387.15 ms
+( machines,)59.5 374.15 ms
+(random force, and a lot more. Matplotlib is a plotting library. )59.5 361.15 ms
+(It allows you to do)59.5 348.15 ms
+(a variety of visualization, like line plots, histograms,)59.5 335.15 ms
+(scatter plots and a lot more. As IDE, I suggest you to use)59.5 322.15 ms
+(IPython with Jupyter node box, since they allow you to work)59.5 309.15 ms
+(interactively and remotely. The last property is especially)59.5 296.15 ms
+(useful if you use cloud resources. Additional packages contain)59.5 283.15 ms
+(implementation of more specific tools. Usually, single packages)59.5 270.15 ms
+(implement single algorithm. XGBoost and LightGBM packages implem)59.5 257.15 ms
+(ent)59.5 244.15 ms
+(gradient-boosted decision trees in a very efficient and optimize)59.5 231.15 ms
+(d way. You definitely should)59.5 218.15 ms
+(know about such tools. Keras is a user-friendly framework for)59.5 205.15 ms
+(neural nets. This new package is an efficient)59.5 192.15 ms
+(implementation of this new ]projection method which we will)59.5 179.15 ms
+(discuss in our course. Also, I want to say a few words about)59.5 166.15 ms
+(external tools which usually don't have any connection despite, )59.5 153.15 ms
+(but)59.5 140.15 ms
+(still very used for computations. One such tool is Vowpal Wabbit)59.5 127.15 ms
+(. It is a tool designed to)59.5 114.15 ms
+(provide blazing speed and handle really large data sets,)59.5 101.15 ms
+(which don't fit into memory. Libfm and libffm implement differen)59.5 88.15 ms
+(t)59.5 75.15 ms
+(types of optimization machines, and often used for sparse data l)59.5 62.15 ms
+(ike)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 14 14
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 14)59.5 790.15 ms
+F0 sf
+(click-through rate prediction. Rgf is an alternative base method)59.5 764.15 ms
+(,)59.5 751.15 ms
+(which I suggest you to use in ensembles. You can install these p)59.5 738.15 ms
+(ackages one by one. But as alternative, you can use byte and dis)59.5 725.15 ms
+(tribution like Anaconda, which already)59.5 712.15 ms
+(contains a lot of mentioned packages. And then, through this vid)59.5 699.15 ms
+(eo, I want to emphasize the proposed setup)59.5 686.15 ms
+(is the most common but not the only one. Don't overestimate the )59.5 673.15 ms
+(role of hardware)59.5 660.15 ms
+(and software, since they are just tools. Thank you for your atte)59.5 647.15 ms
+(ntion. [MUSIC][NOISE])59.5 634.15 ms
+(Hi. In every competition,)59.5 621.15 ms
+(we need to pre-process given data set and generate new features )59.5 608.15 ms
+(from existing ones. This is often required to stay on)59.5 595.15 ms
+(the same track with other competitors and sometimes careful feat)59.5 582.15 ms
+(ure)59.5 569.15 ms
+(preprocessing and efficient engineering can give you)59.5 556.15 ms
+(the edge you strive into achieve. Thus, in the next videos, we w)59.5 543.15 ms
+(ill cover)59.5 530.15 ms
+(a very useful topic of basic feature preprocessing and basic fea)59.5 517.15 ms
+(ture generation)59.5 504.15 ms
+(for different types of features. Namely, we will go through nume)59.5 491.15 ms
+(ric)59.5 478.15 ms
+(features, categorical features, datetime features and coordinate)59.5 465.15 ms
+( features. And in the last video,)59.5 452.15 ms
+(we will discus mission values. Beside that, we also will discus)59.5 439.15 ms
+(dependence of preprocessing and generation on a model we're goin)59.5 426.15 ms
+(g to use. So the broad goal of the next)59.5 413.15 ms
+(videos is to help you acquire these highly required skills. To g)59.5 400.15 ms
+(et an idea of following topics, let's)59.5 387.15 ms
+(start with an example of data similar to what we may encounter i)59.5 374.15 ms
+(n competition. And take a look at well)59.5 361.15 ms
+(known Titanic dataset. It stores the data about people who were)59.5 348.15 ms
+(on the Titanic liner during its last trip. Here we have a typica)59.5 335.15 ms
+(l dataframe)59.5 322.15 ms
+(to work with in competitions. Each row represents a person and)59.5 309.15 ms
+(each column is a feature. We have different kinds of features he)59.5 296.15 ms
+(re. For example, the values in)59.5 283.15 ms
+(Survived column are either 0 or 1. The feature is binary. And by)59.5 270.15 ms
+( the way, it is what we)59.5 257.15 ms
+(need to predict in this task. It is our target. So, age and fare)59.5 244.15 ms
+( are numeric features. Sibims p and parch accounts statement and)59.5 231.15 ms
+(embarked a categorical features. Ticket is just an ID and name i)59.5 218.15 ms
+(s text. So indeed,)59.5 205.15 ms
+(we have different feature types here, but do we understand why w)59.5 192.15 ms
+(e should care about)59.5 179.15 ms
+(different features having different types? Well, there are two m)59.5 166.15 ms
+(ain reasons for it, namely, strong connection between)59.5 153.15 ms
+(preprocessing at our model and common feature generation methods)59.5 140.15 ms
+( for)59.5 127.15 ms
+(each feature type. First, let's discuss)59.5 114.15 ms
+(feature preprocessing. Most of times, we can just take our)59.5 101.15 ms
+(features, fit our favorite model and expect it to get great resu)59.5 88.15 ms
+(lts. Each type of feature has its own ways)59.5 75.15 ms
+(to be preprocessed in order to improve quality of the model. In )59.5 62.15 ms
+(other words,)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 15 15
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 15)59.5 790.15 ms
+F0 sf
+(joys of preprocessing matter, depends on the model we're going t)59.5 764.15 ms
+(o use. For example, let's suppose that target has nonlinear)59.5 751.15 ms
+(dependency on the pclass feature. Pclass linear of 1 usually lea)59.5 738.15 ms
+(ds)59.5 725.15 ms
+(to target of 1, 2 leads to 0, and 3 leads to 1 again. Clearly, b)59.5 712.15 ms
+(ecause this is not)59.5 699.15 ms
+(a linear dependency linear model, one get a good result here. So)59.5 686.15 ms
+( in order to improve)59.5 673.15 ms
+(a linear model's quality, we would want to preprocess)59.5 660.15 ms
+(pclass feature in some way. For example, with the so-called whic)59.5 647.15 ms
+(h)59.5 634.15 ms
+(will replace our feature with three, one for each of pclass valu)59.5 621.15 ms
+(es. The linear model will fit much better)59.5 608.15 ms
+(now than in the previous case. However, random forest does not r)59.5 595.15 ms
+(equire)59.5 582.15 ms
+(this feature to be transformed at all. Random forest can easily )59.5 569.15 ms
+(put)59.5 556.15 ms
+(each pclass in separately and predict fine probabilities. So, th)59.5 543.15 ms
+(at was an example of preprocessing. The second reason why we sho)59.5 530.15 ms
+(uld be)59.5 517.15 ms
+(aware of different feature text is to ease generation of new fea)59.5 504.15 ms
+(tures. Feature types different in this and comprehends in common)59.5 491.15 ms
+(feature generation methods. While gaining an ability to)59.5 478.15 ms
+(improve your model through them. Also understanding of basics of)59.5 465.15 ms
+( feature)59.5 452.15 ms
+(generation will aid you greatly in upcoming advanced feature)59.5 439.15 ms
+(topics from our course. As in the first point, understanding of )59.5 426.15 ms
+(a model here can)59.5 413.15 ms
+(help us to create useful features. Let me show you an example. S)59.5 400.15 ms
+(ay, we have to predict the number of)59.5 387.15 ms
+(apples a shop will sell each day next week and we already have a)59.5 374.15 ms
+( couple of months)59.5 361.15 ms
+(sales history as train in data. Let's consider that we have an o)59.5 348.15 ms
+(bvious)59.5 335.15 ms
+(linear trend through out the data and we want to inform the mode)59.5 322.15 ms
+(l about it. To provide you a visual example, we prepare the seco)59.5 309.15 ms
+(nd table with last)59.5 296.15 ms
+(days from train and first days from test. One way to help module)59.5 283.15 ms
+(neutralize linear train is to add feature indicating)59.5 270.15 ms
+(the week number past. With this feature, linear model can succes)59.5 257.15 ms
+(sfully find)59.5 244.15 ms
+(an existing lineer and dependency. On the other hand,)59.5 231.15 ms
+(a gradient boosted decision tree will use this feature to calcul)59.5 218.15 ms
+(ate something)59.5 205.15 ms
+(like mean target value for each week. Here, I calculated mean va)59.5 192.15 ms
+(lues manually)59.5 179.15 ms
+(and printed them in the dataframe. We're going to predict number)59.5 166.15 ms
+(of apples for the sixth week. node that we indeed have here. So )59.5 153.15 ms
+(let's plot how a gradient)59.5 140.15 ms
+(within the decision tree will complete the weak feature. As we d)59.5 127.15 ms
+(o not train Gradient goosting)59.5 114.15 ms
+(decision tree on the sixth week, it will not put splits)59.5 101.15 ms
+(between the fifth and the sixth weeks, then,)59.5 88.15 ms
+(when we will bring the numbers for the 6th week, the model will )59.5 75.15 ms
+(end up)59.5 62.15 ms
+(using the wave from the 5th week. As we can see unfortunately,)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 16 16
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 16)59.5 790.15 ms
+F0 sf
+(no users shall land their train here. And vise versa,)59.5 764.15 ms
+(we can come up with an example of generated feature that will be)59.5 751.15 ms
+(beneficial for decisions three. And useful spoliniar model. So t)59.5 738.15 ms
+(his example shows us,)59.5 725.15 ms
+(that our approach to feature generation should rely on)59.5 712.15 ms
+(understanding of employed model. To summarize this feature,)59.5 699.15 ms
+(first feature preprocessing is necessary instrument you have to )59.5 686.15 ms
+(use to)59.5 673.15 ms
+(adapt data to your model.` Second, feature generation is a very)59.5 660.15 ms
+(powerful technique which can aid you significantly in competitio)59.5 647.15 ms
+(ns and)59.5 634.15 ms
+(sometimes provide you the required edge. And at last,)59.5 621.15 ms
+(both feature preprocessing and feature generation depend on)59.5 608.15 ms
+(the model you are going to use. So these three topics,)59.5 595.15 ms
+(in connection to feature types, will be general theme of the nex)59.5 582.15 ms
+(t videos. We will thoroughly examine)59.5 569.15 ms
+(most frequent methods which you can be able to)59.5 556.15 ms
+(incorporate in your solutions. Good luck. [SOUND] [MUSIC]Hi. In )59.5 543.15 ms
+(this video, we will cover basic approach as to feature preproces)59.5 530.15 ms
+(sing and feature generation for numeric features. We will unders)59.5 517.15 ms
+(tand how model choice impacts feature preprocessing. We will ide)59.5 504.15 ms
+(ntify the preprocessing methods that are used most often, and we)59.5 491.15 ms
+( will discuss feature generation and go through several examples)59.5 478.15 ms
+(. Let's start with preprocessing. First thing you need to know a)59.5 465.15 ms
+(bout handling numeric features is that there are models which do)59.5 452.15 ms
+( and don't depend on feature scale. For now, we will broadly div)59.5 439.15 ms
+(ide all models into tree-based models and non-tree-based models.)59.5 426.15 ms
+( For example, decision trees classifier tries to find the most u)59.5 413.15 ms
+(seful split for each feature, and it won't change its behavior a)59.5 400.15 ms
+(nd its predictions. It can multiply the feature by a constant an)59.5 387.15 ms
+(d to retrain the model. On the other side, there are models whic)59.5 374.15 ms
+(h depend on these kind of transformations. The model based on yo)59.5 361.15 ms
+(ur nearest neighbors, linear models, and neural network. Let's c)59.5 348.15 ms
+(onsider the following example. We have a binary classification t)59.5 335.15 ms
+(est with two features. The object in the picture belong to diffe)59.5 322.15 ms
+(rent classes. The red circle to class zero, and the blue cross t)59.5 309.15 ms
+(o class one, and finally, the class of the green object is unkno)59.5 296.15 ms
+(wn. Here, we will use a one nearest neighbor's model to predict )59.5 283.15 ms
+(the class of the green object. We will measure distance using sq)59.5 270.15 ms
+(uare distance, which is also called altometric. Now, if we calcu)59.5 257.15 ms
+(late distances to the red circle and to the blue cross, we will )59.5 244.15 ms
+(see that our model will predict class one for the green object b)59.5 231.15 ms
+(ecause the blue cross of class one is much closer than the red c)59.5 218.15 ms
+(ircle. But if we multiply the first feature by 10, the red circl)59.5 205.15 ms
+(e will became the closest object, and we will get an opposite pr)59.5 192.15 ms
+(ediction. Let's now consider two extreme cases. What will happen)59.5 179.15 ms
+( if we multiply the first feature by zero and by one million? If)59.5 166.15 ms
+( the feature is multiplied by zero, then every object will have )59.5 153.15 ms
+(feature relay of zero, which results in KNN ignoring that featur)59.5 140.15 ms
+(e. On the opposite, if the feature is multiplied by one million,)59.5 127.15 ms
+( slightest differences in that features values will impact predi)59.5 114.15 ms
+(ction, and this will result in KNN favoring that feature over al)59.5 101.15 ms
+(l others. Great, but what about other models? Linear models are )59.5 88.15 ms
+(also experiencing difficulties with differently scaled features.)59.5 75.15 ms
+( First, we want regularization to be applied to linear models co)59.5 62.15 ms
+(efficients for features in equal amount. But in fact, regulariza)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 17 17
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 17)59.5 790.15 ms
+F0 sf
+(tion impact turns out to be proportional to feature scale. And s)59.5 764.15 ms
+(econd, gradient descent methods can go crazy without a proper sc)59.5 751.15 ms
+(aling. Due to the same reasons, neural networks are similar to l)59.5 738.15 ms
+(inear models in the requirements for feature preprocessing. It i)59.5 725.15 ms
+(s important to understand that different features scalings resul)59.5 712.15 ms
+(t in different models quality. In this sense, it is just another)59.5 699.15 ms
+( hyper parameter you need to optimize. The easiest way to do thi)59.5 686.15 ms
+(s is to rescale all features to the same scale. For example, to )59.5 673.15 ms
+(make the minimum of a feature equal to zero and the maximum equa)59.5 660.15 ms
+(l to one, you can achieve this in two steps. First, we sector at)59.5 647.15 ms
+( minimum value. And second, we divide the difference base maximu)59.5 634.15 ms
+(m. It can be done with MinMaxScaler from sklearn. Let's illustra)59.5 621.15 ms
+(te this with an example. We apply the so-called MinMaxScaler to )59.5 608.15 ms
+(two features from the detaining dataset, Age and SibSp. Looking )59.5 595.15 ms
+(at histograms, we see that the features have different scale, ag)59.5 582.15 ms
+(es between zero and 80, while SibSp is between zero and 8. Let's)59.5 569.15 ms
+( apply MinMaxScaling and see what it will do. Indeed, we see tha)59.5 556.15 ms
+(t after this transformation, both age and SibSp features were su)59.5 543.15 ms
+(ccessfully converted to the same value range of 0,1. Note that d)59.5 530.15 ms
+(istributions of values which we observe from the histograms didn)59.5 517.15 ms
+('t change. To give you another example, we can apply a scalar na)59.5 504.15 ms
+(med StandardScaler in sklearn, which basically first subtract me)59.5 491.15 ms
+(an value from the feature, and then divides the result by featur)59.5 478.15 ms
+(e standard deviation. In this way, we'll get standardized distri)59.5 465.15 ms
+(bution, with a mean of zero and standard deviation of one. After)59.5 452.15 ms
+( either of MinMaxScaling or StandardScaling transformations, fea)59.5 439.15 ms
+(tures impacts on non-tree-based models will be roughly similar. )59.5 426.15 ms
+(Even more, if you want to use KNN, we can go one step ahead and )59.5 413.15 ms
+(recall that the bigger feature is, the more important it will be)59.5 400.15 ms
+( for KNN. So, we can optimize scaling parameter to boost feature)59.5 387.15 ms
+(s which seems to be more important for us and see if this helps.)59.5 374.15 ms
+( When we work with linear models, there is another important mom)59.5 361.15 ms
+(ent that influences model training results. I'm talking about ou)59.5 348.15 ms
+(tiers. For example, in this plot, we have one feature, X, and a )59.5 335.15 ms
+(target variable, Y. If you fit a simple linear model, its predic)59.5 322.15 ms
+(tions can look just like the red line. But if you do have one ou)59.5 309.15 ms
+(tlier with X feature equal to some huge value, predictions of th)59.5 296.15 ms
+(e linear model will look more like the purple line. The same hol)59.5 283.15 ms
+(ds, not only for features values, but also for target values. Fo)59.5 270.15 ms
+(r example, let's imagine we have a model trained on the data wit)59.5 257.15 ms
+(h target values between zero and one. Let's think what happens i)59.5 244.15 ms
+(f we add a new sample in the training data with a target value o)59.5 231.15 ms
+(f 1,000. When we retrain the model, the model will predict abnor)59.5 218.15 ms
+(mally high values. Obviously, we have to fix this somehow. To pr)59.5 205.15 ms
+(otect linear models from outliers, we can clip features values b)59.5 192.15 ms
+(etween two chosen values of lower bound and upper bound. We can )59.5 179.15 ms
+(choose them as some percentiles of that feature. For example, fi)59.5 166.15 ms
+(rst and 99s percentiles. This procedure of clipping is well-know)59.5 153.15 ms
+(n in financial data and it is called winsorization. Let's take a)59.5 140.15 ms
+( look at this histogram for an example. We see that the majority)59.5 127.15 ms
+( of feature values are between zero and 400. But there is a numb)59.5 114.15 ms
+(er of outliers with values around -1,000. They can make life a l)59.5 101.15 ms
+(ot harder for our nice and simple linear model. Let's clip this )59.5 88.15 ms
+(feature's value range and to do so, first, we will calculate low)59.5 75.15 ms
+(er bound and upper bound values as features values at first and )59.5 62.15 ms
+(99s percentiles. After we clip the features values, we can see t)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 18 18
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 18)59.5 790.15 ms
+F0 sf
+(hat features distribution looks fine, and we hope now this featu)59.5 764.15 ms
+(re will be more useful for our model. Another effective preproce)59.5 751.15 ms
+(ssing for numeric features is the rank transformation. Basically)59.5 738.15 ms
+(, it sets spaces between proper assorted values to be equal. Thi)59.5 725.15 ms
+(s transformation, for example, can be a better option than MinMa)59.5 712.15 ms
+(xScaler if we have outliers, because rank transformation will mo)59.5 699.15 ms
+(ve the outliers closer to other objects. Let's understand rank u)59.5 686.15 ms
+(sing this example. If we apply a rank to the source of array, it)59.5 673.15 ms
+( will just change values to their indices. Now, if we apply a ra)59.5 660.15 ms
+(nk to the not-sorted array, it will sort this array, define mapp)59.5 647.15 ms
+(ing between values and indices in this source of array, and appl)59.5 634.15 ms
+(y this mapping to the initial array. Linear models, KNN, and neu)59.5 621.15 ms
+(ral networks can benefit from this kind of transformation if we )59.5 608.15 ms
+(have no time to handle outliers manually. Rank can be imported a)59.5 595.15 ms
+(s a random data function from scipy. One more important note abo)59.5 582.15 ms
+(ut the rank transformation is that to apply to the test data, yo)59.5 569.15 ms
+(u need to store the creative mapping from features values to the)59.5 556.15 ms
+(ir rank values. Or alternatively, you can concatenate, train, an)59.5 543.15 ms
+(d test data before applying the rank transformation. There is on)59.5 530.15 ms
+(e more example of numeric features preprocessing which often hel)59.5 517.15 ms
+(ps non-tree-based models and especially neural networks. You can)59.5 504.15 ms
+( apply log transformation through your data, or there's another )59.5 491.15 ms
+(possibility. You can extract a square root of the data. Both the)59.5 478.15 ms
+(se transformations can be useful because they drive too big valu)59.5 465.15 ms
+(es closer to the features' average value. Along with this, the v)59.5 452.15 ms
+(alues near zero are becoming a bit more distinguishable. Despite)59.5 439.15 ms
+( the simplicity, one of these transformations can improve your n)59.5 426.15 ms
+(eural network's results significantly. Another important moment )59.5 413.15 ms
+(which holds true for all preprocessings is that sometimes, it is)59.5 400.15 ms
+( beneficial to train a model on concatenated data frames produce)59.5 387.15 ms
+(d by different preprocessings, or to mix models training differe)59.5 374.15 ms
+(ntly-preprocessed data. Again, linear models, KNN, and neural ne)59.5 361.15 ms
+(tworks can benefit hugely from this. To this end, we have discus)59.5 348.15 ms
+(sed numeric feature preprocessing, how model choice impacts feat)59.5 335.15 ms
+(ure preprocessing, and what are the most commonly used preproces)59.5 322.15 ms
+(sing methods. Let's now move on to feature generation. Feature g)59.5 309.15 ms
+(eneration is a process of creating new features using knowledge )59.5 296.15 ms
+(about the features and the task. It helps us by making model tra)59.5 283.15 ms
+(ining more simple and effective. Sometimes, we can engineer thes)59.5 270.15 ms
+(e features using prior knowledge and logic. Sometimes we have to)59.5 257.15 ms
+( dig into the data, create and check hypothesis, and use this de)59.5 244.15 ms
+(rived knowledge and our intuition to derive new features. Here, )59.5 231.15 ms
+(we will discuss feature generation with prior knowledge, but as )59.5 218.15 ms
+(it turns out, an ability to dig into the data and derive insight)59.5 205.15 ms
+(s is what makes a good competitor a great one. We will thoroughl)59.5 192.15 ms
+(y analyze and illustrate this skill in the next lessons on explo)59.5 179.15 ms
+(ratory data analysis. For now, let's discuss examples of feature)59.5 166.15 ms
+( generation for numeric features. First, let's start with a simp)59.5 153.15 ms
+(le one. If you have columns, Real Estate price and Real Estate s)59.5 140.15 ms
+(quared area in the dataset, we can quickly add one more feature,)59.5 127.15 ms
+( price per meter square. Easy, and this seems quite reasonable. )59.5 114.15 ms
+(Or, let me give you another quick example from the Forest Cover )59.5 101.15 ms
+(Type Prediction dataset. If we have a horizontal distance to a w)59.5 88.15 ms
+(ater source and the vertical difference in heights within the po)59.5 75.15 ms
+(int and the water source, we as well may add combined feature in)59.5 62.15 ms
+(dicating the direct distance to the water from this point. Among)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 19 19
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 19)59.5 790.15 ms
+F0 sf
+( other things, it is useful to know that adding, multiplications)59.5 764.15 ms
+(, divisions, and other features interactions can be of help not )59.5 751.15 ms
+(only for linear models. For example, although gradient within de)59.5 738.15 ms
+(cision tree is a very powerful model, it still experiences diffi)59.5 725.15 ms
+(culties with approximation of multiplications and divisions. And)59.5 712.15 ms
+( adding size features explicitly can lead to a more robust model)59.5 699.15 ms
+( with less amount of trees. The third example of feature generat)59.5 686.15 ms
+(ion for numeric features is also very interesting. Sometimes, if)59.5 673.15 ms
+( we have prices of products as a feature, we can add new feature)59.5 660.15 ms
+( indicating fractional part of these prices. For example, if som)59.5 647.15 ms
+(e product costs 2.49, the fractional part of its price is 0.49. )59.5 634.15 ms
+(This feature can help the model utilize the differences in peopl)59.5 621.15 ms
+(e's perception of these prices. Also, we can find similar patter)59.5 608.15 ms
+(ns in tasks which require distinguishing between a human and a r)59.5 595.15 ms
+(obot. For example, if we will have some kind of financial data l)59.5 582.15 ms
+(ike auctions, we could observe that people tend to set round num)59.5 569.15 ms
+(bers as prices, and there are something like 0.935, blah, blah,,)59.5 556.15 ms
+( blah, very long number here. Or, if we are trying to find spamb)59.5 543.15 ms
+(ots on social networks, we can be sure that no human ever read m)59.5 530.15 ms
+(essages with an exact interval of one second. Great, these three)59.5 517.15 ms
+( examples should have provided you an idea that creativity and d)59.5 504.15 ms
+(ata understanding are the keys to productive feature generation.)59.5 491.15 ms
+( All right, let's summarize this up. In this video, we have disc)59.5 478.15 ms
+(ussed numeric features. First, the impact of feature preprocessi)59.5 465.15 ms
+(ng is different for different models. Tree-based models don't de)59.5 452.15 ms
+(pend on scaling, while non-tree-based models usually depend on t)59.5 439.15 ms
+(hem. Second, we can treat scaling as an important hyper paramete)59.5 426.15 ms
+(r in cases when the choice of scaling impacts predictions qualit)59.5 413.15 ms
+(y. And at last, we should remember that feature generation is po)59.5 400.15 ms
+(wered by an understanding of the data. Remember this lesson and )59.5 387.15 ms
+(this knowledge will surely help you in your next competition.Hi.)59.5 374.15 ms
+( In this video, we will cover categorical and ordinal features. )59.5 361.15 ms
+(We will overview methods to work with them. In particular, what )59.5 348.15 ms
+(kind of pre-processing will be used for each model type of them?)59.5 335.15 ms
+( What is the difference between categorical and and ordinal feat)59.5 322.15 ms
+(ures and how we can generate new features from them? First, let')59.5 309.15 ms
+(s look at several rows from the Titanic dataset and find categor)59.5 296.15 ms
+(ical features here. Their names are: Sex, Cabin and Embarked. Th)59.5 283.15 ms
+(ese are usual categorical features but there is one more special)59.5 270.15 ms
+(, the Pclass feature. Pclass stands for ticket class, and has th)59.5 257.15 ms
+(ree unique values: one, two, and three. It is ordinal or, in oth)59.5 244.15 ms
+(er words, order categorical feature. This basically means that i)59.5 231.15 ms
+(t is ordered in some meaningful way. For example, if the first c)59.5 218.15 ms
+(lass was more expensive than the second, or the more the first s)59.5 205.15 ms
+(hould be more expensive than the third. We should make an import)59.5 192.15 ms
+(ant note here about differences between ordinal and numeric feat)59.5 179.15 ms
+(ures. If Pclass would have been a numeric feature, we could say )59.5 166.15 ms
+(that the difference between first, and the second class is equal)59.5 153.15 ms
+( to the difference between second and the third class, but becau)59.5 140.15 ms
+(se Pclass is ordinal, we don't know which difference is bigger. )59.5 127.15 ms
+(As these numeric features, we can't sort and integrate an ordina)59.5 114.15 ms
+(l feature the other way, and expect to get similar performance. )59.5 101.15 ms
+(Another example for ordinal feature is a driver's license type. )59.5 88.15 ms
+(It's either A, B, C, or D. Or another example, level of educatio)59.5 75.15 ms
+(n, kindergarten, school, undergraduate, bachelor, master, and do)59.5 62.15 ms
+(ctoral. These categories are sorted in increasingly complex orde)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 20 20
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 20)59.5 790.15 ms
+F0 sf
+(r, which can prove to be useful. The simplest way to encode a ca)59.5 764.15 ms
+(tegorical feature is to map it's unique values to different numb)59.5 751.15 ms
+(ers. Usually, people referred to this procedure as label encodin)59.5 738.15 ms
+(g. This method works fine with two ways because tree-methods can)59.5 725.15 ms
+( split feature, and extract most of the useful values in categor)59.5 712.15 ms
+(ies on its own. Non-tree-based-models, on the other side, usuall)59.5 699.15 ms
+(y can't use this feature effectively. And if you want to train l)59.5 686.15 ms
+(inear model kNN on neural network, you need to treat a categoric)59.5 673.15 ms
+(al feature differently. To illustrate this, let's remember examp)59.5 660.15 ms
+(le we had in the beginning of this topic. What if Pclass of one )59.5 647.15 ms
+(usually leads to the target of one, Pclass of two leads to zero,)59.5 634.15 ms
+( and Pclass of three leads to one. This dependence is not linear)59.5 621.15 ms
+(, and linear model will be confused. And indeed, here, we can pu)59.5 608.15 ms
+(t linear models predictions, and see they all are around 0.5. Th)59.5 595.15 ms
+(is looks kind of set but three on the other side, we'll just mak)59.5 582.15 ms
+(e two splits select in each unique value and reaching it indepen)59.5 569.15 ms
+(dently. Thus, this entries could achieve much better score here )59.5 556.15 ms
+(using these feature. Let's take now the categorical feature and )59.5 543.15 ms
+(again, apply label encoding. Let this be the feature Embarked. A)59.5 530.15 ms
+(lthough, we didn't have to encode the previous feature Pclass be)59.5 517.15 ms
+(fore using it in the model. Here, we definitely need to do this )59.5 504.15 ms
+(with embarked. It can be achieved in several ways. First, we can)59.5 491.15 ms
+( apply encoding in the alphabetical or sorted order. Unique way )59.5 478.15 ms
+(to solve of this feature namely S, C, Q. Thus, can be encoded as)59.5 465.15 ms
+( two,one, three. This is called label encoder from sklearn works)59.5 452.15 ms
+( by default. The second way is also labeling coding but slightly)59.5 439.15 ms
+( different. Here, we encode a categorical feature by order of ap)59.5 426.15 ms
+(pearance. For example, s will change to one because it was meant)59.5 413.15 ms
+( first in the data. Second then c, and we will change c to two. )59.5 400.15 ms
+(And the last is q, which will be changed to three. This can make)59.5 387.15 ms
+( sense if all were sorted in some meaningful way. This is the de)59.5 374.15 ms
+(fault behavior of pandas.factorize function. The third method th)59.5 361.15 ms
+(at I will tell you about is called frequency encoding. We can en)59.5 348.15 ms
+(code this feature via mapping values to their frequencies. Even )59.5 335.15 ms
+(30 percent for us embarked is equal to c and 50 to s and the res)59.5 322.15 ms
+(t 20 is equal to q. We can change this values accordingly: c to )59.5 309.15 ms
+(0.3, s to 0. 5, and q to 0.2. This will preserve some informatio)59.5 296.15 ms
+(n about values distribution, and can help both linear and three )59.5 283.15 ms
+(models. first ones, can find this feature useful if value freque)59.5 270.15 ms
+(ncy is correlated to it's target value. While the second ones ca)59.5 257.15 ms
+(n help with less number of split because of the same reason. The)59.5 244.15 ms
+(re is another important moment about frequency encoding. If you )59.5 231.15 ms
+(have multiple categories with the same frequency, they won't be )59.5 218.15 ms
+(distinguishable in this new feature. We might a apply or run cat)59.5 205.15 ms
+(egorization here in order to deal with such ties. It is possible)59.5 192.15 ms
+( to do like this. There are other ways to do label encoding, and)59.5 179.15 ms
+( I definitely encourage you to be creative in constructing them.)59.5 166.15 ms
+( Okay. We just discussed label encoding, frequency encoding, and)59.5 153.15 ms
+( why this works fine for tree-based-methods. But we also have se)59.5 140.15 ms
+(en that linear models can struggle with label encoded feature. T)59.5 127.15 ms
+(he way to identify categorical features to non-tree-based-models)59.5 114.15 ms
+( is also quite straightforward. We need to make new code for eac)59.5 101.15 ms
+(h unique value in the future, and put one in the appropriate pla)59.5 88.15 ms
+(ce. Everything else will be zeroes. This method is called, one-h)59.5 75.15 ms
+(ot encoding. Let's see how it works on this quick example. So he)59.5 62.15 ms
+(re, for each unique value of Pclass feature, we just created a n)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 21 21
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 21)59.5 790.15 ms
+F0 sf
+(ew column. As I said, this works well for linear methods, kNN, o)59.5 764.15 ms
+(r neural networks. Furthermore, one -hot encoding feature is alr)59.5 751.15 ms
+(eady scaled because minimum this feature is zero, and maximum is)59.5 738.15 ms
+( one. Note that if you care for a fewer important numeric featur)59.5 725.15 ms
+(es, and hundreds of binary features are used by one-hot encoding)59.5 712.15 ms
+(, it could become difficult for tree-methods they use first ones)59.5 699.15 ms
+( efficiently. More precisely, tree-methods will slow down, not a)59.5 686.15 ms
+(lways improving their results. Also, it's easy to imply that if )59.5 673.15 ms
+(categorical feature has too many unique values, we will add too )59.5 660.15 ms
+(many new columns with a few non-zero values. To store these new )59.5 647.15 ms
+(array efficiently, we must know about sparse matrices. In a nuts)59.5 634.15 ms
+(hell, instead of allocating space in RAM for every element of an)59.5 621.15 ms
+( array, we can store only non-zero elements and thus, save a lot)59.5 608.15 ms
+( of memory. Going with sparse matrices makes sense if number of )59.5 595.15 ms
+(non-zero values is far less than half of all the values. Sparse )59.5 582.15 ms
+(matrices are often useful when they work with categorical featur)59.5 569.15 ms
+(es or text data. Most of the popular libraries can work with the)59.5 556.15 ms
+(se sparse matrices directly namely, XGBoost, LightGBM, sklearn, )59.5 543.15 ms
+(and others. After figuring out how to pre-processed categorical )59.5 530.15 ms
+(features for tree based and non-tree based models, we can take a)59.5 517.15 ms
+( quick look at feature generation. One of most useful examples o)59.5 504.15 ms
+(f feature generation is feature interaction between several cate)59.5 491.15 ms
+(gorical features. This is usually useful for non tree based mode)59.5 478.15 ms
+(ls namely, linear model, kNN. For example, let's hypothesize tha)59.5 465.15 ms
+(t target depends on both Pclass feature, and sex feature. If thi)59.5 452.15 ms
+(s is true, linear model could adjust its predictions for every p)59.5 439.15 ms
+(ossible combination of these two features, and get a better resu)59.5 426.15 ms
+(lt. How can we make this happen? Let's add this interaction by s)59.5 413.15 ms
+(imply concatenating strings from both columns and one-hot encodi)59.5 400.15 ms
+(ng get. Now linear model can find optimal coefficient for every )59.5 387.15 ms
+(interaction and improve. Simple and effective. More on features )59.5 374.15 ms
+(interactions will come in the following weeks especially, in adv)59.5 361.15 ms
+(anced features topic. Now, let's summarize this features. First,)59.5 348.15 ms
+( ordinal is a special case of categorical feature but with value)59.5 335.15 ms
+(s sorted in some meaningful order. Second, label encoding, basic)59.5 322.15 ms
+(ally replace this unique values of categorical features with num)59.5 309.15 ms
+(bers. Third, frequency encoding in this term, maps unique values)59.5 296.15 ms
+( to their frequencies. Fourth, label encoding and frequency enco)59.5 283.15 ms
+(ding are often used for tree-based methods. Fifth, One-hot encod)59.5 270.15 ms
+(ing is often used for non-tree-based-methods. And finally, apply)59.5 257.15 ms
+(ing One-hot encoding combination one heart and chords into combi)59.5 244.15 ms
+(nations of categorical features allows non-tree- based-models to)59.5 231.15 ms
+( take into consideration interactions between features, and impr)59.5 218.15 ms
+(ove. Fine. We just sorted out it feature pre-process for categor)59.5 205.15 ms
+(ical features, and took a quick look on feature generation. Now,)59.5 192.15 ms
+( you will be able to apply these concepts in your next competiti)59.5 179.15 ms
+(on and get better results.Hi. In this video, we will discuss bas)59.5 166.15 ms
+(ic)59.5 153.15 ms
+(visual generation approaches for datetime and coordinate feature)59.5 140.15 ms
+(s. They both differ significantly from)59.5 127.15 ms
+(numeric and categorical features. Because we can interpret the m)59.5 114.15 ms
+(eaning of)59.5 101.15 ms
+(datetime and coordinates, we can came up with specific ideas abo)59.5 88.15 ms
+(ut future)59.5 75.15 ms
+(generation which we'll discuss here. Now, let's start with datet)59.5 62.15 ms
+(ime. Datetime is quite a distinct feature)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 22 22
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 22)59.5 790.15 ms
+F0 sf
+(because it isn't relying on your nature, it also has several dif)59.5 764.15 ms
+(ferent)59.5 751.15 ms
+(tiers like year, day or week. Most new features generated from d)59.5 738.15 ms
+(atetime)59.5 725.15 ms
+(can be divided into two categories. The first one,)59.5 712.15 ms
+(time moments in a period, and the second one,)59.5 699.15 ms
+(time passed since particular event. First one is very simple. We)59.5 686.15 ms
+( can add features like second,)59.5 673.15 ms
+(minute, hour, day in a week, in a month, on the year and)59.5 660.15 ms
+(so on and so forth. This is useful to capture)59.5 647.15 ms
+(repetitive patterns in the data. If we know about some non-commo)59.5 634.15 ms
+(n)59.5 621.15 ms
+(materials which influence the data, we can add them as well. For)59.5 608.15 ms
+( example, if we are to predict)59.5 595.15 ms
+(efficiency of medication, but patients receive pills one)59.5 582.15 ms
+(time every three days, we can consider this as)59.5 569.15 ms
+(a special time period. Okay now, time seems particular event. Th)59.5 556.15 ms
+(is event can be either)59.5 543.15 ms
+(row-independent or row-dependent. In the first case, we just cal)59.5 530.15 ms
+(culate)59.5 517.15 ms
+(time passed from one general moment for all data. For example, f)59.5 504.15 ms
+(rom here to thousand. Here, all samples will become pairable)59.5 491.15 ms
+(between each other on one time scale. As the second variant of)59.5 478.15 ms
+(time since particular event, that date will depend on the sample)59.5 465.15 ms
+(we are calculating this for. For example,)59.5 452.15 ms
+(if we are to predict sales in a shop, like in the ROSSMANN's)59.5 439.15 ms
+(store sales competition. We can add the number of days passed)59.5 426.15 ms
+(since the last holiday, weekend or since the last sales campaign)59.5 413.15 ms
+(, or maybe)59.5 400.15 ms
+(the number of days left to these events. So, after adding these )59.5 387.15 ms
+(features,)59.5 374.15 ms
+(our dataframe can look like this. Date is obviously a date, and)59.5 361.15 ms
+(sales are the target of this task. While other columns)59.5 348.15 ms
+(are generated features. Week day feature indicates which day)59.5 335.15 ms
+(in the week is this, daynumber since year 2014 indicates how man)59.5 322.15 ms
+(y days)59.5 309.15 ms
+(have passed since January 1st, 2014. is_holiday is a binary feat)59.5 296.15 ms
+(ure indicating)59.5 283.15 ms
+(whether this day is a holiday and days_ till_ holidays indicate )59.5 270.15 ms
+(how many)59.5 257.15 ms
+(days are left before the closest holiday. Sometimes we have seve)59.5 244.15 ms
+(ral)59.5 231.15 ms
+(datetime columns in our data. The most for data here is to)59.5 218.15 ms
+(subtract one feature from another. Or perhaps subtract generated)59.5 205.15 ms
+( features,)59.5 192.15 ms
+(like once we have, we just have discussed. Time moment inside th)59.5 179.15 ms
+(e period or)59.5 166.15 ms
+(time passed in zero dependent events. One simple example of thir)59.5 153.15 ms
+(d generation)59.5 140.15 ms
+(can be found in churn prediction task. Basically churn predictio)59.5 127.15 ms
+(n)59.5 114.15 ms
+(is about estimating the likelihood that customers will churn. We)59.5 101.15 ms
+( may receive a valuable feature here)59.5 88.15 ms
+(by subtracting user registration date from the date of some acti)59.5 75.15 ms
+(on of his,)59.5 62.15 ms
+(like purchasing a product, or calling to the customer service. W)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 23 23
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 23)59.5 790.15 ms
+F0 sf
+(e can see how this works)59.5 764.15 ms
+(on this data dataframe. For every user, we know)59.5 751.15 ms
+(last_purchase_date and last_call_date. Here we add the differenc)59.5 738.15 ms
+(e between)59.5 725.15 ms
+(them as new feature named date_diff. For clarity,)59.5 712.15 ms
+(let's take a look at this figure. For every user, we have his)59.5 699.15 ms
+(last_purchase_date and his last_call_date. Thus, we can add date)59.5 686.15 ms
+(_diff)59.5 673.15 ms
+(feature which indicates number of days between these events. Not)59.5 660.15 ms
+(e that after generation feature is)59.5 647.15 ms
+(from date time, you usually will get either numeric features lik)59.5 634.15 ms
+(e)59.5 621.15 ms
+(time passed since the year 2000, or categorical features like da)59.5 608.15 ms
+(y of week. And these features now are need)59.5 595.15 ms
+(to be treated accordingly with necessary pre-processings)59.5 582.15 ms
+(we have discussed earlier. Now having discussed feature)59.5 569.15 ms
+(generation for datetime, let's move onto feature generation for)59.5 556.15 ms
+(coordinates. Let's imagine that we're trying to)59.5 543.15 ms
+(estimate the real estate price. Like in the Deloitte competition)59.5 530.15 ms
+( named)59.5 517.15 ms
+(Western Australia Rental Prices, or in the Sberbank Russian Hous)59.5 504.15 ms
+(ing Market)59.5 491.15 ms
+(competition. Generally, you can calculate distances)59.5 478.15 ms
+(to important points on the map. Keep this wonderful map. If you )59.5 465.15 ms
+(have additional data with)59.5 452.15 ms
+(infrastructural buildings, you can add as a feature distance to )59.5 439.15 ms
+(the nearest)59.5 426.15 ms
+(shop to the second by distance hospital, to the best school in t)59.5 413.15 ms
+(he neighborhood and)59.5 400.15 ms
+(so on. If you do not have such data, you can extract interesting)59.5 387.15 ms
+( points on)59.5 374.15 ms
+(the map from your trained test data. For example, you can do a n)59.5 361.15 ms
+(ew)59.5 348.15 ms
+(map to squares, with a grid, and within each square,)59.5 335.15 ms
+(find the most expensive flat, and for every other object in this)59.5 322.15 ms
+( square,)59.5 309.15 ms
+(add the distance to that flat. Or you can organize your data)59.5 296.15 ms
+(points into clusters, and then use centers of clusters)59.5 283.15 ms
+(as such important points. Or again, another way. You can find so)59.5 270.15 ms
+(me special areas,)59.5 257.15 ms
+(like the area with very old buildings and add distance to this o)59.5 244.15 ms
+(ne. Another major approach to use coordinates)59.5 231.15 ms
+(is to calculate aggregated statistics for objects surrounding ar)59.5 218.15 ms
+(ea. This can include number of lets)59.5 205.15 ms
+(around this particular point, which can then be interpreted as a)59.5 192.15 ms
+(reas or)59.5 179.15 ms
+(polarity. Or we can add mean realty price, which will indicate h)59.5 166.15 ms
+(ow expensive)59.5 153.15 ms
+(area around selected point is. Both distances and aggregate stat)59.5 140.15 ms
+(istics are often)59.5 127.15 ms
+(useful in tasks with coordinates. One more trick you need to kno)59.5 114.15 ms
+(w about)59.5 101.15 ms
+(coordinates, that if you train decision trees from them, you can)59.5 88.15 ms
+( add slightly)59.5 75.15 ms
+(rotated coordinates is new features. And this will help a model )59.5 62.15 ms
+(make)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 24 24
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 24)59.5 790.15 ms
+F0 sf
+(more precise selections on the map. It can be hard to know what )59.5 764.15 ms
+(exact)59.5 751.15 ms
+(rotation we should make, so we may want to add all rotations to )59.5 738.15 ms
+(45 or)59.5 725.15 ms
+(22.5 degrees. Let's look at the next example)59.5 712.15 ms
+(of a relative price prediction. Here the street is dividing)59.5 699.15 ms
+(an area in two parts. The high priced district above the street,)59.5 686.15 ms
+(and the low priced district below it. If the street is slightly )59.5 673.15 ms
+(rotated, trees)59.5 660.15 ms
+(will try to make a lot of space here. But if we will add new coo)59.5 647.15 ms
+(rdinates in)59.5 634.15 ms
+(which these two districts can be divided by a single split, this)59.5 621.15 ms
+( will hugely)59.5 608.15 ms
+(facilitate the rebuilding process. Great, we just summarize the )59.5 595.15 ms
+(most)59.5 582.15 ms
+(frequent methods used for future generation from datetime and)59.5 569.15 ms
+(coordinates. For datetime, these are applying)59.5 556.15 ms
+(periodicity, calculates in time passed since particular event, a)59.5 543.15 ms
+(nd engine)59.5 530.15 ms
+(differences between two datetime features. For coordinates, we s)59.5 517.15 ms
+(hould recall)59.5 504.15 ms
+(extracting interesting samples from trained test data, using pla)59.5 491.15 ms
+(ces from)59.5 478.15 ms
+(additional data, calculating distances to centers of clusters, a)59.5 465.15 ms
+(nd adding aggregated)59.5 452.15 ms
+(statistics for surrounding area. Knowing how to effectively hand)59.5 439.15 ms
+(le datetime)59.5 426.15 ms
+(and coordinates, as well as numeric and categorical features, wi)59.5 413.15 ms
+(ll provide you)59.5 400.15 ms
+(reliable way to improve your score. And to help you devise that)59.5 387.15 ms
+(specific part of solution which is often required to beat very t)59.5 374.15 ms
+(op scores. [SOUND]Often we have to deal with)59.5 361.15 ms
+(missing values in our data. They could look like not numbers,)59.5 348.15 ms
+(empty strings, or outliers like minus 999. Sometimes they can co)59.5 335.15 ms
+(ntain useful)59.5 322.15 ms
+(information by themselves, like what was the reason of)59.5 309.15 ms
+(missing value occurring here? How to use them effectively? How t)59.5 296.15 ms
+(o engineer new features from them? We'll do the topic for this v)59.5 283.15 ms
+(ideo. So what kind of information)59.5 270.15 ms
+(missing values might contain? How can they look like? Let's take)59.5 257.15 ms
+( a look at missing values)59.5 244.15 ms
+(in the Springfield competition. This is metrics of samples and f)59.5 231.15 ms
+(eatures. People mainly reviewed each feature, and)59.5 218.15 ms
+(found missing values for each column. This latest could be not a)59.5 205.15 ms
+( number,)59.5 192.15 ms
+(empty string, minus 1, 99, and so on. For example, how can we fo)59.5 179.15 ms
+(und out)59.5 166.15 ms
+(that -1 can be the missing value? We could draw a histogram and )59.5 153.15 ms
+(see this variable has uniform)59.5 140.15 ms
+(distribution between 0 and 1. And that it has small peak of -1 v)59.5 127.15 ms
+(alues. So if there are no not numbers there, we)59.5 114.15 ms
+(can assume that they were replaced by -1. Or the feature distrib)59.5 101.15 ms
+(ution plot)59.5 88.15 ms
+(can look like the second figure. Note that x axis has lock scale)59.5 75.15 ms
+(. In this case, not a numbers probably)59.5 62.15 ms
+(were few by features mean value. You can easily generalize this)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 25 25
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 25)59.5 790.15 ms
+F0 sf
+(logic to apply to other cases. Okay on this example we just lear)59.5 764.15 ms
+(ned this,)59.5 751.15 ms
+(missing values can be hidden from us. And by hidden I mean repla)59.5 738.15 ms
+(ced by some)59.5 725.15 ms
+(other value beside not a number. Great, let's talk about)59.5 712.15 ms
+(missing value importation. The most often examples are first, re)59.5 699.15 ms
+(placing not a number with some)59.5 686.15 ms
+(value outside fixed value range. Second, replacing not)59.5 673.15 ms
+(a number with mean or median. And third,)59.5 660.15 ms
+(trying to reconstruct value somehow. First method is useful)59.5 647.15 ms
+(in a way that it gives three possibility to take missing)59.5 634.15 ms
+(value into separate category. The downside of this is that perfo)59.5 621.15 ms
+(rmance)59.5 608.15 ms
+(of linear networks can suffer. Second method usually beneficial )59.5 595.15 ms
+(for)59.5 582.15 ms
+(simple linear models and neural networks. But again for trees it)59.5 569.15 ms
+( can be harder to)59.5 556.15 ms
+(select object which had missing values in the first place. Let's)59.5 543.15 ms
+( keep the feature value)59.5 530.15 ms
+(reconstruction for now, and turn to feature generation for a mom)59.5 517.15 ms
+(ent. The concern we just have discussed can)59.5 504.15 ms
+(be addressed by adding new feature isnull indicating which rows )59.5 491.15 ms
+(have)59.5 478.15 ms
+(missing values for this feature. This can solve problems with tr)59.5 465.15 ms
+(ees and neural networks while computing mean or)59.5 452.15 ms
+(median. But the downside of this is that we will)59.5 439.15 ms
+(double number of columns in the data set. Now back to missing va)59.5 426.15 ms
+(lues)59.5 413.15 ms
+(importation methods. The third one, and the last one we will dis)59.5 400.15 ms
+(cuss here,)59.5 387.15 ms
+(is to reconstruct each value if possible. One example of such po)59.5 374.15 ms
+(ssibility is)59.5 361.15 ms
+(having missing values in time series. For example,)59.5 348.15 ms
+(we could have everyday temperature for a month but several value)59.5 335.15 ms
+(s in)59.5 322.15 ms
+(the middle of months are missing. Well of course, we can approxi)59.5 309.15 ms
+(mate)59.5 296.15 ms
+(them using nearby observations. But obviously, this kind of)59.5 283.15 ms
+(opportunity is rarely the case. In most typical scenario rows)59.5 270.15 ms
+(of our data set are independent. And we usually will not find an)59.5 257.15 ms
+(y)59.5 244.15 ms
+(proper logic to reconstruct them. Great, to this moment we alrea)59.5 231.15 ms
+(dy learned)59.5 218.15 ms
+(that we can construct new feature, isnull indicating which)59.5 205.15 ms
+(rows contains not numbers. What are other important moments abou)59.5 192.15 ms
+(t)59.5 179.15 ms
+(feature generation we should know? Well there's one general conc)59.5 166.15 ms
+(ern about generating new features from)59.5 153.15 ms
+(one with missing values. That is, if we do this,)59.5 140.15 ms
+(we should be very careful with replacing missing values)59.5 127.15 ms
+(before our feature generation. To illustrate this, let's imagine)59.5 114.15 ms
+( we have)59.5 101.15 ms
+(a year long data set with two features. Daytime feature and)59.5 88.15 ms
+(temperature which had missing values. We can see all of this on )59.5 75.15 ms
+(the figure. Now we fill missing values with some)59.5 62.15 ms
+(value, for example with median. If you have data over the whole )59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 26 26
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 26)59.5 790.15 ms
+F0 sf
+(year)59.5 764.15 ms
+(median probably will be near zero so it should look like that. N)59.5 751.15 ms
+(ow we want to add feature like)59.5 738.15 ms
+(difference between temperature today and yesterday, let's do thi)59.5 725.15 ms
+(s. As we can see, near the missing values this difference)59.5 712.15 ms
+(usually will be abnormally huge. And this can be misleading our )59.5 699.15 ms
+(model. But hey, we already know that we can)59.5 686.15 ms
+(approximate missing values sometimes here by interpolation the e)59.5 673.15 ms
+(rror by points,)59.5 660.15 ms
+(great. But unfortunately, we usually don't)59.5 647.15 ms
+(have enough time to be so careful here. And more importantly, th)59.5 634.15 ms
+(ese problems can occur in cases when we)59.5 621.15 ms
+(can't come up with such specific solution. Let's review another )59.5 608.15 ms
+(example)59.5 595.15 ms
+(of missing value importation. Which will be substantially)59.5 582.15 ms
+(discussed later in advanced feature [INAUDIBLE] topic. Here we h)59.5 569.15 ms
+(ave a data set)59.5 556.15 ms
+(with independent rows. And we want to encode the categorical)59.5 543.15 ms
+(feature with the numeric feature. To achieve that we calculate m)59.5 530.15 ms
+(ean)59.5 517.15 ms
+(value of numeric feature for every category, and)59.5 504.15 ms
+(replace categories with these mean values. What happens if we fi)59.5 491.15 ms
+(ll not)59.5 478.15 ms
+(the numbers in the numeric feature, with some value outside of)59.5 465.15 ms
+(feature range like -999. As we can see, all values we will)59.5 452.15 ms
+(be doing them closer to -999. And the more the row's correspondi)59.5 439.15 ms
+(ng to)59.5 426.15 ms
+(particular category will have missing values. The closer mean va)59.5 413.15 ms
+(lue will be to -999. The same is true if we fill missing values)59.5 400.15 ms
+(with mean or median of the feature. This kind of missing value i)59.5 387.15 ms
+(mportation)59.5 374.15 ms
+(definitely can screw up the feature we are constructing. The way)59.5 361.15 ms
+( to handle this)59.5 348.15 ms
+(particular case is to simply ignore missing values while)59.5 335.15 ms
+(calculating means for each category. Again let me repeat the ide)59.5 322.15 ms
+(a)59.5 309.15 ms
+(of these two examples. You should be very careful with early non)59.5 296.15 ms
+(e)59.5 283.15 ms
+(importation if you want to generate new features. There's one mo)59.5 270.15 ms
+(re interesting)59.5 257.15 ms
+(thing about missing values. [INAUDIBLE] boost can)59.5 244.15 ms
+(handle a lot of numbers and sometimes using this approach)59.5 231.15 ms
+(can change score drastically. Besides common approaches)59.5 218.15 ms
+(we have discussed, sometimes we can treat)59.5 205.15 ms
+(outliers as missing values. For example, if we have some easy)59.5 192.15 ms
+(classification task with songs which are thought to be composed )59.5 179.15 ms
+(even before)59.5 166.15 ms
+(ancient Rome, or maybe the year 2025. We can try to treat these)59.5 153.15 ms
+(outliers as missing values. If you have categorical features, so)59.5 140.15 ms
+(metimes it can be beneficial)59.5 127.15 ms
+(to change the missing values or categories which present in the )59.5 114.15 ms
+(test data)59.5 101.15 ms
+(but do not present in the train data. The intention for doing so)59.5 88.15 ms
+( appeals to)59.5 75.15 ms
+(the fact that the model which didn't have that category in the t)59.5 62.15 ms
+(rain data)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 27 27
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 27)59.5 790.15 ms
+F0 sf
+(will eventually treat it randomly. Here and)59.5 764.15 ms
+(of categorical features can be of help. As we already discussed )59.5 751.15 ms
+(in our course, we)59.5 738.15 ms
+(can change categories to its frequencies and thus to it categori)59.5 725.15 ms
+(es was in)59.5 712.15 ms
+(before based on their frequency. Let's walk through)59.5 699.15 ms
+(the example on the slide. There you see from the categorical)59.5 686.15 ms
+(feature, they not appear in the train. Let's generate new featur)59.5 673.15 ms
+(e indicating number of where the occurrence)59.5 660.15 ms
+(is in the data. We will name this feature)59.5 647.15 ms
+(categorical_encoded. Value A has six occurrences)59.5 634.15 ms
+(in both train and test, and that's value of new feature)59.5 621.15 ms
+(related to A will be equal to 6. The same works for values B, D,)59.5 608.15 ms
+( or C. But now new features various related)59.5 595.15 ms
+(to D and C are equal to each other. And if there is some depende)59.5 582.15 ms
+(nce in between)59.5 569.15 ms
+(target and number of occurrences for each category, our model wi)59.5 556.15 ms
+(ll be)59.5 543.15 ms
+(able to successfully visualize that. To conclude this video, let)59.5 530.15 ms
+(´s overview)59.5 517.15 ms
+(main points we have discussed. The choice of method to fill not)59.5 504.15 ms
+(a numbers depends on the situation. Sometimes, you can)59.5 491.15 ms
+(reconstruct missing values. But usually, it is easier to)59.5 478.15 ms
+(replace them with value outside of feature range, like -999 or)59.5 465.15 ms
+(to replace them with mean or median. Also missing values already)59.5 452.15 ms
+( can be)59.5 439.15 ms
+(replaced with something by organizers. In this case if you want )59.5 426.15 ms
+(know exact)59.5 413.15 ms
+(rows which have missing values you can investigate this)59.5 400.15 ms
+(by browsing histograms. More, the model can improve its results)59.5 387.15 ms
+(using binary feature isnull which indicates what roles have miss)59.5 374.15 ms
+(ing values. In general, avoid replacing missing)59.5 361.15 ms
+(values before feature generation, because it can decrease)59.5 348.15 ms
+(usefulness of the features. And in the end,)59.5 335.15 ms
+(Xgboost can handle not a numbers directly, which sometimes can c)59.5 322.15 ms
+(hange the score for)59.5 309.15 ms
+(the better. Using knowledge you have)59.5 296.15 ms
+(derived from our discussion, now you should be able to)59.5 283.15 ms
+(identify missing values. Describe main methods to handle them, a)59.5 270.15 ms
+(nd apply this knowledge to gain)59.5 257.15 ms
+(an edge in your next computation. Try these methods in different)59.5 244.15 ms
+( scenarios and for sure, you will succeed.[MUSIC] Hi. Often in c)59.5 231.15 ms
+(omputations,)59.5 218.15 ms
+(we have data like text and images. If you have only them, we can)59.5 205.15 ms
+( apply)59.5 192.15 ms
+(approach specific for this type of data. For example, we can use)59.5 179.15 ms
+( search)59.5 166.15 ms
+(engines in order to find similar text. That was the case in)59.5 153.15 ms
+(the Allen AI Challenge for example. For images, on the other han)59.5 140.15 ms
+(d,)59.5 127.15 ms
+(we can use conditional neural networks, like in the Data Science)59.5 114.15 ms
+( Bowl, and)59.5 101.15 ms
+(a whole bunch of other competitions. But if we have text or imag)59.5 88.15 ms
+(es as additional data, we usually)59.5 75.15 ms
+(must grasp different features, which can be edited as complement)59.5 62.15 ms
+(ary to our)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 28 28
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 28)59.5 790.15 ms
+F0 sf
+(main data frame of samples and features. Very simple example of )59.5 764.15 ms
+(such case we can)59.5 751.15 ms
+(see in the Titanic dataset we have called name, which is more or)59.5 738.15 ms
+( less like text, and to use it, we first need to derive)59.5 725.15 ms
+(the useful features from it. Another most surest example,)59.5 712.15 ms
+(we can predict whether a pair of online advertisements are dupli)59.5 699.15 ms
+(cates, like)59.5 686.15 ms
+(slighty different copies of each other, and we could have images)59.5 673.15 ms
+( from these)59.5 660.15 ms
+(advertisements as complimentary data, like the Avito Duplicates )59.5 647.15 ms
+(Ads Detection)59.5 634.15 ms
+(competition. Or you may be given the task)59.5 621.15 ms
+(of classifying documents, like in the Tradeshift Text)59.5 608.15 ms
+(Classification Challenge. When feature extraction is done, we ca)59.5 595.15 ms
+(n)59.5 582.15 ms
+(treat extracted features differently. Sometimes we just want to )59.5 569.15 ms
+(add new)59.5 556.15 ms
+(features to existing dataframe. Sometimes we even might want to )59.5 543.15 ms
+(use the)59.5 530.15 ms
+(right features independently, and in end, make stake in with the)59.5 517.15 ms
+( base solution. We will go through stake in and we will)59.5 504.15 ms
+(learn how to apply it later in the topic about ensembles, but fo)59.5 491.15 ms
+(r now, you should)59.5 478.15 ms
+(know that both ways first to acquire, to of course extract featu)59.5 465.15 ms
+(res)59.5 452.15 ms
+(from text and images somehow. And this is exactly what we)59.5 439.15 ms
+(will discuss in this video. Let's start with featured)59.5 426.15 ms
+(extraction from text. There are two main ways to do this. First )59.5 413.15 ms
+(is to apply bag of words,)59.5 400.15 ms
+(and second, use embeddings like word to vector. Now, we'll talk )59.5 387.15 ms
+(about a bit)59.5 374.15 ms
+(about each of these methods, and in addition, we will go through)59.5 361.15 ms
+( text)59.5 348.15 ms
+(pre-processings related to them. Let's start with the first appr)59.5 335.15 ms
+(oach,)59.5 322.15 ms
+(the simplest one, bag of words. Here we create new column for ea)59.5 309.15 ms
+(ch unique word from the data, then we)59.5 296.15 ms
+(simply count number of occurences for each word, and place this )59.5 283.15 ms
+(value)59.5 270.15 ms
+(in the appropriate column. After applying the separation to each)59.5 257.15 ms
+( row, we will have usual dataframe)59.5 244.15 ms
+(of samples and features. In a scalar,)59.5 231.15 ms
+(this can be done with CountVectorizer. We also can post process )59.5 218.15 ms
+(calculated)59.5 205.15 ms
+(metrics using some pre-defined methods. To make out why we need )59.5 192.15 ms
+(post-processing)59.5 179.15 ms
+(let's remember that some models like kNN, like neural regression)59.5 166.15 ms
+(, and neural)59.5 153.15 ms
+(networks, depend on scaling of features. So the main goal of pos)59.5 140.15 ms
+(t-processing here is to make samples more comparable)59.5 127.15 ms
+(on one side, and on the other, boost more important features whi)59.5 114.15 ms
+(le)59.5 101.15 ms
+(decreasing the scale of useless ones. One way to achieve the fir)59.5 88.15 ms
+(st goal)59.5 75.15 ms
+(of making a sample small comparable is to normalize sum of value)59.5 62.15 ms
+(s in a row. In this way, we will count not)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 29 29
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 29)59.5 790.15 ms
+F0 sf
+(occurrences but frequencies of words. Thus, texts of different s)59.5 764.15 ms
+(izes)59.5 751.15 ms
+(will be more comparable. This is the exact purpose of)59.5 738.15 ms
+(term frequency transformation. To achieve the second goal,)59.5 725.15 ms
+(that is to boost more important features, we'll make post proces)59.5 712.15 ms
+(s our matrix)59.5 699.15 ms
+(by normalizing data column wise. A good idea is to normalize eac)59.5 686.15 ms
+(h feature)59.5 673.15 ms
+(by the inverse fraction of documents, which contain the exact wo)59.5 660.15 ms
+(rd)59.5 647.15 ms
+(corresponding to this feature. In this case,)59.5 634.15 ms
+(features corresponding to frequent words will be scaled down com)59.5 621.15 ms
+(pared to)59.5 608.15 ms
+(features corresponding to rarer words. We can further improve th)59.5 595.15 ms
+(is idea)59.5 582.15 ms
+(by taking a logarithm of these numberization coefficients. As a )59.5 569.15 ms
+(result, this will decrease)59.5 556.15 ms
+(the significance of widespread words in the dataset and)59.5 543.15 ms
+(do require feature scaling. This is the purpose of inverse)59.5 530.15 ms
+(document frequency transformation. General frequency, and invers)59.5 517.15 ms
+(e)59.5 504.15 ms
+(document frequency transformations, are often used together,)59.5 491.15 ms
+(like an sklearn, in TFiDF Vectorizer. Let's apply TFiDF transfor)59.5 478.15 ms
+(mation)59.5 465.15 ms
+(to the previous example. First, TF. Nice. Occurences which)59.5 452.15 ms
+(are switched to frequencies, that means some of variance for)59.5 439.15 ms
+(each row is now equal to one. Now, IDF, great. Now data is norma)59.5 426.15 ms
+(lized column wise,)59.5 413.15 ms
+(and you can see, for those of you who are too excited, IDF trans)59.5 400.15 ms
+(formation scaled)59.5 387.15 ms
+(down the appropriate feature. It's worth mentioning that there)59.5 374.15 ms
+(are plenty of other variants of TFiDF which may work better depe)59.5 361.15 ms
+(nding)59.5 348.15 ms
+(on the specific data. Another very useful technique is Ngrams. T)59.5 335.15 ms
+(he concept of Ngram is simple, you add)59.5 322.15 ms
+(not only column corresponding to the word, but also columns corr)59.5 309.15 ms
+(esponding)59.5 296.15 ms
+(to inconsequent words. This concept can also be applied)59.5 283.15 ms
+(to sequence of chars, and in cases with low N, we'll have a colu)59.5 270.15 ms
+(mn)59.5 257.15 ms
+(for each possible combination of N chars. As we can see, for N =)59.5 244.15 ms
+( 1, number of)59.5 231.15 ms
+(these columns will be equal to 28. Let's calculate number of)59.5 218.15 ms
+(these columns for N = 2. Well, it will be 28 squared. Note that )59.5 205.15 ms
+(sometimes it can be cheaper)59.5 192.15 ms
+(to have every possible char Ngram as a feature, instead of havin)59.5 179.15 ms
+(g a feature for)59.5 166.15 ms
+(each unique word from the dataset. Using char Ngrams also helps )59.5 153.15 ms
+(our)59.5 140.15 ms
+(model to handle unseen words. For example,)59.5 127.15 ms
+(rare forms of already used words. In a scalared count vectorizor)59.5 114.15 ms
+(has appropriate parameter for using Ngrams, it is called Ngram_r)59.5 101.15 ms
+(ange. To change from word Ngrams to char Ngrams,)59.5 88.15 ms
+(you may use parameter named analyzer. Usually, you may want to p)59.5 75.15 ms
+(reprocess text,)59.5 62.15 ms
+(even before applying bag of words, and sometimes, careful text p)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 30 30
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 30)59.5 790.15 ms
+F0 sf
+(reprocessing)59.5 764.15 ms
+(can help bag of words drastically. Here, we will discuss such me)59.5 751.15 ms
+(thods)59.5 738.15 ms
+(as converting text to lowercase, lemmatization, stemming,)59.5 725.15 ms
+(and the usage of stopwords. Let's consider simple example)59.5 712.15 ms
+(which shows utility of lowercase. What if we applied bag of word)59.5 699.15 ms
+(s)59.5 686.15 ms
+(to the sentence very, very sunny? We will get three columns for )59.5 673.15 ms
+(each word. So because Very, with capital letter,)59.5 660.15 ms
+(is not the same string as very without it, we will get multiple )59.5 647.15 ms
+(columns for)59.5 634.15 ms
+(the same word, and again, Sunny with capital letter)59.5 621.15 ms
+(doesn't match sunny without it. So, first preprocessing what we )59.5 608.15 ms
+(want to)59.5 595.15 ms
+(do is to apply lowercase to our text. Fortunately, configurizer )59.5 582.15 ms
+(from)59.5 569.15 ms
+(sklearn does this by default. Now, let's move on to lemmatizatio)59.5 556.15 ms
+(n and)59.5 543.15 ms
+(stemming. These methods refer to more)59.5 530.15 ms
+(advanced preprocessing. Let's look at this example. We have two )59.5 517.15 ms
+(sentences: I had a car,)59.5 504.15 ms
+(and We have cars. We may want to unify the words car and)59.5 491.15 ms
+(cars, which are basically the same word. The same goes for had a)59.5 478.15 ms
+(nd have, and so on. Both stemming and lemmatization may)59.5 465.15 ms
+(be used to fulfill this purpose, but they achieve this in differ)59.5 452.15 ms
+(ent ways. Stemming usually refers to a heuristic)59.5 439.15 ms
+(process that chops off ending of words and thus unite duration o)59.5 426.15 ms
+(f related words)59.5 413.15 ms
+(like democracy, democratic, and democratization, producing somet)59.5 400.15 ms
+(hing like,)59.5 387.15 ms
+(democr, for each of these words. Lemmatization, on the hand, usu)59.5 374.15 ms
+(ally means)59.5 361.15 ms
+(that you have want to do this carefully using knowledge or vocab)59.5 348.15 ms
+(ulary, and)59.5 335.15 ms
+(morphological analogies of force, returning democracy for)59.5 322.15 ms
+(each of the words below. Let's look at another example that show)59.5 309.15 ms
+(s)59.5 296.15 ms
+(the difference between stemming and lemmatization by applying)59.5 283.15 ms
+(them to word saw. While stemming will return on)59.5 270.15 ms
+(the letter s, lemmatization will try to return either see or saw)59.5 257.15 ms
+(,)59.5 244.15 ms
+(dependent on the word's meaning. The last technique for text pre)59.5 231.15 ms
+(processing, which we will discuss here,)59.5 218.15 ms
+(is usage of stopwords. Basically, stopwords are words which do)59.5 205.15 ms
+(not contain important information for our model. They are either)59.5 192.15 ms
+( insignificant)59.5 179.15 ms
+(like articles or prepositions, or so common they do not)59.5 166.15 ms
+(help to solve our task. Most languages have predefined list)59.5 153.15 ms
+(of stopwords which can be found on the Internet or logged from N)59.5 140.15 ms
+(LTK, which stands for Natural Language)59.5 127.15 ms
+(Toolkit Library for Python. CountVectorizer from sklearn also)59.5 114.15 ms
+(has parameter related to stopwords, which is called max_df. max_)59.5 101.15 ms
+(df is the threshold)59.5 88.15 ms
+(of words we can see, after we see in which,)59.5 75.15 ms
+(the word will be removed from text corpus. Good, we just have di)59.5 62.15 ms
+(scussed classical)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 31 31
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 31)59.5 790.15 ms
+F0 sf
+(feature extraction pipeline for text. At the beginning,)59.5 764.15 ms
+(we may want to pre-process our text. To do so, we can apply lowe)59.5 751.15 ms
+(rcase,)59.5 738.15 ms
+(stemming, lemmatization, or remove stopwords. After preprocessin)59.5 725.15 ms
+(g, we can use bag)59.5 712.15 ms
+(of words approach to get the matrix where each row represents a )59.5 699.15 ms
+(text, and)59.5 686.15 ms
+(each column represents a unique word. Also, we can use bag of wo)59.5 673.15 ms
+(rds approach for)59.5 660.15 ms
+(Ngrams, and in new columns for groups of)59.5 647.15 ms
+(several consecutive words or chars. And in the end, when we post)59.5 634.15 ms
+(process)59.5 621.15 ms
+(these metrics using TFiDF, which often prove to be useful. Well,)59.5 608.15 ms
+( then now we can add extracted)59.5 595.15 ms
+(features to our basic data frame, or putting the dependent model)59.5 582.15 ms
+( on)59.5 569.15 ms
+(them to create some tricky features. That's all for now. In the )59.5 556.15 ms
+(next video, we will continue)59.5 543.15 ms
+(to discuss feature extraction. We'll go through two big points. )59.5 530.15 ms
+(First, we'll talk about approach for texts, and second, we will )59.5 517.15 ms
+(discuss)59.5 504.15 ms
+(feature extraction for images. [MUSIC]Hi and welcome back. In th)59.5 491.15 ms
+(is video, we'll talk about Word2vec approach for texts and then )59.5 478.15 ms
+(we'll discuss feature extraction or images. After we've summariz)59.5 465.15 ms
+(ed pipeline for feature extraction with Bag of Words approach in)59.5 452.15 ms
+( the previous video, let's overview another approach, which is w)59.5 439.15 ms
+(idely known as Word2vec. Just as the Bag of Words approach, we w)59.5 426.15 ms
+(ant to get vector representations of words and texts, but now mo)59.5 413.15 ms
+(re concise than before. Word2vec is doing exactly that. It conve)59.5 400.15 ms
+(rts each word to some vector in some sophisticated space, which )59.5 387.15 ms
+(usually have several hundred dimensions. To learn the word embed)59.5 374.15 ms
+(ding, Word2vec uses nearby words. Basically, different words, wh)59.5 361.15 ms
+(ich often are used in the same context, will be very close in th)59.5 348.15 ms
+(ese vectoring representation, which, of course, will benefit our)59.5 335.15 ms
+( models. Furthermore, there are some prominent examples showing )59.5 322.15 ms
+(that we can apply basic operations like addition and subtraction)59.5 309.15 ms
+( on these vectors and expect results of such operations to be in)59.5 296.15 ms
+(terpretable. You should already have seen this example by now so)59.5 283.15 ms
+(mewhere. Basically, if we calculate differences between the vect)59.5 270.15 ms
+(ors of words queen and king, and differences between the vectors)59.5 257.15 ms
+( of words woman and man, we will find that these differences are)59.5 244.15 ms
+( very similar to each other. And, if we try to see this from ano)59.5 231.15 ms
+(ther perspective, and subtract the vector of woman from the vect)59.5 218.15 ms
+(or of king and then and the vector of man, will pretty much agai)59.5 205.15 ms
+(n the vector of the word queen. Think about it for a moment. Thi)59.5 192.15 ms
+(s is fascinating fact and indeed creation of Word2vec approach l)59.5 179.15 ms
+(ed to many extensive and far reaching results in the field. Ther)59.5 166.15 ms
+(e are several implementations of this embedding approach besides)59.5 153.15 ms
+( Word2vec namely Glove, which stands for Global Vector for word )59.5 140.15 ms
+(representation. FastText and few others. Complications may occur)59.5 127.15 ms
+(, if we need to derive vectors not for words but for sentences. )59.5 114.15 ms
+(Here, we may take different approaches. For example, we can calc)59.5 101.15 ms
+(ulate mean or sum of words vectors or we can choose another way )59.5 88.15 ms
+(and go with special models like Doc2vec. Choice all the way to p)59.5 75.15 ms
+(roceed here depends on and particular situation. Usually, it is )59.5 62.15 ms
+(better to check both approaches and select the best. Training of)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 32 32
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 32)59.5 790.15 ms
+F0 sf
+( Word2vec can take quite a long time, and if you work with text )59.5 764.15 ms
+(or some common origin, you may find useful pre-trained models on)59.5 751.15 ms
+( the internet. For example, ones which are trained on the Wikipe)59.5 738.15 ms
+(dia. Otherwise, remember, the training of Word2vec doesn't requi)59.5 725.15 ms
+(re target values from your text. It only requires text to extrac)59.5 712.15 ms
+(t context for each word. Note, that all pre-processing we had di)59.5 699.15 ms
+(scussed earlier, namely lowercase stemming, lemmatization, and t)59.5 686.15 ms
+(he usage of stopwords can be applied to text before training Wor)59.5 673.15 ms
+(d2vec models. Now, we're ready to summarize difference between B)59.5 660.15 ms
+(ag of Words and the Word2vec approaches in the context of compet)59.5 647.15 ms
+(ition. With Bag of Words, vectors are quite large but is a nice )59.5 634.15 ms
+(benefit. Meaning of each value in the vector is known. With Word)59.5 621.15 ms
+(2vec, vectors have relatively small length but values in a vecto)59.5 608.15 ms
+(r can be interpreted only in some cases, which sometimes can be )59.5 595.15 ms
+(seen as a downside. The other advantage of Word2vec is crucial i)59.5 582.15 ms
+(n competitions, is that words with similar meaning will have sim)59.5 569.15 ms
+(ilar vector representations. Usually, both Bag of Words and Word)59.5 556.15 ms
+(2vec approaches give quite different results and can be used tog)59.5 543.15 ms
+(ether in your solution. Let's proceed to images now. Similar to )59.5 530.15 ms
+(Word2vec for words, convolutional neural networks can give us co)59.5 517.15 ms
+(mpressed representation for an image. Let me provide you a quick)59.5 504.15 ms
+( explanation. When we calculate network output for the image, be)59.5 491.15 ms
+(side getting output on the last layer, we also have outputs from)59.5 478.15 ms
+( inner layers. Here, we will call these outputs descriptors. Des)59.5 465.15 ms
+(criptors from later layers are better way to solve texts similar)59.5 452.15 ms
+( to one network was trained on. In contrary, descriptors from ea)59.5 439.15 ms
+(rly layers have more text independent information. For example, )59.5 426.15 ms
+(if your network was trained on images and data set, you may succ)59.5 413.15 ms
+(essfully use its last layer representation in some Kar model cla)59.5 400.15 ms
+(ssification text. But if you want to use your network in some me)59.5 387.15 ms
+(dical specific text, you probably will do better if you will use)59.5 374.15 ms
+( an earlier for connected layer or even retrain network from scr)59.5 361.15 ms
+(atch. Here, you may look for a pre-trained model which was train)59.5 348.15 ms
+(ed on data similar to what you have in the exact competition. So)59.5 335.15 ms
+(metimes, we can slightly tune network to receive more suitable r)59.5 322.15 ms
+(epresentations using targets values associated with our images. )59.5 309.15 ms
+(In general, process of pre-trained model tuning is called fine-t)59.5 296.15 ms
+(uning. As in the previous example, when we are solving some medi)59.5 283.15 ms
+(cal specific task, we can find tune VGG RestNet or any other pre)59.5 270.15 ms
+(-trained network and specify it to solve these particular texts.)59.5 257.15 ms
+( Fine-tuning, especially for small data sets, is usually better )59.5 244.15 ms
+(than training standalone model on descriptors or a training netw)59.5 231.15 ms
+(ork from scratch. The intuition here is pretty straightforward. )59.5 218.15 ms
+(On the one hand, fine-tuning is better than training standalone )59.5 205.15 ms
+(model on descriptors because it allows to tune all networks para)59.5 192.15 ms
+(meters and thus extract more effective image representations. On)59.5 179.15 ms
+( the other hand, fine-tuning is better than training network fro)59.5 166.15 ms
+(m scratch if we have too little data, or if the text we are solv)59.5 153.15 ms
+(ing is similar to the text model was trained on. In this case, m)59.5 140.15 ms
+(odel can you use the my knowledge already encoded in networks pa)59.5 127.15 ms
+(rameters, which can lead to better results and the faster retrai)59.5 114.15 ms
+(ning procedure. Lets discuss the most often scenario of using th)59.5 101.15 ms
+(e fine-tuning on the online stage or the Data Science Game 2016.)59.5 88.15 ms
+( The task was to classify these laid photos of roofs into one of)59.5 75.15 ms
+( four categories. As usual, logo was first chosen to the other m)59.5 62.15 ms
+(etric. Competitors had 8,000 different images. In this setting, )59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 33 33
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 33)59.5 790.15 ms
+F0 sf
+(it was a good choice to modify some pre-trained network to predi)59.5 764.15 ms
+(ct probabilities for these four classes and fine tune it. Let's )59.5 751.15 ms
+(take a look at VGG-16 architecture because it was trained on the)59.5 738.15 ms
+( 1000 classes from VGG RestNet, it has output of size 1000. We h)59.5 725.15 ms
+(ave only four classes in our text, so we can remove the last lay)59.5 712.15 ms
+(er with size of 1000 and put in its place a new one with size of)59.5 699.15 ms
+( four. Then, we just retrain our model with very smaller rate is)59.5 686.15 ms
+( usually about 1000 times lesser than our initial low rate. That)59.5 673.15 ms
+( is fine-tuning is done, but as we already discussed earlier in )59.5 660.15 ms
+(this video, we can benefit from using model pre-trained on the s)59.5 647.15 ms
+(imilar data set. Image in by itself consist of very different cl)59.5 634.15 ms
+(asses from animals to cars from furniture to food could define m)59.5 621.15 ms
+(ost suitable pre-trained model. We just could take model trained)59.5 608.15 ms
+( on places data set with pictures of buildings and houses, fine-)59.5 595.15 ms
+(tuning this model and further improve their result. If you are i)59.5 582.15 ms
+(nterested in details of fine-tuning, you can find information ab)59.5 569.15 ms
+(out it in almost every neural networks library namely Keras, PyT)59.5 556.15 ms
+(orch, Caffe or other. Sometimes, you also want to increase numbe)59.5 543.15 ms
+(r of training images to train a better network. In that case, im)59.5 530.15 ms
+(age augmentation may be of help. Let's illustrate this concept o)59.5 517.15 ms
+(f image augmentation. On the previous example, we discussed clas)59.5 504.15 ms
+(sification of roof images. For simplicity, let's imagine that we)59.5 491.15 ms
+( now have only four images one for each class. To increase the n)59.5 478.15 ms
+(umber of training samples. let's start with rotating images by 1)59.5 465.15 ms
+(80 degrees. Note, that after such rotation, image of class one a)59.5 452.15 ms
+(gain belongs to this class because the roof on the new image als)59.5 439.15 ms
+(o has North-South orientation. Easy to see that the same is true)59.5 426.15 ms
+( for other classes. Great. After doing just one rotation, we alr)59.5 413.15 ms
+(eady increase the amount of our trained data twice. Now, what wi)59.5 400.15 ms
+(ll happen if we rotate image from the first class by 90 degrees?)59.5 387.15 ms
+( What class will it belong to? Yeah, it will belong to the secon)59.5 374.15 ms
+(d class and eventually, if you rotate images from the third and )59.5 361.15 ms
+(the fourth classes by 90 degrees, they will stay in the same cla)59.5 348.15 ms
+(ss. Look, we just increase the size of our trained set four time)59.5 335.15 ms
+(s although adding such augmentations isn't so effective as addin)59.5 322.15 ms
+(g brand new images to the trained set. This is still very useful)59.5 309.15 ms
+( and can boost your score significantly. In general case, augmen)59.5 296.15 ms
+(tation of images can include groups, rotations, and the noise an)59.5 283.15 ms
+(d so on. Overall, this reduces over fitting and allows you to tr)59.5 270.15 ms
+(ain more robust models with better results. One last note about )59.5 257.15 ms
+(the extracting vectors from images and this note is important on)59.5 244.15 ms
+(e. If you want to fine-tuning convolutiontional neural network o)59.5 231.15 ms
+(r train it from scratch, you usually will need to use labels fro)59.5 218.15 ms
+(m images in the trained set. So be careful with validation here )59.5 205.15 ms
+(and do not over fit. Well then, let's recall main points we have)59.5 192.15 ms
+( discussed here. Sometimes, you have a competition with texts or)59.5 179.15 ms
+( images as additional data. In this case, usually you want to ex)59.5 166.15 ms
+(tract the useful features from them to improve your model. When )59.5 153.15 ms
+(you work with text, pre-processing can prove to be useful. These)59.5 140.15 ms
+( pre-processing can include all lowercase, stemming, lemmatizati)59.5 127.15 ms
+(on, and removing the stopwords. After that pre-processing is don)59.5 114.15 ms
+(e, you can go either Bag of Words or with the Word2vec approach.)59.5 101.15 ms
+( Bag of Words guarantees you clear interpretation. Each feature )59.5 88.15 ms
+(are tuned by means of having a huge amount of features one for e)59.5 75.15 ms
+(ach unique word. On other side, Word2vec produces relatively sma)59.5 62.15 ms
+(ll vectors by meaning of each feature value can be hazy. The oth)59.5 49.15 ms
+re sp
+%%PageTrailer
+%%Page: 34 34
+%%BeginPageSetup
+sv
+0 g
+F0 sf
+%%EndPageSetup
+F1 sf
+(Week1_win_kaggle.txt                                     Page 34)59.5 790.15 ms
+F0 sf
+(er advantage of Word2vec that is crucial in competitions is that)59.5 764.15 ms
+( words with similar meaning will have similar vector representat)59.5 751.15 ms
+(ion. Also, Ngrams can be applied to include words interactions f)59.5 738.15 ms
+(or text and TFiDF can be applied to post-process metrics produce)59.5 725.15 ms
+(d by Bag of Words. Now images. For images, we can use pre-traine)59.5 712.15 ms
+(d convolutional neural networks to extract the features. Dependi)59.5 699.15 ms
+(ng on the similarity between the competition data and the data n)59.5 686.15 ms
+(eural network was trained on, we may want to calculate descripto)59.5 673.15 ms
+(rs from different layers. Often, fine-tuning of neural network c)59.5 660.15 ms
+(an help improve quality of the descriptors. For the purpose of e)59.5 647.15 ms
+(ffective fine-tuning, we may want to augment our data. Also, fin)59.5 634.15 ms
+(e-tuning and data augmentation are often used in competitions wh)59.5 621.15 ms
+(ere we have no other date except images. Besides, there are a nu)59.5 608.15 ms
+(mber of pre-trained models for convolutional neural networks and)59.5 595.15 ms
+( Word2vec on the internet. Great. Now, you know how to handle co)59.5 582.15 ms
+(mpetitions with additional data like text and images. By applyin)59.5 569.15 ms
+(g and adapting ideas we have discussed, you will be able to gain)59.5 556.15 ms
+( an edge in this kind of setting.)59.5 543.15 ms
+re sp
+%%PageTrailer
+%%Trailer
+%%Pages: 34
+%%EOF
+

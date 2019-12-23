@@ -1,0 +1,73 @@
+[NOISE]
+Hi. In every competition,
+we need to pre-process given data set and generate new features from existing ones. This is often required to stay on
+the same track with other competitors and sometimes careful feature
+preprocessing and efficient engineering can give you
+the edge you strive into achieve. Thus, in the next videos, we will cover
+a very useful topic of basic feature preprocessing and basic feature generation
+for different types of features. Namely, we will go through numeric
+features, categorical features, datetime features and coordinate features. And in the last video,
+we will discus mission values. Beside that, we also will discus
+dependence of preprocessing and generation on a model we're going to use. So the broad goal of the next
+videos is to help you acquire these highly required skills. To get an idea of following topics, let's
+start with an example of data similar to what we may encounter in competition. And take a look at well
+known Titanic dataset. It stores the data about people who were
+on the Titanic liner during its last trip. Here we have a typical dataframe
+to work with in competitions. Each row represents a person and
+each column is a feature. We have different kinds of features here. For example, the values in
+Survived column are either 0 or 1. The feature is binary. And by the way, it is what we
+need to predict in this task. It is our target. So, age and fare are numeric features. Sibims p and parch accounts statement and
+embarked a categorical features. Ticket is just an ID and name is text. So indeed,
+we have different feature types here, but do we understand why we should care about
+different features having different types? Well, there are two main reasons for it, namely, strong connection between
+preprocessing at our model and common feature generation methods for
+each feature type. First, let's discuss
+feature preprocessing. Most of times, we can just take our
+features, fit our favorite model and expect it to get great results. Each type of feature has its own ways
+to be preprocessed in order to improve quality of the model. In other words,
+joys of preprocessing matter, depends on the model we're going to use. For example, let's suppose that target has nonlinear
+dependency on the pclass feature. Pclass linear of 1 usually leads
+to target of 1, 2 leads to 0, and 3 leads to 1 again. Clearly, because this is not
+a linear dependency linear model, one get a good result here. So in order to improve
+a linear model's quality, we would want to preprocess
+pclass feature in some way. For example, with the so-called which
+will replace our feature with three, one for each of pclass values. The linear model will fit much better
+now than in the previous case. However, random forest does not require
+this feature to be transformed at all. Random forest can easily put
+each pclass in separately and predict fine probabilities. So, that was an example of preprocessing. The second reason why we should be
+aware of different feature text is to ease generation of new features. Feature types different in this and comprehends in common
+feature generation methods. While gaining an ability to
+improve your model through them. Also understanding of basics of feature
+generation will aid you greatly in upcoming advanced feature
+topics from our course. As in the first point, understanding of a model here can
+help us to create useful features. Let me show you an example. Say, we have to predict the number of
+apples a shop will sell each day next week and we already have a couple of months
+sales history as train in data. Let's consider that we have an obvious
+linear trend through out the data and we want to inform the model about it. To provide you a visual example, we prepare the second table with last
+days from train and first days from test. One way to help module
+neutralize linear train is to add feature indicating
+the week number past. With this feature, linear model can successfully find
+an existing lineer and dependency. On the other hand,
+a gradient boosted decision tree will use this feature to calculate something
+like mean target value for each week. Here, I calculated mean values manually
+and printed them in the dataframe. We're going to predict number
+of apples for the sixth week. node that we indeed have here. So let's plot how a gradient
+within the decision tree will complete the weak feature. As we do not train Gradient goosting
+decision tree on the sixth week, it will not put splits
+between the fifth and the sixth weeks, then,
+when we will bring the numbers for the 6th week, the model will end up
+using the wave from the 5th week. As we can see unfortunately,
+no users shall land their train here. And vise versa,
+we can come up with an example of generated feature that will be
+beneficial for decisions three. And useful spoliniar model. So this example shows us,
+that our approach to feature generation should rely on
+understanding of employed model. To summarize this feature,
+first feature preprocessing is necessary instrument you have to use to
+adapt data to your model.` Second, feature generation is a very
+powerful technique which can aid you significantly in competitions and
+sometimes provide you the required edge. And at last,
+both feature preprocessing and feature generation depend on
+the model you are going to use. So these three topics,
+in connection to feature types, will be general theme of the next videos. We will thoroughly examine
+most frequent methods which you can be able to
+incorporate in your solutions. Good luck. [SOUND] [MUSIC]

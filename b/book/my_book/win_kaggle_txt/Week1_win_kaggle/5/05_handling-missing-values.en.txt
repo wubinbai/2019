@@ -1,0 +1,112 @@
+Often we have to deal with
+missing values in our data. They could look like not numbers,
+empty strings, or outliers like minus 999. Sometimes they can contain useful
+information by themselves, like what was the reason of
+missing value occurring here? How to use them effectively? How to engineer new features from them? We'll do the topic for this video. So what kind of information
+missing values might contain? How can they look like? Let's take a look at missing values
+in the Springfield competition. This is metrics of samples and features. People mainly reviewed each feature, and
+found missing values for each column. This latest could be not a number,
+empty string, minus 1, 99, and so on. For example, how can we found out
+that -1 can be the missing value? We could draw a histogram and see this variable has uniform
+distribution between 0 and 1. And that it has small peak of -1 values. So if there are no not numbers there, we
+can assume that they were replaced by -1. Or the feature distribution plot
+can look like the second figure. Note that x axis has lock scale. In this case, not a numbers probably
+were few by features mean value. You can easily generalize this
+logic to apply to other cases. Okay on this example we just learned this,
+missing values can be hidden from us. And by hidden I mean replaced by some
+other value beside not a number. Great, let's talk about
+missing value importation. The most often examples are first, replacing not a number with some
+value outside fixed value range. Second, replacing not
+a number with mean or median. And third,
+trying to reconstruct value somehow. First method is useful
+in a way that it gives three possibility to take missing
+value into separate category. The downside of this is that performance
+of linear networks can suffer. Second method usually beneficial for
+simple linear models and neural networks. But again for trees it can be harder to
+select object which had missing values in the first place. Let's keep the feature value
+reconstruction for now, and turn to feature generation for a moment. The concern we just have discussed can
+be addressed by adding new feature isnull indicating which rows have
+missing values for this feature. This can solve problems with trees and neural networks while computing mean or
+median. But the downside of this is that we will
+double number of columns in the data set. Now back to missing values
+importation methods. The third one, and the last one we will discuss here,
+is to reconstruct each value if possible. One example of such possibility is
+having missing values in time series. For example,
+we could have everyday temperature for a month but several values in
+the middle of months are missing. Well of course, we can approximate
+them using nearby observations. But obviously, this kind of
+opportunity is rarely the case. In most typical scenario rows
+of our data set are independent. And we usually will not find any
+proper logic to reconstruct them. Great, to this moment we already learned
+that we can construct new feature, isnull indicating which
+rows contains not numbers. What are other important moments about
+feature generation we should know? Well there's one general concern about generating new features from
+one with missing values. That is, if we do this,
+we should be very careful with replacing missing values
+before our feature generation. To illustrate this, let's imagine we have
+a year long data set with two features. Daytime feature and
+temperature which had missing values. We can see all of this on the figure. Now we fill missing values with some
+value, for example with median. If you have data over the whole year
+median probably will be near zero so it should look like that. Now we want to add feature like
+difference between temperature today and yesterday, let's do this. As we can see, near the missing values this difference
+usually will be abnormally huge. And this can be misleading our model. But hey, we already know that we can
+approximate missing values sometimes here by interpolation the error by points,
+great. But unfortunately, we usually don't
+have enough time to be so careful here. And more importantly, these problems can occur in cases when we
+can't come up with such specific solution. Let's review another example
+of missing value importation. Which will be substantially
+discussed later in advanced feature [INAUDIBLE] topic. Here we have a data set
+with independent rows. And we want to encode the categorical
+feature with the numeric feature. To achieve that we calculate mean
+value of numeric feature for every category, and
+replace categories with these mean values. What happens if we fill not
+the numbers in the numeric feature, with some value outside of
+feature range like -999. As we can see, all values we will
+be doing them closer to -999. And the more the row's corresponding to
+particular category will have missing values. The closer mean value will be to -999. The same is true if we fill missing values
+with mean or median of the feature. This kind of missing value importation
+definitely can screw up the feature we are constructing. The way to handle this
+particular case is to simply ignore missing values while
+calculating means for each category. Again let me repeat the idea
+of these two examples. You should be very careful with early none
+importation if you want to generate new features. There's one more interesting
+thing about missing values. [INAUDIBLE] boost can
+handle a lot of numbers and sometimes using this approach
+can change score drastically. Besides common approaches
+we have discussed, sometimes we can treat
+outliers as missing values. For example, if we have some easy
+classification task with songs which are thought to be composed even before
+ancient Rome, or maybe the year 2025. We can try to treat these
+outliers as missing values. If you have categorical features, sometimes it can be beneficial
+to change the missing values or categories which present in the test data
+but do not present in the train data. The intention for doing so appeals to
+the fact that the model which didn't have that category in the train data
+will eventually treat it randomly. Here and
+of categorical features can be of help. As we already discussed in our course, we
+can change categories to its frequencies and thus to it categories was in
+before based on their frequency. Let's walk through
+the example on the slide. There you see from the categorical
+feature, they not appear in the train. Let's generate new feature indicating number of where the occurrence
+is in the data. We will name this feature
+categorical_encoded. Value A has six occurrences
+in both train and test, and that's value of new feature
+related to A will be equal to 6. The same works for values B, D, or C. But now new features various related
+to D and C are equal to each other. And if there is some dependence in between
+target and number of occurrences for each category, our model will be
+able to successfully visualize that. To conclude this video, let´s overview
+main points we have discussed. The choice of method to fill not
+a numbers depends on the situation. Sometimes, you can
+reconstruct missing values. But usually, it is easier to
+replace them with value outside of feature range, like -999 or
+to replace them with mean or median. Also missing values already can be
+replaced with something by organizers. In this case if you want know exact
+rows which have missing values you can investigate this
+by browsing histograms. More, the model can improve its results
+using binary feature isnull which indicates what roles have missing values. In general, avoid replacing missing
+values before feature generation, because it can decrease
+usefulness of the features. And in the end,
+Xgboost can handle not a numbers directly, which sometimes can change the score for
+the better. Using knowledge you have
+derived from our discussion, now you should be able to
+identify missing values. Describe main methods to handle them, and apply this knowledge to gain
+an edge in your next computation. Try these methods in different scenarios and for sure, you will succeed.

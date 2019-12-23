@@ -1,0 +1,298 @@
+This isn't the rare case in competitions when you see people jumping down on leaderboard after revealing private results. So, we ask ourselves, what is happening out there? There are two main reasons for these jumps. First, competitors could ignore the validation and select the submission which scored best against the public leaderboard. Second, is that sometimes competitions have no consistent public/private data split or they have too little data in either public or private leaderboard. Well, we as participants, can't influence competitions organization. We can certainly make sure that we select our most appropriate submission to be evaluated by private leaderboard. So, the broad goal of next videos is to provide you a systematic way to set up validation in a competition, and tackle most common validation problems. Let's quickly overview of the content of the next videos. First, in this video, we will understand the concept of validation and overfitting. In the second video, we will identify the number of splits that should be done to establish stable validation. In the third video, we will go through most frequent methods which are used to make train/test split in competitions. In the last video, we will discuss most often validation problems. Now, let me start to explain the concept for validation for those who may never heard of it. In the nutshell, we want to check if the model gives expected results on the unseen data. For example, if you've worked in a healthcare company which goal is to improve life of patients, we could be given the task of predicting if a patient will be diagnosed a particular disease in the near future. Here, we need to be sure that the model we train will be applicable in the future. And not just applicable, we need to be sure about what quality this model will have depending on the number of mistakes the model make. And on the predictive probability of a patient having this particular disease, we may want to decide to run special medical tests for the patient to clarify the diagnosis. So, we need to correctly understand the quality of our model. But, this quality can differ on train data from the past and on the unseen test data from the future. The model could just memorize all patients from the train data and be completely useless on the test data because we don't want this to happen. We need to check the quality of the model with the data we have and these checks are the validation. So, usually, we divide data we have into two parts, train part and validation part. We fit our model on the train part and check its quality on the validation part. Beside that, in the last example, our model will be checked against the unseen data in the future and actually these data can differ from the data we have. So we should be ready for this. In competitions, we usually have the similar situation. The organizers of a competition give us the data in two chunks. First, train data with all target values. And second, test data without target values. As in the previous example, we should split the data with labels into train and validation parts. Furthermore, to ensure the competition spirit, the organizers split the test data into the public test set and the private test set. When we sent our submissions to the platform, we see the scores for the public test set while the scores for the private test set are released only after the end of the competition. This also ensures that we don't need the test set or in terms of a model do not overfit. Let me draw you an analogy with the disease projection, if we already divided our data into train and validation parts. And now, we are repeatedly checking our model against the validation set, some models, just by chance, will have better scores than the others. If we continue to select best models, modify them, and again select the best from them, we will see constant improvements in the score. But that doesn't mean we will see these improvements on the test data from the future. By repeating this over and over, we could just achieve the validation set or in terms of a competition, we could just cheat the public leaderboard. But again, if it overfit, the private leaderboard will let us down. This is what we call overfitting in a competition. Get an unrealistically good scores on the public leaderboard that later result in jumping down the private leaderboard. So, we want our model to be able to capture patterns in the data but only those patterns that generalize well between both train and test data. Let me show you this process in terms of underfitting and overfitting. So, to choose the best model, we basically want to avoid underfitting on the one side and overfitting on the other. Let's understand this concept on a very simple example of a binary classification test. We will be using simple models defined by formulas under the pictures and visualize the results of model's predictions. Here on the left picture, we can see that if the model is too simple, it can't capture underlined relationship and we will get poor results. This is called underfitting. Then, if we want our results to improve, we can increase the complexity of the model and that will probably find that quality on the training data is going down. But on the other hand, if we make too complicated model like on the right picture, it will start describing noise in the train data that doesn't generalize the test data. And this will lead to a decrease of model's quality. This is called overfitting. So, we want something in between underfitting and overfitting here. And for the purpose of choosing the most suitable model, we want to be able to evaluate our results. Here, we need to make a remark, that the meaning of overfitting in machine learning in general and the meaning of overfitting competitions in particular are slightly different. In general, we say that the model is overfitted if its quality on the train set is better than on the test set. But in competitions, we often say, that the models are overfitted only in case when quality on the test set will be worse than we have expected. For example, if you train gradient boosting decision tree in the competition is our area under a curve metric. We sometimes can observe that the quality on the training data is close to one while on the test data, it could be less for example, near 0.9. In general sense, the models overfitted here but while we get area under curve was 0.9 on both validation and public/private test sets, we will not say that it is overfitted in the context of a competition. Let me illustrate this concept again in a bit different way. So, lets say for the purpose of model evaluation, we divided our data into two parts. Train and validation parts. Like we already did, we will derive model's complexity from low to high and look at the models here. Note, that usually, we understand error or loss is something which is opposite to model's quality or score. In the figure, the dependency looks pretty reasonable. For two simple models, we have underfitting which means higher on both train and validation. For two complex models, we have overfitting which means low error on train but again high error on validation. In the middle, between them, if the perfect model's complexity, it has the lowest train on the validation data and thus we expect it to have the lowest error on the unseen test data. Note, that here the training error is always better than the test error which implies overfitting in general sense, but doesn't apply in the context of competitions. Well done. In this video, we define validation, demonstrated its purpose, and interpreted validation in terms of underfitting and overfitting. So, once again, in general, the validation helps us answer the question, what will be the quality of our model on the unseeing data and help us select the model which will be expected to get the best quality on that test data. Usually, we are trying to avoid underfitting on the one side that is we want our model to be expressive enough to capture the patterns in the data. And we are trying to avoid overfitting on the other side, and don't make too complex model, because in that case, we will start to capture noise or patterns that doesn't generalize to the test data.[SOUND] In the previous video,
+we understood that validation helps us select a model which will
+perform best on the unseen test data. But, to use validation, we first need
+to split the data with given labels, entrain, and validation parts. In this video, we will discuss
+different validation strategies. And answer the questions. How many splits should we make and what are the most often methods
+to perform such splits. Loosely speaking, the main difference
+between these validation strategies is the number of splits being done. Here I will discuss three of them. First is holdout, second is K-fold,
+and third is leave-one-out. Let's start with holdout. It's a simple data split which
+divides data into two parts, training data frame, and
+validation data frame. And the important note here
+is that in any method, holdout included, one sample can go
+either to train or to validation. So the samples between train and
+the validation do not overlap, if they do,
+we just can't trust our validation. This is sometimes the case,
+when we have repeated samples in the data. And if we are,
+we will get better predictions for these samples and
+more optimistic all estimation overall. It is easy to see that these can prevent
+us from selecting best parameters for our model. For example,
+over fitting is generally bad. But if we have duplicated samples
+that present, and train, and test simultaneously and over feed,
+validation scores can deceive us into a belief that maybe we are moving
+in the right direction. Okay, that was the quick note about
+why samples between train and validation must not overlap. Back to holdout. Here we fit our model on
+the training data frame, and evaluate its quality on
+the validation data frame. Using scores from this evaluation,
+we select the best model. When we are ready to make a submission, we can retrain our model on
+our data with given labels. Thinking about using
+holdout in the competition. It is usually a good choice,
+when we have enough data. Or we are likely to get similar scores for the same model,
+if we try different splits. Great, since we understood
+what holdout is, let's move onto the second validation
+strategy, which is called K-fold. K-fold can be viewed as a repeated
+holdout, because we split our data into key parts and iterate through them, using
+every part as a validation set only once. After this procedure,
+we average scores over these K-folds. Here it is important to understand
+the difference between K-fold and usual holdout or bits of K-times. While it is possible to average scores
+they receive after K different holdouts. In this case,
+some samples may never get invalidation, while others can be there multiple times. On the other side, the core idea of K-fold
+is that we want to use every sample for validation only once. This method is a good choice when we
+have a minimum amount of data, and we can get either a sufficiently
+big difference in quality, or different optimal
+parameters between folds. Great, having dealt with K-fold, we can move on to the third
+validation strategy in our release. It is called leave-one-out. And basically it is a special
+case of Kfold when K is equal to the number
+of samples in our data. This means that it will iterate
+through every sample in our data. Each time usion came in a slot minus
+one object is a train subset and one object left is a test subset. This method can be helpful if
+we have too little data and just enough model to entrain. So that there, validation strategies. Holdout, K-fold and leave-one-out. We usually use holdout or
+K-fold on shuffle data. By shuffling data we are trying to
+reproduce random trained validation split. But sometimes, especially if you
+do not have enough samples for some class, a random split can fail. Let's consider, for an example. We have binary classification tests and
+a small data set with eight samples. Four of class zero, and four of class one. Let's split data into four folds. Done, but notice, we are not always
+getting 0 and 1 in the same problem. If we'll use the second fold for
+validation, we'll get an average value of the target in the
+train of two third instead of one half. This can drastically change
+predictions of our model. What we need here to handle
+this problem is stratification. It is just the way to insure we'll get similar target
+distribution over different faults. If we split data into four
+faults with stratification, the average of each false target
+values will be equal to one half. It is easier to guess that significance
+of this problem is higher, first for small data sets, like in this example,
+second for unbalanced data sets. And for binary classification,
+that could be, if target average were very close to 0 or
+vice versa, very close to 1. And third, for multiclass classification
+tasks with huge amount of classes. For good classification data sets, stratification split will be quite
+similar to a simple shuffle split. That is, to a random split. Well done, in this video we have discussed
+different validation strategies and reasons to use each one of them. Let's summarize this all. If we have enough data, and
+we're likely to get similar scores and optimal model's parameters for
+different splits, we can go with Holdout. If on the contrary, scores and
+optimal parameters differ for different splits,
+we can choose KFold approach. And event, if we too little data,
+we can apply leave-one-out. The second big takeaway from this video
+for you should be stratification. It helps make validation more stable,
+and especially useful for small and unbalanced datasets. Great. In the next videos we will continue to
+comprehend validation at it's core. [SOUND] [MUSIC]Since we already know the main strategies for validation, we can move to more concrete examples. Let's imagine, we're solving a competition with a time series prediction, namely, we are to predict a number of customers for a shop for which they're due in next month. How should we divide the data into train and validation here? Basically, we have two possibilities. Having data frame first, we can take random rows in validation and second, we can make a time-based split, take everything before some date as a train and everything out there as a validation. Let's plan these two options next. Now, when you think about features you need to generate and the model you need to train, how complicated these two cases are? In the first block, we can just interpret between the previous and the next value to get our predictions. Very easy, but wait. Do we really have future information about the number of customers in the real world? Well, probably not. But does this mean that this validation is useless? Again, it doesn't. What it does mean really that if we make train validation split different from train/test split, then we are going to create a useless model. And here, we get to the main rule of making a reliable validation. We should, if possible, set up validation to mimic train/test split, but that's a little later. Let's go back to our example. On the second picture, for most of test point, we have neither the next value nor the previous one. Now, let's imagine we have a pool of different models trained on different features, and we selected the best model for each type of validation. Now, the question, will these models differ? And if they will, how significantly? Well, it is certain that if you want to predict what will happen a few points later, then the model which favor features like previous and next target values will perform poorly. It happens because in this case, we just don't have such observations for the test data. But we have to give the model something in the feature value, and it probably will be not numbers or missing values. How much experience that model have with these type of situations? Not much. The model just won't expect that and quality will suffer. Now, let's remember the second case. Actually, here we need to rely more on the time trend. And so, the features, which is the model really we need here, are more like what was the trend in the last couple of months or weeks? So, that shows that the model selected as the best model for the first type of validation will perform poorly for the second type of validation. On the opposite, the best model for the second type of validation was trained to predict many points ahead, and it will not use adjacent target values. So, to conclude this comparison, these models indeed differ significantly, including the fact that most useful features for one model are useless for another. But, the generated features are not the only problem here. Consider that actual train/test split is time-based, here is the question. If we carefully generate features that are drawing attention to time-based patterns, we'll get a reliable validation with a random-based split. Let me say this again in another words. If we'll create features which are useful for a time-based split and are useless for a random split, will be correct to use a random split to select the model? It's a tough question. Let's take a moment and think about it. Okay, now let's answer this. Consider the case when target falls a linear train. In the first block, we see the exact case of randomly chosen validation. In the second, we see the same time-based split as we consider before. first, let's notice that in general, model predictions will be close to targets mean value calculated using train data. So in the first block, if the validation points will be closer to this mean value compared to test points, we'll get a better score in validation than on test. But in the second case, the validation points are roughly as far as the test points from target mean value. And so, in the second case, validation score will be more similar to the test score. Great, as we just found out, in the case of incorrect validation, not only features, but the value target can lead to unrealistic estimation of the score. Now, that example was quite similar to what you may encounter while solving real competitions. Numerous competitions use time-based split namely: the Rossmann Store Sales competition, the Grupo Bimbo Inventory Demand competition and others. So, to quickly summarize this valuable example we just have discussed, different splitting strategies can differ significantly, namely: in generated features, in the way the model will rely on that features, and in some kind of target leak. That means, to be able to find smart ideas for feature generation and to consistently improve our model, we absolutely want to identify train/test split made by organizers, including the competition, and reproduce it. Let's now categorize most of these splitting strategies and competitions, and discuss examples for them. Most splits can be united into three categories: a random split, a time-based split and the id-based split. Let's start with the most basic one, the random split. Let's start, the most common way of making a train/test split is to split data randomly by rows. This usually means that the rows are independent of each other. For example, we have a test of predicting if a client will pay off alone. Each row represents a person, and these rows are fairly independent of each other. Now, let's consider that there is some dependency, for example, within family members or people which work in the same company. If a husband can pay a credit probably, his wife can do it too. That means if by some misfortune, a husband will will present in the train data and his wife will present in the test data. We probably can explore this and devise a special feature for that case. For in such possibilities, and realizing that kind of features is really interesting. More in this case and others I will mention here, comes in the next lesson of our course. So again, that was a random split. The second method is a time-based split. We already discussed the unit example of the split in the beginning of this video. In that case, we generally have everything before a particular date as a training data, and the rating after date as a test data. This can be a signal to use special approach to feature generation, especially to make useful features based on the target. For example, if we are to predict a number of customers for the shop for each day in the next week, we can came up with something like the number of customers for the same day in the previous week, or the average number of customers for the past month. As I mentioned before, this split is widespread enough. It was used in a Rossmann store sales competition and in the Grupo Bimbo inventory demand competition, and in other's competitions. A special case of validation for the time-based split is a moving window validation. In the previous example, we can move the date which divides train and validation. Successively using week after week as a validation set, just like on this picture. Now, having dealt with the random and the time-based splits, let's discuss the ID-based split. ID can be a unique identifier of user, shop, or any other entity. For example, let's imagine we have to solve a task of music recommendations for completely new users. That means, we have different sets of users in train and test. If so, we probably can make a conclusion that features based on user's history, for example, how many songs user listened in the last week, will not help for completely new users. As an example of ID-based split, I want to tell you a bit about the Caterpillar to pricing competition. In that competition, train/test split was done on some category ID, namely, tube ID. There is an interesting case when we should employ the ID-based split, but IDs are hidden from us. Here, I want to mention two examples of competitions with hidden ID-based split. These include Intel and MumbaiODT Cervical Cancer Screening competition, and The Nature Conservancy fisheries monitoring competition. In the first competition, we had to classify patients into three classes, and for each patient, we had several photos. Indeed, photos of one patient belong to the same class. Again, sets of patients from train and test did not overlap. And we should also ensure these in the training regulations split. As another example, in The Nature Conservancy fisheries monitoring competition, there were photos of fish from several different fishing boats. Again, fishing boats and train and test did not overlap. So one could easily overfit if you would ignore risk and make a random-based split. Because the IDs were not given, competitors had to derive these IDs by themselves. In both these competitions, it could be done by clustering pictures. The easiest case was when pictures were taken just one after another, so the images were quite similar. You can find more details of such clustering in the kernels of these competitions. Now, having in these two main standalone methods, we also need to know that they sometimes may be combined. For example, if we have a task of predicting sales in a shop, we can choose a split in date for each shop independently, instead of using one date for every shop in the data. Or another example, if we have search queries from multiple users, is using several search engines, we can split the data by a combination of user ID and search engine ID. Examples of competitions with combined splits include the Western Australia Rental Prices competition by Deloitte and their qualification phase of data science game 2017. In the first competition, train/test was split by a single date, but the public/private split was made by different dates for different geographic areas. In the second competition, participants had to predict whether a user of online music service will listen to the song. The train/test split was made in the following way. For each user, the last song he listened to was placed in the test set, while all other songs were placed in the train set. Fine. These were the main splitting strategies employed in the competitions. Again, the main idea I want you to take away from this lesson is that your validation should always mimic train/test split made by organizers. It could be something non-trivial. For example, in the Home Depot Product Search Relevance competition, participants were asked to estimate search relevancy. In general, data consisted of search terms and search results for those terms, but test set contained completely new search terms. So, we couldn't use either a random split or a search term-based split for validation. First split favored more complicated models, which led to overfitting while second split, conversely, to underfitting. So, in order to select optimal models, it was crucial to mimic the ratio of new search terms from train/test split. Great. This is it. We just demonstrated major data splitting strategies employed in competitions. Random split, time-based split, ID-based split, and their combinations. This will help us build reliable validation, make a useful decisions about feature generation, and in the end, select models which will perform best on the test data. As the main point of this video, remember the general rule of making a reliable validation. Set up your validation to mimic the train/test split of the competition.[SOUND] Hi and welcome back. In the previous videos we discussed
+the concept of validation and overfitting. And discussed how to chose
+validation strategy based on the properties of data we have. And finally we learned to identify
+data split made by organizers. After all this work being done,
+we honestly expect that the relation will, in a way, substitute a leaderboard for us. That is the score we see on
+the validation will be the same for the private leaderboard. Or at least, if we improve our model and validation, there will be improvements
+on the private leaderboard. And this is usually true, but
+sometimes we encounter some problems here. In most cases these problems can
+be divided into two big groups. In the first group are the problems
+we encounter during local validation. Usually they are caused by
+inconsistency of the data, a widespread example is getting different
+optimal parameters for different faults. In this case we need to make
+more thorough validation. The problems from the second group, often reveal themselves only when we
+send our submissions to the platform. And observe that scores on the validation
+and on the leaderboard don't match. In this case, the problem usually occurs because we can't mimic the exact
+train test split on our validation. These are tough problems, and we
+definitely want to be able to handle them. So before we start,
+let me provide an overview of this video. For both validation and submission
+stages we will discuss main problems, their causes, how to handle them. And then, we'll talk a bit about when
+we can expect a leaderboard shuffle. Let's start with discussion
+of validation stage problems. Usually, they attract our
+attention during validation. Generally, the main problem is
+a significant difference in scores and optimal parameters for
+different train validation splits. Let's start with an example. So we can easily explain this problem. Consider that we need to predict
+sales in a shop in February. Say we have target values for the last year, and, usually,
+we will take last month in the validation. This means January, but clearly January
+has much more holidays than February. And people tend to buy more, which causes
+target values to be higher overall. And that mean squared error
+of our predictions for January will be greater than for February. Does this mean that the module
+will perform worse for February? Probably not,
+at least not in terms of overfitting. As we can see, sometimes this kind
+of model behavior can be expected. But what if there is no clear reason
+why scores differ for different folds? Let identify several common reasons for
+this and see what we can do about it. The first hypotheses we should consider
+and that we have too little data. For example, consider a case when we have
+a lot of patterns and trends in the data. But we do not have enough samples
+to generalize these patterns well. In that case, a model will utilize
+only some general patterns. And for each train validation split,
+these patterns will partially differ. This indeed, will lead to
+a difference in scores of the model. Furthermore, validation samples
+will be different each time only increasing the dispersion of scores for
+different folds. The second type of this,
+is data is too diverse and inconsistent. For example, if you have very similar
+samples with different target variance, a model can confuse them. Consider two cases, first, if one of such examples is in the train
+while another is in the validation. We can get a pretty high error for
+the second sample. And the second case,
+if both samples are in validation, we will get smaller errors for them. Or let's remember another
+example of diverse data we have already discussed a bit earlier. I'm talking about the example of
+predicting sales for January and February. Here we have the nature or the reason for
+the differences in scores. As a quick note, notice that in this
+example, we can reduce this diversity a bit if we will validate on
+the February from the previous year. So the main reasons for a difference in
+scores and optimal model parameters for different folds are, first,
+having too little data, and second, having too diverse and
+inconsistent data. Now let's outline our actions here. If we are facing this kind of problem, it can be useful to make
+more thorough validation. You can increase K in KFold,
+but usually 5 folds are enough. Make KFold validation several times
+with different random splits. And average scores to get a more
+stable estimate of model's quality. The same way we can choose
+the best parameters for the model if there is a chance to overfit. It is useful to use one set of KFold
+splits to select parameters and another set of KFold splits
+to check model's quality. Examples of competitions which
+required extensive validation include the Liberty Mutual Group Property
+Inspection Prediction competition and the Santander Customer Satisfaction
+competition. In both of them, scores of the competitors
+were very close to each other. And thus participants tried to
+squeeze more from the data. But do not overfit, so
+the thorough validation was crucial. Now, having discussed
+validation stage problems, let's move on to
+submission stage problems. Sometimes you can diagnose these problems
+in the process of doing careful. But still,
+often you encounter these type of problems only when you submit your
+solution to the platform. But then again, is your friend when it comes down
+to finding the root of the problem. Generally speaking,
+there are two cases of these issues. In the first case, leaderboard
+score is consistently higher or lower than validation score. In the second, leaderboard score is not
+correlated with validation score at all. So in the worst case, we can improve
+our score on the validation. While, on the contrary,
+score on the leaderboard will decrease. As you can imagine,
+these problems can be much more trouble. Now remember that the main rule
+of making a reliable validation, is to mimic a train tests
+pre made by organizers. I won't lie to you,
+it can be quite hard to identify and mimic the exact train tests here. Because of that, I highly you to
+start submitting your solutions right after you enter the competition. It's good to start exploring other
+possible roots of this problem. Let's first sort out causes we could
+observe during validation stage. Recall, we already have different
+model scores on different folds during validation. Here it is useful to see a leaderboard
+as another validation fold. Then, if we already have
+different scores in KFold, getting a not very similar result on
+the leaderboard is not suprising. More we can calculate mean and standard
+deviation of the validation scores and estimate if the leaderboard
+score is expected. But if this is not the case,
+then something is definitely wrong. There could be two more reasons for
+this problem. The first reason, we have too
+little data in public leaderboard, which is pretty self explanatory. Just trust your validation,
+and everything will be fine. And the second train and test data
+are from different distributions. Let me explain what I mean when I
+talk about different distributions. Consider a regression test of
+predicting people's height by their photos on Instagram. The blue line represents
+the distribution of heights for man, while the red line represents
+the distribution of heights for women. As you can see,
+these distributions are different. Now let's consider that the train
+data consists only of women, while the test data consists only of men. Then all model predictions will be
+around the average height for women. And the distribution of these predictions
+will be very similar to that for the train data. No wonder that our model will have
+a terrible score on the test data. Now, because our course is a practical
+one, let's take a moment and think what you can do if you
+encounter these in a competition. Okay, let's start with a general
+approach to such problems. At the broadest level, we need to find a way to tackle different
+distributions in train and test. Sometimes, these kind of problems
+could be solved by adjusting your solution during the training procedure. But sometimes, this problem can be solved only by adjusting your solution
+through the leaderboard. That is through leaderboard probing. The simplest way to solve this particular
+situation in a competition is to try to figure out the optimal constant
+prediction for train and test data. And shift your predictions
+by the difference. Right here we can calculate the average
+height of women from the train data. Calculating the average height
+of men is a big trickier. If the competition's metric
+is means squared error, we can send two constant submissions,
+write down the simple formula. And find out that the average target
+value for the test is equal to 70 inches. In general, this technique is
+known as leaderboard probing. And we will discuss it in the topic about. So now we know the difference between the
+average target values for the train and the test data, which is equal to 7 inches. And as the third step of adjusting
+our submission to the leaderboard we could just try to add
+7 to all predictions. But from this point it is not validational
+it is a leaderboard probing and list. Yes we probably could discover this
+during exploratory data analysis and try to make a correction
+in our validation scheme. But sometimes it is not possible
+without leaderboard probing, just like in this example. A competition which has something similar
+is the Quora question pairs competition. There, distributions of the target
+from train and test were different. So one could get a good
+improvement of a score adjusting his predictions
+to the leaderboard. But fortunately, this case is rare enough. More often, we encounter situations
+which are more like the following case. Consider that now train
+consists not only of women, but mostly of women, and test, vice versa. Consists not only of men,
+but mostly of men. The main strategy to deal with
+these kind of situations is simple. Again, remember to mimic
+the train test split. If the test consists mostly of Men, force the validation to
+have the same distribution. In that case, you ensure that
+your validation will be fair. This is true for getting raw scores and
+optimal parameters correctly. For example,
+we could have quite different scores and optimal parameters for women's and
+men's parts of the data set. Ensuring the same distribution in test and
+validation helps us get scores and parameters relevant to test. I want to mention two
+examples of this here. First the Data Science Game Qualification
+Phase: Music recommendation challenge. And second, competition with CTR prediction which we discussed
+earlier in the data topic. Let's start with the second one, do you remember the problem,
+we have a test of predicting CTR. So, the train data, which basically
+was the history of displayed ads obviously didn't contain
+ads which were not shown. On the contrary, the test data
+consisted of every possible ad. Notice this is the exact case of different
+distributions in train and test. And again, we need to set up our
+validation to mimic test here. So we have this huge bias towards
+showing that in the train and to set up a correct validation. We had to complete the validation
+set with rows of not shown ads. Now, let's go back to the first example. In that competition,
+participants had to predict whether a user will listen to
+a song recommended by assistant. So, the test contained
+only recommended songs. But train, on the contrary,
+contained both recommended songs and songs users selected themselves. So again, one could adjust his validation
+by 50 renowned songs selected by users. And again, if we will not account for
+that fact, then improving our model on actually selected songs can result
+in the validation score going up. But it doesn't have to result and
+the same improvements for the leaderboard. Okay let's conclude this overview
+of handling validation problems for the submission stage. If you have too little data in public
+leaderboard, just trust your validation. If that's not the case,
+make sure that you did not overfit. Then check if you made
+correct train/test split, as we discussed in the previous video. And finally, check if you have different
+distributions in train and test. Great, let's move on to
+the next point of this video. For now,
+I hope you did everything all right. First, you did extensive validation. Second, you choose a correct splitter
+strategy for train validation split. And finally, you ensured the same
+distributions in validation and testing. But sometimes you have to expect
+leaderboard shuffle anyway, and not just for you, but for everyone. First, for those who've never heard of it,
+a leaderboard shuffle happens when participants position some public and
+private leaderboard drastically different. Take a look at this screenshot from
+the two sigma financial model in challenge competition. The green and
+the red arrows mean how far a team moved. For example, the participant who
+finished the 3rd on the private leaderboard was the 392nd
+on the public leaderboard. Let's discuss three main reasons for
+that shuffle, randomness, too little data, and different public,
+private distributions. So first, randomness, this is the case when all participants
+have very similar scores. This can be either a very good score or
+a very poor one. But the main point here is
+that the main reason for differences in scores is randomness. To understand this a bit more,
+let's go through two quick examples here. The first one is the Liberty Mutual Group, Property Inspection Prediction
+competition. In that competition,
+scores of competitors were very close. And though randomness didn't play
+a major role in that competition, still many people overfit
+on the public leaderboard. The second example,
+which is opposite to the first is the TWO SIGMA Financial Model and
+Challenge competition. Because the financial data in that
+competition was highly unpredictable, randomness played a major role in it. So one could say that the leaderboard
+shuffle there was among the biggest shuffles on KFold platform. Okay, that was randomness, the second
+reason to expect leaderboard shuffle is too little data overall, and
+in private test set especially. An example of this is the Restaurant
+Revenue Prediction Competition. In that competition, trained set
+consisted of less than 200 gross. And this set consisted
+of less than 400 gross. So as you can see shuffle
+here was more than expected. Last reason of leaderboard
+shuffle could be different distributions between public and
+private test sets. This is usually the case
+with time series prediction, like the Rossmann Stores Sales
+competition. When we have a time based split,
+we usually have first few weeks in public leaderboard, and
+next few weeks in private leaderboards. As people tend to adjust their
+submission to public leaderboard and overfit, we can expect worse
+results on private leaderboard. Here again, trust your validation and
+everything will be fine. Okay, let's go over reasons for
+leaderboard shuffling. Now let's conclude both this video and
+the entire validation topic. Let's start with the video. First, if you have big dispersion
+of scores on validation stage we should do extensive validation. That means every score from
+different KFold splits, and team model on one split while
+evaluating score on the other. Second, if submission do not
+match local validation score, we should first, check if we have too
+little data in public leaderboard. Second, check if we did not overfit, check
+if you chose correct splitting strategy. And finally, check if trained test
+have different distributions. You can expect leaderboard shuffle
+because of three key things, randomness, little amount of data, and different
+public/private test distributions. So that's it,
+in this topic we defined validation and its connection to overfitting. Described common validation strategies. Demonstrated major data
+splitting strategies. And finally analyzed and learned how
+to tackle main validation problems. Remember this, and it will absolutely
+help you out in competitions. Make sure you understand
+the main idea of validation well. That is,
+you need to mimic the trained test split. [MUSIC]

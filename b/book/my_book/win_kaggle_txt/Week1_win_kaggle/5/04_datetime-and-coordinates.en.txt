@@ -1,0 +1,93 @@
+Hi. In this video, we will discuss basic
+visual generation approaches for datetime and coordinate features. They both differ significantly from
+numeric and categorical features. Because we can interpret the meaning of
+datetime and coordinates, we can came up with specific ideas about future
+generation which we'll discuss here. Now, let's start with datetime. Datetime is quite a distinct feature
+because it isn't relying on your nature, it also has several different
+tiers like year, day or week. Most new features generated from datetime
+can be divided into two categories. The first one,
+time moments in a period, and the second one,
+time passed since particular event. First one is very simple. We can add features like second,
+minute, hour, day in a week, in a month, on the year and
+so on and so forth. This is useful to capture
+repetitive patterns in the data. If we know about some non-common
+materials which influence the data, we can add them as well. For example, if we are to predict
+efficiency of medication, but patients receive pills one
+time every three days, we can consider this as
+a special time period. Okay now, time seems particular event. This event can be either
+row-independent or row-dependent. In the first case, we just calculate
+time passed from one general moment for all data. For example, from here to thousand. Here, all samples will become pairable
+between each other on one time scale. As the second variant of
+time since particular event, that date will depend on the sample
+we are calculating this for. For example,
+if we are to predict sales in a shop, like in the ROSSMANN's
+store sales competition. We can add the number of days passed
+since the last holiday, weekend or since the last sales campaign, or maybe
+the number of days left to these events. So, after adding these features,
+our dataframe can look like this. Date is obviously a date, and
+sales are the target of this task. While other columns
+are generated features. Week day feature indicates which day
+in the week is this, daynumber since year 2014 indicates how many days
+have passed since January 1st, 2014. is_holiday is a binary feature indicating
+whether this day is a holiday and days_ till_ holidays indicate how many
+days are left before the closest holiday. Sometimes we have several
+datetime columns in our data. The most for data here is to
+subtract one feature from another. Or perhaps subtract generated features,
+like once we have, we just have discussed. Time moment inside the period or
+time passed in zero dependent events. One simple example of third generation
+can be found in churn prediction task. Basically churn prediction
+is about estimating the likelihood that customers will churn. We may receive a valuable feature here
+by subtracting user registration date from the date of some action of his,
+like purchasing a product, or calling to the customer service. We can see how this works
+on this data dataframe. For every user, we know
+last_purchase_date and last_call_date. Here we add the difference between
+them as new feature named date_diff. For clarity,
+let's take a look at this figure. For every user, we have his
+last_purchase_date and his last_call_date. Thus, we can add date_diff
+feature which indicates number of days between these events. Note that after generation feature is
+from date time, you usually will get either numeric features like
+time passed since the year 2000, or categorical features like day of week. And these features now are need
+to be treated accordingly with necessary pre-processings
+we have discussed earlier. Now having discussed feature
+generation for datetime, let's move onto feature generation for
+coordinates. Let's imagine that we're trying to
+estimate the real estate price. Like in the Deloitte competition named
+Western Australia Rental Prices, or in the Sberbank Russian Housing Market
+competition. Generally, you can calculate distances
+to important points on the map. Keep this wonderful map. If you have additional data with
+infrastructural buildings, you can add as a feature distance to the nearest
+shop to the second by distance hospital, to the best school in the neighborhood and
+so on. If you do not have such data, you can extract interesting points on
+the map from your trained test data. For example, you can do a new
+map to squares, with a grid, and within each square,
+find the most expensive flat, and for every other object in this square,
+add the distance to that flat. Or you can organize your data
+points into clusters, and then use centers of clusters
+as such important points. Or again, another way. You can find some special areas,
+like the area with very old buildings and add distance to this one. Another major approach to use coordinates
+is to calculate aggregated statistics for objects surrounding area. This can include number of lets
+around this particular point, which can then be interpreted as areas or
+polarity. Or we can add mean realty price, which will indicate how expensive
+area around selected point is. Both distances and aggregate statistics are often
+useful in tasks with coordinates. One more trick you need to know about
+coordinates, that if you train decision trees from them, you can add slightly
+rotated coordinates is new features. And this will help a model make
+more precise selections on the map. It can be hard to know what exact
+rotation we should make, so we may want to add all rotations to 45 or
+22.5 degrees. Let's look at the next example
+of a relative price prediction. Here the street is dividing
+an area in two parts. The high priced district above the street,
+and the low priced district below it. If the street is slightly rotated, trees
+will try to make a lot of space here. But if we will add new coordinates in
+which these two districts can be divided by a single split, this will hugely
+facilitate the rebuilding process. Great, we just summarize the most
+frequent methods used for future generation from datetime and
+coordinates. For datetime, these are applying
+periodicity, calculates in time passed since particular event, and engine
+differences between two datetime features. For coordinates, we should recall
+extracting interesting samples from trained test data, using places from
+additional data, calculating distances to centers of clusters, and adding aggregated
+statistics for surrounding area. Knowing how to effectively handle datetime
+and coordinates, as well as numeric and categorical features, will provide you
+reliable way to improve your score. And to help you devise that
+specific part of solution which is often required to beat very top scores. [SOUND]

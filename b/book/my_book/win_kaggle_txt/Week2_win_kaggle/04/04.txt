@@ -1,0 +1,104 @@
+Hi everyone. In this section, we will talk about a very sensitive topic data leakage or more simply, leaks. We'll define leakage in a very general sense as an unexpected information in the data that allows us to make unrealistically good predictions. For the time being, you may have think of it as of directly or indirectly adding ground truths into the test data. Data leaks are very, very bad. They are completely unusable in real world. They usually provide way too much signal and thus make competitions lose its main point, and quickly turn them into a leak hunt increase. People often are very sensitive about this matter. They tend to overreact. That's completely understandable. After spending a lot of time on solving the problem, a sudden data leak may render all of that useless. It is not a pleasant position to be in. I cannot force you to turn the blind eye but keep in mind, there is no ill intent whatsoever. Data leaks are the result of unintentional errors, accidents. Even if you find yourself in a competition with an unexpected data leak close to the deadline, please be more tolerant. The question of whether to exploit the data leak or not is exclusive to machine learning competitions. In real world, the answer is obviously a no, nothing to discuss. But in a competition, the ultimate goal is to get a higher leaderboard position. And if you truly pursue that goal, then exploit the leak in every way possible. Further in this section, I will show you the main types of data leaks that could appear during solving a machine learning problem. Also focus on a competition specific leak exploitation technique leaderboard probing. Finally, you will find special videos dedicated to the most interesting and non-trivial data leaks. I will start with the most typical data leaks that may occur in almost every problem. Time series is our first target. Typically, future picking. It is common sense not to pick into the future like, can we use stock market's price from day after tomorrow to predict price for tomorrow? Of course not. However, direct usage of future information in incorrect time splits still exist. When you enter a time serious competition at first, check train, public, and private splits. If even one of them is not on time, then you found a data leak. In such case, unrealistic features like prices next week will be the most important. But even when split by time, data still contains information about future. We still can access the rows from the test set. We can have future user history in CTR task, some fundamental indicators in stock market predictions tasks, and so on. There are only two ways to eliminate the possibility of data leakage. It's called competitions, where one can not access rows from future or a test set with no features at all, only IDs. For example, just the number and instrument ID in stock market prediction, so participants create features based on past and join them themselves. Now, let's discuss something more unusual. Those types of data leaks are much harder to find. We often have more than just train and test files. For example, a lot of images or text in archive. In such case, we can't access some meta information, file creation date, image resolution etcetera. It turns out that this meta information may be connected to target variable. Imagine classic cats versus dogs classification. What if cat pictures were taken before dog? Or taken with a different camera? Because of that, a good practice from organizers is to erase the meta data, resize the pictures, and change creation date. Unfortunately, sometimes we will forget about it. A good example is Truly Native competition, where one could get nearly perfect scores using just the dates from zip archives. Another type of leakage could be found in IDs. IDs are unique identifiers of every row usually used for convenience. It makes no sense to include them into the model. It is assumed that they are automatically generated. In reality, that's not always true. ID may be a hash of something, probably not intended for disclosure. It may contain traces of information connected to target variable. It was a case in Caterpillar competition. A link ID as a feature slightly improve the result. So I advise you to pay close attention to IDs and always check whether they are useful or not. Next is row order. In trivial case, data may be shuffled by target variable. Sometimes simply adding row number or relative number, suddenly improves this course. Like, in Telstra Network Disruptions competition. It's also possible to find something way more interesting like in TalkingData Mobile User Demographics competition. There was some kind of row duplication, rows next to each other usually have the same label. This is it with a regular type of leaks. To sum things up, in this video, we embrace the concept of data leak and cover data leaks from future picking, meta data, IDs, and row order.[SOUND] Now, I will tell you
+about a competition-specific technique tightly
+connected with data leaks. It's leaderboard probing. There are actually two types
+of leaderboard probing. The first one is simply extracting
+all ground truth from public part of the leaderboard. It's usually pretty harmless,
+only a little more of straining data. It is also a relatively easy to do and I have a submission change on
+the small set of rows so that you can unambiguously calculate ground truth for
+those rows from leaderboard score. I suggest checking out the link to
+Alek Trott's post in additional materials. He thoroughly explains how
+to do it very efficiently with minimum amount of submissions. Our main focus will be on another
+type of leaderboard probing. Remember the purpose of public,
+private split. It's supposed to protect private part of
+test set from information extraction. It turns out that it's still vulnerable. Sometimes, it's possible to
+submit predictions in such a way that will give out information
+about private data. It's all about consistent categories. Imagine, a chunk of data with
+the same target for every row. Like in the example, rows with
+the same IDs have the same target. Organizers split it into public and
+private parts. But we still know that that particular
+chunk has the same label for every role. After setting all the predictions
+close to 0 in our submission for that particular chunk of data,
+we can expect two outcomes. The first one is when score improved,
+it means that ground truth in public is 0. And it also means that ground
+truth in private is 0 as well. Remember, our chunk has the same labels. The second outcome is when
+the score became worse. Similarly, it means that ground truth
+in both public and private is 1. Some competitions indeed have
+that kind of categories. Categories that with high
+certainty have the same label. You could have encountered those
+type of categories in Red Hat and West Nile competitions. It was a key for winning. With a lot of submissions, one can
+explore a good part of private test set. It's probably the most
+annoying type of data leak. It's mostly technical and even if it's
+released close to the competition deadline, you simply won't have enough
+submissions to fully exploit it. Furthermore, this is on
+the tip of the iceberg. When I say consistent category, I do not necessarily mean that
+this category has the same target. It could be consistent in different ways. The definition is quite broad. For example, target label could simply
+have the same distribution for public and private parts of data. It was the case in
+Quora Question Pairs competition. In that competition there
+was a binary classification task being evaluated by log loss metric. What's important target were able had
+different distributions in train and test, but allegedly the same and
+private and public parts of these data. And because of that, we could benefit
+a lot via leaderboard probing. Treating the whole test set
+as a consistent category. Take a look at the formula on the slide. This logarithmic loss for submission
+with constant predictions C big. Where N big is the real number of rows, N1 big is the number of
+rows with target one. And L big is the leader board score
+given by that constant prediction. From this equation,
+we can calculate N1 divided by N or in other words,
+the true ratio of once in the test set. That knowledge was very beneficial. We could use it rebalance
+training data points to have the same distribution of
+target variable as in the test set. This little trick gave a huge
+boost in leaderboard score. As you can see, leaderboard
+probing is a very serious problem that could occur under a lot
+of different circumstances. I hope that someday it will become
+complete the eradicated from competitive machine learning. Now, finally, I like to briefly
+walk through the most peculiar and interesting competitions
+with data leakage. And first, let's take a look at Truly Native
+competition from different point of view. In this competition, participants were
+asked to predict whether the content in an HTML file is sponsored or not. As was already discussed
+in previous video, there was a data leak in archive dates. We can assume that sponsored and non-sponsored HTML files were gotten
+during different periods of time. So do we really get rid of data
+leak after erasing archive dates? The answer is no. Texts in HTML files may be connected
+to dates in a lot of ways. From explicit timestamps to much more
+subtle things, like news contents. As you've probably already realized, the real problem was not metadata leak,
+but rather data collection. Even without metainformation, machine learning algorithms will
+focus on actually useless features. The features that only act as proxies for
+the date. The next example is
+Expedia Hotel Recommendations, and that competitions, participants
+worked with logs of customer behavior. These include what customers searched for,
+how they interacted with search results, and clicks or books, and whether or not
+the search result was a travel package. Expedia was interested in predicting which
+hotel group a user is going to book. Within the logs of customer behavior,
+there was a very tricky feature. At distance from users
+seeking their hotel. Turned out, that this feature
+is actually a huge data leak. Using this distance, it was possible to
+reverse engineer two coordinates, and simply map ground truth from
+train set to the test set. I strongly suggest you to
+check out the special video dedicated to this competition. I hope that you will find it very
+useful because the approaches and methods of exploiting data leak
+were extremely nontrivial. And you will find a lot of
+interesting tricks in it. The next example is from
+Flavours of Physics competition. It was a pretty complicated
+problem dealing with physics at Large Hadron Collider. The special thing about
+that competition was that signal was artificially simulated. Organizers wanted a machine
+learning solution for something that has never been observed. That's why the signal was simulated. But simulation cannot be perfect and
+it's possible to reverse engineer it. Organizers even created
+special statistical tests in order to punish the models
+that exploit simulation flaws. However, it was in vain. One could bypass the tests,
+fully exploit simulation flaws, and get a perfect score on the leaderboard. The last example is going
+to cover pairwise tasks. Where one needs to predict
+whether the given pair of items are duplicates or not,
+like in Quora question pairs competition. There is one thing common to all
+the competitions with pairwise tasks. Participants are not asked to
+evaluate all possible pairs. There is always some
+nonrandom subsampling, and this subsampling is
+the cause of data leakage. Usually, organizers sample mostly
+hard-to-distinguish pairs. Because of that, of course,
+imbalance in item frequencies. It results in more frequent
+items having the higher possibility of being duplicates. But that's not all. We can create a connectivity
+matrix N times N, where N is the total number of items. If item I and item J appeared
+in a pair then we place 1 in I, J and J, I positions. Now, we can treat the rows in connectivity
+matrix as vector representations for every item. This means that we can compute
+similarities between those vectors. This tricks works for
+a very simple reason. When two items have
+similar sets of neighbors they have a high possibility
+of being duplicates. This is it with data leaks. I hope you got the concept and
+found a lot of interesting examples. Thank you for your attention. [SOUND]Hi, everyone. In this video, I will tell you how I and my teammates, Stanislav Smirnov solved Kaggle Expedia hotel recommendations competition. Personally, one of my favorites, probably among top five most interesting competitions I've ever participated in. I'll state the problem now. So, if you came here right after Data Leaks lesson, it should already be familiar to you. Anyway, in that competition, we worked with lots of customer behavior. These include what customers searched for, how they interacted with search results, clicks or books, and whether or not the search result was a travel package, and Expedia was interested in predicting which hotel group a user is going to book. Important thing here is prediction target the hotel group. In other words, characteristics of actual hotel, remember it. As it turned out, this competition had a very non-trivial and extremely hard to exploit data leak. From the first glance, data leak was pretty straightforward. We had a destination distance among the feature. It's a distance from user city to an actual hotel he clicked on booked. And, as I said earlier, our prediction target is a characteristic of an actual hotel. Furthermore, destination distance was very precise so unique user city and destination distance pairs corresponded to unique hotels. Putting two and two together, we can treat user city and destination distance pair as a proxy to our target. When in this set, we encountered such pair already present in train set, we could simply take a label from there as our prediction. It worked nearly perfect for the pairs present in both train and test. However, nearly half of test set consisted from new pairs without a match from train set. This way we had to go deeper. But, how exactly can we improve our solution? Well, there are two different ways. First, one is to create current features on corteges similar to user city and destination distance pair. For example, like how many hotels of which group there are for user city, hotel country, hotel city triplet. Then, we could train some machine learning model on such features. Another way is to somehow find more matches. For that purpose, we need to find true coordinates of users cities and hotel cities. From that, to guess it was destination distance feature, it was possible to find good approximation for the coordinates of actual hotels. Let's find out how to do it. First of all, we need to understand how to calculate the distance. Here, we work with geographical coordinates so the distances are geodesic. It's done via Haversine formula, not a pleasant one. Now, suppose that we know true coordinates of three points and distances from fourth point with unknown coordinates to each of them, if you write down a system of three equations, one for each distance, we can unambiguously solve it and get true coordinates for the fourth point. Now, we have four points with known coordinates. I think you get the idea. So, at first, by hook or by crook, we reverse engineer true coordinate of three big cities. After that, we can iteratively find coordinates of more and more cities. But as you can see from the picture, some cities ended up in oceans. It means that our algorithm is not very precise. A rounding error accumulates after every iteration and everything starts to fall apart. We get some different method and indeed we can do better. Just compare this picture with the previous one. It's obviously much more accurate. Remember how in iterative method we solved a system of three equations to unambiguously find coordinates or fourth unknown point. But why limit ourselves with three equations? Let's create a giant system of equations from all known distances with true coordinates being done on variables. We end up with literally hundreds or thousands of equations and tens of thousands of unknown variables. Good thing it's very sparse. We can apply special methods from SciPy to efficiently solve such a system. In the end, after solving that system of equations, we end up with a very precise coordinates for both hotel cities and user cities. But as you remember, we're predicting a type of a hotel. Using city coordinates and destination distance, it's possible to find an approximation of true coordinates of an actual hotel. When we fix user city and draw a circumference around it with the radius of destination distance, it's obvious that true hotel location must be somewhere on that circumference. Now, let's fix some hotel city and draw such circumferences from all users cities to that fixed hotel cities and draw them for every given destination distance. After doing so, we end up with pictures like the ones on the slide. A city contains a limited number of hotels so the intuition here is that hotels actually are on the intersection points and the more circumferences intersect in such point, the higher the probability of a hotel being in that point. As you can see, the pictures are beautiful but pretty messy. It's impossible to operate in terms of singular points. However, there are explicit clusters of points and this information can be of use. We can do some kind of integration. For every city, let's create a grid around its center. Something like 10 kilometers times 10 kilometers with step size of 100 meters. Now, using training data, for every cell in the grid, we can count how many hotels of which type are present there. If a circumference goes through a cell, we give plus one to the hotel type corresponding to that circumference. During inference, we also draw a circumference based on destination distance feature. We see from what degree its cells it went through and use information from those cells to create features like a sum of all counters, average of all counters, maximum of all counters and so on. Great. We have covered the part of feature engineering. Note that all the features directly used target label. We cannot use them as is in training. We should generate them in out-of-fold fashion for train data. So we had training data for years 2013 and 2014. To generate features for year 2014, we used labelled data from year 2013 and vice versa, used the year 2014 to generate features for the year 2013. For the test features, which was from year 2015, we naturally used all training data. In the end, we calculated a lot of features and serve them into Xgboost model. After 16 hours of training for the course, we got our results. We ended up on third position on public leader-boards and forth on private. We did good, but we still did not fully exploit data leakage. If you check the leaderboard, you'll notice the difference in scores between first place and the rest. Under speculation, the winner did extraordinary. Although, in general, his methods were very similar to ours. He was able to extract way more signal. Finally, I hope you enjoyed my story. As you can see, sometimes working with data leakage could be very interesting and challenging. You may develop some unusual skills and broaden your horizons. Thank you for your attention.

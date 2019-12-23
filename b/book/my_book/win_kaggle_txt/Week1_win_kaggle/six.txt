@@ -1,0 +1,120 @@
+[MUSIC] Hi. Often in computations,
+we have data like text and images. If you have only them, we can apply
+approach specific for this type of data. For example, we can use search
+engines in order to find similar text. That was the case in
+the Allen AI Challenge for example. For images, on the other hand,
+we can use conditional neural networks, like in the Data Science Bowl, and
+a whole bunch of other competitions. But if we have text or images as additional data, we usually
+must grasp different features, which can be edited as complementary to our
+main data frame of samples and features. Very simple example of such case we can
+see in the Titanic dataset we have called name, which is more or less like text, and to use it, we first need to derive
+the useful features from it. Another most surest example,
+we can predict whether a pair of online advertisements are duplicates, like
+slighty different copies of each other, and we could have images from these
+advertisements as complimentary data, like the Avito Duplicates Ads Detection
+competition. Or you may be given the task
+of classifying documents, like in the Tradeshift Text
+Classification Challenge. When feature extraction is done, we can
+treat extracted features differently. Sometimes we just want to add new
+features to existing dataframe. Sometimes we even might want to use the
+right features independently, and in end, make stake in with the base solution. We will go through stake in and we will
+learn how to apply it later in the topic about ensembles, but for now, you should
+know that both ways first to acquire, to of course extract features
+from text and images somehow. And this is exactly what we
+will discuss in this video. Let's start with featured
+extraction from text. There are two main ways to do this. First is to apply bag of words,
+and second, use embeddings like word to vector. Now, we'll talk about a bit
+about each of these methods, and in addition, we will go through text
+pre-processings related to them. Let's start with the first approach,
+the simplest one, bag of words. Here we create new column for each unique word from the data, then we
+simply count number of occurences for each word, and place this value
+in the appropriate column. After applying the separation to each row, we will have usual dataframe
+of samples and features. In a scalar,
+this can be done with CountVectorizer. We also can post process calculated
+metrics using some pre-defined methods. To make out why we need post-processing
+let's remember that some models like kNN, like neural regression, and neural
+networks, depend on scaling of features. So the main goal of post-processing here is to make samples more comparable
+on one side, and on the other, boost more important features while
+decreasing the scale of useless ones. One way to achieve the first goal
+of making a sample small comparable is to normalize sum of values in a row. In this way, we will count not
+occurrences but frequencies of words. Thus, texts of different sizes
+will be more comparable. This is the exact purpose of
+term frequency transformation. To achieve the second goal,
+that is to boost more important features, we'll make post process our matrix
+by normalizing data column wise. A good idea is to normalize each feature
+by the inverse fraction of documents, which contain the exact word
+corresponding to this feature. In this case,
+features corresponding to frequent words will be scaled down compared to
+features corresponding to rarer words. We can further improve this idea
+by taking a logarithm of these numberization coefficients. As a result, this will decrease
+the significance of widespread words in the dataset and
+do require feature scaling. This is the purpose of inverse
+document frequency transformation. General frequency, and inverse
+document frequency transformations, are often used together,
+like an sklearn, in TFiDF Vectorizer. Let's apply TFiDF transformation
+to the previous example. First, TF. Nice. Occurences which
+are switched to frequencies, that means some of variance for
+each row is now equal to one. Now, IDF, great. Now data is normalized column wise,
+and you can see, for those of you who are too excited, IDF transformation scaled
+down the appropriate feature. It's worth mentioning that there
+are plenty of other variants of TFiDF which may work better depending
+on the specific data. Another very useful technique is Ngrams. The concept of Ngram is simple, you add
+not only column corresponding to the word, but also columns corresponding
+to inconsequent words. This concept can also be applied
+to sequence of chars, and in cases with low N, we'll have a column
+for each possible combination of N chars. As we can see, for N = 1, number of
+these columns will be equal to 28. Let's calculate number of
+these columns for N = 2. Well, it will be 28 squared. Note that sometimes it can be cheaper
+to have every possible char Ngram as a feature, instead of having a feature for
+each unique word from the dataset. Using char Ngrams also helps our
+model to handle unseen words. For example,
+rare forms of already used words. In a scalared count vectorizor
+has appropriate parameter for using Ngrams, it is called Ngram_range. To change from word Ngrams to char Ngrams,
+you may use parameter named analyzer. Usually, you may want to preprocess text,
+even before applying bag of words, and sometimes, careful text preprocessing
+can help bag of words drastically. Here, we will discuss such methods
+as converting text to lowercase, lemmatization, stemming,
+and the usage of stopwords. Let's consider simple example
+which shows utility of lowercase. What if we applied bag of words
+to the sentence very, very sunny? We will get three columns for each word. So because Very, with capital letter,
+is not the same string as very without it, we will get multiple columns for
+the same word, and again, Sunny with capital letter
+doesn't match sunny without it. So, first preprocessing what we want to
+do is to apply lowercase to our text. Fortunately, configurizer from
+sklearn does this by default. Now, let's move on to lemmatization and
+stemming. These methods refer to more
+advanced preprocessing. Let's look at this example. We have two sentences: I had a car,
+and We have cars. We may want to unify the words car and
+cars, which are basically the same word. The same goes for had and have, and so on. Both stemming and lemmatization may
+be used to fulfill this purpose, but they achieve this in different ways. Stemming usually refers to a heuristic
+process that chops off ending of words and thus unite duration of related words
+like democracy, democratic, and democratization, producing something like,
+democr, for each of these words. Lemmatization, on the hand, usually means
+that you have want to do this carefully using knowledge or vocabulary, and
+morphological analogies of force, returning democracy for
+each of the words below. Let's look at another example that shows
+the difference between stemming and lemmatization by applying
+them to word saw. While stemming will return on
+the letter s, lemmatization will try to return either see or saw,
+dependent on the word's meaning. The last technique for text preprocessing, which we will discuss here,
+is usage of stopwords. Basically, stopwords are words which do
+not contain important information for our model. They are either insignificant
+like articles or prepositions, or so common they do not
+help to solve our task. Most languages have predefined list
+of stopwords which can be found on the Internet or logged from NLTK, which stands for Natural Language
+Toolkit Library for Python. CountVectorizer from sklearn also
+has parameter related to stopwords, which is called max_df. max_df is the threshold
+of words we can see, after we see in which,
+the word will be removed from text corpus. Good, we just have discussed classical
+feature extraction pipeline for text. At the beginning,
+we may want to pre-process our text. To do so, we can apply lowercase,
+stemming, lemmatization, or remove stopwords. After preprocessing, we can use bag
+of words approach to get the matrix where each row represents a text, and
+each column represents a unique word. Also, we can use bag of words approach for
+Ngrams, and in new columns for groups of
+several consecutive words or chars. And in the end, when we postprocess
+these metrics using TFiDF, which often prove to be useful. Well, then now we can add extracted
+features to our basic data frame, or putting the dependent model on
+them to create some tricky features. That's all for now. In the next video, we will continue
+to discuss feature extraction. We'll go through two big points. First, we'll talk about approach for texts, and second, we will discuss
+feature extraction for images. [MUSIC]Hi and welcome back. In this video, we'll talk about Word2vec approach for texts and then we'll discuss feature extraction or images. After we've summarized pipeline for feature extraction with Bag of Words approach in the previous video, let's overview another approach, which is widely known as Word2vec. Just as the Bag of Words approach, we want to get vector representations of words and texts, but now more concise than before. Word2vec is doing exactly that. It converts each word to some vector in some sophisticated space, which usually have several hundred dimensions. To learn the word embedding, Word2vec uses nearby words. Basically, different words, which often are used in the same context, will be very close in these vectoring representation, which, of course, will benefit our models. Furthermore, there are some prominent examples showing that we can apply basic operations like addition and subtraction on these vectors and expect results of such operations to be interpretable. You should already have seen this example by now somewhere. Basically, if we calculate differences between the vectors of words queen and king, and differences between the vectors of words woman and man, we will find that these differences are very similar to each other. And, if we try to see this from another perspective, and subtract the vector of woman from the vector of king and then and the vector of man, will pretty much again the vector of the word queen. Think about it for a moment. This is fascinating fact and indeed creation of Word2vec approach led to many extensive and far reaching results in the field. There are several implementations of this embedding approach besides Word2vec namely Glove, which stands for Global Vector for word representation. FastText and few others. Complications may occur, if we need to derive vectors not for words but for sentences. Here, we may take different approaches. For example, we can calculate mean or sum of words vectors or we can choose another way and go with special models like Doc2vec. Choice all the way to proceed here depends on and particular situation. Usually, it is better to check both approaches and select the best. Training of Word2vec can take quite a long time, and if you work with text or some common origin, you may find useful pre-trained models on the internet. For example, ones which are trained on the Wikipedia. Otherwise, remember, the training of Word2vec doesn't require target values from your text. It only requires text to extract context for each word. Note, that all pre-processing we had discussed earlier, namely lowercase stemming, lemmatization, and the usage of stopwords can be applied to text before training Word2vec models. Now, we're ready to summarize difference between Bag of Words and the Word2vec approaches in the context of competition. With Bag of Words, vectors are quite large but is a nice benefit. Meaning of each value in the vector is known. With Word2vec, vectors have relatively small length but values in a vector can be interpreted only in some cases, which sometimes can be seen as a downside. The other advantage of Word2vec is crucial in competitions, is that words with similar meaning will have similar vector representations. Usually, both Bag of Words and Word2vec approaches give quite different results and can be used together in your solution. Let's proceed to images now. Similar to Word2vec for words, convolutional neural networks can give us compressed representation for an image. Let me provide you a quick explanation. When we calculate network output for the image, beside getting output on the last layer, we also have outputs from inner layers. Here, we will call these outputs descriptors. Descriptors from later layers are better way to solve texts similar to one network was trained on. In contrary, descriptors from early layers have more text independent information. For example, if your network was trained on images and data set, you may successfully use its last layer representation in some Kar model classification text. But if you want to use your network in some medical specific text, you probably will do better if you will use an earlier for connected layer or even retrain network from scratch. Here, you may look for a pre-trained model which was trained on data similar to what you have in the exact competition. Sometimes, we can slightly tune network to receive more suitable representations using targets values associated with our images. In general, process of pre-trained model tuning is called fine-tuning. As in the previous example, when we are solving some medical specific task, we can find tune VGG RestNet or any other pre-trained network and specify it to solve these particular texts. Fine-tuning, especially for small data sets, is usually better than training standalone model on descriptors or a training network from scratch. The intuition here is pretty straightforward. On the one hand, fine-tuning is better than training standalone model on descriptors because it allows to tune all networks parameters and thus extract more effective image representations. On the other hand, fine-tuning is better than training network from scratch if we have too little data, or if the text we are solving is similar to the text model was trained on. In this case, model can you use the my knowledge already encoded in networks parameters, which can lead to better results and the faster retraining procedure. Lets discuss the most often scenario of using the fine-tuning on the online stage or the Data Science Game 2016. The task was to classify these laid photos of roofs into one of four categories. As usual, logo was first chosen to the other metric. Competitors had 8,000 different images. In this setting, it was a good choice to modify some pre-trained network to predict probabilities for these four classes and fine tune it. Let's take a look at VGG-16 architecture because it was trained on the 1000 classes from VGG RestNet, it has output of size 1000. We have only four classes in our text, so we can remove the last layer with size of 1000 and put in its place a new one with size of four. Then, we just retrain our model with very smaller rate is usually about 1000 times lesser than our initial low rate. That is fine-tuning is done, but as we already discussed earlier in this video, we can benefit from using model pre-trained on the similar data set. Image in by itself consist of very different classes from animals to cars from furniture to food could define most suitable pre-trained model. We just could take model trained on places data set with pictures of buildings and houses, fine-tuning this model and further improve their result. If you are interested in details of fine-tuning, you can find information about it in almost every neural networks library namely Keras, PyTorch, Caffe or other. Sometimes, you also want to increase number of training images to train a better network. In that case, image augmentation may be of help. Let's illustrate this concept of image augmentation. On the previous example, we discussed classification of roof images. For simplicity, let's imagine that we now have only four images one for each class. To increase the number of training samples. let's start with rotating images by 180 degrees. Note, that after such rotation, image of class one again belongs to this class because the roof on the new image also has North-South orientation. Easy to see that the same is true for other classes. Great. After doing just one rotation, we already increase the amount of our trained data twice. Now, what will happen if we rotate image from the first class by 90 degrees? What class will it belong to? Yeah, it will belong to the second class and eventually, if you rotate images from the third and the fourth classes by 90 degrees, they will stay in the same class. Look, we just increase the size of our trained set four times although adding such augmentations isn't so effective as adding brand new images to the trained set. This is still very useful and can boost your score significantly. In general case, augmentation of images can include groups, rotations, and the noise and so on. Overall, this reduces over fitting and allows you to train more robust models with better results. One last note about the extracting vectors from images and this note is important one. If you want to fine-tuning convolutiontional neural network or train it from scratch, you usually will need to use labels from images in the trained set. So be careful with validation here and do not over fit. Well then, let's recall main points we have discussed here. Sometimes, you have a competition with texts or images as additional data. In this case, usually you want to extract the useful features from them to improve your model. When you work with text, pre-processing can prove to be useful. These pre-processing can include all lowercase, stemming, lemmatization, and removing the stopwords. After that pre-processing is done, you can go either Bag of Words or with the Word2vec approach. Bag of Words guarantees you clear interpretation. Each feature are tuned by means of having a huge amount of features one for each unique word. On other side, Word2vec produces relatively small vectors by meaning of each feature value can be hazy. The other advantage of Word2vec that is crucial in competitions is that words with similar meaning will have similar vector representation. Also, Ngrams can be applied to include words interactions for text and TFiDF can be applied to post-process metrics produced by Bag of Words. Now images. For images, we can use pre-trained convolutional neural networks to extract the features. Depending on the similarity between the competition data and the data neural network was trained on, we may want to calculate descriptors from different layers. Often, fine-tuning of neural network can help improve quality of the descriptors. For the purpose of effective fine-tuning, we may want to augment our data. Also, fine-tuning and data augmentation are often used in competitions where we have no other date except images. Besides, there are a number of pre-trained models for convolutional neural networks and Word2vec on the internet. Great. Now, you know how to handle competitions with additional data like text and images. By applying and adapting ideas we have discussed, you will be able to gain an edge in this kind of setting.

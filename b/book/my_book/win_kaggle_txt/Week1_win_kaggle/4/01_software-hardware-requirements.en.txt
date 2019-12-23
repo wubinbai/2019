@@ -1,0 +1,69 @@
+Hi, everyone. In this video, I want to do an overview
+of hardware and software requirements. You will know what is typical stuff for
+data science competitions. I want to start from
+hardware related things. Participating in competitions, you generally don't need a lot
+of computation resources. A lot of competitions, except imaged based,
+have under several gigabytes of data. It's not very huge and can be processed on
+a high level laptop with 16 gigabyte ram and four physical cores. Quite a good setup is a tower
+PC with 32 gigabyte of ram and six physical cores,
+this is what I personally use. You have a choice of hardware to use. I suggest you to pay attention
+to the following things. First is RAM, for this more is better. If you can keep your data in memory,
+your life will be much, much easier. Personally, I found 64
+gigabytes is quite enough, but some programmers prefer to have
+128 gigabytes or even more. Next are cores, the more core you have
+the more or faster experiments you can do. I find it comfortable to
+work with fixed cores, but sometimes even 32 are not enough. Next thing to pay attention for
+is storage. If you work with large datasets
+that don't fit into the memory, it's crucial to have fast disk to read and
+write chunks of data. SSD is especially important if you train
+narrowness or large number of images. In case you really need
+computational resources. For example, if you are part of team or have a computational heavy approach,
+you can rent it on cloud platforms. They offer machines with a lot of RAMs,
+cores, and GPUs. There are several cloud providers, most famous are Amazon AWS,
+Microsoft's Azure, and Google Cloud. Each one has its own pricing, so we can choose which one best
+fits your needs and budget. I especially want to draw your
+attention to AWS spot option. Spot instances enable you
+to be able to use instance, which can lower your cost significantly. The higher your price for
+spot instance is set by Amazon and fluctuates depending on supply and
+demand for spot instances. Your spot instance run whenever you
+bid exceeds the current market price. Generally, it's much
+cheaper than other options. But you always have risk that your bid
+will get under current market price, and your source will be terminated. Tutorials about how to setup and configure cloud resources you may
+find in additional materials. Another important thing I
+want to discuss is software. Usually, rules in competitions
+prohibit to use commercial software, since it requires to buy
+a license to reproduce results. Some competitors prefer
+R as basic language. But we will describe Python's tech
+as more common and more general. Python is quite a good language for
+fast prototyping. It has a huge amount of high quality and
+open source libraries. And I want to reuse several of them. Let's start with NumPy. It's a linear algebra library
+to work with dimensional arrays, which contains useful linear algebra
+routines and random number capabilities. Pandas is a library providing fast,
+flexible, and expressive way to work with a relational or table of data,
+both easily and intuitive. It allows you to process your
+data in a way similar to SQL. Scikit-learn is a library of classic
+machine learning algorithms. It features various classification,
+regression, and clustering algorithms, including support virtual machines,
+random force, and a lot more. Matplotlib is a plotting library. It allows you to do
+a variety of visualization, like line plots, histograms,
+scatter plots and a lot more. As IDE, I suggest you to use
+IPython with Jupyter node box, since they allow you to work
+interactively and remotely. The last property is especially
+useful if you use cloud resources. Additional packages contain
+implementation of more specific tools. Usually, single packages
+implement single algorithm. XGBoost and LightGBM packages implement
+gradient-boosted decision trees in a very efficient and optimized way. You definitely should
+know about such tools. Keras is a user-friendly framework for
+neural nets. This new package is an efficient
+implementation of this new ]projection method which we will
+discuss in our course. Also, I want to say a few words about
+external tools which usually don't have any connection despite, but
+still very used for computations. One such tool is Vowpal Wabbit. It is a tool designed to
+provide blazing speed and handle really large data sets,
+which don't fit into memory. Libfm and libffm implement different
+types of optimization machines, and often used for sparse data like
+click-through rate prediction. Rgf is an alternative base method,
+which I suggest you to use in ensembles. You can install these packages one by one. But as alternative, you can use byte and distribution like Anaconda, which already
+contains a lot of mentioned packages. And then, through this video, I want to emphasize the proposed setup
+is the most common but not the only one. Don't overestimate the role of hardware
+and software, since they are just tools. Thank you for your attention. [MUSIC]
