@@ -1,3 +1,0 @@
-download librosa github
-https://github.com/librosa/librosa.git
-ghtn print docs and tuts
