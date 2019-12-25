@@ -1,7 +1,7 @@
 class AlwaysEquals:
     def __eq__(self, other):
         return True
-    def __hasH__(self):
+    def __hash__(self):
         return id(self)
 
 
