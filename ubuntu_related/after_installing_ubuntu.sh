@@ -165,6 +165,33 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 # A. sudo apt install retext
 # 3. Install grip for README.md
 # A. sudo apt install grip
+# 4. How to fix imdb data allow_pickle==False problem
+######
+
+
+#Here is s a trick to force imdb.load_data to allow pickle by, in your notebook, replacing this line:
+
+#(train_data, train_labels), (test_data, test_labels) = imdb.load_data(num_words=10000)
+
+#by this:
+
+#import numpy as np
+## save np.load
+#np_load_old = np.load
+
+## modify the default parameters of np.load
+#np.load = lambda *a,**k: np_load_old(*a, allow_pickle=True, **k)
+
+## call load_data with allow_pickle implicitly set to true
+#(train_data, train_labels), (test_data, test_labels) = imdb.load_data(num_words=10000)
+
+## restore np.load for future normal usage
+#np.load = np_load_old
+
+
+######
+
+
 # Appendix
 # My libraries
 # 1. sudp apt install mpg123 # for converting mp3 to wav
