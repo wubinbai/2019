@@ -165,7 +165,11 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 # A. sudo apt install retext
 # 3. Install grip for README.md
 # A. sudo apt install grip
-# 4. How to fix imdb data allow_pickle==False problem
+# 4. Storage Disk Space Problem: to check all directories' sizes:
+# A. sudo du -sh /*
+# which means disk usage, human readable, for all directories
+
+# 5. How to fix imdb data allow_pickle==False problem
 ######
 
 
@@ -187,6 +191,7 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 
 ## restore np.load for future normal usage
 #np.load = np_load_old
+
 
 
 ######
