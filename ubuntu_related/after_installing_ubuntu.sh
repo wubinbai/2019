@@ -168,7 +168,8 @@ cp ~/2019/Config_ipython_import/ipython/import_here.py ~/.ipython/profile_defaul
 # 4. Storage Disk Space Problem: to check all directories' sizes:
 # A. sudo du -sh /*
 # which means disk usage, human readable, for all directories
-
+# 4. How to peek zip file or view zip file content?
+# A. use zip -sf file_name_of_zip.zip
 # 5. How to fix imdb data allow_pickle==False problem
 ######
 
