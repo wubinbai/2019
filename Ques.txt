@@ -15,6 +15,37 @@ model.compile(optimizer=rmsprop(lr=0.3),metrics=['mae'],loss='mse')
 history = model.fit(x,y,epochs=100)
 plt.plot(history.history['loss'])
 
+
+note: Actually, the above codes WORKED. It just didn't work as precise as one may want, say, with error less than 0.1, the erro for each prediction seems to be like around 0.2. However, if you change the alpha to a smaller value, say, 0.1, it WON'T work.
+
+On the other hand, further, I tried to modify the function relationship between x and y, such as sin(x), x squared, etc. However, it seems that the networks' number of layers/units seemed need to be modify, isn't it? What is the best number of layers and units for these functions?????
+
+A bit question about mean square error, I write my own code and find out that the mean squared error for integers from 0 to 99 is around 1.1, however, looknig at the result of the history of the model when fitting, it shows differently, below are the last few results, all of these show that the mse is pretty large, not close to 1.1, what's happening??? It seemed a bit contradictory, that evene if one knwos the mse here is for each epoch, all the values are still below the final mse I calculated.
+
+Epoch 90/100
+ 32/100 [========>.....................] - ETA: 0s -100/100 [==============================] - 0s 32us/step - loss: 210.6996 - mean_absolute_error: 11.7355
+Epoch 91/100
+ 32/100 [========>.....................] - ETA: 0s -100/100 [==============================] - 0s 32us/step - loss: 140.7051 - mean_absolute_error: 8.3883
+Epoch 92/100
+ 32/100 [========>.....................] - ETA: 0s -100/100 [==============================] - 0s 32us/step - loss: 7.7986 - mean_absolute_error: 2.4107
+Epoch 93/100
+ 32/100 [========>.....................] - ETA: 0s -100/100 [==============================] - 0s 41us/step - loss: 27.8812 - mean_absolute_error: 4.4733
+Epoch 94/100
+ 32/100 [========>.....................] - ETA: 0s -100/100 [==============================] - 0s 33us/step - loss: 77.3414 - mean_absolute_error: 7.4168
+Epoch 95/100
+ 32/100 [========>.....................] - ETA: 0s -100/100 [==============================] - 0s 34us/step - loss: 197.3453 - mean_absolute_error: 10.9358
+Epoch 96/100
+ 32/100 [========>.....................] - ETA: 0s -100/100 [==============================] - 0s 35us/step - loss: 11.0908 - mean_absolute_error: 2.8425
+Epoch 97/100
+ 32/100 [========>.....................] - ETA: 0s -100/100 [==============================] - 0s 41us/step - loss: 11.2554 - mean_absolute_error: 2.8502
+Epoch 98/100
+ 32/100 [========>.....................] - ETA: 0s -100/100 [==============================] - 0s 31us/step - loss: 50.6828 - mean_absolute_error: 5.9135
+Epoch 99/100
+ 32/100 [========>.....................] - ETA: 0s -100/100 [==============================] - 0s 32us/step - loss: 248.8386 - mean_absolute_error: 12.8450
+Epoch 100/100
+ 32/100 [========>.....................] - ETA: 0s -100/100 [==============================] - 0s 32us/step - loss: 4.5292 - mean_absolute_error: 1.8317
+ 
+
 2. how does ImageDataGenerator in keras.preprocessing.image work? i.e., how does it yield batches indefinitely given data? Further, how to write MY OWN GENERATOR THAT yield batches of data? how does the __getitem__ work?
 3. about feature engineering: to decide whether a feature is relevant to a target or not, some methods are available: using df.corr(), using df.groupby('key')['key2'].mean() or .median(), etc., visualize relation between feature and target. Are there any other methods? In addition, does there exist a correlation value that represents a threshold in df.corr(), say, +- 0.001 or something? What are some good grouby method and visualization method, specifically in python?
 4. about feature engineering:: how to systematically know that a specific feature engineering will make the model better? For example, one may have one hundred lines of code, with each line representing a specific computation of feature engineering, e.g. fillna, encoding categorical to ordinal, create a new feature, etc. There may be a lot of lines about feature engineering, so the question is, how to SYSTEMATICALLY know that this line will improve the model's performance?
