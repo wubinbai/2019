@@ -18,8 +18,9 @@ model.add(Dense( 10, activation= 'softmax'))
 
 PyTorch
 
-classNet(nn.Module):
-    def__init__(self):
+from torch import nn
+class Net(nn.Module):
+    def __init__(self):
         super(Net, self).__init__()
         self.conv1 = nn.Conv2d( 3, 32, 3)
         self.conv2 = nn.Conv2d( 32, 16, 3)
