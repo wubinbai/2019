@@ -5,6 +5,7 @@ np.set_printoptions(threshold=100)
 
 import pandas as pd
 import matplotlib.pyplot as plt
+plt.ion()
 import seaborn as sns
 
 def plot_whole(df):
@@ -18,6 +19,8 @@ def he():
     global ar
     ar = input('Enter the function name for help:')
     help(eval(ar))
+# for . operation of dir
+# use eval(repr(xxx.i))
 
 from pandas import read_csv as pdrc
 
