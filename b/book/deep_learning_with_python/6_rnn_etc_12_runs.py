@@ -19,7 +19,7 @@ run12 = input('y or n for run12')
 from keras.models import Sequential
 from keras.layers import Embedding, SimpleRNN, Dense, Flatten, GRU, CuDNNGRU
 from keras.optimizers import RMSprop
-
+from keras import Model, Input
 
 if run1 =='y':
 
@@ -55,7 +55,16 @@ if run1 =='y':
     input_test = sequence.pad_sequences(input_test, maxlen=maxlen)
     print('input_train shape:', input_train.shape)
     print('input_test shape:', input_test.shape)
-
+    # equiv. to functional api
+    ######
+    #input_tensor = Input(shape=(None,))
+    #emb = Embedding(max_features,32)(input_tensor)
+    #simplernn = SimpleRNN(32)(emb)
+    #dense = Dense(1,activation='sigmoid')(simplernn)
+    #output_tensor = dense
+    #model_s = Model(input_tensor,output_tensor)
+    #print(model_s.summary())
+    ######
 
     model = Sequential()
     model.add(Embedding(max_features, 32))
