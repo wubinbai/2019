@@ -96,3 +96,10 @@ final = np.concatenate([index, labels], axis = 1)
 
 #Prediction csv file
 np.savetxt("mnist_1.csv", final, delimiter = " ", fmt = '%s')
+
+df = final.T
+df0 = df[0]
+df1 = df[1]
+res = pd.DataFrame(df1,df0)
+res.columns = ['Label']
+res.to_csv('mysub.txt')
