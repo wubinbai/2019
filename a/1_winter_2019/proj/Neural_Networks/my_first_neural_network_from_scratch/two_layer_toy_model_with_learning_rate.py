@@ -25,3 +25,20 @@ x = np.array([[1,0,0]])
 z1 = np.dot(x,weights)# z1 is 4 by 1
 a1 = sigmoid(z1)# a1 is also 4 by 1
 print("predicted result of [1,0,0]: ", a1)
+
+x = np.array([[0,1,0]])
+z1 = np.dot(x,weights)# z1 is 4 by 1
+a1 = sigmoid(z1)# a1 is also 4 by 1
+print("predicted result of [0,1,0]: ", a1)
+
+
+x = np.array([[0,0,1]])
+z1 = np.dot(x,weights)# z1 is 4 by 1
+a1 = sigmoid(z1)# a1 is also 4 by 1
+print("predicted result of [0,0,1]: ", a1)
+
+x = np.array([[1,1,0]])
+z1 = np.dot(x,weights)# z1 is 4 by 1
+a1 = sigmoid(z1)# a1 is also 4 by 1
+print("predicted result of [1,1,0]: ", a1)
+
