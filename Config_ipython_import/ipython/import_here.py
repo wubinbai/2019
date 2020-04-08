@@ -27,3 +27,17 @@ from pandas import read_csv as pdrc
 # for ipython to display all results in the jupyter notebook:
 from IPython.core.interactiveshell import InteractiveShell
 InteractiveShell.ast_node_interactivity = "all"
+
+def my_plot(data_array):
+    plt.figure()
+    plt.plot(data_array)
+    plt.grid()
+
+def my_plotas(data_array):
+    plt.figure()
+    plt.plot(data_array)
+    plt.plot(data_array,'b*')
+    plt.grid()
+
+
+
