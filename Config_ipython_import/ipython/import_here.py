@@ -48,5 +48,9 @@ def save_model_keras(model,save_path):
 def torchviz_pdf(model,input_tensor):
     from torchviz import make_dot
     vis_graph = make_dot(model(input_tensor), params=dict(model.named_parameters()))
-vis_graph.view()  # 会在当前目录下保存一个“Digraph.gv.pdf”文件，并在默认浏览器中打开
+    vis_graph.view()  # 会在当前目录下保存一个“Digraph.gv.pdf”文件，并在默认浏览器中打开
+
+def torch_summary(model,input_size):
+    from torchsummary import summary
+    summary(model.cuda(), input_size=input_size)
 
