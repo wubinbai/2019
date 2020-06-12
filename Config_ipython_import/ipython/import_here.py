@@ -39,5 +39,10 @@ def my_plotas(data_array):
     plt.plot(data_array,'b*')
     plt.grid()
 
+def save_model_keras(model,save_path):
+    from keras.utils import plot_model
+    plot_model(model,show_shapes=True,to_file=save_path)
+
+
 
 
