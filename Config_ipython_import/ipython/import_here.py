@@ -7,6 +7,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 plt.ion()
 import seaborn as sns
+from tqdm import tqdm
 
 def plot_whole(df):
     with pd.option_context('display.max_rows', None, 'display.max_columns', None): 
